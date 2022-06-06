@@ -18,7 +18,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Frequently asked questions" href="faq.html" />
+    <link rel="next" title="Streaming ASR" href="../streaming_asr/index.html" />
     <link rel="prev" title="Installation" href="index.html" /> 
 </head>
 
@@ -44,10 +44,10 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Install from source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../streaming_asr/index.html">Streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently asked questions</a></li>
 </ul>
 
         </div>
@@ -95,11 +95,6 @@ are listed as follows:</p>
 <p>If you install a CUDA version of PyTorch, please also install cuDNN.
 Otherwise, you will get CMake configuration errors later.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We use <a class="reference external" href="https://github.com/pytorch/audio">torchaudio</a> in the client.
-Please also install <code class="docutils literal notranslate"><span class="pre">torchaudio</span></code> before proceeding.</p>
-</div>
 <p>Assume you have installed <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code>. The steps to install <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> from source
 are given below.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa
@@ -129,15 +124,16 @@ extension.</p>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>Refer to <a class="reference internal" href="faq.html#fix-cudnn-not-found"><span class="std std-ref">How to fix Caffe2: Cannot find cuDNN library</span></a> if you encouter this problem during
+<p>Refer to <a class="reference internal" href="../faq.html#fix-cudnn-not-found"><span class="std std-ref">How to fix Caffe2: Cannot find cuDNN library</span></a> if you encouter this problem during
 installation.</p>
 </div>
-<p>To check that you have installed <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> successfully,</p>
+<p>To check that you have installed <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> successfully, use</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -c <span class="s2">&quot;import sherpa; print(sherpa.__version__)&quot;</span>
 </pre></div>
 </div>
 <p>It should print the version of <code class="docutils literal notranslate"><span class="pre">sherpa</span></code>.</p>
-<p>Congratulations! You have installed <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> successfully. Let us start
+<p><strong>Congratulations!</strong></p>
+<p>You have installed <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> successfully. Let us start
 to play with it.</p>
 <p>The following shows you a <a class="reference external" href="https://www.youtube.com/watch?v=z7HgaZv5W0U">YouTube video</a>,
 demonstrating streaming ASR with <code class="docutils literal notranslate"><span class="pre">sherpa</span></code>.</p>
@@ -156,7 +152,7 @@ demonstrating streaming ASR with <code class="docutils literal notranslate"><spa
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="faq.html" class="btn btn-neutral float-right" title="Frequently asked questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../streaming_asr/index.html" class="btn btn-neutral float-right" title="Streaming ASR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
