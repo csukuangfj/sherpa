@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; sherpa 0.3 documentation</title>
+  <title>Streaming ASR &mdash; sherpa 0.3 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Install from source" href="from-source.html" />
-    <link rel="prev" title="sherpa" href="../index.html" /> 
+    <link rel="next" title="Streaming ASR with pruned stateless Emformer RNN-T" href="emformer/index.html" />
+    <link rel="prev" title="Frequently asked questions" href="../installation/faq.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,12 +42,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="from-source.html">Install from source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Streaming ASR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="emformer/index.html">Streaming ASR with pruned stateless Emformer RNN-T</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../streaming_asr/index.html">Streaming ASR</a></li>
 </ul>
 
         </div>
@@ -64,9 +63,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Installation</li>
+      <li>Streaming ASR</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/sherpa/docs/source/installation/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/sherpa/docs/source/streaming_asr/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -74,31 +73,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="installation">
-<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">sherpa</span></code> supports both CPU and CUDA. To install a CUDA version of sherpa, all you
-need to do is to install PyTorch with CUDA support.</p>
-<p>Supported operating systems, Python versions, PyTorch versions, and CUDA versions
-are listed below:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><img alt="Supported operating systems" src="../_images/os-brightgreen.svg" /></p></li>
-<li><p><img alt="Supported python versions" src="../_images/python_ge_3.7-blue.svg" /></p></li>
-<li><p><img alt="Supported pytorch versions" src="../_images/pytorch_ge_1.6.0-blueviolet.svg" /></p></li>
-<li><p><img alt="Supported cuda versions" src="../_images/cuda_ge_10.1-orange.svg" /></p></li>
-</ul>
-</div></blockquote>
-<p>We provide the following methods to install <code class="docutils literal notranslate"><span class="pre">sherpa</span></code>. You can choose
-the one that works best for you.</p>
+  <section id="streaming-asr">
+<h1>Streaming ASR<a class="headerlink" href="#streaming-asr" title="Permalink to this headline"></a></h1>
+<p>This page describes how to use <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> for streaming ASR.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="from-source.html">Install from source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#where-to-ask-for-help">Where to ask for help</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#how-to-install-a-cpu-version-of-sherpa">How to install a CPU version of sherpa</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#how-to-install-sherpa-with-cuda-support">How to install sherpa with CUDA support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#how-to-fix-caffe2-cannot-find-cudnn-library">How to fix <cite>Caffe2: Cannot find cuDNN library</cite></a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#how-to-uninstall-sherpa">How to uninstall sherpa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="emformer/index.html">Streaming ASR with pruned stateless Emformer RNN-T</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="emformer/server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emformer/client.html">Client</a></li>
 </ul>
 </li>
 </ul>
@@ -109,8 +91,8 @@ the one that works best for you.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="sherpa" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="from-source.html" class="btn btn-neutral float-right" title="Install from source" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../installation/faq.html" class="btn btn-neutral float-left" title="Frequently asked questions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="emformer/index.html" class="btn btn-neutral float-right" title="Streaming ASR with pruned stateless Emformer RNN-T" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

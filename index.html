@@ -42,6 +42,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streaming_asr/index.html">Streaming ASR</a></li>
 </ul>
 
         </div>
@@ -70,13 +71,26 @@
              
   <section id="sherpa">
 <h1>sherpa<a class="headerlink" href="#sherpa" title="Permalink to this headline"></a></h1>
-<p><a class="reference external" href="https://github.com/k2-fsa/shpera">sherpa</a> is an ASR framework
-for streaming and non-streaming recognition.</p>
+<p><a class="reference external" href="https://github.com/k2-fsa/shpera">sherpa</a> is a framework
+for streaming and non-streaming automatic speech recognition (ASR).</p>
+<p>CPU-bound tasks, such as neural network computation, are implemented in
+C++; while IO-bound tasks, such as socket communication, are implemented
+in Python with <a class="reference external" href="https://docs.python.org/3/library/asyncio.html">asyncio</a>.</p>
+<p>Python is responsible for managing threads, which call into C++ extensions
+with the <a class="reference external" href="https://docs.python.org/3/glossary.html#term-global-interpreter-lock">global interpreter lock (GIL)</a>
+released so that multiple threads can run concurrently.</p>
+<p>The following content describes how to install <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> and its usage
+for streaming ASR.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="installation/from-source.html">Install from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation/faq.html">Frequently asked questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="streaming_asr/index.html">Streaming ASR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="streaming_asr/emformer/index.html">Streaming ASR with pruned stateless Emformer RNN-T</a></li>
 </ul>
 </li>
 </ul>
