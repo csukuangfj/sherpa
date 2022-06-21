@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Streaming ASR with pruned stateless Emformer transducer &mdash; sherpa 0.5 documentation</title>
+  <title>Emformer transducer based streaming ASR &mdash; sherpa 0.5 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -44,7 +44,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Streaming ASR</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Streaming ASR with pruned stateless Emformer transducer</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Emformer transducer based streaming ASR</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="server.html">Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="client.html">Client</a></li>
 </ul>
@@ -70,7 +70,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Streaming ASR</a> &raquo;</li>
-      <li>Streaming ASR with pruned stateless Emformer transducer</li>
+      <li>Emformer transducer based streaming ASR</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/k2-fsa/sherpa/blob/master/sherpa/docs/source/streaming_asr/emformer/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -80,11 +80,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="streaming-asr-with-pruned-stateless-emformer-transducer">
-<h1>Streaming ASR with pruned stateless Emformer transducer<a class="headerlink" href="#streaming-asr-with-pruned-stateless-emformer-transducer" title="Permalink to this headline"></a></h1>
-<p>This page describes how to use <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> for streaming
-ASR with the <a class="reference external" href="https://arxiv.org/abs/2010.10759">Emformer</a> model
-trained using <a class="reference external" href="https://github.com/k2-fsa/icefall">pruned stateless RNN-T</a>.</p>
+  <section id="emformer-transducer-based-streaming-asr">
+<h1>Emformer transducer based streaming ASR<a class="headerlink" href="#emformer-transducer-based-streaming-asr" title="Permalink to this headline"></a></h1>
+<p>This page describes how to use <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a> for streaming
+ASR with <a class="reference external" href="https://arxiv.org/pdf/2010.10759.pdf">Emformer</a> transducer models
+trained with <a class="reference external" href="https://github.com/k2-fsa/icefall">pruned stateless trandcuer</a>.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>To be specific, the pre-trained model is trained on the <a class="reference external" href="https://www.openslr.org/12">LibriSpeech</a>

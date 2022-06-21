@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="LibriSpeech demo" href="librispeech.html" />
-    <link rel="prev" title="Conformer Transducer based non-streaming ASR" href="index.html" /> 
+    <link rel="prev" title="Conformer transducer based non-streaming ASR" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,10 +45,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../streaming_asr/index.html">Streaming ASR</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Non-streaming ASR</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Conformer Transducer based non-streaming ASR</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Conformer transducer based non-streaming ASR</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">aishell demo</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#download-the-pre-trained-model">Download the pre-trained model</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#start-the-server">Start the server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-the-client">Start the client</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="librispeech.html">LibriSpeech demo</a></li>
@@ -74,7 +75,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Non-streaming ASR</a> &raquo;</li>
-          <li><a href="index.html">Conformer Transducer based non-streaming ASR</a> &raquo;</li>
+          <li><a href="index.html">Conformer transducer based non-streaming ASR</a> &raquo;</li>
       <li>aishell demo</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/k2-fsa/sherpa/blob/master/sherpa/docs/source/offline_asr/conformer/aishell.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -135,9 +136,9 @@ $ ls -lh data/lang_char/tokens.txt
 <p><code class="docutils literal notranslate"><span class="pre">exp/cpu_jit-epoch-29-avg-5-torch-1.10.0.pt</span></code> is a torchscript model
 exported using torch 1.10, while <code class="docutils literal notranslate"><span class="pre">exp/cpu_jit-epoch-29-avg-5-torch-1.6.0.pt</span></code>
 is exported using torch 1.6.0.</p>
-<p>If you are using a version of PyTorch older than 1.10, please select
-<code class="docutils literal notranslate"><span class="pre">exp/cpu_jit-epoch-29-5-torch-1.6.0.pt</span></code>. Otherwise, please use
-<code class="docutils literal notranslate"><span class="pre">exp/cpu_jit-epoch-29-5-torch-1.10.0.pt</span></code>.</p>
+<p>If you are using a version of PyTorch that is older than 1.10, please select
+<code class="docutils literal notranslate"><span class="pre">exp/cpu_jit-epoch-29-avg-5-torch-1.6.0.pt</span></code>. Otherwise, please use
+<code class="docutils literal notranslate"><span class="pre">exp/cpu_jit-epoch-29-avg-5-torch-1.10.0.pt</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">data/lang_char/tokens.txt</span></code> is a token table (i.e., word table),
 containing mappings between words and word IDs.</p>
 <div class="admonition note">
@@ -145,7 +146,7 @@ containing mappings between words and word IDs.</p>
 <p>At present, we only implement <code class="docutils literal notranslate"><span class="pre">greedy_search</span></code> and <code class="docutils literal notranslate"><span class="pre">modified</span> <span class="pre">beam_search</span></code>
 for decoding, so you only need a torchscript model file and a <code class="docutils literal notranslate"><span class="pre">tokens.txt</span></code>
 to start the server.</p>
-<p>After we implement <code class="docutils literal notranslate"><span class="pre">fast_beam_search</span></code>, you can also use an FST based
+<p>After we implement <code class="docutils literal notranslate"><span class="pre">fast_beam_search</span></code>, you can also use an FST-based
 n-gram LM during decoding.</p>
 </div>
 </section>
@@ -242,6 +243,117 @@ optional arguments:
 </pre></div>
 </div>
 </div>
+<p>The following shows an example about how to use the above pre-trained model
+to start the server:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Command to start the server using the above pre-trained model</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+. path.sh
+
+<span class="nb">export</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">1</span>
+
+<span class="nv">nn_model_filename</span><span class="o">=</span>./icefall-aishell-pruned-transducer-stateless3-2022-06-20/exp/cpu_jit-epoch-29-avg-5-torch-1.6.0.pt
+<span class="nv">token_filename</span><span class="o">=</span>./icefall-aishell-pruned-transducer-stateless3-2022-06-20/data/lang_char/tokens.txt
+
+sherpa/bin/conformer_rnnt/offline_server.py <span class="se">\</span>
+  --port <span class="m">6010</span> <span class="se">\</span>
+  --num-device <span class="m">1</span> <span class="se">\</span>
+  --max-batch-size <span class="m">10</span> <span class="se">\</span>
+  --max-wait-ms <span class="m">5</span> <span class="se">\</span>
+  --feature-extractor-pool-size <span class="m">5</span> <span class="se">\</span>
+  --nn-pool-size <span class="m">2</span> <span class="se">\</span>
+  --max-active-connections <span class="m">10</span> <span class="se">\</span>
+  --nn-model-filename <span class="nv">$nn_model_filename</span> <span class="se">\</span>
+  --token-filename <span class="nv">$token_filename</span>
+</pre></div>
+</div>
+</div>
+<p>When the server is started, you should see something like below:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Output after starting the server</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="mi">000</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">offline_server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">371</span><span class="p">]</span> <span class="n">started</span>
+<span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="mi">002</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">707</span><span class="p">]</span> <span class="n">server</span> <span class="n">listening</span> <span class="n">on</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">6010</span>
+<span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="mi">002</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">707</span><span class="p">]</span> <span class="n">server</span> <span class="n">listening</span> <span class="n">on</span> <span class="p">[::]:</span><span class="mi">6010</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="start-the-client">
+<h2>Start the client<a class="headerlink" href="#start-the-client" title="Permalink to this headline"></a></h2>
+<p>We also provide a Python script
+<a class="reference external" href="https://github.com/k2-fsa/sherpa/blob/master/sherpa/bin/conformer_rnnt/offline_client.py">sherpa/bin/conformer_rnnt/offline_client.py</a> for the client.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sherpa/bin/conformer_rnnt/offline_client.py --help
+</pre></div>
+</div>
+<p>shows the following help information:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">Output of <code class="docutils literal notranslate"><span class="pre">./sherpa/bin/conformer_rnnt/offline_client.py</span> <span class="pre">--help</span></code></span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">offline_client</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">addr</span> <span class="n">SERVER_ADDR</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">port</span> <span class="n">SERVER_PORT</span><span class="p">]</span> <span class="n">sound_files</span> <span class="p">[</span><span class="n">sound_files</span> <span class="o">...</span><span class="p">]</span>
+
+<span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="n">sound_files</span>           <span class="n">The</span> <span class="nb">input</span> <span class="n">sound</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">to</span> <span class="n">transcribe</span><span class="o">.</span> <span class="n">Supported</span> <span class="n">formats</span> <span class="n">are</span> <span class="n">those</span> <span class="n">supported</span> <span class="n">by</span> <span class="n">torchaudio</span><span class="o">.</span><span class="n">load</span><span class="p">()</span><span class="o">.</span> <span class="n">For</span>
+                        <span class="n">example</span><span class="p">,</span> <span class="n">wav</span> <span class="ow">and</span> <span class="n">flac</span> <span class="n">are</span> <span class="n">supported</span><span class="o">.</span> <span class="n">The</span> <span class="n">sample</span> <span class="n">rate</span> <span class="n">has</span> <span class="n">to</span> <span class="n">be</span> <span class="mi">16</span><span class="n">kHz</span><span class="o">.</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">addr</span> <span class="n">SERVER_ADDR</span>
+                        <span class="n">Address</span> <span class="n">of</span> <span class="n">the</span> <span class="n">server</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">localhost</span><span class="p">)</span>
+  <span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">port</span> <span class="n">SERVER_PORT</span>
+                        <span class="n">Port</span> <span class="n">of</span> <span class="n">the</span> <span class="n">server</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="mi">6006</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We provide some test waves in the git repo you just cloned. The following command
+shows you how to start the client:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Start the client and send multiple sound files for recognition</span><a class="headerlink" href="#id5" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="n">sherpa</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">conformer_rnnt</span><span class="o">/</span><span class="n">offline_client</span><span class="o">.</span><span class="n">py</span> \
+  <span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">addr</span> <span class="n">localhost</span> \
+  <span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">port</span> <span class="mi">6010</span> \
+  <span class="o">./</span><span class="n">icefall</span><span class="o">-</span><span class="n">aishell</span><span class="o">-</span><span class="n">pruned</span><span class="o">-</span><span class="n">transducer</span><span class="o">-</span><span class="n">stateless3</span><span class="o">-</span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">20</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="n">BAC009S0764W0121</span><span class="o">.</span><span class="n">wav</span> \
+  <span class="o">./</span><span class="n">icefall</span><span class="o">-</span><span class="n">aishell</span><span class="o">-</span><span class="n">pruned</span><span class="o">-</span><span class="n">transducer</span><span class="o">-</span><span class="n">stateless3</span><span class="o">-</span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">20</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="n">BAC009S0764W0122</span><span class="o">.</span><span class="n">wav</span> \
+  <span class="o">./</span><span class="n">icefall</span><span class="o">-</span><span class="n">aishell</span><span class="o">-</span><span class="n">pruned</span><span class="o">-</span><span class="n">transducer</span><span class="o">-</span><span class="n">stateless3</span><span class="o">-</span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">20</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="n">BAC009S0764W0123</span><span class="o">.</span><span class="n">wav</span>
+
+</pre></div>
+</div>
+</div>
+<p>You will see the following output from the client side:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Recogntion results received by the client</span><a class="headerlink" href="#id6" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sending</span> <span class="o">./</span><span class="n">icefall</span><span class="o">-</span><span class="n">aishell</span><span class="o">-</span><span class="n">pruned</span><span class="o">-</span><span class="n">transducer</span><span class="o">-</span><span class="n">stateless3</span><span class="o">-</span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">20</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="n">BAC009S0764W0121</span><span class="o">.</span><span class="n">wav</span>
+<span class="o">./</span><span class="n">icefall</span><span class="o">-</span><span class="n">aishell</span><span class="o">-</span><span class="n">pruned</span><span class="o">-</span><span class="n">transducer</span><span class="o">-</span><span class="n">stateless3</span><span class="o">-</span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">20</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="n">BAC009S0764W0121</span><span class="o">.</span><span class="n">wav</span>
+ <span class="n">甚至出现交易几乎停滞的情况</span>
+
+<span class="n">Sending</span> <span class="o">./</span><span class="n">icefall</span><span class="o">-</span><span class="n">aishell</span><span class="o">-</span><span class="n">pruned</span><span class="o">-</span><span class="n">transducer</span><span class="o">-</span><span class="n">stateless3</span><span class="o">-</span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">20</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="n">BAC009S0764W0122</span><span class="o">.</span><span class="n">wav</span>
+<span class="o">./</span><span class="n">icefall</span><span class="o">-</span><span class="n">aishell</span><span class="o">-</span><span class="n">pruned</span><span class="o">-</span><span class="n">transducer</span><span class="o">-</span><span class="n">stateless3</span><span class="o">-</span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">20</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="n">BAC009S0764W0122</span><span class="o">.</span><span class="n">wav</span>
+ <span class="n">一二线城市虽然也处于调整中</span>
+
+<span class="n">Sending</span> <span class="o">./</span><span class="n">icefall</span><span class="o">-</span><span class="n">aishell</span><span class="o">-</span><span class="n">pruned</span><span class="o">-</span><span class="n">transducer</span><span class="o">-</span><span class="n">stateless3</span><span class="o">-</span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">20</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="n">BAC009S0764W0123</span><span class="o">.</span><span class="n">wav</span>
+<span class="o">./</span><span class="n">icefall</span><span class="o">-</span><span class="n">aishell</span><span class="o">-</span><span class="n">pruned</span><span class="o">-</span><span class="n">transducer</span><span class="o">-</span><span class="n">stateless3</span><span class="o">-</span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">20</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="n">BAC009S0764W0123</span><span class="o">.</span><span class="n">wav</span>
+ <span class="n">但因为聚集了过多公共资源</span>
+
+</pre></div>
+</div>
+</div>
+<p>while the server side log is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="mi">000</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">offline_server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">371</span><span class="p">]</span> <span class="n">started</span>
+<span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="mi">002</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">707</span><span class="p">]</span> <span class="n">server</span> <span class="n">listening</span> <span class="n">on</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">6010</span>
+<span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="mi">002</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">707</span><span class="p">]</span> <span class="n">server</span> <span class="n">listening</span> <span class="n">on</span> <span class="p">[::]:</span><span class="mi">6010</span>
+<span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="mi">148</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">642</span><span class="p">]</span> <span class="n">connection</span> <span class="nb">open</span>
+<span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="mi">148</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">offline_server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">552</span><span class="p">]</span> <span class="n">Connected</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">59558</span><span class="p">)</span><span class="o">.</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">connections</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">10</span>
+<span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span><span class="mi">757</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">offline_server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">573</span><span class="p">]</span> <span class="n">Disconnected</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">59558</span><span class="p">)</span>
+<span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span><span class="mi">758</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">260</span><span class="p">]</span> <span class="n">connection</span> <span class="n">closed</span>
+</pre></div>
+</div>
+<p>Congratulations! You have succeeded in starting the server and client using
+a pre-trained model with <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a>.</p>
+<p>We provide a colab notebook
+<a class="reference external" href="https://colab.research.google.com/drive/1eeJ7WcWZdy1SI93jXlp0lYAccW29F_NO?usp=sharing"><img alt="offline asr with aishell colab notebook" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
+for you to try this tutorial step by step.</p>
+<p>It describes not only how to setup the environment, but it also
+shows you how to compute the <code class="docutils literal notranslate"><span class="pre">WER</span></code> and <code class="docutils literal notranslate"><span class="pre">RTF</span></code> of the <a class="reference external" href="https://www.openslr.org/33">aishell</a> <strong>test</strong> dataset.</p>
 </section>
 </section>
 
@@ -249,7 +361,7 @@ optional arguments:
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Conformer Transducer based non-streaming ASR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Conformer transducer based non-streaming ASR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="librispeech.html" class="btn btn-neutral float-right" title="LibriSpeech demo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

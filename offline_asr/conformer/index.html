@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Conformer Transducer based non-streaming ASR &mdash; sherpa 0.5 documentation</title>
+  <title>Conformer transducer based non-streaming ASR &mdash; sherpa 0.5 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -45,7 +45,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../streaming_asr/index.html">Streaming ASR</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Non-streaming ASR</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Conformer Transducer based non-streaming ASR</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Conformer transducer based non-streaming ASR</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="aishell.html">aishell demo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="librispeech.html">LibriSpeech demo</a></li>
 </ul>
@@ -70,7 +70,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Non-streaming ASR</a> &raquo;</li>
-      <li>Conformer Transducer based non-streaming ASR</li>
+      <li>Conformer transducer based non-streaming ASR</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/k2-fsa/sherpa/blob/master/sherpa/docs/source/offline_asr/conformer/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -81,10 +81,10 @@
            <div itemprop="articleBody">
              
   <section id="conformer-transducer-based-non-streaming-asr">
-<h1>Conformer Transducer based non-streaming ASR<a class="headerlink" href="#conformer-transducer-based-non-streaming-asr" title="Permalink to this headline"></a></h1>
+<h1>Conformer transducer based non-streaming ASR<a class="headerlink" href="#conformer-transducer-based-non-streaming-asr" title="Permalink to this headline"></a></h1>
 <p>This page describes how to use <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a> for non-streaming ASR based
 on <a class="reference external" href="https://arxiv.org/abs/2005.08100">Conformer</a> <a class="reference external" href="https://arxiv.org/pdf/1211.3711.pdf">transducer</a>.</p>
-<p>We use pre-trained models from the following datasets for demonstration:</p>
+<p>We use pre-trained models using the following datasets for demonstration:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference external" href="https://www.openslr.org/33">aishell</a></p></li>
@@ -103,9 +103,15 @@ in each demo so that you can play with it without any training.</p>
 <li class="toctree-l1"><a class="reference internal" href="aishell.html">aishell demo</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="aishell.html#download-the-pre-trained-model">Download the pre-trained model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="aishell.html#start-the-server">Start the server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aishell.html#start-the-client">Start the client</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="librispeech.html">LibriSpeech demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="librispeech.html">LibriSpeech demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="librispeech.html#download-the-pre-trained-model">Download the pre-trained model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="librispeech.html#start-the-server">Start the server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="librispeech.html#start-the-client">Start the client</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
