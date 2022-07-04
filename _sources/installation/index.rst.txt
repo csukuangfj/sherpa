@@ -21,6 +21,7 @@ the one that works best for you.
    :maxdepth: 2
 
    from-source
+   for-developers
 
 .. |os_types| image:: ./pic/os-brightgreen.svg
   :alt: Supported operating systems

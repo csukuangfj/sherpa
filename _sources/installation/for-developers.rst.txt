@@ -1,0 +1,69 @@
+For developers
+==============
+
+As a developer or advanced user of `sherpa`_, there is no need to use
+
+.. code-block:: bash
+
+  python3 setup.py install
+
+or
+
+.. code-block:: bash
+
+   pip install k2-sherpa
+
+to install `sherpa`_.
+
+The above approaches allow you to install only a single version of `sherpa`_
+inside a virtual environment. This section describes how to use `sherpa`_
+from a developer's perspective.
+
+Install `k2`_
+-------------
+
+Please refer to `<https://k2-fsa.github.io/k2/installation/for_developers.html>`_
+for how to install `k2`_.
+
+We assume you have cloned `k2`_ to the directory ``/foo``
+and the build directory of `k2`_ is ``/foo/k2/build_release``.
+
+
+Clone `sherpa`_
+---------------
+
+The first thing you need to do is to clone `sherpa`_:
+
+.. code-block:: bash
+
+   git clone https://github.com/k2-fsa/sherpa
+
+.. hint::
+
+   We recommend you to clone your own fork:
+
+    .. code-block:: bash
+
+        git clone git@github.com:your_github_username/sherpa
+
+Build `sherpa`_
+---------------
+
+.. code-block:: bash
+
+   cd sherpa
+   mkdir build
+   cd build
+   export K2_INSTALL_PREFIX=/foo/k2/build_release
+   cmake ..
+
+The output of ``cmake ..`` is given below for reference:
+
+.. literalinclude:: ./code/cmake-out.log
+   :caption: Output of ``cmake ..``
+
+Then you can build `sherpa`_ using:
+
+.. code-block:: bash
+
+   make -j 5
