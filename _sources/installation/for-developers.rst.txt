@@ -1,7 +1,7 @@
 For developers
 ==============
 
-As a developer or advanced user of `sherpa`_, there is no need to use
+As a developer or an advanced user of `sherpa`_, there is no need to use
 
 .. code-block:: bash
 
