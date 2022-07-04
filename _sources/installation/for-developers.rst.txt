@@ -16,7 +16,10 @@ or
 to install `sherpa`_.
 
 The above approaches allow you to install only a single version of `sherpa`_
-inside a virtual environment. This section describes how to use `sherpa`_
+inside a virtual environment, which is inconvenient if you want to try
+several versions of `sherpa`_ in your current virtual environment.
+
+This section describes how to use `sherpa`_
 from a developer's perspective.
 
 Install `k2`_
