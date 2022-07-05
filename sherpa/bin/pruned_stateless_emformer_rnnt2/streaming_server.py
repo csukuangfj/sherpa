@@ -418,6 +418,7 @@ class StreamingServer(object):
             samples = await self.recv_audio_samples(socket)
             if samples is None:
                 break
+            logging.info("samples", samples.sum())
 
             # TODO(fangjun): At present, we assume the sampling rate
             # of the received audio samples is always 16000.
