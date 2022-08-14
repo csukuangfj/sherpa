@@ -54,6 +54,7 @@
 <li class="toctree-l3"><a class="reference internal" href="client.html">Client</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../conformer/index.html">Conformer transducer based streaming ASR</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../offline_asr/index.html">Non-streaming ASR</a></li>
@@ -98,7 +99,7 @@ decoding it, and sending the recognition results back to the client.</p>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">sherpa</span>
-<span class="o">./</span><span class="n">sherpa</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">conv_emformer_transducer_stateless</span><span class="o">/</span><span class="n">streaming_server</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span>
+<span class="o">./</span><span class="n">sherpa</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">conv_emformer_transducer_stateless2</span><span class="o">/</span><span class="n">streaming_server</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span>
 </pre></div>
 </div>
 <p>shows the usage message.</p>
@@ -126,7 +127,7 @@ found at <a class="reference external" href="https://github.com/k2-fsa/icefall/b
 git lfs install
 git clone https://huggingface.co/Zengwei/icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05
 
-./sherpa/bin/conv_emformer_transducer_stateless/streaming_server.py <span class="se">\</span>
+./sherpa/bin/conv_emformer_transducer_stateless2/streaming_server.py <span class="se">\</span>
   --port <span class="m">6007</span> <span class="se">\</span>
   --max-batch-size <span class="m">50</span> <span class="se">\</span>
   --max-wait-ms <span class="m">5</span> <span class="se">\</span>

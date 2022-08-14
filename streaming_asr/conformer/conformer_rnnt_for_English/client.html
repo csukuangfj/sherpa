@@ -5,20 +5,20 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Client &mdash; sherpa 0.6 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Conformer transducer based streaming ASR" href="../conformer/index.html" />
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Non-streaming ASR" href="../../../offline_asr/index.html" />
     <link rel="prev" title="Server" href="server.html" /> 
 </head>
 
@@ -27,13 +27,13 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> sherpa
+            <a href="../../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
                 0.6
               </div>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -42,23 +42,24 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../huggingface/index.html">Try sherpa with Huggingface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Streaming ASR</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../emformer/index.html">Emformer transducer based streaming ASR</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">ConvEmformer transducer based streaming ASR</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="server.html">Server</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Client</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../huggingface/index.html">Try sherpa with Huggingface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Streaming ASR</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../emformer/index.html">Emformer transducer based streaming ASR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../conv_emformer/index.html">ConvEmformer transducer based streaming ASR</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Conformer transducer based streaming ASR</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../conformer_rnnt_for_Chinese/index.html">Streaming Chinese ASR</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Streaming English ASR</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="server.html">Server</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Client</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../conformer/index.html">Conformer transducer based streaming ASR</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../offline_asr/index.html">Non-streaming ASR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../offline_asr/index.html">Non-streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">Frequently asked questions</a></li>
 </ul>
 
         </div>
@@ -67,19 +68,20 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">sherpa</a>
+          <a href="../../../index.html">sherpa</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Streaming ASR</a> &raquo;</li>
-          <li><a href="index.html">ConvEmformer transducer based streaming ASR</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Streaming ASR</a> &raquo;</li>
+          <li><a href="../index.html">Conformer transducer based streaming ASR</a> &raquo;</li>
+          <li><a href="index.html">Streaming English ASR</a> &raquo;</li>
       <li>Client</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/streaming_asr/conv_emformer/client.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/streaming_asr/conformer/conformer_rnnt_for_English/client.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -88,13 +90,13 @@
            <div itemprop="articleBody">
              
   <section id="client">
-<span id="conv-emformer-client"></span><h1>Client<a class="headerlink" href="#client" title="Permalink to this headline"></a></h1>
+<span id="conformer-rnnt-client-english"></span><h1>Client<a class="headerlink" href="#client" title="Permalink to this headline"></a></h1>
 <p>With the client you can record your voice in real-time, send it to the
 server, and get the recognition results back from the server.</p>
 <p>We provide a web client for this purpose.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>Please first start the <a class="reference internal" href="server.html#conv-emformer-server"><span class="std std-ref">Server</span></a> before you start the client.</p>
+<p>Please first start the <a class="reference internal" href="server.html#conformer-rnnt-server-english"><span class="std std-ref">Server</span></a> before you start the client.</p>
 <p>Also, we have hard coded the server port to 6006. Please either pass
 <code class="docutils literal notranslate"><span class="pre">--port</span> <span class="pre">6006</span></code> when starting the server or change the client
 <a class="reference external" href="https://github.com/k2-fsa/sherpa/blob/master/sherpa/bin/web/js/streaming_record.js#L7">https://github.com/k2-fsa/sherpa/blob/master/sherpa/bin/web/js/streaming_record.js#L7</a>
@@ -107,19 +109,19 @@ to use whaterver the port the server is using.</p>
 python3 -m http.server <span class="m">6008</span>
 </pre></div>
 </div>
-<p>Then open your browser, and visit <a class="reference external" href="http://localhost:6008/record.html">http://localhost:6008/record.html</a>.</p>
-<p>You will see a UI like the following screenshot. Click the <code class="docutils literal notranslate"><span class="pre">Record</span></code> button
+<p>Then open your browser, and visit <a class="reference external" href="http://localhost:6008/streaming_record.html">http://localhost:6008/streaming_record.html</a>.</p>
+<p>You will see a UI like the following screenshot. Click the <code class="docutils literal notranslate"><span class="pre">Streaming-Record</span></code> button
 and speak! You should see the recognition results from the server.</p>
-<img alt="Screen shot of the web client user interface" src="../../_images/emformer-streaming-asr-web-client.png" />
+<img alt="Screen shot of the web client user interface" src="../../../_images/conformer-rnnt-streaming-asr-web-client.jpg" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you are unable to click the <code class="docutils literal notranslate"><span class="pre">Record</span></code> button, please make sure
+<p>If you are unable to click the <code class="docutils literal notranslate"><span class="pre">Streaming-Record</span></code> button, please make sure
 the server port is 6006.</p>
 </div>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>You have to visit <a class="reference external" href="http://localhost:6008/record.html">http://localhost:6008/record.html</a>, not
-<a class="reference external" href="http://0.0.0.0:6008/record.html">http://0.0.0.0:6008/record.html</a>. Otherwise, you will not be able
+<p>You have to visit <a class="reference external" href="http://localhost:6008/streaming_record.html">http://localhost:6008/streaming_record.html</a>, not
+<a class="reference external" href="http://0.0.0.0:6008/streaming_record.html">http://0.0.0.0:6008/streaming_record.html</a>. Otherwise, you will not be able
 to use the microphone in the browser. One way to avoid this is to use <code class="docutils literal notranslate"><span class="pre">https</span></code>,
 but that needs a certificate.</p>
 </div>
@@ -128,7 +130,7 @@ but that needs a certificate.</p>
 <p>If you are using Chrome, you can right click the page, and then click
 <code class="docutils literal notranslate"><span class="pre">inspect</span></code> in the popup menu, and then click <code class="docutils literal notranslate"><span class="pre">console</span></code>. You will see
 some diagnostic message. This helps you to debug if you are unable to click
-the <code class="docutils literal notranslate"><span class="pre">Record</span></code> button.</p>
+the <code class="docutils literal notranslate"><span class="pre">Streaming-Record</span></code> button.</p>
 </div>
 </section>
 </section>
@@ -138,7 +140,7 @@ the <code class="docutils literal notranslate"><span class="pre">Record</span></
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="server.html" class="btn btn-neutral float-left" title="Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../conformer/index.html" class="btn btn-neutral float-right" title="Conformer transducer based streaming ASR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../../offline_asr/index.html" class="btn btn-neutral float-right" title="Non-streaming ASR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
