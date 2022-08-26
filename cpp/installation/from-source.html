@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Install from source (Linux/macOS/Windows) &mdash; sherpa 0.7.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Non-streaming ASR" href="../offline_asr/index.html" />
+    <link rel="prev" title="conda for Linux" href="conda-linux.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> sherpa
+          </a>
+              <div class="version">
+                0.7.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Python users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/huggingface/index.html">Try sherpa with Huggingface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/streaming_asr/index.html">Streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ frontend Installation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conda-windows.html">conda for Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conda-linux.html">conda for Linux</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Install from source (Linux/macOS/Windows)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-dependencies">Install dependencies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-k2">Install k2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-other-dependencies">Install other dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#install-from-source">Install from source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#option-1">Option 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#option-2">Option 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../offline_asr/index.html">Non-streaming ASR</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sherpa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">C++ frontend Installation</a> &raquo;</li>
+      <li>Install from source (Linux/macOS/Windows)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/cpp/installation/from-source.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="install-from-source-linux-macos-windows">
+<span id="cpp-installation"></span><h1>Install from source (Linux/macOS/Windows)<a class="headerlink" href="#install-from-source-linux-macos-windows" title="Permalink to this headline"></a></h1>
+<section id="install-dependencies">
+<h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline"></a></h2>
+<section id="install-k2">
+<h3>Install k2<a class="headerlink" href="#install-k2" title="Permalink to this headline"></a></h3>
+<p>First, please refer to <a class="reference external" href="https://k2-fsa.github.io/k2/installation/index.html">https://k2-fsa.github.io/k2/installation/index.html</a>
+to install <a class="reference external" href="https://github.com/k2-fsa/k2">k2</a>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you are using macOS, you can dowload pre-built wheels from
+<a class="reference external" href="https://k2-fsa.org/nightly/index.html">https://k2-fsa.org/nightly/index.html</a></p>
+</div>
+</section>
+<section id="install-other-dependencies">
+<h3>Install other dependencies<a class="headerlink" href="#install-other-dependencies" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -U kaldifeat kaldi_native_io
+</pre></div>
+</div>
+</section>
+</section>
+<section id="install-from-source">
+<h2>Install from source<a class="headerlink" href="#install-from-source" title="Permalink to this headline"></a></h2>
+<p>You can select <code class="docutils literal notranslate"><span class="pre">one</span></code> of the following methods to install <code class="docutils literal notranslate"><span class="pre">sherpa</span></code>
+from source.</p>
+<section id="option-1">
+<h3>Option 1<a class="headerlink" href="#option-1" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa
+<span class="nb">cd</span> sherpa
+mkdir build
+<span class="nb">cd</span> build
+cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ..
+make -j
+</pre></div>
+</div>
+<p>After running the above commands, you will get two executables:
+<code class="docutils literal notranslate"><span class="pre">./bin/sherpa</span></code> and <code class="docutils literal notranslate"><span class="pre">./bin/sherpa-version</span></code> in the build directory.</p>
+<p>You can use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bin/sherpa --help
+</pre></div>
+</div>
+<p>to view usage information.</p>
+<p><code class="docutils literal notranslate"><span class="pre">./bin/sherpa-version</span></code> displays the information about the environment that
+was used to build <code class="docutils literal notranslate"><span class="pre">sherpa</span></code>.</p>
+<p>Please read the section <a class="reference internal" href="../offline_asr/index.html#cpp-non-streaming-asr"><span class="std std-ref">Non-streaming ASR</span></a> for more details.</p>
+</section>
+<section id="option-2">
+<h3>Option 2<a class="headerlink" href="#option-2" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa
+<span class="nb">cd</span> sherpa
+python3 setup.py bdist_wheel
+
+<span class="c1"># It will generate a file in ./dist</span>
+<span class="c1"># For instance, if the file is ./dist/k2_sherpa-0.7.1-cp38-cp38-linux_x86_64.whl</span>
+<span class="c1"># You can use</span>
+
+pip install ./dist/k2_sherpa-0.7.1-cp38-cp38-linux_x86_64.whl
+
+<span class="c1"># If you want to uninstall it, use</span>
+<span class="c1">#</span>
+<span class="c1">#  pip uninstall k2-sherpa</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The command to uninstall <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> is <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">k2-sherpa</span></code>,
+<strong>NOT</strong> <span class="strike">pip uninstall sherpa</span></p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">install</span></code>, you won’t find the executable
+<code class="docutils literal notranslate"><span class="pre">sherpa</span></code> and <code class="docutils literal notranslate"><span class="pre">sherpa-version</span></code> in your PATH.</p>
+</div>
+<p>To check that you have installed <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> successfully, you can use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>which sherpa
+which sherpa-version
+
+sherpa-version
+
+
+sherpa --help
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conda-linux.html" class="btn btn-neutral float-left" title="conda for Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../offline_asr/index.html" class="btn btn-neutral float-right" title="Non-streaming ASR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, sherpa development team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

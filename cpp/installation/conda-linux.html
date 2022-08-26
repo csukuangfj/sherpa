@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>conda for Linux &mdash; sherpa 0.7.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Install from source (Linux/macOS/Windows)" href="from-source.html" />
+    <link rel="prev" title="conda for Windows" href="conda-windows.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> sherpa
+          </a>
+              <div class="version">
+                0.7.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Python users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/huggingface/index.html">Try sherpa with Huggingface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/streaming_asr/index.html">Streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ frontend Installation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conda-windows.html">conda for Windows</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">conda for Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpu-version">CPU version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuda-version">CUDA version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="from-source.html">Install from source (Linux/macOS/Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../offline_asr/index.html">Non-streaming ASR</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sherpa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">C++ frontend Installation</a> &raquo;</li>
+      <li>conda for Linux</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/cpp/installation/conda-linux.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conda-for-linux">
+<h1>conda for Linux<a class="headerlink" href="#conda-for-linux" title="Permalink to this headline"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We recommend creating a new virtual environment to install <code class="docutils literal notranslate"><span class="pre">sherpa</span></code>.</p>
+</div>
+<section id="cpu-version">
+<h2>CPU version<a class="headerlink" href="#cpu-version" title="Permalink to this headline"></a></h2>
+<p>The command to install a CPU version of <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> for Linux using <code class="docutils literal notranslate"><span class="pre">conda</span></code> is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install <span class="se">\</span>
+  -c k2-fsa <span class="se">\</span>
+  -c k2-fsa-sherpa <span class="se">\</span>
+  -c kaldifeat <span class="se">\</span>
+  -c kaldi_native_io <span class="se">\</span>
+  -c pytorch <span class="se">\</span>
+  cpuonly <span class="se">\</span>
+  k2 <span class="se">\</span>
+  sherpa <span class="se">\</span>
+  kaldifeat <span class="se">\</span>
+  kaldi_native_io <span class="se">\</span>
+  <span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.12.0 <span class="se">\</span>
+  <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.8
+</pre></div>
+</div>
+<p>or the following command in one line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c k2-fsa -c k2-fsa-sherpa -c kaldifeat -c kaldi_native_io -c pytorch cpuonly k2 sherpa kaldifeat kaldi_native_io <span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.12.0 <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.8
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You have to specify <code class="docutils literal notranslate"><span class="pre">cpuonly</span></code> to install a CPU version of <code class="docutils literal notranslate"><span class="pre">sherpa</span></code>.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>It is of paramount importance that you specify the <code class="docutils literal notranslate"><span class="pre">-c</span></code> options while
+installing <code class="docutils literal notranslate"><span class="pre">sherpa</span></code>. Otherwise, you will be SAD.</p>
+<p>You can switch the orders of different options for <code class="docutils literal notranslate"><span class="pre">-c</span></code>, but you cannot
+omit them.</p>
+</div>
+<p>We provide pre-built conda packages for <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">&gt;=</span> <span class="pre">3.7</span></code> and <code class="docutils literal notranslate"><span class="pre">PyTorch</span> <span class="pre">&gt;=</span> <span class="pre">1.6.0</span></code>.
+Please consider installing <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> from source if you have other requirements.</p>
+<p>You can use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda search -c k2-fsa-sherpa sherpa
+</pre></div>
+</div>
+<p>to check all available <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> packages for different combinations of
+<code class="docutils literal notranslate"><span class="pre">Python</span></code> and <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code>. A sample output of the above command is listed below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Loading channels: <span class="k">done</span>
+<span class="c1"># Name                       Version           Build  Channel</span>
+sherpa                           <span class="m">0</span>.6 cpu_py3.10_torch1.11.0  k2-fsa-sherpa
+sherpa                           <span class="m">0</span>.6 cpu_py3.10_torch1.12.0  k2-fsa-sherpa
+sherpa                           <span class="m">0</span>.6 cpu_py3.10_torch1.12.1  k2-fsa-sherpa
+sherpa                           <span class="m">0</span>.6 cpu_py3.7_torch1.10.0  k2-fsa-sherpa
+sherpa                           <span class="m">0</span>.6 cpu_py3.7_torch1.10.1  k2-fsa-sherpa
+sherpa                           <span class="m">0</span>.6 cpu_py3.7_torch1.10.2  k2-fsa-sherpa
+sherpa                           <span class="m">0</span>.6 cpu_py3.7_torch1.11.0  k2-fsa-sherpa
+sherpa                           <span class="m">0</span>.6 cpu_py3.7_torch1.12.0  k2-fsa-sherpa
+sherpa                           <span class="m">0</span>.6 cpu_py3.7_torch1.12.1  k2-fsa-sherpa
+sherpa                           <span class="m">0</span>.6 cpu_py3.7_torch1.6.0  k2-fsa-sherpa
+</pre></div>
+</div>
+<p>To check whether you have installed <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> successfully, you can run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa --help
+</pre></div>
+</div>
+<p>which should show the usage information of <code class="docutils literal notranslate"><span class="pre">sherpa</span></code>.</p>
+<p>To display the information about the environment used to build <code class="docutils literal notranslate"><span class="pre">sherpa</span></code>, you
+can use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-version
+</pre></div>
+</div>
+<p>Read <a class="reference internal" href="../offline_asr/index.html#cpp-non-streaming-asr"><span class="std std-ref">Non-streaming ASR</span></a> to find more.</p>
+</section>
+<section id="cuda-version">
+<h2>CUDA version<a class="headerlink" href="#cuda-version" title="Permalink to this headline"></a></h2>
+<p>To be done.</p>
+<p>If you have any issues about installing <code class="docutils literal notranslate"><span class="pre">sherpa</span></code>, please create an issue
+at the following address:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://github.com/k2-fsa/sherpa/issues">https://github.com/k2-fsa/sherpa/issues</a></p>
+</div></blockquote>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you have a <a class="reference external" href="https://www.wechat.com/">WeChat</a> account, you can scan
+the following QR code to join the WeChat group of next-gen Kaldi to get
+help.</p>
+<a class="reference internal image-reference" href="../../_images/wechat-group-for-next-gen-kaldi.jpg"><img alt="WeChat group of next-gen Kaldi" class="align-center" src="../../_images/wechat-group-for-next-gen-kaldi.jpg" style="width: 200px;" /></a>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conda-windows.html" class="btn btn-neutral float-left" title="conda for Windows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="from-source.html" class="btn btn-neutral float-right" title="Install from source (Linux/macOS/Windows)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, sherpa development team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
