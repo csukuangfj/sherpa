@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Client" href="client.html" />
-    <link rel="prev" title="Streaming English ASR" href="index.html" /> 
+    <link rel="prev" title="Client" href="../english/client.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,16 +49,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../../endpointing.html">Endpointing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../emformer/index.html">Emformer transducer based streaming ASR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../conv_emformer/index.html">ConvEmformer transducer based streaming ASR</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Conformer transducer based streaming ASR</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../conformer_rnnt_for_Chinese/index.html">Streaming Chinese ASR</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">Streaming English ASR</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../conformer/index.html">Conformer transducer based streaming ASR</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">LSTM transducer based streaming ASR</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../index.html#english">English</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#chinese">Chinese</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Server</a></li>
 <li class="toctree-l4"><a class="reference internal" href="client.html">Client</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../lstm/index.html">LSTM transducer based streaming ASR</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../offline_asr/index.html">Non-streaming ASR</a></li>
@@ -85,11 +85,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../index.html">Streaming ASR</a> &raquo;</li>
-          <li><a href="../index.html">Conformer transducer based streaming ASR</a> &raquo;</li>
-          <li><a href="index.html">Streaming English ASR</a> &raquo;</li>
+          <li><a href="../index.html">LSTM transducer based streaming ASR</a> &raquo;</li>
       <li>Server</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/python/streaming_asr/conformer/conformer_rnnt_for_English/server.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/python/streaming_asr/lstm/chinese/server.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -98,7 +97,7 @@
            <div itemprop="articleBody">
              
   <section id="server">
-<span id="conformer-rnnt-server-english"></span><h1>Server<a class="headerlink" href="#server" title="Permalink to this headline"></a></h1>
+<span id="lstm-server-chinese"></span><h1>Server<a class="headerlink" href="#server" title="Permalink to this headline"></a></h1>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Please first refer to <a class="reference internal" href="../../../installation/index.html#installation"><span class="std std-ref">Installation</span></a> to install <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a>
@@ -109,47 +108,49 @@ decoding it, and sending the recognition results back to the client.</p>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">sherpa</span>
-<span class="o">./</span><span class="n">sherpa</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">streaming_pruned_transducer_statelessX</span><span class="o">/</span><span class="n">streaming_server</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span>
+<span class="o">./</span><span class="n">sherpa</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">lstm_transducer_stateless</span><span class="o">/</span><span class="n">streaming_server</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span>
 </pre></div>
 </div>
 <p>shows the usage message.</p>
-<p>You need two files to start the server:</p>
+<p>You need the following files to start the server:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>The neural network model, which is a torchscript file.</p></li>
-<li><p>The BPE model or the tokens file.</p></li>
+<li><p>The neural network model</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">tokens.txt</span></code>.</p></li>
 </ol>
 </div></blockquote>
-<p>The above two files can be obtained after training your model
-with <a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/pruned_transducer_stateless4">https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/pruned_transducer_stateless4</a>.</p>
+<p>The neural network model has three parts, the encoder, the decoder, and
+the joiner, which are all exported using <code class="docutils literal notranslate"><span class="pre">torch.jit.trace</span></code>.</p>
+<p>The above files can be obtained after training your model
+with <a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/wenetspeech/ASR/lstm_transducer_stateless">https://github.com/k2-fsa/icefall/tree/master/egs/wenetspeech/ASR/lstm_transducer_stateless</a>.</p>
 <p>If you don’t want to train a model by yourself, you can try the
-pretrained model: <a class="reference external" href="https://huggingface.co/pkufool/icefall_librispeech_streaming_pruned_transducer_stateless4_20220625">https://huggingface.co/pkufool/icefall_librispeech_streaming_pruned_transducer_stateless4_20220625</a></p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>You can find pretrained models in <code class="docutils literal notranslate"><span class="pre">RESULTS.md</span></code> for all the recipes in
-<a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a>.</p>
-<p>For instance, the pretrained models for the LibriSpeech dataset can be
-found at <a class="reference external" href="https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/RESULTS.md">https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/RESULTS.md</a>.</p>
-</div>
+pretrained model: <a class="reference external" href="https://huggingface.co/csukuangfj/icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19">https://huggingface.co/csukuangfj/icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19</a></p>
 <p>The following shows you how to start the server with the above pretrained model.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa
 
 git lfs install
-git clone https://huggingface.co/pkufool/icefall_librispeech_streaming_pruned_transducer_stateless4_20220625
+git clone https://huggingface.co/csukuangfj/icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19
 
-./sherpa/bin/streaming_pruned_transducer_statelessX/streaming_server.py <span class="se">\</span>
+./sherpa/bin/lstm_transducer_stateless/streaming_server.py <span class="se">\</span>
   --endpoint.rule3.min-utterance-length <span class="m">1000</span>.0 <span class="se">\</span>
-  --port <span class="m">6006</span> <span class="se">\</span>
+  --port <span class="m">6007</span> <span class="se">\</span>
   --max-batch-size <span class="m">50</span> <span class="se">\</span>
   --max-wait-ms <span class="m">5</span> <span class="se">\</span>
   --nn-pool-size <span class="m">1</span> <span class="se">\</span>
-  --nn-model-filename ./icefall_librispeech_streaming_pruned_transducer_stateless4_20220625/exp/cpu_jit-epoch-25-avg-3.pt <span class="se">\</span>
-  --bpe-model-filename ./icefall_librispeech_streaming_pruned_transducer_stateless4_20220625/data/lang_bpe_500/bpe.model
+  --nn-encoder-filename ./icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19/exp/encoder_jit_trace-iter-420000-avg-10.pt <span class="se">\</span>
+  --nn-decoder-filename ./icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19/exp/decoder_jit_trace-iter-420000-avg-10.pt <span class="se">\</span>
+  --nn-joiner-filename ./icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19/exp/joiner_jit_trace-iter-420000-avg-10.pt <span class="se">\</span>
+  --token-filename ./icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19/data/lang_char/tokens.txt
 </pre></div>
 </div>
 <p>That’s it!</p>
-<p>Now you can start the <a class="reference internal" href="client.html#conformer-rnnt-client-english"><span class="std std-ref">Client</span></a>, record your voice in real-time,
+<p>Now you can start the <a class="reference internal" href="client.html#lstm-client-chinese"><span class="std std-ref">Client</span></a>, record your voice in real-time,
 and check the recognition results from the server.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The above pretrained model has been trained only for 6 epochs. We will
+update it in the following days.</p>
+</div>
 </section>
 </section>
 
@@ -157,7 +158,7 @@ and check the recognition results from the server.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Streaming English ASR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../english/client.html" class="btn btn-neutral float-left" title="Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="client.html" class="btn btn-neutral float-right" title="Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

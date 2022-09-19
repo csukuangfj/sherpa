@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Endpointing &mdash; sherpa 0.8.1 documentation</title>
+  <title>Endpointing &mdash; sherpa 0.9.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -31,7 +31,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                0.8.1
+                0.9.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -46,10 +46,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../huggingface/index.html">Try sherpa with Huggingface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Streaming ASR</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Endpointing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Endpointing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#endpointing-demo-english">Endpointing Demo (English)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#endpointing-demo-chinese">Endpointing Demo (Chinese)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#short-demo">Short Demo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#long-demo">Long Demo</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="emformer/index.html">Emformer transducer based streaming ASR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conv_emformer/index.html">ConvEmformer transducer based streaming ASR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conformer/index.html">Conformer transducer based streaming ASR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lstm/index.html">LSTM transducer based streaming ASR</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../offline_asr/index.html">Non-streaming ASR</a></li>
@@ -158,6 +167,30 @@ we say that an endpoint is detected.</p>
 </li>
 </ul>
 </div></blockquote>
+<section id="endpointing-demo-english">
+<h2>Endpointing Demo (English)<a class="headerlink" href="#endpointing-demo-english" title="Permalink to this headline"></a></h2>
+<p>The following video shows an endpointing demo using a pretrained model
+on the <a class="reference external" href="https://www.openslr.org/12">LibriSpeech</a> dataset. You can find the usage in
+<a class="reference internal" href="lstm/english/server.html#lstm-server-english"><span class="std std-ref">Server</span></a>.</p>
+<div class="video_wrapper" style="padding-bottom: 67.500000%; padding-top: 30px; position: relative; width: 120%">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/4XsTXt_9_SY" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div></section>
+<section id="endpointing-demo-chinese">
+<h2>Endpointing Demo (Chinese)<a class="headerlink" href="#endpointing-demo-chinese" title="Permalink to this headline"></a></h2>
+<p>The following two videos show endpointing demos using a pretrained model
+on the <a class="reference external" href="https://github.com/wenet-e2e/WenetSpeech">WenetSpeech</a> dataset. You can find the usage in
+<a class="reference internal" href="lstm/chinese/server.html#lstm-server-chinese"><span class="std std-ref">Server</span></a>.</p>
+<section id="short-demo">
+<h3>Short Demo<a class="headerlink" href="#short-demo" title="Permalink to this headline"></a></h3>
+<div class="video_wrapper" style="padding-bottom: 67.500000%; padding-top: 30px; position: relative; width: 120%">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/sRQPGMZFun4" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div></section>
+<section id="long-demo">
+<h3>Long Demo<a class="headerlink" href="#long-demo" title="Permalink to this headline"></a></h3>
+<div class="video_wrapper" style="padding-bottom: 67.500000%; padding-top: 30px; position: relative; width: 120%">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/LJtPJmX5jpE" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div></section>
+</section>
 </section>
 
 

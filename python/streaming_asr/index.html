@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Streaming ASR &mdash; sherpa 0.8.1 documentation</title>
+  <title>Streaming ASR &mdash; sherpa 0.9.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -31,7 +31,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                0.8.1
+                0.9.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -50,6 +50,7 @@
 <li class="toctree-l2"><a class="reference internal" href="emformer/index.html">Emformer transducer based streaming ASR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conv_emformer/index.html">ConvEmformer transducer based streaming ASR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conformer/index.html">Conformer transducer based streaming ASR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lstm/index.html">LSTM transducer based streaming ASR</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../offline_asr/index.html">Non-streaming ASR</a></li>
@@ -90,10 +91,19 @@
 <p>This page describes how to use <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a> for streaming ASR.</p>
 <p>Currently, implemented streaming ASR models include:
 <a class="reference external" href="https://arxiv.org/pdf/2010.10759.pdf">Emformer</a> <a class="reference external" href="https://arxiv.org/pdf/1211.3711.pdf">transducer</a> (i.e., Emformer-T)
-and <a class="reference external" href="https://arxiv.org/pdf/2110.05241.pdf">ConvEmformer</a> <a class="reference external" href="https://arxiv.org/pdf/1211.3711.pdf">transducer</a> (i.e., ConvEmformer-T).</p>
+and <a class="reference external" href="https://arxiv.org/pdf/2110.05241.pdf">ConvEmformer</a> <a class="reference external" href="https://arxiv.org/pdf/1211.3711.pdf">transducer</a> (i.e., ConvEmformer-T).
+and <cite>LSTM</cite> <a class="reference external" href="https://arxiv.org/pdf/1211.3711.pdf">transducer</a> (i.e., LSTM-T).</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="endpointing.html">Endpointing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpointing.html">Endpointing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="endpointing.html#endpointing-demo-english">Endpointing Demo (English)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpointing.html#endpointing-demo-chinese">Endpointing Demo (Chinese)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="endpointing.html#short-demo">Short Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="endpointing.html#long-demo">Long Demo</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="emformer/index.html">Emformer transducer based streaming ASR</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="emformer/server.html">Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="emformer/server.html#usage">Usage</a></li>
@@ -125,6 +135,19 @@ and <a class="reference external" href="https://arxiv.org/pdf/2110.05241.pdf">Co
 <li class="toctree-l2"><a class="reference internal" href="conformer/conformer_rnnt_for_English/index.html">Streaming English ASR</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="conformer/conformer_rnnt_for_English/server.html">Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="conformer/conformer_rnnt_for_English/client.html">Client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lstm/index.html">LSTM transducer based streaming ASR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lstm/index.html#english">English</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstm/english/server.html">Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstm/english/client.html">Client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstm/index.html#chinese">Chinese</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstm/chinese/server.html">Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstm/chinese/client.html">Client</a></li>
 </ul>
 </li>
 </ul>
