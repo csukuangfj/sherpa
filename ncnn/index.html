@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sherpa-ncnn &mdash; sherpa 0.9.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/user.define.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Pretrained model with WenetSpeech" href="../cpp/offline_asr/wenetspeech.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> sherpa
+          </a>
+              <div class="version">
+                0.9.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Python users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/huggingface/index.html">Try sherpa with Huggingface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/streaming_asr/index.html">Streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/offline_asr/index.html">Non-streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/installation/index.html">C++ frontend Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/offline_asr/index.html">Non-streaming ASR</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">sherpa-ncnn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#download-the-pretrained-model">Download the pretrained model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-sherpa-ncnn">Build sherpa-ncnn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decode-a-single-wave-file">Decode a single wave file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#real-time-speech-recognition-from-a-microphone">Real-time speech recognition from a microphone</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sherpa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>sherpa-ncnn</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/ncnn/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sherpa-ncnn">
+<h1>sherpa-ncnn<a class="headerlink" href="#sherpa-ncnn" title="Permalink to this headline"></a></h1>
+<p>We support using <a class="reference external" href="https://github.com/tencent/ncnn">ncnn</a> to replace PyTorch for neural network computation.
+The code is put in a separate repository <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a></p>
+<p><a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> is self-contained and everything can be compiled from source.</p>
+<p>Please refer to <a class="reference external" href="https://k2-fsa.github.io/icefall/recipes/librispeech/lstm_pruned_stateless_transducer.html#export-models">https://k2-fsa.github.io/icefall/recipes/librispeech/lstm_pruned_stateless_transducer.html#export-models</a>
+for how to export models to <a class="reference external" href="https://github.com/tencent/ncnn">ncnn</a> format.</p>
+<p>In the following, we describe how to compile <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> and how to use it
+for speech recognition.</p>
+<section id="download-the-pretrained-model">
+<h2>Download the pretrained model<a class="headerlink" href="#download-the-pretrained-model" title="Permalink to this headline"></a></h2>
+<p>We provide pretrained models for <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>. You can use the following command
+to download it.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The pretrained model is trained using the <a class="reference external" href="https://www.openslr.org/12">LibriSpeech</a> dataset.
+We will upload models trained using the <a class="reference external" href="https://github.com/wenet-e2e/WenetSpeech">WenetSpeech</a> dataset.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /tmp/
+git lfs install
+git clone https://huggingface.co/csukuangfj/sherpa-ncnn-2022-09-05
+</pre></div>
+</div>
+</section>
+<section id="build-sherpa-ncnn">
+<h2>Build sherpa-ncnn<a class="headerlink" href="#build-sherpa-ncnn" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa-ncnn
+<span class="nb">cd</span> sherpa-ncnn
+mkdir build
+<span class="nb">cd</span> build
+cmake ..
+make -j6
+ls -lh bin/
+</pre></div>
+</div>
+<p>You will find two executables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(py38) kuangfangjun:build$ ls -lh bin/
+total 9.5M
+-rwxr-xr-x 1 kuangfangjun root 4.8M Sep 21 20:17 sherpa-ncnn
+-rwxr-xr-x 1 kuangfangjun root 4.8M Sep 21 20:17 sherpa-ncnn-microphone
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn</span></code> is for decoding a single wave file while
+<code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-microphone</span></code> is for speech recognition with a microphone.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(py38) kuangfangjun:build$ readelf -d bin/sherpa-ncnn-microphone | head -n 12
+
+Dynamic section at offset 0x438858 contains 33 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libpthread.so.0]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgomp.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x000000000000001d (RUNPATH)            Library runpath: [$ORIGIN]
+ 0x000000000000000c (INIT)               0x1d4b0
+ 0x000000000000000d (FINI)               0x3d0f94
+</pre></div>
+</div>
+<p>You can see that they only depend on system libraries and have no other external
+dependencies.</p>
+</section>
+<section id="decode-a-single-wave-file">
+<h2>Decode a single wave file<a class="headerlink" href="#decode-a-single-wave-file" title="Permalink to this headline"></a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It supports decoding only wave files with a single channel and the sampling rate
+should be 16 kHz.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bin/sherpa-ncnn <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/tokens.txt <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav
+</pre></div>
+</div>
+</section>
+<section id="real-time-speech-recognition-from-a-microphone">
+<h2>Real-time speech recognition from a microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bin/sherpa-ncnn-microphone <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/tokens.txt <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  /tmp/sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin
+</pre></div>
+</div>
+<p>It will print something like below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">threads</span><span class="p">:</span> <span class="mi">4</span>
+<span class="n">num</span> <span class="n">devices</span><span class="p">:</span> <span class="mi">4</span>
+<span class="n">Use</span> <span class="n">default</span> <span class="n">device</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">Name</span><span class="p">:</span> <span class="n">MacBook</span> <span class="n">Pro</span> <span class="n">Microphone</span>
+  <span class="n">Max</span> <span class="nb">input</span> <span class="n">channels</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">Started</span>
+</pre></div>
+</div>
+<p>Speak and it will show you the recognition result in real-time.</p>
+<p>You can find a demo below:</p>
+<div class="video_wrapper" style="padding-bottom: 67.500000%; padding-top: 30px; position: relative; width: 120%">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/m6ynSxycpX0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../cpp/offline_asr/wenetspeech.html" class="btn btn-neutral float-left" title="Pretrained model with WenetSpeech" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, sherpa development team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
