@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
   opts.endpoint_config.rule1 = sherpa::EndpointRule(false, 0.8, 0.0);
 
   // rule2 times out after 0.4 second of silence after decoding something,
-  opts.endpoint_config.rule3 = sherpa::EndpointRule(true, 0.4, 0.0);
+  opts.endpoint_config.rule2 = sherpa::EndpointRule(true, 0.4, 0.0);
 
   // rule3 times out after the utterance is 20 seconds long, regardless of
   // anything else.

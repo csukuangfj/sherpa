@@ -35,6 +35,7 @@
 #include "sherpa/csrc/parse_options.h"
 
 namespace sherpa {
+
 namespace asio = boost::asio;
 using tcp = boost::asio::ip::tcp;
 namespace beast = boost::beast;
@@ -77,8 +78,7 @@ class ConnectionHandler {
         beast::flat_buffer buffer;
         ws_.read(buffer);
         int num_samples = buffer.size() / sizeof(int16_t);
-        const int16_t *pcm_data =
-            static_cast<const int16_t *>(buffer.data().data());
+        auto pcm_data = static_cast<const int16_t *>(buffer.data().data());
         auto wav_stream_tensor =
             torch::from_blob(const_cast<int16_t *>(pcm_data), {num_samples},
                              torch::kInt16)
@@ -99,7 +99,7 @@ class ConnectionHandler {
           }
           // update result
           json::value rv = {
-              {"status", "ok"}, {"type", endpoint_type}, {"nbest", transcript}};
+              {"status", "ok"}, {"type", endpoint_type}, {"1best", transcript}};
           ws_.text(true);
           ws_.write(asio::buffer(json::serialize(rv)));
         }
@@ -116,34 +116,36 @@ class ConnectionHandler {
 
  private:
   websocket::stream<tcp::socket> ws_;
-  std::shared_ptr<sherpa::OnlineAsr> online_asr_ = nullptr;
+  std::shared_ptr<sherpa::OnlineAsr> online_asr_;
   std::thread detect_alive_;
   std::chrono::system_clock::time_point last_active_time_;
   // how long to keep socket from last active
-  const uint64_t idle_timeout_ = 600;
+  double idle_timeout_ = 600;  // seconds
   bool alive_ = true;
 };
 
+// Refer to
+// https://www.boost.org/doc/libs/master/libs/beast/example/websocket/server/sync/websocket_server_sync.cpp
 class WebSocketServer {
  public:
-  WebSocketServer(int port, const sherpa::OnlineAsrOptions opts)
+  WebSocketServer(int32_t port, const sherpa::OnlineAsrOptions opts)
       : online_asr_(std::make_shared<sherpa::OnlineAsr>(opts)) {
     StartServer(port);
   }
 
  private:
-  void StartServer(int port) {
+  void StartServer(int32_t port) {
     try {
-      auto const address = asio::ip::make_address("0.0.0.0");
+      const auto address = asio::ip::make_address("0.0.0.0");
       tcp::acceptor acceptor{ioc_, {address, static_cast<uint16_t>(port)}};
       while (true) {
         tcp::socket socket{ioc_};
-        // Block until a new connection
+        // Block until we get a connection
         acceptor.accept(socket);
+
         // Start a new thread to handle the new connection
         ConnectionHandler handler(std::move(socket), online_asr_);
-        std::thread t(std::move(handler));
-        t.detach();
+        std::thread(std::move(handler)).detach();
       }
     } catch (const std::exception &e) {
       SHERPA_LOG(FATAL) << e.what();
