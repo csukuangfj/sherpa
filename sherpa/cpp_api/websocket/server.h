@@ -17,12 +17,12 @@
  */
 #ifndef SHERPA_CPP_API_WEBSOCKET_SERVER_H_
 #define SHERPA_CPP_API_WEBSOCKET_SERVER_H_
-#include <chrono> // NOLINT
+#include <chrono>  // NOLINT
 #include <iostream>
 #include <memory>
-#include <ratio> // NOLINT
+#include <ratio>  // NOLINT
 #include <string>
-#include <thread> // NOLINT
+#include <thread>  // NOLINT
 #include <utility>
 
 #include "boost/asio/connect.hpp"
@@ -30,11 +30,9 @@
 #include "boost/beast/core.hpp"
 #include "boost/beast/websocket.hpp"
 #include "boost/json/src.hpp"
-
 #include "sherpa/csrc/log.h"
 #include "sherpa/csrc/online_asr.h"
 #include "sherpa/csrc/parse_options.h"
-
 
 namespace sherpa {
 namespace asio = boost::asio;
@@ -46,27 +44,26 @@ namespace websocket = beast::websocket;
 
 class ConnectionHandler {
  public:
-  ConnectionHandler(tcp::socket&& socket,
-      std::shared_ptr<sherpa::OnlineAsr> online_asr) :
-    ws_(std::move(socket)),
-    online_asr_(std::move(online_asr)),
-    alive_(true) {
-      last_active_time_ = std::chrono::system_clock::now();
-      detect_alive_ = std::thread(
-            &ConnectionHandler::DetectAlive, this);
-      detect_alive_.detach();
-    }
+  ConnectionHandler(tcp::socket &&socket,
+                    std::shared_ptr<sherpa::OnlineAsr> online_asr)
+      : ws_(std::move(socket)),
+        online_asr_(std::move(online_asr)),
+        alive_(true) {
+    last_active_time_ = std::chrono::system_clock::now();
+    detect_alive_ = std::thread(&ConnectionHandler::DetectAlive, this);
+    detect_alive_.detach();
+  }
 
   void DetectAlive() {
     while (alive_) {
       std::chrono::milliseconds timespan(10000);
       std::this_thread::sleep_for(timespan);
-      std::chrono::duration<double> elapsed_seconds
-        = std::chrono::system_clock::now() - last_active_time_;
+      std::chrono::duration<double> elapsed_seconds =
+          std::chrono::system_clock::now() - last_active_time_;
       if (elapsed_seconds.count() > idle_timeout_) {
         alive_ = false;
         SHERPA_LOG(INFO) << "idle_timeout=" << idle_timeout_
-          << " active, will close the socket.";
+                         << " active, will close the socket.";
       }
     }
   }
@@ -80,18 +77,18 @@ class ConnectionHandler {
         beast::flat_buffer buffer;
         ws_.read(buffer);
         int num_samples = buffer.size() / sizeof(int16_t);
-        const int16_t* pcm_data
-          = static_cast<const int16_t*>(buffer.data().data());
-        auto wav_stream_tensor = torch::from_blob(
-            const_cast<int16_t *>(pcm_data),
-            {num_samples},
-            torch::kInt16).to(torch::kFloat) / 32768;
+        const int16_t *pcm_data =
+            static_cast<const int16_t *>(buffer.data().data());
+        auto wav_stream_tensor =
+            torch::from_blob(const_cast<int16_t *>(pcm_data), {num_samples},
+                             torch::kInt16)
+                .to(torch::kFloat) /
+            32768;
 
         // decode stream
         decode_stream->AcceptWaveform(16000, wav_stream_tensor);
         if (online_asr_->IsReady(decode_stream.get())) {
-          std::string transcript = online_asr_->GetResult(
-              decode_stream.get());
+          std::string transcript = online_asr_->GetResult(decode_stream.get());
           std::string endpoint_type = "endpoint_inactive";
 
           online_asr_->DecodeStream(decode_stream.get());
@@ -101,17 +98,16 @@ class ConnectionHandler {
             decode_stream = online_asr_->CreateStream();
           }
           // update result
-          json::value rv = {{"status", "ok"},
-            {"type", endpoint_type},
-            {"nbest", transcript}};
+          json::value rv = {
+              {"status", "ok"}, {"type", endpoint_type}, {"nbest", transcript}};
           ws_.text(true);
           ws_.write(asio::buffer(json::serialize(rv)));
         }
         last_active_time_ = std::chrono::system_clock::now();
       }
-    } catch (const beast::system_error & se) {
+    } catch (const beast::system_error &se) {
       SHERPA_LOG(INFO) << se.code().message();
-    } catch (const std::exception & e) {
+    } catch (const std::exception &e) {
       SHERPA_LOG(WARNING) << e.what();
       ws_.close(websocket::close_code::normal);
     }
@@ -130,10 +126,10 @@ class ConnectionHandler {
 
 class WebSocketServer {
  public:
-  WebSocketServer(int port, const sherpa::OnlineAsrOptions opts) :
-    online_asr_(std::make_shared<sherpa::OnlineAsr>(opts)) {
-      StartServer(port);
-    }
+  WebSocketServer(int port, const sherpa::OnlineAsrOptions opts)
+      : online_asr_(std::make_shared<sherpa::OnlineAsr>(opts)) {
+    StartServer(port);
+  }
 
  private:
   void StartServer(int port) {
@@ -149,14 +145,14 @@ class WebSocketServer {
         std::thread t(std::move(handler));
         t.detach();
       }
-    } catch (const std::exception& e) {
+    } catch (const std::exception &e) {
       SHERPA_LOG(FATAL) << e.what();
     }
   }
 
   // The io_context for all I/O
   asio::io_context ioc_{1};
-  std::shared_ptr<sherpa::OnlineAsr> online_asr_ = nullptr;
+  std::shared_ptr<sherpa::OnlineAsr> online_asr_;
 };
 
 }  // namespace sherpa

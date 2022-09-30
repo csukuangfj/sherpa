@@ -16,10 +16,10 @@
  * limitations under the License.
  */
 #include "sherpa/cpp_api/websocket/server.h"
+
 #include "sherpa/csrc/log.h"
 #include "sherpa/csrc/online_asr.h"
 #include "sherpa/csrc/parse_options.h"
-
 
 static constexpr const char *kUsageMessage = R"(
 Online (streaming) automatic speech recognition RPC server with sherpa.
@@ -36,6 +36,10 @@ Usage:
     --tokens=/path/to/tokens.txt \
     --use-gpu=false \
     --server-port=6006
+
+See
+https://k2-fsa.github.io/sherpa/cpp/websocket/index.html
+for more details.
 )";
 
 int main(int argc, char *argv[]) {
@@ -52,21 +56,27 @@ int main(int argc, char *argv[]) {
   sherpa::ParseOptions po(kUsageMessage);
   sherpa::OnlineAsrOptions opts;
   opts.Register(&po);
-  int port;
+  int32_t port;
   po.Register("server-port", &port, "Server port to listen on");
   po.Read(argc, argv);
-  if (argc < 1) {
+  if (argc == 1) {
     po.PrintUsage();
     exit(EXIT_FAILURE);
   }
   SHERPA_LOG(INFO) << "decoding method: " << opts.decoding_method;
   opts.Validate();
   // tips : trailing_silence for EndpointConfig is after sampling
+  // rule 1 times out after 0.8 second of silence, even if we decoded nothing.
   opts.endpoint_config.rule1 = sherpa::EndpointRule(false, 0.8, 0.0);
-  opts.endpoint_config.rule3 = sherpa::EndpointRule(true, 0.4, 2.0);
+
+  // rule2 times out after 0.4 second of silence after decoding something,
+  opts.endpoint_config.rule3 = sherpa::EndpointRule(true, 0.4, 0.0);
+
+  // rule3 times out after the utterance is 20 seconds long, regardless of
+  // anything else.
   opts.endpoint_config.rule3 = sherpa::EndpointRule(false, 0.0, 20);
 
-  SHERPA_LOG(INFO) << "ASR Server Listening at port " << port;
+  SHERPA_LOG(INFO) << "ASR Server is listening at port " << port;
   sherpa::WebSocketServer server(port, opts);
   return 0;
 }
