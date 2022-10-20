@@ -19,6 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sherpa-onnx" href="../onnx/index.html" />
     <link rel="prev" title="Streaming ASR" href="../cpp/online_asr/index.html" /> 
 </head>
 
@@ -57,12 +58,27 @@
 <p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">sherpa-ncnn</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#download-the-pretrained-model">Download the pretrained model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#build-sherpa-ncnn">Build sherpa-ncnn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#decode-a-single-wave-file">Decode a single wave file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#real-time-speech-recognition-from-a-microphone">Real-time speech recognition from a microphone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-sherpa-ncnn-for-linux-and-macos">Build sherpa-ncnn for Linux and macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-sherpa-ncnn-for-windows">Build sherpa-ncnn for Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#speech-recognition-with-sherpa-ncnn">Speech recognition with sherpa-ncnn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#english">English</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#decode-a-single-wave-file-with-build-bin-sherpa-ncnn">Decode a single wave file with ./build/bin/sherpa-ncnn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#real-time-speech-recognition-from-a-microphone-with-build-bin-sherpa-ncnn-microphone">Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#chinese">Chinese</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Decode a single wave file with ./build/bin/sherpa-ncnn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">onnx</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../onnx/index.html">sherpa-onnx</a></li>
 </ul>
 
         </div>
@@ -91,40 +107,47 @@
              
   <section id="sherpa-ncnn">
 <h1>sherpa-ncnn<a class="headerlink" href="#sherpa-ncnn" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>A colab notebook is provided for you so that you can try <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>
+in the browser.</p>
+<p><a class="reference external" href="https://colab.research.google.com/drive/1zdNAdWgV5rh1hLbLDqvLjxTa5tjU7cPa?usp=sharing"><img alt="sherpa-ncnn colab notebook" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+</div>
 <p>We support using <a class="reference external" href="https://github.com/tencent/ncnn">ncnn</a> to replace PyTorch for neural network computation.
 The code is put in a separate repository <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a></p>
 <p><a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> is self-contained and everything can be compiled from source.</p>
 <p>Please refer to <a class="reference external" href="https://k2-fsa.github.io/icefall/recipes/librispeech/lstm_pruned_stateless_transducer.html#export-models">https://k2-fsa.github.io/icefall/recipes/librispeech/lstm_pruned_stateless_transducer.html#export-models</a>
 for how to export models to <a class="reference external" href="https://github.com/tencent/ncnn">ncnn</a> format.</p>
-<p>In the following, we describe how to compile <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> and how to use it
-for speech recognition.</p>
-<section id="download-the-pretrained-model">
-<h2>Download the pretrained model<a class="headerlink" href="#download-the-pretrained-model" title="Permalink to this headline"></a></h2>
-<p>We provide pretrained models for <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>. You can use the following command
-to download it.</p>
+<p>In the following, we describe how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> on Linux, macOS,
+and Windows. Also, we show how to use it for speech recognition with
+pretrained models.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>The pretrained model is trained using the <a class="reference external" href="https://www.openslr.org/12">LibriSpeech</a> dataset.
-We will upload models trained using the <a class="reference external" href="https://github.com/wenet-e2e/WenetSpeech">WenetSpeech</a> dataset.</p>
+<p>You can find two YouTube videos below for demonstration, one for English
+and the other for Chinese.</p>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /tmp/
-git lfs install
-git clone https://huggingface.co/csukuangfj/sherpa-ncnn-2022-09-05
-</pre></div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>We only provide support for LSTM transducer at present.
+The work for conformer transducer is still on-going.</p>
 </div>
-</section>
-<section id="build-sherpa-ncnn">
-<h2>Build sherpa-ncnn<a class="headerlink" href="#build-sherpa-ncnn" title="Permalink to this headline"></a></h2>
+<section id="build-sherpa-ncnn-for-linux-and-macos">
+<h2>Build sherpa-ncnn for Linux and macOS<a class="headerlink" href="#build-sherpa-ncnn-for-linux-and-macos" title="Permalink to this headline"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa-ncnn
 <span class="nb">cd</span> sherpa-ncnn
 mkdir build
 <span class="nb">cd</span> build
-cmake ..
+cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ..
 make -j6
-ls -lh bin/
 </pre></div>
 </div>
-<p>You will find two executables:</p>
+<p>It will generate two executables inside <code class="docutils literal notranslate"><span class="pre">./bin/</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-ncnn</span></code>: For decoding a single wave file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-microphone</span></code>: For real-time speech recognition from a microphone</p></li>
+</ul>
+</div></blockquote>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(py38) kuangfangjun:build$ ls -lh bin/
 total 9.5M
 -rwxr-xr-x 1 kuangfangjun root 4.8M Sep 21 20:17 sherpa-ncnn
@@ -150,37 +173,97 @@ Dynamic section at offset 0x438858 contains 33 entries:
 </div>
 <p>You can see that they only depend on system libraries and have no other external
 dependencies.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please read below to see how to use the generated binaries for speech
+recognition with pretrained models.</p>
+</div>
 </section>
-<section id="decode-a-single-wave-file">
-<h2>Decode a single wave file<a class="headerlink" href="#decode-a-single-wave-file" title="Permalink to this headline"></a></h2>
+<section id="build-sherpa-ncnn-for-windows">
+<h2>Build sherpa-ncnn for Windows<a class="headerlink" href="#build-sherpa-ncnn-for-windows" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa-ncnn
+<span class="nb">cd</span> sherpa-ncnn
+mkdir build
+<span class="nb">cd</span> build
+cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ..
+cmake --build . --config Release -- -m:6
+</pre></div>
+</div>
+<p>It will generate two executables inside <code class="docutils literal notranslate"><span class="pre">./bin/Release/</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.exe</span></code>: For decoding a single wave file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-microphone.exe</span></code>: For real-time speech recognition from a microphone</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please read below to see how to use the generated binaries for speech
+recognition with pretrained models.</p>
+</div>
+</section>
+<section id="speech-recognition-with-sherpa-ncnn">
+<h2>Speech recognition with sherpa-ncnn<a class="headerlink" href="#speech-recognition-with-sherpa-ncnn" title="Permalink to this headline"></a></h2>
+<p>In the following, we describe how to use the precompiled binary <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn</span></code>
+for offline speech recognition with pre-trained models.</p>
+<p>We also show how to use <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-microphone</span></code> for real-time speech
+recognition with pretrained models from a microphone.</p>
+<p>We provide two examples: One is for English and the other is for Chinese.</p>
+<section id="english">
+<h3>English<a class="headerlink" href="#english" title="Permalink to this headline"></a></h3>
+<p>First, let us download the pretrained model:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-ncnn
+
+git lfs install
+git clone https://huggingface.co/csukuangfj/sherpa-ncnn-2022-09-05
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>You have to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span></code> to download the pretrained models.</p>
+</div>
+<section id="decode-a-single-wave-file-with-build-bin-sherpa-ncnn">
+<h4>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#decode-a-single-wave-file-with-build-bin-sherpa-ncnn" title="Permalink to this headline"></a></h4>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files with a single channel and the sampling rate
 should be 16 kHz.</p>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bin/sherpa-ncnn <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/tokens.txt <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-ncnn
+
+./build/bin/sherpa-ncnn <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/tokens.txt <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-ncnn.exe</span></code> for Windows.</p>
+</div>
 </section>
-<section id="real-time-speech-recognition-from-a-microphone">
-<h2>Real-time speech recognition from a microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone" title="Permalink to this headline"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bin/sherpa-ncnn-microphone <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/tokens.txt <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
-  /tmp/sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin
+<section id="real-time-speech-recognition-from-a-microphone-with-build-bin-sherpa-ncnn-microphone">
+<h4>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone-with-build-bin-sherpa-ncnn-microphone" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-ncnn
+
+./build/bin/sherpa-ncnn-microphone <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/tokens.txt <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-ncnn-microphone.exe</span></code> for Windows.</p>
 </div>
 <p>It will print something like below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">threads</span><span class="p">:</span> <span class="mi">4</span>
@@ -197,12 +280,92 @@ should be 16 kHz.</p>
 <iframe allowfullscreen="true" src="https://www.youtube.com/embed/m6ynSxycpX0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
 </iframe></div></section>
 </section>
+<section id="chinese">
+<h3>Chinese<a class="headerlink" href="#chinese" title="Permalink to this headline"></a></h3>
+<p>First, let us download the pretrained model:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-ncnn
+
+git lfs install
+git clone https://huggingface.co/csukuangfj/sherpa-ncnn-2022-09-30
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>You have to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span></code> to download the pretrained models.</p>
+</div>
+<section id="id1">
+<h4>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h4>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It supports decoding only wave files with a single channel and the sampling rate
+should be 16 kHz.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-ncnn
+
+./build/bin/sherpa-ncnn <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/tokens.txt <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/encoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/encoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/decoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/decoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/joiner_jit_trace-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/joiner_jit_trace-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/test_wavs/0.wav
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you use Windows and get encoding issues, please run:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CHCP <span class="m">65001</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>in your commandline.</p>
+</div>
+</section>
+<section id="id2">
+<h4>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-ncnn
+
+./build/bin/sherpa-ncnn-microphone <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/tokens.txt <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/encoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/encoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/decoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/decoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/joiner_jit_trace-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/joiner_jit_trace-epoch-11-avg-2-pnnx.ncnn.bin
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-ncnn-microphone.exe</span></code> for Windows.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you use Windows and get encoding issues, please run:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CHCP <span class="m">65001</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>in your commandline.</p>
+</div>
+<p>You can find a demo below:</p>
+<div class="video_wrapper" style="padding-bottom: 67.500000%; padding-top: 30px; position: relative; width: 120%">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/bbQfoRT75oM" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div></section>
+</section>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../cpp/online_asr/index.html" class="btn btn-neutral float-left" title="Streaming ASR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../onnx/index.html" class="btn btn-neutral float-right" title="sherpa-onnx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
