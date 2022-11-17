@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>C++ frontend Installation &mdash; sherpa 0.9.1 documentation</title>
+  <title>Installation &mdash; sherpa 1.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -19,7 +19,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="conda for Windows" href="conda-windows.html" />
+    <link rel="next" title="Pre-trained models" href="../pretrained_models/index.html" />
     <link rel="prev" title="Frequently asked questions" href="../../python/faq.html" /> 
 </head>
 
@@ -31,7 +31,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                0.9.1
+                1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -51,12 +51,11 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">C++ frontend Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="conda-windows.html">conda for Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conda-linux.html">conda for Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="from-source.html">Install from source (Linux/macOS/Windows)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-for-advanced-users-developers">Installation for advanced users/developers</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../offline_asr/index.html">Non-streaming ASR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../online_asr/index.html">Streaming ASR</a></li>
 </ul>
@@ -83,7 +82,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>C++ frontend Installation</li>
+      <li>Installation</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/cpp/installation/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -93,16 +92,76 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="c-frontend-installation">
-<span id="cpp-fronted-installation"></span><h1>C++ frontend Installation<a class="headerlink" href="#c-frontend-installation" title="Permalink to this headline"></a></h1>
-<p>You can select <code class="docutils literal notranslate"><span class="pre">one</span></code> of the following methods for installation.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="conda-windows.html">conda for Windows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conda-linux.html">conda for Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="from-source.html">Install from source (Linux/macOS/Windows)</a></li>
+  <section id="installation">
+<span id="cpp-fronted-installation"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<p>Before installing <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a>, we assume you have installed:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pytorch.org/">PyTorch</a></p></li>
+<li><p><a class="reference external" href="https://github.com/k2-fsa/k2">k2</a></p></li>
+<li><p><a class="reference external" href="https://csukuangfj.github.io/kaldifeat/installation.html">kaldifeat</a></p></li>
 </ul>
+<p>You can use the following commands to install <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone http://github.com/k2-fsa/sherpa
+<span class="nb">cd</span> sherpa
+python3 setup.py bdist_wheel
+ls -lh dist
+pip install ./dist/k2_sherpa*.whl
+</pre></div>
 </div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Please don’t use <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">install</span></code>. Otherwise, you won’t get
+<a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a> related binaries installed, such as <code class="docutils literal notranslate"><span class="pre">sherpa-offline</span></code> and
+<code class="docutils literal notranslate"><span class="pre">sherpa-online</span></code>.</p>
+</div>
+<p>To uninstall <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a>, please use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip uninstall k2-sherpa
+</pre></div>
+</div>
+<p>To test that you have installed <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a> successfully, you can run the
+following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-version
+
+sherpa-offline --help
+sherpa-online --help
+sherpa-online-microphone --help
+
+sherpa-offline-websocket-server --help
+sherpa-offline-websocket-client --help
+
+sherpa-online-websocket-server --help
+sherpa-online-websocket-client --help
+sherpa-online-websocket-client-microphone --help
+</pre></div>
+</div>
+<p>If you have any issues about the installation, please create an issue
+at the following address:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://github.com/k2-fsa/sherpa/issues">https://github.com/k2-fsa/sherpa/issues</a></p>
+</div></blockquote>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you have a <a class="reference external" href="https://www.wechat.com/">WeChat</a> account, you can scan
+the following QR code to join the WeChat group of next-gen Kaldi to get
+help.</p>
+<a class="reference internal image-reference" href="../../_images/wechat-group-for-next-gen-kaldi.jpg"><img alt="WeChat group of next-gen Kaldi" class="align-center" src="../../_images/wechat-group-for-next-gen-kaldi.jpg" style="width: 200px;" /></a>
+</div>
+<section id="installation-for-advanced-users-developers">
+<h2>Installation for advanced users/developers<a class="headerlink" href="#installation-for-advanced-users-developers" title="Permalink to this headline"></a></h2>
+<p>As an advanced user/developer, you can use the following method to
+install <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone http://github.com/k2-fsa/sherpa
+<span class="nb">cd</span> sherpa
+mkdir build
+<span class="nb">cd</span> build
+cmake ..
+make -j
+
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PWD</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>/lib:<span class="nv">$PWD</span>/../sherpa/python:<span class="nv">$PYTHONPATH</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
@@ -110,7 +169,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../../python/faq.html" class="btn btn-neutral float-left" title="Frequently asked questions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="conda-windows.html" class="btn btn-neutral float-right" title="conda for Windows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../pretrained_models/index.html" class="btn btn-neutral float-right" title="Pre-trained models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
