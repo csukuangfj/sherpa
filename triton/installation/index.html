@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pre-trained models &mdash; sherpa 1.0 documentation</title>
+  <title>Installation &mdash; sherpa 1.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Offline CTC models" href="offline_ctc.html" />
-    <link rel="prev" title="Installation" href="../installation/index.html" /> 
+    <link rel="next" title="Triton-server" href="../server/index.html" />
+    <link rel="prev" title="Overview" href="../overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,15 +50,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../python/faq.html">Frequently asked questions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Pre-trained models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="offline_ctc.html">Offline CTC models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="offline_transducer.html">Offline transducer models</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../offline_asr/index.html">Non-streaming ASR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../online_asr/index.html">Streaming ASR</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/offline_asr/index.html">Non-streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/online_asr/index.html">Streaming ASR</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
 <ul>
@@ -69,12 +65,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../../onnx/index.html">sherpa-onnx</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Triton</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/server/index.html">Triton-server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/client/index.html">Triton-client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/perf/index.html">Perf Analyzer</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../overview.html">Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-triton-image">Build Triton Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch-a-inference-container">Launch a inference container</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../server/index.html">Triton-server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/index.html">Triton-client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../perf/index.html">Perf Analyzer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#build-triton-image">Build Triton Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#launch-a-inference-container">Launch a inference container</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Triton-server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Triton-client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/index.html">Perf Analyzer</a></li>
 </ul>
 
         </div>
@@ -91,9 +101,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Pre-trained models</li>
+          <li><a href="../overview.html">Overview</a> &raquo;</li>
+      <li>Installation</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/cpp/pretrained_models/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/triton/installation/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -101,48 +112,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pre-trained-models">
-<span id="pretrained-models"></span><h1>Pre-trained models<a class="headerlink" href="#pre-trained-models" title="Permalink to this headline"></a></h1>
-<p>Two kinds of end-to-end (E2E) models are supported by <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a>:</p>
-<ul class="simple">
-<li><p>CTC</p></li>
-<li><p>Transducer</p></li>
-</ul>
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<p>We prepare a dockerfile based on official triton docker containers. The customized dockerfile intergrates <a class="reference external" href="https://github.com/triton-inference-server/server">Triton-server</a>, <a class="reference external" href="https://github.com/triton-inference-server/client">Triton-client</a> and
+sherpa-related requirements into a single image. You need to install <a class="reference external" href="https://www.docker.com">Docker</a> first before starting installation.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>For transducer-based models, we only support stateless transducers.
-To the best of our knowledge, only <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a> supports that. In other words,
-only transducer models from <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a> are currently supported.</p>
-<p>For CTC-based models, we support any type of models trained using CTC loss
-as long as you can export the model via torchscript. Models from the following
-frameworks are currently supported: <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a>, <a class="reference external" href="https://github.com/k2-fsa/sherpa">wenet</a>, and <a class="reference external" href="https://github.com/pytorch/audio">torchaudio</a> (Wav2Vec 2.0).
-If you have a CTC model and want it to be supported in <cite>sherpa</cite>, please
-create an issue at <a class="reference external" href="https://github.com/k2-fsa/sherpa/issues">https://github.com/k2-fsa/sherpa/issues</a>.</p>
+<p>For your production environment, you could build triton manually to reduce the size of container.</p>
 </div>
-<p>This page lists all available pre-trained models that you can download.</p>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Pretrained models</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="offline_ctc.html">Offline CTC models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="offline_ctc.html#icefall">icefall</a></li>
-<li class="toctree-l2"><a class="reference internal" href="offline_ctc.html#wenet">wenet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="offline_ctc.html#torchaudio">torchaudio</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="offline_transducer.html">Offline transducer models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="offline_transducer.html#icefall">icefall</a></li>
-</ul>
-</li>
-</ul>
+<section id="build-triton-image">
+<h2>Build Triton Image<a class="headerlink" href="#build-triton-image" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa
+<span class="nb">cd</span> sherpa/triton
+docker build . -f Dockerfile/Dockerfile.server -t sherpa_triton_server:latest
+</pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may take a lot of time since we build k2 from source. If you only need to use greedy search scorer, you could comment k2-related lines.</p>
+</div>
+</section>
+<section id="launch-a-inference-container">
+<h2>Launch a inference container<a class="headerlink" href="#launch-a-inference-container" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run --gpus all --name sherpa_server --net host --shm-size<span class="o">=</span>1g -it sherpa_triton_server:latest
+</pre></div>
+</div>
+<p>Now, you should enter into the container successfully.</p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../installation/index.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="offline_ctc.html" class="btn btn-neutral float-right" title="Offline CTC models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../server/index.html" class="btn btn-neutral float-right" title="Triton-server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
