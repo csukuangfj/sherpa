@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online transducer models &mdash; sherpa 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="sherpa-ncnn" href="../../ncnn/index.html" />
+    <link rel="prev" title="Offline transducer models" href="offline_transducer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> sherpa
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Python users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/huggingface/index.html">Try sherpa with Huggingface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/streaming_asr/index.html">Streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Pre-trained models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="offline_ctc.html">Offline CTC models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offline_transducer.html">Offline transducer models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Online transducer models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#icefall">icefall</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#english">English</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chinese">Chinese</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ncnn/index.html">sherpa-ncnn</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">onnx</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../onnx/index.html">sherpa-onnx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Triton</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/server/index.html">Triton-server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/client/index.html">Triton-client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/perf/index.html">Perf Analyzer</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sherpa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Pre-trained models</a> &raquo;</li>
+      <li>Online transducer models</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/cpp/pretrained_models/online_transducer.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="online-transducer-models">
+<h1>Online transducer models<a class="headerlink" href="#online-transducer-models" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>We use the binary <code class="docutils literal notranslate"><span class="pre">sherpa-online</span></code> below for demonstration.
+You can replace <code class="docutils literal notranslate"><span class="pre">sherpa-online</span></code> with <code class="docutils literal notranslate"><span class="pre">sherpa-online-websocket-server</span></code>
+and <code class="docutils literal notranslate"><span class="pre">sherpa-online-microphone</span></code>.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>At present, only streaming transducer models from <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a> are supported.</p>
+</div>
+<section id="icefall">
+<h2>icefall<a class="headerlink" href="#icefall" title="Permalink to this headline"></a></h2>
+<p>This sections lists models trained using <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a>.</p>
+<section id="english">
+<h3>English<a class="headerlink" href="#english" title="Permalink to this headline"></a></h3>
+<section id="icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05">
+<h4>icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05<a class="headerlink" href="#icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with ConvEmformer transducer</span>
+<span class="c1">#</span>
+<span class="c1"># See https://github.com/k2-fsa/icefall/pull/440</span>
+<span class="c1">#</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/Zengwei/icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05
+<span class="nb">cd</span> icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05
+
+git lfs pull --include <span class="s2">&quot;exp/cpu-jit-epoch-30-avg-10-torch-1.10.0.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/LG.pt&quot;</span>
+<span class="nb">cd</span> exp
+ln -sv cpu-jit-epoch-30-avg-10-torch-1.10.0.pt cpu_jit.pt
+<span class="nb">cd</span> ..
+
+<span class="k">for</span> m <span class="k">in</span> greedy_search modified_beam_search fast_beam_search<span class="p">;</span> <span class="k">do</span>
+  sherpa-online <span class="se">\</span>
+    --decoding-method<span class="o">=</span><span class="nv">$m</span> <span class="se">\</span>
+    --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+    --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+    ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
+    ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
+    ./test_wavs/1221-135766-0002.wav
+<span class="k">done</span>
+
+<span class="c1"># For fast_beam_search with LG</span>
+
+./build/bin/sherpa-online <span class="se">\</span>
+  --decoding-method<span class="o">=</span>fast_beam_search <span class="se">\</span>
+  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+  --lg<span class="o">=</span>./data/lang_bpe_500/LG.pt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+  ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
+  ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
+  ./test_wavs/1221-135766-0002.wav
+</pre></div>
+</div>
+</section>
+<section id="icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03">
+<h4>icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03<a class="headerlink" href="#icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with LSTM transducer</span>
+<span class="c1">#</span>
+<span class="c1"># See https://github.com/k2-fsa/icefall/pull/558</span>
+<span class="c1">#</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03
+<span class="nb">cd</span> icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03
+
+git lfs pull --include <span class="s2">&quot;exp/encoder_jit_trace-iter-468000-avg-16.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;exp/decoder_jit_trace-iter-468000-avg-16.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;exp/joiner_jit_trace-iter-468000-avg-16.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/LG.pt&quot;</span>
+
+<span class="nb">cd</span> exp
+ln -sv encoder_jit_trace-iter-468000-avg-16.pt encoder_jit_trace.pt
+ln -sv decoder_jit_trace-iter-468000-avg-16.pt decoder_jit_trace.pt
+ln -sv joiner_jit_trace-iter-468000-avg-16.pt joiner_jit_trace.pt
+<span class="nb">cd</span> ..
+
+<span class="k">for</span> m <span class="k">in</span> greedy_search modified_beam_search fast_beam_search<span class="p">;</span> <span class="k">do</span>
+  sherpa-online <span class="se">\</span>
+    --decoding-method<span class="o">=</span><span class="nv">$m</span> <span class="se">\</span>
+    --encoder-model<span class="o">=</span>./exp/encoder_jit_trace.pt <span class="se">\</span>
+    --decoder-model<span class="o">=</span>./exp/decoder_jit_trace.pt <span class="se">\</span>
+    --joiner-model<span class="o">=</span>./exp/joiner_jit_trace.pt <span class="se">\</span>
+    --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+    ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
+    ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
+    ./test_wavs/1221-135766-0002.wav
+<span class="k">done</span>
+
+<span class="c1"># For fast_beam_search with LG</span>
+sherpa-online <span class="se">\</span>
+  --decoding-method<span class="o">=</span>fast_beam_search <span class="se">\</span>
+  --encoder-model<span class="o">=</span>./exp/encoder_jit_trace.pt <span class="se">\</span>
+  --decoder-model<span class="o">=</span>./exp/decoder_jit_trace.pt <span class="se">\</span>
+  --joiner-model<span class="o">=</span>./exp/joiner_jit_trace.pt <span class="se">\</span>
+  --lg<span class="o">=</span>./data/lang_bpe_500/LG.pt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+  ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
+  ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
+  ./test_wavs/1221-135766-0002.wav
+</pre></div>
+</div>
+</section>
+<section id="icefall-asr-librispeech-pruned-stateless-emformer-rnnt2-2022-06-01">
+<h4>icefall-asr-librispeech-pruned-stateless-emformer-rnnt2-2022-06-01<a class="headerlink" href="#icefall-asr-librispeech-pruned-stateless-emformer-rnnt2-2022-06-01" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with Emformer transducer</span>
+<span class="c1">#</span>
+<span class="c1"># See https://github.com/k2-fsa/icefall/pull/390</span>
+<span class="c1">#</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/icefall-asr-librispeech-pruned-stateless-emformer-rnnt2-2022-06-01
+<span class="nb">cd</span> icefall-asr-librispeech-pruned-stateless-emformer-rnnt2-2022-06-01
+
+git lfs pull --include <span class="s2">&quot;exp/cpu_jit-epoch-39-avg-6-use-averaged-model-1.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/LG.pt&quot;</span>
+<span class="nb">cd</span> exp
+ln -sv cpu_jit-epoch-39-avg-6-use-averaged-model-1.pt cpu_jit.pt
+<span class="nb">cd</span> ..
+
+<span class="k">for</span> m <span class="k">in</span> greedy_search modified_beam_search fast_beam_search<span class="p">;</span> <span class="k">do</span>
+  sherpa-online <span class="se">\</span>
+    --decoding-method<span class="o">=</span><span class="nv">$m</span> <span class="se">\</span>
+    --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+    --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+    ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
+    ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
+    ./test_wavs/1221-135766-0002.wav
+<span class="k">done</span>
+
+<span class="c1"># For fast_beam_search with LG</span>
+
+sherpa-online <span class="se">\</span>
+  --decoding-method<span class="o">=</span>fast_beam_search <span class="se">\</span>
+  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+  --lg<span class="o">=</span>./data/lang_bpe_500/LG.pt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+  ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
+  ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
+  ./test_wavs/1221-135766-0002.wav
+</pre></div>
+</div>
+</section>
+<section id="icefall-librispeech-streaming-pruned-transducer-stateless4-20220625">
+<h4>icefall_librispeech_streaming_pruned_transducer_stateless4_20220625<a class="headerlink" href="#icefall-librispeech-streaming-pruned-transducer-stateless4-20220625" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with Conformer transducer</span>
+<span class="c1">#</span>
+<span class="c1"># See https://github.com/k2-fsa/icefall/pull/440</span>
+<span class="c1">#</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/pkufool/icefall_librispeech_streaming_pruned_transducer_stateless4_20220625
+<span class="nb">cd</span> icefall_librispeech_streaming_pruned_transducer_stateless4_20220625
+
+git lfs pull --include <span class="s2">&quot;exp/cpu_jit-epoch-25-avg-3.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/LG.pt&quot;</span>
+<span class="nb">cd</span> exp
+ln -sv cpu_jit-epoch-25-avg-3.pt cpu_jit.pt
+<span class="nb">cd</span> ..
+
+<span class="k">for</span> m <span class="k">in</span> greedy_search modified_beam_search fast_beam_search<span class="p">;</span> <span class="k">do</span>
+  sherpa-online <span class="se">\</span>
+    --decoding-method<span class="o">=</span><span class="nv">$m</span> <span class="se">\</span>
+    --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+    --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+    ./test_waves/1089-134686-0001.wav <span class="se">\</span>
+    ./test_waves/1221-135766-0001.wav <span class="se">\</span>
+    ./test_waves/1221-135766-0002.wav
+<span class="k">done</span>
+
+<span class="c1"># For fast_beam_search with LG</span>
+
+sherpa-online <span class="se">\</span>
+  --decoding-method<span class="o">=</span>fast_beam_search <span class="se">\</span>
+  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+  --lg<span class="o">=</span>./data/lang_bpe_500/LG.pt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+  ./test_waves/1089-134686-0001.wav <span class="se">\</span>
+  ./test_waves/1221-135766-0001.wav <span class="se">\</span>
+  ./test_waves/1221-135766-0002.wav
+</pre></div>
+</div>
+</section>
+</section>
+<section id="chinese">
+<h3>Chinese<a class="headerlink" href="#chinese" title="Permalink to this headline"></a></h3>
+<section id="icefall-asr-wenetspeech-pruned-transducer-stateless5-streaming">
+<h4>icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming<a class="headerlink" href="#icefall-asr-wenetspeech-pruned-transducer-stateless5-streaming" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using WenetSpeech with Conformer transducer</span>
+<span class="c1">#</span>
+<span class="c1"># See https://github.com/k2-fsa/icefall/pull/447</span>
+<span class="c1">#</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/luomingshuang/icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming
+<span class="nb">cd</span> icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming
+
+git lfs pull --include <span class="s2">&quot;exp/cpu_jit_epoch_7_avg_1_torch.1.7.1.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;data/lang_char/LG.pt&quot;</span>
+<span class="nb">cd</span> exp
+ln -sv cpu_jit_epoch_7_avg_1_torch.1.7.1.pt cpu_jit.pt
+<span class="nb">cd</span> ..
+
+<span class="k">for</span> m <span class="k">in</span> greedy_search modified_beam_search fast_beam_search<span class="p">;</span> <span class="k">do</span>
+  sherpa-online <span class="se">\</span>
+    --decoding-method<span class="o">=</span><span class="nv">$m</span> <span class="se">\</span>
+    --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+    --tokens<span class="o">=</span>./data/lang_char/tokens.txt <span class="se">\</span>
+    ./test_wavs/DEV_T0000000000.wav <span class="se">\</span>
+    ./test_wavs/DEV_T0000000001.wav <span class="se">\</span>
+    ./test_wavs/DEV_T0000000002.wav
+<span class="k">done</span>
+
+<span class="c1"># For fast_beam_search with LG</span>
+
+sherpa-online <span class="se">\</span>
+  --decoding-method<span class="o">=</span>fast_beam_search <span class="se">\</span>
+  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+  --lg<span class="o">=</span>./data/lang_char/LG.pt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_char/tokens.txt <span class="se">\</span>
+  ./test_wavs/DEV_T0000000000.wav <span class="se">\</span>
+  ./test_wavs/DEV_T0000000001.wav <span class="se">\</span>
+  ./test_wavs/DEV_T0000000002.wav
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="offline_transducer.html" class="btn btn-neutral float-left" title="Offline transducer models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../ncnn/index.html" class="btn btn-neutral float-right" title="sherpa-ncnn" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, sherpa development team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
