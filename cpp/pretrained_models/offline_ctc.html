@@ -57,6 +57,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#icefall">icefall</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#english">English</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#chinese">Chinese</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arabic">Arabic</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#wenet">wenet</a><ul>
@@ -137,7 +138,6 @@ You can replace <code class="docutils literal notranslate"><span class="pre">she
 <span class="nb">cd</span> icefall-asr-gigaspeech-conformer-ctc
 git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
 git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/HLG.pt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/words.txt&quot;</span>
 git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/tokens.txt&quot;</span>
 mkdir test_wavs
 <span class="nb">cd</span> test_wavs
@@ -158,7 +158,7 @@ sherpa-offline <span class="se">\</span>
 sherpa-offline <span class="se">\</span>
   --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
   --hlg<span class="o">=</span>./data/lang_bpe_500/HLG.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_500/words.txt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
   ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
   ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
   ./test_wavs/1221-135766-0002.wav
@@ -172,7 +172,6 @@ sherpa-offline <span class="se">\</span>
 
 git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
 git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/tokens.txt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/words.txt&quot;</span>
 git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/HLG.pt&quot;</span>
 git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/HLG_modified.pt&quot;</span>
 
@@ -188,7 +187,7 @@ sherpa-offline <span class="se">\</span>
 <span class="c1"># Decode with HLG</span>
 sherpa-offline <span class="se">\</span>
   --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_500/words.txt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
   --hlg<span class="o">=</span>./data/lang_bpe_500/HLG.pt <span class="se">\</span>
   --use-gpu<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
   ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
@@ -198,7 +197,7 @@ sherpa-offline <span class="se">\</span>
 <span class="c1"># Decode with HLG (modified)</span>
 sherpa-offline <span class="se">\</span>
   --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_500/words.txt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
   --hlg<span class="o">=</span>./data/lang_bpe_500/HLG_modified.pt <span class="se">\</span>
   --use-gpu<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
   ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
@@ -228,11 +227,41 @@ sherpa-offline <span class="se">\</span>
 <span class="c1"># Decode with an HLG graph</span>
 sherpa-offline <span class="se">\</span>
   --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_char/words.txt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_char/tokens.txt <span class="se">\</span>
   --hlg<span class="o">=</span>./data/lang_char/HLG.pt <span class="se">\</span>
   ./test_waves/BAC009S0764W0121.wav <span class="se">\</span>
   ./test_waves/BAC009S0764W0122.wav <span class="se">\</span>
   ./test_waves/BAC009S0764W0123.wav
+</pre></div>
+</div>
+</section>
+</section>
+<section id="arabic">
+<h3>Arabic<a class="headerlink" href="#arabic" title="Permalink to this headline"></a></h3>
+<section id="icefall-asr-mgb2-conformer-ctc-2022-27-06">
+<h4>icefall-asr-mgb2-conformer_ctc-2022-27-06<a class="headerlink" href="#icefall-asr-mgb2-conformer-ctc-2022-27-06" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/AmirHussein/icefall-asr-mgb2-conformer_ctc-2022-27-06
+<span class="nb">cd</span> icefall-asr-mgb2-conformer_ctc-2022-27-06
+git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;data/lang_bpe_5000/HLG.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;data/lang_bpe_5000/tokens.txt&quot;</span>
+
+<span class="c1"># Decode with an H graph</span>
+sherpa-offline <span class="se">\</span>
+  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_5000/tokens.txt <span class="se">\</span>
+  ./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0053813:0054281.wav <span class="se">\</span>
+  ./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0051454:0052244.wav <span class="se">\</span>
+  ./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0052244:0053004.wav
+
+<span class="c1"># Decode with an HLG graph</span>
+sherpa-offline <span class="se">\</span>
+  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_5000/tokens.txt <span class="se">\</span>
+  --hlg<span class="o">=</span>./data/lang_bpe_5000/HLG.pt <span class="se">\</span>
+  ./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0053813:0054281.wav <span class="se">\</span>
+  ./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0051454:0052244.wav <span class="se">\</span>
+  ./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0052244:0053004.wav
 </pre></div>
 </div>
 </section>

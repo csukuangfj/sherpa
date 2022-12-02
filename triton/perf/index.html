@@ -138,6 +138,56 @@ perf_analyzer -m transducer -b <span class="m">1</span> -a -p <span class="m">20
 perf_analyzer -m transducer -b <span class="m">1</span> -a -p <span class="m">20000</span> --concurrency-range <span class="m">100</span>:200:50 -i gRPC --input-data<span class="o">=</span>online_input.json  -u localhost:8001 --streaming
 </pre></div>
 </div>
+<p>You could save the below results with a <code class="docutils literal notranslate"><span class="pre">-f</span> <span class="pre">log.txt</span></code> option.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 6%" />
+<col style="width: 12%" />
+<col style="width: 7%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Concurrency</p></th>
+<th class="head"><p>Inferences/Second</p></th>
+<th class="head"><p>Client Send</p></th>
+<th class="head"><p>Network+Server Send/Recv</p></th>
+<th class="head"><p>Server Queue</p></th>
+<th class="head"><p>Server Compute Input</p></th>
+<th class="head"><p>Server Compute Infer</p></th>
+<th class="head"><p>Server Compute Output</p></th>
+<th class="head"><p>Client Recv</p></th>
+<th class="head"><p>p50 latency</p></th>
+<th class="head"><p>p90 latency</p></th>
+<th class="head"><p>p95 latency</p></th>
+<th class="head"><p>p99 latency</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>300</p></td>
+<td><p>226.24</p></td>
+<td><p>109</p></td>
+<td><p>230434</p></td>
+<td><p>1</p></td>
+<td><p>9314</p></td>
+<td><p>1068792</p></td>
+<td><p>14512</p></td>
+<td><p>1</p></td>
+<td><p>1254206</p></td>
+<td><p>1616224</p></td>
+<td><p>1958246</p></td>
+<td><p>3551406</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Please refer to
