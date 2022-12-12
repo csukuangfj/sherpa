@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Online transducer models &mdash; sherpa 1.0 documentation</title>
+  <title>Online transducer models &mdash; sherpa 1.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -31,7 +31,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.0
+                1.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -59,6 +59,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#icefall">icefall</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#english">English</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#chinese">Chinese</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chinese-english-all-in-one">Chinese + English (all-in-one)</a></li>
 </ul>
 </li>
 </ul>
@@ -323,6 +324,40 @@ sherpa-online <span class="se">\</span>
   ./test_wavs/DEV_T0000000000.wav <span class="se">\</span>
   ./test_wavs/DEV_T0000000001.wav <span class="se">\</span>
   ./test_wavs/DEV_T0000000002.wav
+</pre></div>
+</div>
+</section>
+</section>
+<section id="chinese-english-all-in-one">
+<h3>Chinese + English (all-in-one)<a class="headerlink" href="#chinese-english-all-in-one" title="Permalink to this headline"></a></h3>
+<section id="icefall-asr-conv-emformer-transducer-stateless2-zh">
+<h4>icefall-asr-conv-emformer-transducer-stateless2-zh<a class="headerlink" href="#icefall-asr-conv-emformer-transducer-stateless2-zh" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model supports both Chinese and English</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/ptrnull/icefall-asr-conv-emformer-transducer-stateless2-zh
+<span class="nb">cd</span> icefall-asr-conv-emformer-transducer-stateless2-zh
+git lfs pull --include <span class="s2">&quot;exp/cpu_jit-epoch-11-avg-1.pt&quot;</span>
+<span class="nb">cd</span> exp
+ln -sv cpu_jit-epoch-11-avg-1.pt cpu_jit.pt
+<span class="nb">cd</span> ..
+
+mkdir test_wavs
+<span class="nb">cd</span> test_wavs
+wget https://huggingface.co/spaces/k2-fsa/automatic-speech-recognition/resolve/main/test_wavs/tal_csasr/0.wav
+wget https://huggingface.co/spaces/k2-fsa/automatic-speech-recognition/resolve/main/test_wavs/tal_csasr/210_36476_210_8341_1_1533271973_7057520_132.wav
+wget https://huggingface.co/spaces/k2-fsa/automatic-speech-recognition/resolve/main/test_wavs/tal_csasr/210_36476_210_8341_1_1533271973_7057520_138.wav
+wget https://huggingface.co/spaces/k2-fsa/automatic-speech-recognition/resolve/main/test_wavs/tal_csasr/210_36476_210_8341_1_1533271973_7057520_145.wav
+<span class="nb">cd</span> ..
+
+<span class="k">for</span> m <span class="k">in</span> greedy_search modified_beam_search fast_beam_search<span class="p">;</span> <span class="k">do</span>
+  sherpa-online <span class="se">\</span>
+    --decoding-method<span class="o">=</span><span class="nv">$m</span> <span class="se">\</span>
+    --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+    --tokens<span class="o">=</span>./data/lang_char_bpe/tokens.txt <span class="se">\</span>
+    ./test_wavs/0.wav <span class="se">\</span>
+    ./test_wavs/210_36476_210_8341_1_1533271973_7057520_132.wav <span class="se">\</span>
+    ./test_wavs/210_36476_210_8341_1_1533271973_7057520_138.wav <span class="se">\</span>
+    ./test_wavs/210_36476_210_8341_1_1533271973_7057520_145.wav
+<span class="k">done</span>
 </pre></div>
 </div>
 </section>

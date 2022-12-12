@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Offline transducer models &mdash; sherpa 1.0 documentation</title>
+  <title>Offline transducer models &mdash; sherpa 1.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -31,7 +31,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.0
+                1.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -59,6 +59,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#english">English</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#chinese">Chinese</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#chinese-english">Chinese + English</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tibetan">Tibetan</a></li>
 </ul>
 </li>
 </ul>
@@ -116,11 +117,54 @@
 <p>We use the binary <code class="docutils literal notranslate"><span class="pre">sherpa-offline</span></code> below for demonstration.
 You can replace <code class="docutils literal notranslate"><span class="pre">sherpa-offline</span></code> with <code class="docutils literal notranslate"><span class="pre">sherpa-offline-websocket-server</span></code>.</p>
 </div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Please visit <a class="reference external" href="https://huggingface.co/spaces/k2-fsa/automatic-speech-recognition">https://huggingface.co/spaces/k2-fsa/automatic-speech-recognition</a>
+to try the pre-trained models in your browser. You don’t need to install
+anything.</p>
+</div>
 <section id="icefall">
 <h2>icefall<a class="headerlink" href="#icefall" title="Permalink to this headline"></a></h2>
 <p>This sections lists models trained using <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a>.</p>
 <section id="english">
 <h3>English<a class="headerlink" href="#english" title="Permalink to this headline"></a></h3>
+<section id="icefall-asr-librispeech-pruned-transducer-stateless8-2022-12-02">
+<h4>icefall-asr-librispeech-pruned-transducer-stateless8-2022-12-02<a class="headerlink" href="#icefall-asr-librispeech-pruned-transducer-stateless8-2022-12-02" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using GigaSpeech + LibriSpeech with zipformer</span>
+<span class="c1">#</span>
+<span class="c1"># See https://github.com/k2-fsa/icefall/pull/728</span>
+<span class="c1">#</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/WeijiZhuang/icefall-asr-librispeech-pruned-transducer-stateless8-2022-12-02
+<span class="nb">cd</span> icefall-asr-librispeech-pruned-transducer-stateless8-2022-12-02
+git lfs pull --include <span class="s2">&quot;exp/cpu_jit-torch-1.10.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/LG.pt&quot;</span>
+
+<span class="nb">cd</span> exp
+rm cpu_jit.pt
+ln -sv cpu_jit-torch-1.10.pt cpu_jit.pt
+<span class="nb">cd</span> ..
+
+<span class="k">for</span> m <span class="k">in</span> greedy_search modified_beam_search fast_beam_search<span class="p">;</span> <span class="k">do</span>
+  sherpa-offline <span class="se">\</span>
+    --decoding-method<span class="o">=</span><span class="nv">$m</span> <span class="se">\</span>
+    --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+    --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+    ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
+    ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
+    ./test_wavs/1221-135766-0002.wav
+<span class="k">done</span>
+
+sherpa-offline <span class="se">\</span>
+  --decoding-method<span class="o">=</span>fast_beam_search <span class="se">\</span>
+  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+  --lg<span class="o">=</span>./data/lang_bpe_500/LG.pt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+  ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
+  ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
+  ./test_wavs/1221-135766-0002.wav
+</pre></div>
+</div>
+</section>
 <section id="icefall-asr-librispeech-pruned-transducer-stateless8-2022-11-14">
 <h4>icefall-asr-librispeech-pruned-transducer-stateless8-2022-11-14<a class="headerlink" href="#icefall-asr-librispeech-pruned-transducer-stateless8-2022-11-14" title="Permalink to this headline"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using GigaSpeech + LibriSpeech with zipformer</span>
@@ -347,6 +391,82 @@ git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
     ./test_wavs/210_36476_210_8341_1_1533271973_7057520_145.wav <span class="se">\</span>
     ./test_wavs/210_36476_210_8341_1_1533271973_7057520_148.wav
 <span class="k">done</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tibetan">
+<h3>Tibetan<a class="headerlink" href="#tibetan" title="Permalink to this headline"></a></h3>
+<section id="icefall-asr-xbmu-amdo31-pruned-transducer-stateless7-2022-12-02">
+<h4>icefall-asr-xbmu-amdo31-pruned-transducer-stateless7-2022-12-02<a class="headerlink" href="#icefall-asr-xbmu-amdo31-pruned-transducer-stateless7-2022-12-02" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using the XBMU-AMDO31 corpus</span>
+<span class="c1">#</span>
+<span class="c1"># See https://github.com/k2-fsa/icefall/pull/706</span>
+<span class="c1">#</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/syzym/icefall-asr-xbmu-amdo31-pruned-transducer-stateless7-2022-12-02
+<span class="nb">cd</span> icefall-asr-xbmu-amdo31-pruned-transducer-stateless7-2022-12-02
+git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/LG.pt&quot;</span>
+
+<span class="k">for</span> m <span class="k">in</span> greedy_search modified_beam_search fast_beam_search<span class="p">;</span> <span class="k">do</span>
+  sherpa-offline <span class="se">\</span>
+    --decoding-method<span class="o">=</span><span class="nv">$m</span> <span class="se">\</span>
+    --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+    --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+    ./test_wavs/a_0_cacm-A70_31116.wav <span class="se">\</span>
+    ./test_wavs/a_0_cacm-A70_31117.wav <span class="se">\</span>
+    ./test_wavs/a_0_cacm-A70_31118.wav
+<span class="k">done</span>
+
+sherpa-offline <span class="se">\</span>
+  --decoding-method<span class="o">=</span>fast_beam_search <span class="se">\</span>
+  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+  --lg<span class="o">=</span>./data/lang_bpe_500/LG.pt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+  ./test_wavs/a_0_cacm-A70_31116.wav <span class="se">\</span>
+  ./test_wavs/a_0_cacm-A70_31117.wav <span class="se">\</span>
+  ./test_wavs/a_0_cacm-A70_31118.wav
+</pre></div>
+</div>
+</section>
+<section id="icefall-asr-xbmu-amdo31-pruned-transducer-stateless5-2022-11-29">
+<h4>icefall-asr-xbmu-amdo31-pruned-transducer-stateless5-2022-11-29<a class="headerlink" href="#icefall-asr-xbmu-amdo31-pruned-transducer-stateless5-2022-11-29" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using the XBMU-AMDO31 corpus</span>
+<span class="c1">#</span>
+<span class="c1"># See https://github.com/k2-fsa/icefall/pull/706</span>
+<span class="c1">#</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/syzym/icefall-asr-xbmu-amdo31-pruned-transducer-stateless5-2022-11-29
+<span class="nb">cd</span> icefall-asr-xbmu-amdo31-pruned-transducer-stateless5-2022-11-29
+git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/LG.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/tokens.txt&quot;</span>
+git lfs pull --include <span class="s2">&quot;exp/cpu_jit-epoch-28-avg-23-torch-1.10.0.pt&quot;</span>
+git lfs pull --include <span class="s2">&quot;test_wavs/a_0_cacm-A70_31116.wav&quot;</span>
+git lfs pull --include <span class="s2">&quot;test_wavs/a_0_cacm-A70_31117.wav&quot;</span>
+git lfs pull --include <span class="s2">&quot;test_wavs/a_0_cacm-A70_31118.wav&quot;</span>
+
+<span class="nb">cd</span> exp
+rm cpu_jit.pt
+ln -sv cpu_jit-epoch-28-avg-23-torch-1.10.0.pt cpu_jit.pt
+<span class="nb">cd</span> ..
+
+<span class="k">for</span> m <span class="k">in</span> greedy_search modified_beam_search fast_beam_search<span class="p">;</span> <span class="k">do</span>
+  sherpa-offline <span class="se">\</span>
+    --decoding-method<span class="o">=</span><span class="nv">$m</span> <span class="se">\</span>
+    --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+    --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+    ./test_wavs/a_0_cacm-A70_31116.wav <span class="se">\</span>
+    ./test_wavs/a_0_cacm-A70_31117.wav <span class="se">\</span>
+    ./test_wavs/a_0_cacm-A70_31118.wav
+<span class="k">done</span>
+
+sherpa-offline <span class="se">\</span>
+  --decoding-method<span class="o">=</span>fast_beam_search <span class="se">\</span>
+  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+  --lg<span class="o">=</span>./data/lang_bpe_500/LG.pt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
+  ./test_wavs/a_0_cacm-A70_31116.wav <span class="se">\</span>
+  ./test_wavs/a_0_cacm-A70_31117.wav <span class="se">\</span>
+  ./test_wavs/a_0_cacm-A70_31118.wav
 </pre></div>
 </div>
 </section>
