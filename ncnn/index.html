@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="sherpa-onnx" href="../onnx/index.html" />
+    <link rel="next" title="Installation" href="install/index.html" />
     <link rel="prev" title="Online transducer models" href="../cpp/pretrained_models/online_transducer.html" /> 
 </head>
 
@@ -57,6 +57,9 @@
 <p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">sherpa-ncnn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install/index.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="android/index.html">Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pretrained_models/index.html">Pre-trained models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#build-sherpa-ncnn-for-linux-and-macos">Build sherpa-ncnn for Linux and macOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#build-sherpa-ncnn-for-windows">Build sherpa-ncnn for Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#speech-recognition-with-sherpa-ncnn">Speech recognition with sherpa-ncnn</a><ul>
@@ -119,6 +122,20 @@
 <p>A colab notebook is provided for you so that you can try <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>
 in the browser.</p>
 <p><a class="reference external" href="https://colab.research.google.com/drive/1zdNAdWgV5rh1hLbLDqvLjxTa5tjU7cPa?usp=sharing"><img alt="sherpa-ncnn colab notebook" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install/linux.html">Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/macos.html">macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/windows.html">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/arm-embedded-linux.html">Embedded Linux (arm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/aarch64-embedded-linux.html">Embedded Linux (aarch64)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="android/index.html">Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pretrained_models/index.html">Pre-trained models</a></li>
+</ul>
 </div>
 <p>We support using <a class="reference external" href="https://github.com/tencent/ncnn">ncnn</a> to replace PyTorch for neural network computation.
 The code is put in a separate repository <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a></p>
@@ -240,12 +257,12 @@ should be 16 kHz.</p>
 
 ./build/bin/sherpa-ncnn <span class="se">\</span>
   ./sherpa-ncnn-2022-09-05/tokens.txt <span class="se">\</span>
-  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
-  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
-  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
-  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
-  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
-  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
   ./sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav
 </pre></div>
 </div>
@@ -260,12 +277,12 @@ should be 16 kHz.</p>
 
 ./build/bin/sherpa-ncnn-microphone <span class="se">\</span>
   ./sherpa-ncnn-2022-09-05/tokens.txt <span class="se">\</span>
-  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
-  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
-  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
-  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
-  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
-  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-iter-468000-avg-16-pnnx.ncnn.bin
+  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin
 </pre></div>
 </div>
 <div class="admonition note">
@@ -311,12 +328,12 @@ should be 16 kHz.</p>
 
 ./build/bin/sherpa-ncnn <span class="se">\</span>
  ./sherpa-ncnn-2022-09-30/tokens.txt <span class="se">\</span>
- ./sherpa-ncnn-2022-09-30/encoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
- ./sherpa-ncnn-2022-09-30/encoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
- ./sherpa-ncnn-2022-09-30/decoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
- ./sherpa-ncnn-2022-09-30/decoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
- ./sherpa-ncnn-2022-09-30/joiner_jit_trace-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
- ./sherpa-ncnn-2022-09-30/joiner_jit_trace-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/encoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/encoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/decoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/decoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/joiner_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/joiner_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
  ./sherpa-ncnn-2022-09-30/test_wavs/0.wav
 </pre></div>
 </div>
@@ -337,12 +354,12 @@ should be 16 kHz.</p>
 
 ./build/bin/sherpa-ncnn-microphone <span class="se">\</span>
  ./sherpa-ncnn-2022-09-30/tokens.txt <span class="se">\</span>
- ./sherpa-ncnn-2022-09-30/encoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
- ./sherpa-ncnn-2022-09-30/encoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
- ./sherpa-ncnn-2022-09-30/decoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
- ./sherpa-ncnn-2022-09-30/decoder_jit_trace-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
- ./sherpa-ncnn-2022-09-30/joiner_jit_trace-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
- ./sherpa-ncnn-2022-09-30/joiner_jit_trace-epoch-11-avg-2-pnnx.ncnn.bin
+ ./sherpa-ncnn-2022-09-30/encoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/encoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/decoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/decoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/joiner_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/joiner_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin
 </pre></div>
 </div>
 <div class="admonition note">
@@ -372,7 +389,7 @@ should be 16 kHz.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../cpp/pretrained_models/online_transducer.html" class="btn btn-neutral float-left" title="Online transducer models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../onnx/index.html" class="btn btn-neutral float-right" title="sherpa-onnx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="install/index.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

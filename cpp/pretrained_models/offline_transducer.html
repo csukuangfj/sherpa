@@ -366,6 +366,29 @@ ln -sv cpu_jit_torch.1.7.1.pt cpu_jit.pt
 </pre></div>
 </div>
 </section>
+<section id="icefall-asr-alimeeting-pruned-transducer-stateless7">
+<h4>icefall-asr-alimeeting-pruned-transducer-stateless7<a class="headerlink" href="#icefall-asr-alimeeting-pruned-transducer-stateless7" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This models is trained using alimeeting (https://www.openslr.org/119/)</span>
+<span class="c1">#</span>
+<span class="c1"># See https://github.com/k2-fsa/icefall/pull/751</span>
+<span class="c1">#</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/desh2608/icefall-asr-alimeeting-pruned-transducer-stateless7
+<span class="nb">cd</span> icefall-asr-alimeeting-pruned-transducer-stateless7
+
+git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
+
+<span class="k">for</span> m <span class="k">in</span> greedy_search modified_beam_search fast_beam_search<span class="p">;</span> <span class="k">do</span>
+  sherpa-offline <span class="se">\</span>
+    --decoding-method<span class="o">=</span><span class="nv">$m</span> <span class="se">\</span>
+    --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
+    --tokens<span class="o">=</span>./data/lang_char/tokens.txt <span class="se">\</span>
+    ./test_wavs/165.wav <span class="se">\</span>
+    ./test_wavs/74.wav <span class="se">\</span>
+    ./test_wavs/209.wav
+<span class="k">done</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="chinese-english">
 <h3>Chinese + English<a class="headerlink" href="#chinese-english" title="Permalink to this headline"></a></h3>
