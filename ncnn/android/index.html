@@ -19,7 +19,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Pre-trained models" href="../pretrained_models/index.html" />
+    <link rel="next" title="Video demos" href="demo-videos.html" />
     <link rel="prev" title="Embedded Linux (aarch64)" href="../install/aarch64-embedded-linux.html" /> 
 </head>
 
@@ -58,11 +58,12 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-ncnn</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Android</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Android</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="demo-videos.html">Video demos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build-sherpa-ncnn.html">Build sherpa-ncnn for Android</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#build-sherpa-ncnn-for-linux-and-macos">Build sherpa-ncnn for Linux and macOS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#build-sherpa-ncnn-for-windows">Build sherpa-ncnn for Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#speech-recognition-with-sherpa-ncnn">Speech recognition with sherpa-ncnn</a></li>
 </ul>
 </li>
 </ul>
@@ -106,6 +107,35 @@
              
   <section id="android">
 <span id="sherpa-ncnn-android"></span><h1>Android<a class="headerlink" href="#android" title="Permalink to this headline"></a></h1>
+<p>In this section, we describe how to build an Android app for <code class="docutils literal notranslate"><span class="pre">real-time</span></code> speech
+recognition with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>. We also provide real-time speech recognition
+video demos.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>During speech recognition, it does not need to access the Internet.
+Everyting is processed locally on your phone.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-videos.html">Video demos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="demo-videos.html#video-1-chinese">Video 1: Chinese</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo-videos.html#video-2-chinese-english">Video 2: Chinese + English</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo-videos.html#video-3-chinese-with-background-noise">Video 3: Chinese with background noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo-videos.html#video-4-chinese-poem-with-background-music">Video 4: Chinese poem with background music</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="build-sherpa-ncnn.html">Build sherpa-ncnn for Android</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="build-sherpa-ncnn.html#install-android-studio">Install Android Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build-sherpa-ncnn.html#download-sherpa-ncnn">Download sherpa-ncnn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build-sherpa-ncnn.html#install-ndk">Install NDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build-sherpa-ncnn.html#build-sherpa-ncnn-c-code">Build sherpa-ncnn (C++ code)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build-sherpa-ncnn.html#download-pre-trained-models">Download pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build-sherpa-ncnn.html#generate-apk">Generate APK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build-sherpa-ncnn.html#analyze-the-apk">Analyze the APK</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 
 
@@ -113,7 +143,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../install/aarch64-embedded-linux.html" class="btn btn-neutral float-left" title="Embedded Linux (aarch64)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../pretrained_models/index.html" class="btn btn-neutral float-right" title="Pre-trained models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="demo-videos.html" class="btn btn-neutral float-right" title="Video demos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

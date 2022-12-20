@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Windows &mdash; sherpa 1.1 documentation</title>
+  <title>Video demos &mdash; sherpa 1.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Embedded Linux (arm)" href="arm-embedded-linux.html" />
-    <link rel="prev" title="macOS" href="macos.html" /> 
+    <link rel="next" title="Build sherpa-ncnn for Android" href="build-sherpa-ncnn.html" />
+    <link rel="prev" title="Android" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,15 +57,18 @@
 <p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-ncnn</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="linux.html">Linux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="macos.html">macOS</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Windows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="arm-embedded-linux.html">Embedded Linux (arm)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aarch64-embedded-linux.html">Embedded Linux (aarch64)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Android</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Video demos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#video-1-chinese">Video 1: Chinese</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video-2-chinese-english">Video 2: Chinese + English</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video-3-chinese-with-background-noise">Video 3: Chinese with background noise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video-4-chinese-poem-with-background-music">Video 4: Chinese poem with background music</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build-sherpa-ncnn.html">Build sherpa-ncnn for Android</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
 </ul>
 </li>
@@ -98,10 +101,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">sherpa-ncnn</a> &raquo;</li>
-          <li><a href="index.html">Installation</a> &raquo;</li>
-      <li>Windows</li>
+          <li><a href="index.html">Android</a> &raquo;</li>
+      <li>Video demos</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/ncnn/install/windows.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/ncnn/android/demo-videos.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -109,38 +112,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="windows">
-<h1>Windows<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h1>
-<p>This page describes how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> on Windows.</p>
-<p>All you need is to run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa-ncnn
-<span class="nb">cd</span> sherpa-ncnn
-mkdir build
-<span class="nb">cd</span> build
-cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ..
-cmake --build . --config Release -- -m:6
-</pre></div>
-</div>
-<p>It will generate two executables inside <code class="docutils literal notranslate"><span class="pre">./bin/Release/</span></code>:</p>
+  <section id="video-demos">
+<span id="sherpa-ncnn-android-video-demos"></span><h1>Video demos<a class="headerlink" href="#video-demos" title="Permalink to this headline"></a></h1>
+<p>In this page, we list some videos about using <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> for
+real-time speech recognition on Android.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can find pre-built <code class="docutils literal notranslate"><span class="pre">APK</span></code> packages used by the following videos at:</p>
 <blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.exe</span></code>: For decoding a single wave file.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-microphone.exe</span></code>: For real-time speech recognition from a microphone</p></li>
-</ul>
+<div><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-ncnn-apk/tree/main/to-delete">https://huggingface.co/csukuangfj/sherpa-ncnn-apk/tree/main/to-delete</a></p>
 </div></blockquote>
-<p>That’s it!</p>
-<p>Please read <a class="reference internal" href="../pretrained_models/index.html#sherpa-ncnn-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> for usages about
-the generated binaries.</p>
-<p>Please create an issue at <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn/issues">https://github.com/k2-fsa/sherpa-ncnn/issues</a>
-if you have any problems.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">2022-12-17-mixed-english-chinese-sherpa-ncnn.apk</span></code> runs on CPU and supports
+<code class="docutils literal notranslate"><span class="pre">Android</span> <span class="pre">&gt;=</span> <span class="pre">5.0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2022-12-17-with-vulkan-gpu-mixed-english-chinese-sherpa-ncnn.apk</span></code> runs on
+GPU with <code class="docutils literal notranslate"><span class="pre">Vulkan</span></code> and requires <code class="docutils literal notranslate"><span class="pre">Android</span> <span class="pre">&gt;=</span> <span class="pre">7.0</span></code>.</p></li>
+</ul>
+</div>
+<section id="video-1-chinese">
+<h2>Video 1: Chinese<a class="headerlink" href="#video-1-chinese" title="Permalink to this headline"></a></h2>
+<iframe src="//player.bilibili.com/player.html?bvid=BV1744y1Z76H&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="600" height="600"> </iframe></section>
+<section id="video-2-chinese-english">
+<h2>Video 2: Chinese + English<a class="headerlink" href="#video-2-chinese-english" title="Permalink to this headline"></a></h2>
+<iframe src="//player.bilibili.com/player.html?bvid=BV1Ge411A7XS&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="600" height="600"> </iframe></section>
+<section id="video-3-chinese-with-background-noise">
+<h2>Video 3: Chinese with background noise<a class="headerlink" href="#video-3-chinese-with-background-noise" title="Permalink to this headline"></a></h2>
+<iframe src="//player.bilibili.com/player.html?bvid=BV1GR4y167fx&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="600" height="600"> </iframe></section>
+<section id="video-4-chinese-poem-with-background-music">
+<h2>Video 4: Chinese poem with background music<a class="headerlink" href="#video-4-chinese-poem-with-background-music" title="Permalink to this headline"></a></h2>
+<iframe src="//player.bilibili.com/player.html?bvid=BV1vR4y1k7eo&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="600" height="600"> </iframe></section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="macos.html" class="btn btn-neutral float-left" title="macOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="arm-embedded-linux.html" class="btn btn-neutral float-right" title="Embedded Linux (arm)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Android" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="build-sherpa-ncnn.html" class="btn btn-neutral float-right" title="Build sherpa-ncnn for Android" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

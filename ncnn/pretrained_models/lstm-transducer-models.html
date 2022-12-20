@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LSTM-transducer-based Models &mdash; sherpa 1.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Conv-Emformer-transducer-based Models" href="conv-emformer-transducer-models.html" />
+    <link rel="prev" title="Pre-trained models" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> sherpa
+          </a>
+              <div class="version">
+                1.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Python users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/huggingface/index.html">Try sherpa with Huggingface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/streaming_asr/index.html">Streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/pretrained_models/index.html">Pre-trained models</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-ncnn</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Pre-trained models</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">LSTM-transducer-based Models</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#csukuangfj-sherpa-ncnn-2022-09-05-english">csukuangfj/sherpa-ncnn-2022-09-05 (English)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csukuangfj-sherpa-ncnn-2022-09-30-chinese">csukuangfj/sherpa-ncnn-2022-09-30 (Chinese)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="conv-emformer-transducer-models.html">Conv-Emformer-transducer-based Models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">onnx</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../onnx/index.html">sherpa-onnx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Triton</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/server/index.html">Triton-server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/client/index.html">Triton-client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/perf/index.html">Perf Analyzer</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sherpa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">sherpa-ncnn</a> &raquo;</li>
+          <li><a href="index.html">Pre-trained models</a> &raquo;</li>
+      <li>LSTM-transducer-based Models</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/ncnn/pretrained_models/lstm-transducer-models.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lstm-transducer-based-models">
+<h1>LSTM-transducer-based Models<a class="headerlink" href="#lstm-transducer-based-models" title="Permalink to this headline"></a></h1>
+<section id="csukuangfj-sherpa-ncnn-2022-09-05-english">
+<h2>csukuangfj/sherpa-ncnn-2022-09-05 (English)<a class="headerlink" href="#csukuangfj-sherpa-ncnn-2022-09-05-english" title="Permalink to this headline"></a></h2>
+<p>This is a model trained using the <a class="reference external" href="https://github.com/SpeechColab/GigaSpeech">GigaSpeech</a> and the <a class="reference external" href="https://www.openslr.org/12">LibriSpeech</a> dataset.</p>
+<p>Please see <a class="reference external" href="https://github.com/k2-fsa/icefall/pull/558">https://github.com/k2-fsa/icefall/pull/558</a> for how the model
+is trained.</p>
+<p>In the following, we describe how to download and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
+<p>Please use the following commands to download it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-ncnn
+
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/sherpa-ncnn-2022-09-05
+<span class="nb">cd</span> sherpa-ncnn-2022-09-05/bar
+git lfs pull --include <span class="s2">&quot;*.bin&quot;</span>
+</pre></div>
+</div>
+<p>Please check that the file size of the pre-trained models is correct (see the
+screen shot below):</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/2022-09-05-filesize.png"><img alt="File size for sherpa-ncnn-2022-09-05" src="../../_images/2022-09-05-filesize.png" style="width: 800px;" /></a>
+</figure>
+<section id="decode-a-single-wave-file-with-build-bin-sherpa-ncnn">
+<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#decode-a-single-wave-file-with-build-bin-sherpa-ncnn" title="Permalink to this headline"></a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It supports decoding only wave files with a single channel and the sampling rate
+should be 16 kHz.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-ncnn
+
+./build/bin/sherpa-ncnn <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/tokens.txt <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-ncnn.exe</span></code> for Windows.</p>
+</div>
+</section>
+<section id="real-time-speech-recognition-from-a-microphone-with-build-bin-sherpa-ncnn-microphone">
+<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone-with-build-bin-sherpa-ncnn-microphone" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-ncnn
+
+./build/bin/sherpa-ncnn-microphone <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/tokens.txt <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param <span class="se">\</span>
+  ./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-ncnn-microphone.exe</span></code> for Windows.</p>
+</div>
+<p>It will print something like below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">threads</span><span class="p">:</span> <span class="mi">4</span>
+<span class="n">num</span> <span class="n">devices</span><span class="p">:</span> <span class="mi">4</span>
+<span class="n">Use</span> <span class="n">default</span> <span class="n">device</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">Name</span><span class="p">:</span> <span class="n">MacBook</span> <span class="n">Pro</span> <span class="n">Microphone</span>
+  <span class="n">Max</span> <span class="nb">input</span> <span class="n">channels</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">Started</span>
+</pre></div>
+</div>
+<p>Speak and it will show you the recognition result in real-time.</p>
+<p>You can find a demo below:</p>
+<div class="video_wrapper" style="padding-bottom: 67.500000%; padding-top: 30px; position: relative; width: 120%">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/m6ynSxycpX0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div></section>
+</section>
+<section id="csukuangfj-sherpa-ncnn-2022-09-30-chinese">
+<h2>csukuangfj/sherpa-ncnn-2022-09-30 (Chinese)<a class="headerlink" href="#csukuangfj-sherpa-ncnn-2022-09-30-chinese" title="Permalink to this headline"></a></h2>
+<p>This is a model trained using the <a class="reference external" href="https://github.com/wenet-e2e/WenetSpeech">WenetSpeech</a> dataset.</p>
+<p>Please see <a class="reference external" href="https://github.com/k2-fsa/icefall/pull/595">https://github.com/k2-fsa/icefall/pull/595</a> for how the model
+is trained.</p>
+<p>In the following, we describe how to download and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
+<p>Please use the following commands to download it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-ncnn
+
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/sherpa-ncnn-2022-09-30
+<span class="nb">cd</span> sherpa-ncnn-2022-09-30
+git lfs pull --include <span class="s2">&quot;*.bin&quot;</span>
+</pre></div>
+</div>
+<p>Please check that the file size of the pre-trained models is correct (see the
+screen shot below):</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/2022-09-30-filesize.png"><img alt="File size for sherpa-ncnn-2022-09-30" src="../../_images/2022-09-30-filesize.png" style="width: 800px;" /></a>
+</figure>
+<section id="id1">
+<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It supports decoding only wave files with a single channel and the sampling rate
+should be 16 kHz.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-ncnn
+
+./build/bin/sherpa-ncnn <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/tokens.txt <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/encoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/encoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/decoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/decoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/joiner_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/joiner_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/test_wavs/0.wav
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you use Windows and get encoding issues, please run:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CHCP <span class="m">65001</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>in your commandline.</p>
+</div>
+</section>
+<section id="id2">
+<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-ncnn
+
+./build/bin/sherpa-ncnn-microphone <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/tokens.txt <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/encoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/encoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/decoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/decoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/joiner_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param <span class="se">\</span>
+ ./sherpa-ncnn-2022-09-30/joiner_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-ncnn-microphone.exe</span></code> for Windows.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you use Windows and get encoding issues, please run:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CHCP <span class="m">65001</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>in your commandline.</p>
+</div>
+<p>You can find a demo below:</p>
+<div class="video_wrapper" style="padding-bottom: 67.500000%; padding-top: 30px; position: relative; width: 120%">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/bbQfoRT75oM" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
+</iframe></div></section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Pre-trained models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="conv-emformer-transducer-models.html" class="btn btn-neutral float-right" title="Conv-Emformer-transducer-based Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, sherpa development team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
