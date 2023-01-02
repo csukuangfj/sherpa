@@ -137,11 +137,11 @@ both servers is that they are running on different ports.</p>
 </section>
 <section id="start-the-https-server">
 <h2>Start the https server<a class="headerlink" href="#start-the-https-server" title="Permalink to this headline"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> sherpa/bin/web
-./start-https-server.py <span class="se">\</span>
-  --server-address <span class="m">0</span>.0.0.0 <span class="se">\</span>
-  --server-port <span class="m">6007</span> <span class="se">\</span>
-  --certificate cert.pem
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa/bin/web
+./start-https-server.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--server-address<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--server-port<span class="w"> </span><span class="m">6007</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--certificate<span class="w"> </span>cert.pem
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">0.0.0.0</span></code> means the https server will listen on all IP addresses of the
@@ -194,20 +194,20 @@ the https server running on port <code class="docutils literal notranslate"><spa
 as a demo below. The steps should be similar for starting other
 streaming servers.</p>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa
 
-git lfs install
-git clone https://huggingface.co/Zengwei/icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05
+git<span class="w"> </span>lfs<span class="w"> </span>install
+git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/Zengwei/icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05
 
-./sherpa/bin/conv_emformer_transducer_stateless2/streaming_server.py <span class="se">\</span>
-  --endpoint.rule3.min-utterance-length <span class="m">1000</span>.0 <span class="se">\</span>
-  --port <span class="m">6006</span> <span class="se">\</span>
-  --max-batch-size <span class="m">50</span> <span class="se">\</span>
-  --max-wait-ms <span class="m">5</span> <span class="se">\</span>
-  --nn-pool-size <span class="m">1</span> <span class="se">\</span>
-  --nn-model-filename ./icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05/exp/cpu-jit-epoch-30-avg-10-torch-1.10.0.pt <span class="se">\</span>
-  --bpe-model-filename ./icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05/data/lang_bpe_500/bpe.model <span class="se">\</span>
-  --certificate ./sherpa/bin/web/cert.pem
+./sherpa/bin/conv_emformer_transducer_stateless2/streaming_server.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--endpoint.rule3.min-utterance-length<span class="w"> </span><span class="m">1000</span>.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--port<span class="w"> </span><span class="m">6006</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-batch-size<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-wait-ms<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-pool-size<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model-filename<span class="w"> </span>./icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05/exp/cpu-jit-epoch-30-avg-10-torch-1.10.0.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--bpe-model-filename<span class="w"> </span>./icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05/data/lang_bpe_500/bpe.model<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--certificate<span class="w"> </span>./sherpa/bin/web/cert.pem
 </pre></div>
 </div>
 <p>Now visit <a class="reference external" href="https://0.0.0.0:6007">https://0.0.0.0:6007</a> and you should be able to make a secure

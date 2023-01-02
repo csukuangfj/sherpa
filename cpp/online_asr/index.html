@@ -118,14 +118,14 @@ at present.</p>
 shows how to use the C++ API for real-time speech recognition with a microphone.
 After running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-j</span></code>, you can also find an executable <code class="docutils literal notranslate"><span class="pre">bin/test_online_recognizer_microphone</span></code>.
 The following shows how to use it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa/build
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa/build
 
-git lfs install
-git clone https://huggingface.co/Zengwei/icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05
+git<span class="w"> </span>lfs<span class="w"> </span>install
+git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/Zengwei/icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05
 
-./bin/test_online_recognizer_microphone <span class="se">\</span>
-  ./icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05/exp/cpu-jit-epoch-30-avg-10-torch-1.10.0.pt <span class="se">\</span>
-  ./icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05/data/lang_bpe_500/tokens.txt
+./bin/test_online_recognizer_microphone<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05/exp/cpu-jit-epoch-30-avg-10-torch-1.10.0.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05/data/lang_bpe_500/tokens.txt
 </pre></div>
 </div>
 <p>It will print something like below:</p>

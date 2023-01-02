@@ -133,12 +133,12 @@ The work for streaming ASR is still on-going.</p>
 </div>
 <section id="build-sherpa-onnx-for-linux-and-macos">
 <h2>Build sherpa-onnx for Linux and macOS<a class="headerlink" href="#build-sherpa-onnx-for-linux-and-macos" title="Permalink to this headline"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa-onnx
-<span class="nb">cd</span> sherpa-onnx
-mkdir build
-<span class="nb">cd</span> build
-cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ..
-make -j6
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
+<span class="nb">cd</span><span class="w"> </span>sherpa-onnx
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>..
+make<span class="w"> </span>-j6
 </pre></div>
 </div>
 <p>It will generate a binary <code class="docutils literal notranslate"><span class="pre">sherpa-onnx</span></code> inside <code class="docutils literal notranslate"><span class="pre">./build/bin/</span></code>.</p>
@@ -150,12 +150,12 @@ recognition with pretrained models.</p>
 </section>
 <section id="build-sherpa-onnx-for-windows">
 <h2>Build sherpa-onnx for Windows<a class="headerlink" href="#build-sherpa-onnx-for-windows" title="Permalink to this headline"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa-onnx
-<span class="nb">cd</span> sherpa-onnx
-mkdir build
-<span class="nb">cd</span> build
-cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ..
-cmake --build . --config Release
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
+<span class="nb">cd</span><span class="w"> </span>sherpa-onnx
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>..
+cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>Release
 </pre></div>
 </div>
 <p>It will generate a binary <code class="docutils literal notranslate"><span class="pre">sherpa-onnx.exe</span></code> inside <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/</span></code>.</p>
@@ -173,13 +173,13 @@ for offline speech recognition with pre-trained models.</p>
 <section id="english">
 <h3>English<a class="headerlink" href="#english" title="Permalink to this headline"></a></h3>
 <p>First, let us download the pretrained model:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-onnx
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13
-<span class="nb">cd</span> icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13
-git lfs pull --include <span class="s2">&quot;exp/onnx/*.onnx&quot;</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13
+<span class="nb">cd</span><span class="w"> </span>icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/onnx/*.onnx&quot;</span>
 
-<span class="nb">cd</span> ..
+<span class="nb">cd</span><span class="w"> </span>..
 </pre></div>
 </div>
 <div class="admonition caution">
@@ -187,14 +187,14 @@ git lfs pull --include <span class="s2">&quot;exp/onnx/*.onnx&quot;</span>
 <p>You have to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span></code> to download the pretrained models.</p>
 </div>
 <p>Second, we can use the following command to decode a wave file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build/bin/sherpa-onnx <span class="se">\</span>
-  ./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/data/lang_bpe_500/tokens.txt <span class="se">\</span>
-  ./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/exp/onnx/encoder.onnx <span class="se">\</span>
-  ./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/exp/onnx/decoder.onnx <span class="se">\</span>
-  ./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/exp/onnx/joiner.onnx <span class="se">\</span>
-  ./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/exp/onnx/joiner_encoder_proj.onnx <span class="se">\</span>
-  ./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/exp/onnx/joiner_decoder_proj.onnx <span class="se">\</span>
-  ./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/test_wavs/1089-134686-0001.wav
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/data/lang_bpe_500/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/exp/onnx/encoder.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/exp/onnx/decoder.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/exp/onnx/joiner.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/exp/onnx/joiner_encoder_proj.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/exp/onnx/joiner_decoder_proj.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/test_wavs/1089-134686-0001.wav
 </pre></div>
 </div>
 <div class="admonition caution">
@@ -218,13 +218,13 @@ if you are interested in how the model is trained and exported.</p>
 <section id="chinese">
 <h3>Chinese<a class="headerlink" href="#chinese" title="Permalink to this headline"></a></h3>
 <p>First, let us download the pretrained model:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa-onnx
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/luomingshuang/icefall_asr_wenetspeech_pruned_transducer_stateless2
-<span class="nb">cd</span> icefall_asr_wenetspeech_pruned_transducer_stateless2
-git lfs pull --include <span class="s2">&quot;exp/*.onnx&quot;</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/luomingshuang/icefall_asr_wenetspeech_pruned_transducer_stateless2
+<span class="nb">cd</span><span class="w"> </span>icefall_asr_wenetspeech_pruned_transducer_stateless2
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/*.onnx&quot;</span>
 
-<span class="nb">cd</span> ..
+<span class="nb">cd</span><span class="w"> </span>..
 </pre></div>
 </div>
 <div class="admonition caution">
@@ -232,14 +232,14 @@ git lfs pull --include <span class="s2">&quot;exp/*.onnx&quot;</span>
 <p>You have to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span></code> to download the pretrained models.</p>
 </div>
 <p>Second, we can use the following command to decode a wave file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build/bin/sherpa-onnx <span class="se">\</span>
-  ./icefall_asr_wenetspeech_pruned_transducer_stateless2/data/lang_char/tokens.txt <span class="se">\</span>
-  ./icefall_asr_wenetspeech_pruned_transducer_stateless2/exp/encoder-epoch-10-avg-2.onnx <span class="se">\</span>
-  ./icefall_asr_wenetspeech_pruned_transducer_stateless2/exp/decoder-epoch-10-avg-2.onnx <span class="se">\</span>
-  ./icefall_asr_wenetspeech_pruned_transducer_stateless2/exp/joiner-epoch-10-avg-2.onnx <span class="se">\</span>
-  ./icefall_asr_wenetspeech_pruned_transducer_stateless2/exp/joiner_encoder_proj-epoch-10-avg-2.onnx <span class="se">\</span>
-  ./icefall_asr_wenetspeech_pruned_transducer_stateless2/exp/joiner_decoder_proj-epoch-10-avg-2.onnx <span class="se">\</span>
-  ./icefall_asr_wenetspeech_pruned_transducer_stateless2/test_wavs/DEV_T0000000000.wav
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall_asr_wenetspeech_pruned_transducer_stateless2/data/lang_char/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall_asr_wenetspeech_pruned_transducer_stateless2/exp/encoder-epoch-10-avg-2.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall_asr_wenetspeech_pruned_transducer_stateless2/exp/decoder-epoch-10-avg-2.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall_asr_wenetspeech_pruned_transducer_stateless2/exp/joiner-epoch-10-avg-2.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall_asr_wenetspeech_pruned_transducer_stateless2/exp/joiner_encoder_proj-epoch-10-avg-2.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall_asr_wenetspeech_pruned_transducer_stateless2/exp/joiner_decoder_proj-epoch-10-avg-2.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./icefall_asr_wenetspeech_pruned_transducer_stateless2/test_wavs/DEV_T0000000000.wav
 </pre></div>
 </div>
 <div class="admonition caution">

@@ -149,19 +149,19 @@ pretrained model: <a class="reference external" href="https://huggingface.co/pku
 found at <a class="reference external" href="https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/RESULTS.md">https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/RESULTS.md</a>.</p>
 </div>
 <p>The following shows you how to start the server with the above pretrained model.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa
 
-git lfs install
-git clone https://huggingface.co/pkufool/icefall_librispeech_streaming_pruned_transducer_stateless4_20220625
+git<span class="w"> </span>lfs<span class="w"> </span>install
+git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/pkufool/icefall_librispeech_streaming_pruned_transducer_stateless4_20220625
 
-./sherpa/bin/streaming_pruned_transducer_statelessX/streaming_server.py <span class="se">\</span>
-  --endpoint.rule3.min-utterance-length <span class="m">1000</span>.0 <span class="se">\</span>
-  --port <span class="m">6006</span> <span class="se">\</span>
-  --max-batch-size <span class="m">50</span> <span class="se">\</span>
-  --max-wait-ms <span class="m">5</span> <span class="se">\</span>
-  --nn-pool-size <span class="m">1</span> <span class="se">\</span>
-  --nn-model-filename ./icefall_librispeech_streaming_pruned_transducer_stateless4_20220625/exp/cpu_jit-epoch-25-avg-3.pt <span class="se">\</span>
-  --bpe-model-filename ./icefall_librispeech_streaming_pruned_transducer_stateless4_20220625/data/lang_bpe_500/bpe.model
+./sherpa/bin/streaming_pruned_transducer_statelessX/streaming_server.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--endpoint.rule3.min-utterance-length<span class="w"> </span><span class="m">1000</span>.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--port<span class="w"> </span><span class="m">6006</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-batch-size<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-wait-ms<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-pool-size<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model-filename<span class="w"> </span>./icefall_librispeech_streaming_pruned_transducer_stateless4_20220625/exp/cpu_jit-epoch-25-avg-3.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--bpe-model-filename<span class="w"> </span>./icefall_librispeech_streaming_pruned_transducer_stateless4_20220625/data/lang_bpe_500/bpe.model
 </pre></div>
 </div>
 <p>That’s it!</p>

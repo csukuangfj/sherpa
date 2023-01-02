@@ -126,7 +126,7 @@ using a <a class="reference external" href="https://arxiv.org/abs/2005.08100">Co
 <a class="reference external" href="https://git-lfs.github.com/">git LFS</a>, you have
 to first install <code class="docutils literal notranslate"><span class="pre">git-lfs</span></code> before you continue.</p>
 <p>On Ubuntu, you can install <code class="docutils literal notranslate"><span class="pre">git-lfs</span></code> using</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install git-lfs
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git-lfs
 </pre></div>
 </div>
 <div class="admonition hint">
@@ -136,8 +136,8 @@ to first install <code class="docutils literal notranslate"><span class="pre">gi
 systems.</p>
 </div>
 <p>After installing <code class="docutils literal notranslate"><span class="pre">git-lfs</span></code>, we are ready to download the pre-trained model:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git lfs install
-git clone https://huggingface.co/csukuangfj/icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>lfs<span class="w"> </span>install
+git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13
 </pre></div>
 </div>
 <div class="admonition caution">
@@ -146,16 +146,16 @@ git clone https://huggingface.co/csukuangfj/icefall-asr-librispeech-pruned-trans
 Otherwise, you will be SAD later.</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">3</span></code> most important files you just downloaded are:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/
 
-$ ls -lh exp/*jit*
-lrwxrwxrwx <span class="m">1</span> kuangfangjun root   <span class="m">10</span> Jun <span class="m">17</span> <span class="m">21</span>:52 exp/cpu_jit-torch-1.10.0.pt -&gt; cpu_jit.pt
--rw-r--r-- <span class="m">1</span> kuangfangjun root 326M Jun <span class="m">18</span> <span class="m">08</span>:58 exp/cpu_jit-torch-1.6.0.pt
--rw-r--r-- <span class="m">1</span> kuangfangjun root 326M May <span class="m">23</span> <span class="m">00</span>:05 exp/cpu_jit.pt
+$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>exp/*jit*
+lrwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w">   </span><span class="m">10</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">21</span>:52<span class="w"> </span>exp/cpu_jit-torch-1.10.0.pt<span class="w"> </span>-&gt;<span class="w"> </span>cpu_jit.pt
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span>326M<span class="w"> </span>Jun<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">08</span>:58<span class="w"> </span>exp/cpu_jit-torch-1.6.0.pt
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span>326M<span class="w"> </span>May<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">00</span>:05<span class="w"> </span>exp/cpu_jit.pt
 
 
-$ ls -lh data/lang_bpe_500/bpe.mode
--rw-r--r-- <span class="m">1</span> kuangfangjun root 240K Mar <span class="m">12</span> <span class="m">14</span>:43 data/lang_bpe_500/bpe.model
+$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>data/lang_bpe_500/bpe.mode
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span>240K<span class="w"> </span>Mar<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">14</span>:43<span class="w"> </span>data/lang_bpe_500/bpe.model
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">exp/cpu_jit-torch-1.10.0.pt</span></code> is a torchscript model
@@ -191,7 +191,7 @@ and regains the <code class="docutils literal notranslate"><span class="pre">GIL
 <p>In this way, we can maximize the utilization of multi CPU cores.</p>
 </div>
 <p>To view the usage information of the server, you can use:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./sherpa/bin/pruned_transducer_statelessX/offline_server.py --help
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./sherpa/bin/pruned_transducer_statelessX/offline_server.py<span class="w"> </span>--help
 </pre></div>
 </div>
 <p>which gives the following output:</p>
@@ -273,21 +273,21 @@ to start the server:</p>
 <div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">Command to start the server using the above pre-trained model</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
 
-<span class="nb">export</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>
 
 <span class="nv">nn_model_filename</span><span class="o">=</span>./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/exp/cpu_jit-torch-1.6.0.pt
 <span class="nv">bpe_model</span><span class="o">=</span>./icefall-asr-librispeech-pruned-transducer-stateless3-2022-05-13/data/lang_bpe_500/bpe.model
 
-sherpa/bin/pruned_transducer_statelessX/offline_server.py <span class="se">\</span>
-  --port <span class="m">6010</span> <span class="se">\</span>
-  --num-device <span class="m">1</span> <span class="se">\</span>
-  --max-batch-size <span class="m">10</span> <span class="se">\</span>
-  --max-wait-ms <span class="m">5</span> <span class="se">\</span>
-  --feature-extractor-pool-size <span class="m">5</span> <span class="se">\</span>
-  --nn-pool-size <span class="m">2</span> <span class="se">\</span>
-  --max-active-connections <span class="m">10</span> <span class="se">\</span>
-  --nn-model-filename <span class="nv">$nn_model_filename</span> <span class="se">\</span>
-  --bpe-model-filename <span class="nv">$bpe_model</span>
+sherpa/bin/pruned_transducer_statelessX/offline_server.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--port<span class="w"> </span><span class="m">6010</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--num-device<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-batch-size<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-wait-ms<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--feature-extractor-pool-size<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-pool-size<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-active-connections<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model-filename<span class="w"> </span><span class="nv">$nn_model_filename</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--bpe-model-filename<span class="w"> </span><span class="nv">$bpe_model</span>
 </pre></div>
 </div>
 </div>
@@ -305,7 +305,7 @@ sherpa/bin/pruned_transducer_statelessX/offline_server.py <span class="se">\</sp
 <h2>Start the client<a class="headerlink" href="#start-the-client" title="Permalink to this headline"></a></h2>
 <p>We also provide a Python script
 <a class="reference external" href="https://github.com/k2-fsa/sherpa/blob/master/sherpa/bin/pruned_transducer_statelessX/offline_client.py">sherpa/bin/pruned_transducer_statelessX/offline_client.py</a> for the client.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sherpa/bin/pruned_transducer_statelessX/offline_client.py --help
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sherpa/bin/pruned_transducer_statelessX/offline_client.py<span class="w"> </span>--help
 </pre></div>
 </div>
 <p>shows the following help information:</p>

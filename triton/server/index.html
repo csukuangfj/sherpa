@@ -116,29 +116,29 @@
 <section id="deploy-streaming-asr-models-with-onnx">
 <h2>Deploy streaming ASR models with Onnx<a class="headerlink" href="#deploy-streaming-asr-models-with-onnx" title="Permalink to this headline"></a></h2>
 <p>First, we need to export pretrained models with Onnx.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SHERPA_SRC</span><span class="o">=</span>./sherpa
-<span class="nb">export</span> <span class="nv">ICEFALL_SRC</span><span class="o">=</span>/workspace/icefall
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">SHERPA_SRC</span><span class="o">=</span>./sherpa
+<span class="nb">export</span><span class="w"> </span><span class="nv">ICEFALL_SRC</span><span class="o">=</span>/workspace/icefall
 <span class="c1"># copy essentials</span>
-cp <span class="nv">$SHERPA_SRC</span>/triton/scripts/*onnx*.py <span class="nv">$ICEFALL_DIR</span>/egs/wenetspeech/ASR/pruned_stateless_transducer5/
-<span class="nb">cd</span> <span class="nv">$ICEFALL_SRC</span>/egs/wenetspeech/ASR/
+cp<span class="w"> </span><span class="nv">$SHERPA_SRC</span>/triton/scripts/*onnx*.py<span class="w"> </span><span class="nv">$ICEFALL_DIR</span>/egs/wenetspeech/ASR/pruned_stateless_transducer5/
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$ICEFALL_SRC</span>/egs/wenetspeech/ASR/
 <span class="c1"># download pretrained models</span>
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/luomingshuang/icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming
-<span class="nb">cd</span> ./icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming
-git lfs pull --include <span class="s2">&quot;exp/pretrained_epoch_7_avg_1.pt&quot;</span>
-<span class="nb">cd</span> -
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/luomingshuang/icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming
+<span class="nb">cd</span><span class="w"> </span>./icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/pretrained_epoch_7_avg_1.pt&quot;</span>
+<span class="nb">cd</span><span class="w"> </span>-
 <span class="c1"># export to onnx fp16</span>
-ln -s ./icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming/exp/pretrained_epoch_7_avg_1.pt ./icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming/exp/epoch-999.pt
-./pruned_transducer_stateless5/export_onnx.py <span class="se">\</span>
-   --exp-dir ./icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming/exp <span class="se">\</span>
-   --tokenizer-file ./icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming/data/lang_char <span class="se">\</span>
-   --epoch <span class="m">999</span> <span class="se">\</span>
-   --avg <span class="m">1</span> <span class="se">\</span>
-   --streaming-model <span class="m">1</span> <span class="se">\</span>
-   --causal-convolution <span class="m">1</span> <span class="se">\</span>
-   --onnx <span class="m">1</span> <span class="se">\</span>
-   --left-context <span class="m">64</span> <span class="se">\</span>
-   --right-context <span class="m">4</span> <span class="se">\</span>
-   --fp16
+ln<span class="w"> </span>-s<span class="w"> </span>./icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming/exp/pretrained_epoch_7_avg_1.pt<span class="w"> </span>./icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming/exp/epoch-999.pt
+./pruned_transducer_stateless5/export_onnx.py<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--exp-dir<span class="w"> </span>./icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming/exp<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--tokenizer-file<span class="w"> </span>./icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming/data/lang_char<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--epoch<span class="w"> </span><span class="m">999</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--avg<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--streaming-model<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--causal-convolution<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--onnx<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--left-context<span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--right-context<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--fp16
 </pre></div>
 </div>
 <div class="admonition note">
@@ -146,8 +146,8 @@ ln -s ./icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming/exp/pretr
 <p>For Chinese models, <code class="docutils literal notranslate"><span class="pre">--tokenizer-file</span></code> points to <code class="docutils literal notranslate"><span class="pre">&lt;pretrained_dir&gt;/data/lang_char</span></code>. While for English models, it points to <code class="docutils literal notranslate"><span class="pre">&lt;pretrained_dir&gt;/data/lang_bpe_500/bpe.model</span></code> file.</p>
 </div>
 <p>Then, in the docker container, you could start the service with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> sherpa/triton/
-bash scripts/start_streaming_server.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa/triton/
+bash<span class="w"> </span>scripts/start_streaming_server.sh
 </pre></div>
 </div>
 </section>
@@ -158,21 +158,21 @@ bash scripts/start_streaming_server.sh
 <p>Currently, we only support FP32 offline ASR inference for torchscript backend. Streaming ASR and FP16 inference are not supported.</p>
 </div>
 <p>First, we need to export pretrained models using jit.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SHERPA_SRC</span><span class="o">=</span>./sherpa
-<span class="nb">export</span> <span class="nv">ICEFALL_SRC</span><span class="o">=</span>/workspace/icefall
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">SHERPA_SRC</span><span class="o">=</span>./sherpa
+<span class="nb">export</span><span class="w"> </span><span class="nv">ICEFALL_SRC</span><span class="o">=</span>/workspace/icefall
 <span class="c1"># Download pretrained models</span>
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/icefall-asr-librispeech-pruned-transducer-stateless3-2022-04-29 <span class="nv">$ICEFALL_DIR</span>/egs/librispeech/ASR/pruned_stateless_transducer3/
-<span class="nb">cd</span> icefall-asr-librispeech-pruned-transducer-stateless3-2022-04-29
-git lfs pull --include <span class="s2">&quot;exp/pretrained-epoch-25-avg-7.pt&quot;</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/icefall-asr-librispeech-pruned-transducer-stateless3-2022-04-29<span class="w"> </span><span class="nv">$ICEFALL_DIR</span>/egs/librispeech/ASR/pruned_stateless_transducer3/
+<span class="nb">cd</span><span class="w"> </span>icefall-asr-librispeech-pruned-transducer-stateless3-2022-04-29
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/pretrained-epoch-25-avg-7.pt&quot;</span>
 <span class="c1"># export them to three jit models: encoder_jit.pt, decoder_jit.pt, joiner_jit.pt</span>
-cp <span class="nv">$SHERPA_SRC</span>/triton/scripts/conformer_triton.py <span class="nv">$ICEFALL_DIR</span>/egs/librispeech/ASR/pruned_stateless_transducer3/
-cp <span class="nv">$SHERPA_SRC</span>/triton/scripts/export_jit.py <span class="nv">$ICEFALL_DIR</span>/egs/librispeech/ASR/pruned_stateless_transducer3/
-<span class="nb">cd</span> <span class="nv">$ICEFALL_DIR</span>/egs/librispeech/ASR/pruned_stateless_transducer3
-python3 export_jit.py <span class="se">\</span>
-        --pretrained-model <span class="nv">$ICEFALL_DIR</span>/egs/librispeech/ASR/pruned_stateless_transducer3/icefall-asr-librispeech-pruned-transducer-stateless3-2022-04-29 <span class="se">\</span>
-        --output-dir &lt;jit_model_dir&gt; --bpe-model &lt;bpe_model_path&gt;
+cp<span class="w"> </span><span class="nv">$SHERPA_SRC</span>/triton/scripts/conformer_triton.py<span class="w"> </span><span class="nv">$ICEFALL_DIR</span>/egs/librispeech/ASR/pruned_stateless_transducer3/
+cp<span class="w"> </span><span class="nv">$SHERPA_SRC</span>/triton/scripts/export_jit.py<span class="w"> </span><span class="nv">$ICEFALL_DIR</span>/egs/librispeech/ASR/pruned_stateless_transducer3/
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$ICEFALL_DIR</span>/egs/librispeech/ASR/pruned_stateless_transducer3
+python3<span class="w"> </span>export_jit.py<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--pretrained-model<span class="w"> </span><span class="nv">$ICEFALL_DIR</span>/egs/librispeech/ASR/pruned_stateless_transducer3/icefall-asr-librispeech-pruned-transducer-stateless3-2022-04-29<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--output-dir<span class="w"> </span>&lt;jit_model_dir&gt;<span class="w"> </span>--bpe-model<span class="w"> </span>&lt;bpe_model_path&gt;
 <span class="c1"># copy bpe file to &lt;jit_model_dir&gt;, later we would mount &lt;jit_model_dir&gt; to the triton docker container</span>
-cp &lt;bpe_model_path&gt; &lt;jit_model_dir&gt;
+cp<span class="w"> </span>&lt;bpe_model_path&gt;<span class="w"> </span>&lt;jit_model_dir&gt;
 </pre></div>
 </div>
 <div class="admonition note">
@@ -181,8 +181,8 @@ cp &lt;bpe_model_path&gt; &lt;jit_model_dir&gt;
 <code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">&lt;host_dir&gt;:&lt;container_dir&gt;</span></code> when lauching the container.</p>
 </div>
 <p>Then, in the docker container, you could start the service with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> sherpa/triton/
-bash scripts/start_offline_server_jit.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa/triton/
+bash<span class="w"> </span>scripts/start_offline_server_jit.sh
 </pre></div>
 </div>
 </section>

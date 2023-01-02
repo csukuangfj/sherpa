@@ -134,75 +134,75 @@ You can replace <code class="docutils literal notranslate"><span class="pre">she
 <section id="icefall-asr-gigaspeech-conformer-ctc">
 <h4>icefall-asr-gigaspeech-conformer-ctc<a class="headerlink" href="#icefall-asr-gigaspeech-conformer-ctc" title="Permalink to this headline"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using GigaSpeech</span>
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/wgb14/icefall-asr-gigaspeech-conformer-ctc
-<span class="nb">cd</span> icefall-asr-gigaspeech-conformer-ctc
-git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/HLG.pt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/tokens.txt&quot;</span>
-mkdir test_wavs
-<span class="nb">cd</span> test_wavs
-wget https://huggingface.co/csukuangfj/wav2vec2.0-torchaudio/resolve/main/test_wavs/1089-134686-0001.wav
-wget https://huggingface.co/csukuangfj/wav2vec2.0-torchaudio/resolve/main/test_wavs/1221-135766-0001.wav
-wget https://huggingface.co/csukuangfj/wav2vec2.0-torchaudio/resolve/main/test_wavs/1221-135766-0002.wav
-<span class="nb">cd</span> ..
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/wgb14/icefall-asr-gigaspeech-conformer-ctc
+<span class="nb">cd</span><span class="w"> </span>icefall-asr-gigaspeech-conformer-ctc
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;data/lang_bpe_500/HLG.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;data/lang_bpe_500/tokens.txt&quot;</span>
+mkdir<span class="w"> </span>test_wavs
+<span class="nb">cd</span><span class="w"> </span>test_wavs
+wget<span class="w"> </span>https://huggingface.co/csukuangfj/wav2vec2.0-torchaudio/resolve/main/test_wavs/1089-134686-0001.wav
+wget<span class="w"> </span>https://huggingface.co/csukuangfj/wav2vec2.0-torchaudio/resolve/main/test_wavs/1221-135766-0001.wav
+wget<span class="w"> </span>https://huggingface.co/csukuangfj/wav2vec2.0-torchaudio/resolve/main/test_wavs/1221-135766-0002.wav
+<span class="nb">cd</span><span class="w"> </span>..
 
 <span class="c1"># Decode with H</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
-  ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0002.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0002.wav
 
 <span class="c1"># Decode with HLG</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --hlg<span class="o">=</span>./data/lang_bpe_500/HLG.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
-  ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0002.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hlg<span class="o">=</span>./data/lang_bpe_500/HLG.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0002.wav
 </pre></div>
 </div>
 </section>
 <section id="icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09">
 <h4>icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09<a class="headerlink" href="#icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09" title="Permalink to this headline"></a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09
-<span class="nb">cd</span> icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09
+<span class="nb">cd</span><span class="w"> </span>icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09
 
-git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/tokens.txt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/HLG.pt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/HLG_modified.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;data/lang_bpe_500/tokens.txt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;data/lang_bpe_500/HLG.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;data/lang_bpe_500/HLG_modified.pt&quot;</span>
 
 <span class="c1"># Decode with H</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
-  --use-gpu<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
-  ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0002.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use-gpu<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0002.wav
 
 <span class="c1"># Decode with HLG</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
-  --hlg<span class="o">=</span>./data/lang_bpe_500/HLG.pt <span class="se">\</span>
-  --use-gpu<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
-  ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0002.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hlg<span class="o">=</span>./data/lang_bpe_500/HLG.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use-gpu<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0002.wav
 
 <span class="c1"># Decode with HLG (modified)</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
-  --hlg<span class="o">=</span>./data/lang_bpe_500/HLG_modified.pt <span class="se">\</span>
-  --use-gpu<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
-  ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0002.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hlg<span class="o">=</span>./data/lang_bpe_500/HLG_modified.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use-gpu<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0002.wav
 </pre></div>
 </div>
 </section>
@@ -213,33 +213,33 @@ sherpa-offline <span class="se">\</span>
 <span class="c1"># See https://github.com/k2-fsa/icefall/pull/696</span>
 <span class="c1">#</span>
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/videodanchik/icefall-asr-tedlium3-conformer-ctc2
-<span class="nb">cd</span> icefall-asr-tedlium3-conformer-ctc2
-git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/videodanchik/icefall-asr-tedlium3-conformer-ctc2
+<span class="nb">cd</span><span class="w"> </span>icefall-asr-tedlium3-conformer-ctc2
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
 
-git lfs pull --include <span class="s2">&quot;data/lang_bpe/HLG.pt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe/tokens.txt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;data/lang_bpe/HLG.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;data/lang_bpe/tokens.txt&quot;</span>
 
-git lfs pull --include <span class="s2">&quot;test_wavs/DanBarber_2010-219.wav&quot;</span>
-git lfs pull --include <span class="s2">&quot;test_wavs/DanielKahneman_2010-157.wav&quot;</span>
-git lfs pull --include <span class="s2">&quot;test_wavs/RobertGupta_2010U-15.wav&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;test_wavs/DanBarber_2010-219.wav&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;test_wavs/DanielKahneman_2010-157.wav&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;test_wavs/RobertGupta_2010U-15.wav&quot;</span>
 
 <span class="c1"># Decode with H</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe/tokens.txt <span class="se">\</span>
-  ./test_wavs/DanBarber_2010-219.wav <span class="se">\</span>
-  ./test_wavs/DanielKahneman_2010-157.wav <span class="se">\</span>
-  ./test_wavs/RobertGupta_2010U-15.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_bpe/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/DanBarber_2010-219.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/DanielKahneman_2010-157.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/RobertGupta_2010U-15.wav
 
 <span class="c1"># Decode with HLG</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --hlg<span class="o">=</span>./data/lang_bpe/HLG.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe/tokens.txt <span class="se">\</span>
-  ./test_wavs/DanBarber_2010-219.wav <span class="se">\</span>
-  ./test_wavs/DanielKahneman_2010-157.wav <span class="se">\</span>
-  ./test_wavs/RobertGupta_2010U-15.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hlg<span class="o">=</span>./data/lang_bpe/HLG.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_bpe/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/DanBarber_2010-219.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/DanielKahneman_2010-157.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/RobertGupta_2010U-15.wav
 </pre></div>
 </div>
 </section>
@@ -250,28 +250,28 @@ sherpa-offline <span class="se">\</span>
 <span class="c1"># See https://github.com/k2-fsa/icefall/pull/13</span>
 <span class="c1">#</span>
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/pkufool/icefall_asr_librispeech_conformer_ctc
-<span class="nb">cd</span> icefall_asr_librispeech_conformer_ctc
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/pkufool/icefall_asr_librispeech_conformer_ctc
+<span class="nb">cd</span><span class="w"> </span>icefall_asr_librispeech_conformer_ctc
 
-git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe/HLG.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;data/lang_bpe/HLG.pt&quot;</span>
 
 <span class="c1"># Decode with H</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe/tokens.txt <span class="se">\</span>
-  ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0002.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_bpe/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0002.wav
 
 <span class="c1"># Decode with HLG</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --hlg<span class="o">=</span>./data/lang_bpe/HLG.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe/tokens.txt <span class="se">\</span>
-  ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
-  ./test_wavs/1221-135766-0002.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hlg<span class="o">=</span>./data/lang_bpe/HLG.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_bpe/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0002.wav
 </pre></div>
 </div>
 </section>
@@ -280,27 +280,27 @@ sherpa-offline <span class="se">\</span>
 <h3>Chinese<a class="headerlink" href="#chinese" title="Permalink to this headline"></a></h3>
 <section id="icefall-asr-aishell-conformer-ctc">
 <h4>icefall_asr_aishell_conformer_ctc<a class="headerlink" href="#icefall-asr-aishell-conformer-ctc" title="Permalink to this headline"></a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/pkufool/icefall_asr_aishell_conformer_ctc
-<span class="nb">cd</span> icefall_asr_aishell_conformer_ctc
-git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_char/HLG.pt&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/pkufool/icefall_asr_aishell_conformer_ctc
+<span class="nb">cd</span><span class="w"> </span>icefall_asr_aishell_conformer_ctc
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;data/lang_char/HLG.pt&quot;</span>
 
 <span class="c1"># Decode with an H graph</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_char/tokens.txt <span class="se">\</span>
-  ./test_waves/BAC009S0764W0121.wav <span class="se">\</span>
-  ./test_waves/BAC009S0764W0122.wav <span class="se">\</span>
-  ./test_waves/BAC009S0764W0123.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_char/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_waves/BAC009S0764W0121.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_waves/BAC009S0764W0122.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_waves/BAC009S0764W0123.wav
 
 <span class="c1"># Decode with an HLG graph</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_char/tokens.txt <span class="se">\</span>
-  --hlg<span class="o">=</span>./data/lang_char/HLG.pt <span class="se">\</span>
-  ./test_waves/BAC009S0764W0121.wav <span class="se">\</span>
-  ./test_waves/BAC009S0764W0122.wav <span class="se">\</span>
-  ./test_waves/BAC009S0764W0123.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_char/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hlg<span class="o">=</span>./data/lang_char/HLG.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_waves/BAC009S0764W0121.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_waves/BAC009S0764W0122.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_waves/BAC009S0764W0123.wav
 </pre></div>
 </div>
 </section>
@@ -309,28 +309,28 @@ sherpa-offline <span class="se">\</span>
 <h3>Arabic<a class="headerlink" href="#arabic" title="Permalink to this headline"></a></h3>
 <section id="icefall-asr-mgb2-conformer-ctc-2022-27-06">
 <h4>icefall-asr-mgb2-conformer_ctc-2022-27-06<a class="headerlink" href="#icefall-asr-mgb2-conformer-ctc-2022-27-06" title="Permalink to this headline"></a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/AmirHussein/icefall-asr-mgb2-conformer_ctc-2022-27-06
-<span class="nb">cd</span> icefall-asr-mgb2-conformer_ctc-2022-27-06
-git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe_5000/HLG.pt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe_5000/tokens.txt&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/AmirHussein/icefall-asr-mgb2-conformer_ctc-2022-27-06
+<span class="nb">cd</span><span class="w"> </span>icefall-asr-mgb2-conformer_ctc-2022-27-06
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;data/lang_bpe_5000/HLG.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;data/lang_bpe_5000/tokens.txt&quot;</span>
 
 <span class="c1"># Decode with an H graph</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_5000/tokens.txt <span class="se">\</span>
-  ./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0053813:0054281.wav <span class="se">\</span>
-  ./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0051454:0052244.wav <span class="se">\</span>
-  ./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0052244:0053004.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_bpe_5000/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0053813:0054281.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0051454:0052244.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0052244:0053004.wav
 
 <span class="c1"># Decode with an HLG graph</span>
-sherpa-offline <span class="se">\</span>
-  --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_5000/tokens.txt <span class="se">\</span>
-  --hlg<span class="o">=</span>./data/lang_bpe_5000/HLG.pt <span class="se">\</span>
-  ./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0053813:0054281.wav <span class="se">\</span>
-  ./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0051454:0052244.wav <span class="se">\</span>
-  ./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0052244:0053004.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_bpe_5000/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hlg<span class="o">=</span>./data/lang_bpe_5000/HLG.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0053813:0054281.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0051454:0052244.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/94D37D38-B203-4FC0-9F3A-538F5C174920_spk-0001_seg-0052244:0053004.wav
 </pre></div>
 </div>
 </section>
@@ -343,19 +343,19 @@ sherpa-offline <span class="se">\</span>
 <h3>English<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
 <section id="wenet-english-model">
 <h4>wenet-english-model<a class="headerlink" href="#wenet-english-model" title="Permalink to this headline"></a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/wenet-english-model
-<span class="nb">cd</span> wenet-english-model
-git lfs pull --include <span class="s2">&quot;final.zip&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/wenet-english-model
+<span class="nb">cd</span><span class="w"> </span>wenet-english-model
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;final.zip&quot;</span>
 
-sherpa-offline <span class="se">\</span>
- --normalize-samples<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
- --modified<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
- --nn-model<span class="o">=</span>./final.zip <span class="se">\</span>
- --tokens<span class="o">=</span>./units.txt <span class="se">\</span>
- --use-gpu<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
- ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
- ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
- ./test_wavs/1221-135766-0002.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--normalize-samples<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--modified<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--nn-model<span class="o">=</span>./final.zip<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--tokens<span class="o">=</span>./units.txt<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--use-gpu<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>./test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>./test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>./test_wavs/1221-135766-0002.wav
 </pre></div>
 </div>
 </section>
@@ -364,21 +364,21 @@ sherpa-offline <span class="se">\</span>
 <h3>Chinese<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <section id="wenet-chinese-model">
 <h4>wenet-chinese-model<a class="headerlink" href="#wenet-chinese-model" title="Permalink to this headline"></a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/wenet-chinese-model
-<span class="nb">cd</span> wenet-chinese-model
-git lfs pull --include <span class="s2">&quot;final.zip&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/wenet-chinese-model
+<span class="nb">cd</span><span class="w"> </span>wenet-chinese-model
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;final.zip&quot;</span>
 
-sherpa-offline <span class="se">\</span>
-  --normalize-samples<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
-  --modified<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
-  --nn-model<span class="o">=</span>./final.zip <span class="se">\</span>
-  --tokens<span class="o">=</span>./units.txt <span class="se">\</span>
-  ./test_wavs/BAC009S0764W0121.wav <span class="se">\</span>
-  ./test_wavs/BAC009S0764W0122.wav <span class="se">\</span>
-  ./test_wavs/BAC009S0764W0123.wav <span class="se">\</span>
-  ./test_wavs/DEV_T0000000000.wav <span class="se">\</span>
-  ./test_wavs/DEV_T0000000001.wav <span class="se">\</span>
-  ./test_wavs/DEV_T0000000002.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--normalize-samples<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--modified<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-model<span class="o">=</span>./final.zip<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./units.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/BAC009S0764W0121.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/BAC009S0764W0122.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/BAC009S0764W0123.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/DEV_T0000000000.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/DEV_T0000000001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/DEV_T0000000002.wav
 </pre></div>
 </div>
 </section>
@@ -389,21 +389,21 @@ sherpa-offline <span class="se">\</span>
 <p>This section lists models from <a class="reference external" href="https://github.com/pytorch/audio">torchaudio</a>.</p>
 <section id="id3">
 <h3>English<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/wav2vec2.0-torchaudio
-<span class="nb">cd</span> wav2vec2.0-torchaudio
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/wav2vec2.0-torchaudio
+<span class="nb">cd</span><span class="w"> </span>wav2vec2.0-torchaudio
 
 <span class="c1"># Note: There are other kinds of models fine-tuned with different</span>
 <span class="c1"># amount of data. We use a model that is fine-tuned with 10 minutes of data.</span>
 
-git lfs pull --include <span class="s2">&quot;wav2vec2_asr_base_10m.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;wav2vec2_asr_base_10m.pt&quot;</span>
 
-sherpa-offline <span class="se">\</span>
- --nn-model<span class="o">=</span>wav2vec2_asr_base_10m.pt <span class="se">\</span>
- --tokens<span class="o">=</span>tokens.txt <span class="se">\</span>
- --use-gpu<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
- ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
- ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
- ./test_wavs/1221-135766-0002.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--nn-model<span class="o">=</span>wav2vec2_asr_base_10m.pt<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--tokens<span class="o">=</span>tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--use-gpu<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>./test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>./test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>./test_wavs/1221-135766-0002.wav
 </pre></div>
 </div>
 </section>
@@ -411,16 +411,16 @@ sherpa-offline <span class="se">\</span>
 <h3>German<a class="headerlink" href="#german" title="Permalink to this headline"></a></h3>
 <section id="voxpopuli-asr-base">
 <h4>voxpopuli_asr_base<a class="headerlink" href="#voxpopuli-asr-base" title="Permalink to this headline"></a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/wav2vec2.0-torchaudio
-<span class="nb">cd</span> wav2vec2.0-torchaudio
-git lfs pull --include <span class="s2">&quot;voxpopuli_asr_base_10k_de.pt&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/wav2vec2.0-torchaudio
+<span class="nb">cd</span><span class="w"> </span>wav2vec2.0-torchaudio
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;voxpopuli_asr_base_10k_de.pt&quot;</span>
 
-sherpa-offline <span class="se">\</span>
- --nn-model<span class="o">=</span>voxpopuli_asr_base_10k_de.pt <span class="se">\</span>
- --tokens<span class="o">=</span>tokens-de.txt <span class="se">\</span>
- --use-gpu<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
- ./test_wavs/20120315-0900-PLENARY-14-de_20120315.wav <span class="se">\</span>
- ./test_wavs/20170517-0900-PLENARY-16-de_20170517.wav
+sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--nn-model<span class="o">=</span>voxpopuli_asr_base_10k_de.pt<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--tokens<span class="o">=</span>tokens-de.txt<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--use-gpu<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>./test_wavs/20120315-0900-PLENARY-14-de_20120315.wav<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>./test_wavs/20170517-0900-PLENARY-16-de_20170517.wav
 </pre></div>
 </div>
 </section>

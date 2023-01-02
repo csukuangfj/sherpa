@@ -130,19 +130,19 @@ to download the toolchain.</p>
 <p>We are going to download <code class="docutils literal notranslate"><span class="pre">gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz</span></code>,
 which has been uploaded to <a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-ncnn-toolchains">https://huggingface.co/csukuangfj/sherpa-ncnn-toolchains</a>.</p>
 <p>Assume you want to install it in the folder <code class="docutils literal notranslate"><span class="pre">$HOME/software</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p <span class="nv">$HOME</span>/software
-<span class="nb">cd</span> <span class="nv">$HOME</span>/software
-wget https://huggingface.co/csukuangfj/sherpa-ncnn-toolchains/resolve/main/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz
-tar xvf gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/software
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/software
+wget<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-ncnn-toolchains/resolve/main/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz
+tar<span class="w"> </span>xvf<span class="w"> </span>gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz
 </pre></div>
 </div>
 <p>Next, we need to set the following environment variable:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/software/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin:<span class="nv">$PATH</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/software/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin:<span class="nv">$PATH</span>
 </pre></div>
 </div>
 <p>To check that we have installed the cross-compiling toolchain successfully, please
 run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>aarch64-linux-gnu-gcc --version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>aarch64-linux-gnu-gcc<span class="w"> </span>--version
 </pre></div>
 </div>
 <p>which should print the following log:</p>
@@ -158,16 +158,16 @@ run:</p>
 <section id="build-sherpa-ncnn">
 <h2>Build sherpa-ncnn<a class="headerlink" href="#build-sherpa-ncnn" title="Permalink to this headline"></a></h2>
 <p>Finally, let us build <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa-ncnn
-<span class="nb">cd</span> sherpa-ncnn
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
+<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
 ./build-aarch64-linux-gnu.sh
 </pre></div>
 </div>
 <p>After building, you will get two binaries:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls -lh build-aarch64-linux-gnu/install/bin/
-total <span class="m">6</span>.1M
--rwxr-xr-x <span class="m">1</span> kuangfangjun root <span class="m">3</span>.1M Dec <span class="m">18</span> <span class="m">14</span>:53 sherpa-ncnn
--rwxr-xr-x <span class="m">1</span> kuangfangjun root <span class="m">3</span>.1M Dec <span class="m">18</span> <span class="m">14</span>:53 sherpa-ncnn-microphone
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-aarch64-linux-gnu/install/bin/
+total<span class="w"> </span><span class="m">6</span>.1M
+-rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span><span class="m">3</span>.1M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">14</span>:53<span class="w"> </span>sherpa-ncnn
+-rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span><span class="m">3</span>.1M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">14</span>:53<span class="w"> </span>sherpa-ncnn-microphone
 </pre></div>
 </div>
 <p>That’s it!</p>

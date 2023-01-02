@@ -150,21 +150,21 @@ pretrained model: <a class="reference external" href="https://huggingface.co/Zen
 found at <a class="reference external" href="https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/RESULTS.md">https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/RESULTS.md</a>.</p>
 </div>
 <p>The following shows you how to start the server with the above pretrained model.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa
 
-git lfs install
-git clone https://huggingface.co/Zengwei/icefall-asr-librispeech-lstm-transducer-stateless-2022-08-18
+git<span class="w"> </span>lfs<span class="w"> </span>install
+git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/Zengwei/icefall-asr-librispeech-lstm-transducer-stateless-2022-08-18
 
-./sherpa/bin/lstm_transducer_stateless/streaming_server.py <span class="se">\</span>
-  --endpoint.rule3.min-utterance-length <span class="m">1000</span>.0 <span class="se">\</span>
-  --port <span class="m">6007</span> <span class="se">\</span>
-  --max-batch-size <span class="m">50</span> <span class="se">\</span>
-  --max-wait-ms <span class="m">5</span> <span class="se">\</span>
-  --nn-pool-size <span class="m">1</span> <span class="se">\</span>
-  --nn-encoder-filename ./icefall-asr-librispeech-lstm-transducer-stateless-2022-08-18/exp/encoder_jit_trace.pt <span class="se">\</span>
-  --nn-decoder-filename ./icefall-asr-librispeech-lstm-transducer-stateless-2022-08-18/exp/decoder_jit_trace.pt <span class="se">\</span>
-  --nn-joiner-filename ./icefall-asr-librispeech-lstm-transducer-stateless-2022-08-18/exp/joiner_jit_trace.pt <span class="se">\</span>
-  --bpe-model-filename ./icefall-asr-librispeech-lstm-transducer-stateless-2022-08-18/data/lang_bpe_500/bpe.model
+./sherpa/bin/lstm_transducer_stateless/streaming_server.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--endpoint.rule3.min-utterance-length<span class="w"> </span><span class="m">1000</span>.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--port<span class="w"> </span><span class="m">6007</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-batch-size<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-wait-ms<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-pool-size<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-encoder-filename<span class="w"> </span>./icefall-asr-librispeech-lstm-transducer-stateless-2022-08-18/exp/encoder_jit_trace.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-decoder-filename<span class="w"> </span>./icefall-asr-librispeech-lstm-transducer-stateless-2022-08-18/exp/decoder_jit_trace.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-joiner-filename<span class="w"> </span>./icefall-asr-librispeech-lstm-transducer-stateless-2022-08-18/exp/joiner_jit_trace.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--bpe-model-filename<span class="w"> </span>./icefall-asr-librispeech-lstm-transducer-stateless-2022-08-18/data/lang_bpe_500/bpe.model
 </pre></div>
 </div>
 <p>That’s it!</p>
@@ -174,7 +174,7 @@ and check the recognition results from the server.</p>
 <p class="admonition-title">Hint</p>
 <p>You can also try the following pretrained model trained using <a class="reference external" href="https://github.com/SpeechColab/GigaSpeech">GigaSpeech</a>
 and <a class="reference external" href="https://www.openslr.org/12">LibriSpeech</a> and has a lower WER than the above one:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://huggingface.co/csukuangfj/icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03
 
 <span class="nv">nn_encoder_filename</span><span class="o">=</span>./icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03/exp/encoder_jit_trace-iter-468000-avg-16.pt
 <span class="nv">nn_decoder_filename</span><span class="o">=</span>./icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03/exp/decoder_jit_trace-iter-468000-avg-16.pt
@@ -182,21 +182,21 @@ and <a class="reference external" href="https://www.openslr.org/12">LibriSpeech<
 
 <span class="nv">bpe_model_filename</span><span class="o">=</span>./icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03/data/lang_bpe_500/bpe.model
 
-./sherpa/bin/lstm_transducer_stateless/streaming_server.py <span class="se">\</span>
-  --endpoint.rule1.must-contain-nonsilence<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
-  --endpoint.rule1.min-trailing-silence<span class="o">=</span><span class="m">5</span>.0 <span class="se">\</span>
-  --endpoint.rule2.min-trailing-silence<span class="o">=</span><span class="m">2</span>.0 <span class="se">\</span>
-  --endpoint.rule3.min-utterance-length<span class="o">=</span><span class="m">50</span>.0 <span class="se">\</span>
-  --port <span class="m">6006</span> <span class="se">\</span>
-  --decoding-method greedy_search <span class="se">\</span>
-  --max-batch-size <span class="m">50</span> <span class="se">\</span>
-  --max-wait-ms <span class="m">5</span> <span class="se">\</span>
-  --nn-pool-size <span class="m">1</span> <span class="se">\</span>
-  --max-active-connections <span class="m">10</span> <span class="se">\</span>
-  --nn-encoder-filename <span class="nv">$nn_encoder_filename</span> <span class="se">\</span>
-  --nn-decoder-filename <span class="nv">$nn_decoder_filename</span> <span class="se">\</span>
-  --nn-joiner-filename <span class="nv">$nn_joiner_filename</span> <span class="se">\</span>
-  --bpe-model-filename <span class="nv">$bpe_model_filename</span>
+./sherpa/bin/lstm_transducer_stateless/streaming_server.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--endpoint.rule1.must-contain-nonsilence<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--endpoint.rule1.min-trailing-silence<span class="o">=</span><span class="m">5</span>.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--endpoint.rule2.min-trailing-silence<span class="o">=</span><span class="m">2</span>.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--endpoint.rule3.min-utterance-length<span class="o">=</span><span class="m">50</span>.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--port<span class="w"> </span><span class="m">6006</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoding-method<span class="w"> </span>greedy_search<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-batch-size<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-wait-ms<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-pool-size<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-active-connections<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-encoder-filename<span class="w"> </span><span class="nv">$nn_encoder_filename</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-decoder-filename<span class="w"> </span><span class="nv">$nn_decoder_filename</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-joiner-filename<span class="w"> </span><span class="nv">$nn_joiner_filename</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--bpe-model-filename<span class="w"> </span><span class="nv">$bpe_model_filename</span>
 </pre></div>
 </div>
 </div>

@@ -143,21 +143,21 @@ with <a class="reference external" href="https://github.com/k2-fsa/icefall/tree/
 <p>If you don’t want to train a model by yourself, you can try the
 pretrained model: <a class="reference external" href="https://huggingface.co/csukuangfj/icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19">https://huggingface.co/csukuangfj/icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19</a></p>
 <p>The following shows you how to start the server with the above pretrained model.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/sherpa
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa
 
-git lfs install
-git clone https://huggingface.co/csukuangfj/icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19
+git<span class="w"> </span>lfs<span class="w"> </span>install
+git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19
 
-./sherpa/bin/lstm_transducer_stateless/streaming_server.py <span class="se">\</span>
-  --endpoint.rule3.min-utterance-length <span class="m">1000</span>.0 <span class="se">\</span>
-  --port <span class="m">6007</span> <span class="se">\</span>
-  --max-batch-size <span class="m">50</span> <span class="se">\</span>
-  --max-wait-ms <span class="m">5</span> <span class="se">\</span>
-  --nn-pool-size <span class="m">1</span> <span class="se">\</span>
-  --nn-encoder-filename ./icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19/exp/encoder_jit_trace-iter-420000-avg-10.pt <span class="se">\</span>
-  --nn-decoder-filename ./icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19/exp/decoder_jit_trace-iter-420000-avg-10.pt <span class="se">\</span>
-  --nn-joiner-filename ./icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19/exp/joiner_jit_trace-iter-420000-avg-10.pt <span class="se">\</span>
-  --token-filename ./icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19/data/lang_char/tokens.txt
+./sherpa/bin/lstm_transducer_stateless/streaming_server.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--endpoint.rule3.min-utterance-length<span class="w"> </span><span class="m">1000</span>.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--port<span class="w"> </span><span class="m">6007</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-batch-size<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-wait-ms<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-pool-size<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-encoder-filename<span class="w"> </span>./icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19/exp/encoder_jit_trace-iter-420000-avg-10.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-decoder-filename<span class="w"> </span>./icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19/exp/decoder_jit_trace-iter-420000-avg-10.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nn-joiner-filename<span class="w"> </span>./icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19/exp/joiner_jit_trace-iter-420000-avg-10.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--token-filename<span class="w"> </span>./icefall-asr-wenetspeech-lstm-transducer-stateless-2022-09-19/data/lang_char/tokens.txt
 </pre></div>
 </div>
 <p>That’s it!</p>

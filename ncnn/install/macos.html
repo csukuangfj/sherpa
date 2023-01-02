@@ -113,19 +113,19 @@
 <h1>macOS<a class="headerlink" href="#macos" title="Permalink to this headline"></a></h1>
 <p>This page describes how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> on macOS.</p>
 <p>All you need is to run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa-ncnn
-<span class="nb">cd</span> sherpa-ncnn
-mkdir build
-<span class="nb">cd</span> build
-cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ..
-make -j6
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
+<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>..
+make<span class="w"> </span>-j6
 </pre></div>
 </div>
 <p>After building, you will find two executables inside the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls -lh bin/
-total <span class="m">24232</span>
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   <span class="m">5</span>.9M Dec <span class="m">18</span> <span class="m">12</span>:39 sherpa-ncnn
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   <span class="m">6</span>.0M Dec <span class="m">18</span> <span class="m">12</span>:39 sherpa-ncnn-microphone
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>bin/
+total<span class="w"> </span><span class="m">24232</span>
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">5</span>.9M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">12</span>:39<span class="w"> </span>sherpa-ncnn
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">6</span>.0M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">12</span>:39<span class="w"> </span>sherpa-ncnn-microphone
 </pre></div>
 </div>
 <p>That’s it!</p>
@@ -133,15 +133,15 @@ total <span class="m">24232</span>
 the generated binaries.</p>
 <p>Read below if you want to learn more.</p>
 <p>You can strip the binaries by</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ strip bin/sherpa-ncnn
-$ strip bin/sherpa-ncnn-microphone
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>strip<span class="w"> </span>bin/sherpa-ncnn
+$<span class="w"> </span>strip<span class="w"> </span>bin/sherpa-ncnn-microphone
 </pre></div>
 </div>
 <p>After stripping, the file size of each binary is:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls -lh bin/
-total <span class="m">23000</span>
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   <span class="m">5</span>.6M Dec <span class="m">18</span> <span class="m">12</span>:40 sherpa-ncnn
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   <span class="m">5</span>.6M Dec <span class="m">18</span> <span class="m">12</span>:40 sherpa-ncnn-microphone
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>bin/
+total<span class="w"> </span><span class="m">23000</span>
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">5</span>.6M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">12</span>:40<span class="w"> </span>sherpa-ncnn
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">5</span>.6M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">12</span>:40<span class="w"> </span>sherpa-ncnn-microphone
 </pre></div>
 </div>
 <div class="admonition hint">

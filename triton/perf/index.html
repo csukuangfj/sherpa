@@ -115,16 +115,16 @@
 <section id="generate-input-data-from-audio-files">
 <h2>Generate Input Data from Audio Files<a class="headerlink" href="#generate-input-data-from-audio-files" title="Permalink to this headline"></a></h2>
 <p>For offline ASR server:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> sherpa/triton/client
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa/triton/client
 <span class="c1"># en</span>
-python3 generate_perf_input.py --audio_file<span class="o">=</span>test_wavs/1089-134686-0001.wav
+python3<span class="w"> </span>generate_perf_input.py<span class="w"> </span>--audio_file<span class="o">=</span>test_wavs/1089-134686-0001.wav
 <span class="c1"># zh</span>
-python3 generate_perf_input.py --audio_file<span class="o">=</span>test_wavs/zh/mid.wav
+python3<span class="w"> </span>generate_perf_input.py<span class="w"> </span>--audio_file<span class="o">=</span>test_wavs/zh/mid.wav
 </pre></div>
 </div>
 <p>It will generate a <code class="docutils literal notranslate"><span class="pre">offline_input.json</span></code> file <code class="docutils literal notranslate"><span class="pre">sherpa/triton/client</span></code>.</p>
 <p>For streaming ASR server, you need to add a <code class="docutils literal notranslate"><span class="pre">--streaming</span></code> option:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 generate_perf_input.py --audio_file<span class="o">=</span>test_wavs/1089-134686-0001.wav --streaming
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>generate_perf_input.py<span class="w"> </span>--audio_file<span class="o">=</span>test_wavs/1089-134686-0001.wav<span class="w"> </span>--streaming
 </pre></div>
 </div>
 <p>A <code class="docutils literal notranslate"><span class="pre">online_input.json</span></code> file would be generated.</p>
@@ -132,10 +132,10 @@ python3 generate_perf_input.py --audio_file<span class="o">=</span>test_wavs/zh/
 <section id="test-throughput-using-perf-analyzer">
 <h2>Test Throughput using Perf Analyzer<a class="headerlink" href="#test-throughput-using-perf-analyzer" title="Permalink to this headline"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Offline ASR Test with grpc</span>
-perf_analyzer -m transducer -b <span class="m">1</span> -a -p <span class="m">20000</span> --concurrency-range <span class="m">100</span>:200:50 -i gRPC --input-data<span class="o">=</span>offline_input.json  -u localhost:8001
+perf_analyzer<span class="w"> </span>-m<span class="w"> </span>transducer<span class="w"> </span>-b<span class="w"> </span><span class="m">1</span><span class="w"> </span>-a<span class="w"> </span>-p<span class="w"> </span><span class="m">20000</span><span class="w"> </span>--concurrency-range<span class="w"> </span><span class="m">100</span>:200:50<span class="w"> </span>-i<span class="w"> </span>gRPC<span class="w"> </span>--input-data<span class="o">=</span>offline_input.json<span class="w">  </span>-u<span class="w"> </span>localhost:8001
 
 <span class="c1"># Streaming ASR Test with grpc</span>
-perf_analyzer -m transducer -b <span class="m">1</span> -a -p <span class="m">20000</span> --concurrency-range <span class="m">100</span>:200:50 -i gRPC --input-data<span class="o">=</span>online_input.json  -u localhost:8001 --streaming
+perf_analyzer<span class="w"> </span>-m<span class="w"> </span>transducer<span class="w"> </span>-b<span class="w"> </span><span class="m">1</span><span class="w"> </span>-a<span class="w"> </span>-p<span class="w"> </span><span class="m">20000</span><span class="w"> </span>--concurrency-range<span class="w"> </span><span class="m">100</span>:200:50<span class="w"> </span>-i<span class="w"> </span>gRPC<span class="w"> </span>--input-data<span class="o">=</span>online_input.json<span class="w">  </span>-u<span class="w"> </span>localhost:8001<span class="w"> </span>--streaming
 </pre></div>
 </div>
 <p>You could save the below results with a <code class="docutils literal notranslate"><span class="pre">-f</span> <span class="pre">log.txt</span></code> option.</p>

@@ -107,45 +107,45 @@ gives an example of how to use the APIs to decode wave files.</p>
 </div>
 <p>The content of the <a class="reference external" href="https://github.com/k2-fsa/sherpa-torch-cpp-makefile-example/blob/master/Makefile">Makefile</a>
 from the above repository is given below:</p>
-<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">sherpa_install_dir</span> <span class="o">:=</span> <span class="k">$(</span>shell python3 -c <span class="s1">&#39;import os; import sherpa; print(os.path.dirname(sherpa.__file__))&#39;</span><span class="k">)</span>
-<span class="nv">sherpa_cxx_flags</span> <span class="o">:=</span> <span class="k">$(</span>shell python3 -c <span class="s1">&#39;import os; import sherpa; print(sherpa.cxx_flags)&#39;</span><span class="k">)</span>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">sherpa_install_dir</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>shell<span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import os; import sherpa; print(os.path.dirname(sherpa.__file__))&#39;</span><span class="k">)</span>
+<span class="nv">sherpa_cxx_flags</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>shell<span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import os; import sherpa; print(sherpa.cxx_flags)&#39;</span><span class="k">)</span>
 
-<span class="nf">$(info sherpa_install_dir</span><span class="o">:</span> <span class="k">$(</span><span class="nv">sherpa_install_dir</span><span class="k">)</span>)
-<span class="nf">$(info sherpa_cxx_flags</span><span class="o">:</span> <span class="k">$(</span><span class="nv">sherpa_cxx_flags</span><span class="k">)</span>)
+<span class="nf">$(info sherpa_install_dir</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">sherpa_install_dir</span><span class="k">)</span>)
+<span class="nf">$(info sherpa_cxx_flags</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">sherpa_cxx_flags</span><span class="k">)</span>)
 
-<span class="nv">CXXFLAGS</span> <span class="o">:=</span> -I<span class="k">$(</span>sherpa_install_dir<span class="k">)</span>/include
-<span class="nv">CXXFLAGS</span> <span class="o">+=</span> -Wl,-rpath,<span class="k">$(</span>sherpa_install_dir<span class="k">)</span>/lib
-<span class="nv">CXXFLAGS</span> <span class="o">+=</span> <span class="k">$(</span>sherpa_cxx_flags<span class="k">)</span>
-<span class="nv">CXXFLAGS</span> <span class="o">+=</span> -std<span class="o">=</span>c++14
+<span class="nv">CXXFLAGS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>-I<span class="k">$(</span>sherpa_install_dir<span class="k">)</span>/include
+<span class="nv">CXXFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-Wl,-rpath,<span class="k">$(</span>sherpa_install_dir<span class="k">)</span>/lib
+<span class="nv">CXXFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">$(</span>sherpa_cxx_flags<span class="k">)</span>
+<span class="nv">CXXFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-std<span class="o">=</span>c++14
 
-<span class="nv">LDFLAGS</span> <span class="o">:=</span> -L <span class="k">$(</span>sherpa_install_dir<span class="k">)</span>/lib -lsherpa_offline_recognizer
+<span class="nv">LDFLAGS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>-L<span class="w"> </span><span class="k">$(</span>sherpa_install_dir<span class="k">)</span>/lib<span class="w"> </span>-lsherpa_offline_recognizer
 
-<span class="nf">$(info CXXFLAGS</span><span class="o">:</span> <span class="k">$(</span><span class="nv">CXXFLAGS</span><span class="k">)</span>)
-<span class="nf">$(info LDFLAGS</span><span class="o">:</span> <span class="k">$(</span><span class="nv">LDFLAGS</span><span class="k">)</span>)
+<span class="nf">$(info CXXFLAGS</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">CXXFLAGS</span><span class="k">)</span>)
+<span class="nf">$(info LDFLAGS</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">LDFLAGS</span><span class="k">)</span>)
 
-<span class="nf">test_decode_files</span><span class="o">:</span> <span class="n">test_decode_files</span>.<span class="n">cc</span>
-  <span class="k">$(</span>CXX<span class="k">)</span> <span class="k">$(</span>CXXFLAGS<span class="k">)</span> -o <span class="nv">$@</span> $&lt; <span class="k">$(</span>LDFLAGS<span class="k">)</span>
+<span class="nf">test_decode_files</span><span class="o">:</span><span class="w"> </span><span class="n">test_decode_files</span>.<span class="n">cc</span>
+<span class="w">  </span><span class="k">$(</span>CXX<span class="k">)</span><span class="w"> </span><span class="k">$(</span>CXXFLAGS<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$&lt;<span class="w"> </span><span class="k">$(</span>LDFLAGS<span class="k">)</span>
 
-<span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
+<span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">clean</span>
 <span class="nf">clean</span><span class="o">:</span>
-  <span class="k">$(</span>RM<span class="k">)</span> test_decode_files
+<span class="w">  </span><span class="k">$(</span>RM<span class="k">)</span><span class="w"> </span>test_decode_files
 </pre></div>
 </div>
 <p>Basically, you only need to specify the following stuff to use the non-streaming
 ASR APIs:</p>
 <ul>
 <li><p>The path to find the header file. You provide:</p>
-<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">CXXFLAGS</span> <span class="o">:=</span> -I<span class="k">$(</span>sherpa_install_dir<span class="k">)</span>/include
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">CXXFLAGS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>-I<span class="k">$(</span>sherpa_install_dir<span class="k">)</span>/include
 </pre></div>
 </div>
 </li>
 <li><p>The library to link to. You provide:</p>
-<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">LDFLAGS</span> <span class="o">:=</span> -L <span class="k">$(</span>sherpa_install_dir<span class="k">)</span>/lib -lsherpa_offline_recognizer
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">LDFLAGS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>-L<span class="w"> </span><span class="k">$(</span>sherpa_install_dir<span class="k">)</span>/lib<span class="w"> </span>-lsherpa_offline_recognizer
 </pre></div>
 </div>
 </li>
 <li><p>The CXX flags used to compile <code class="docutils literal notranslate"><span class="pre">sherpa</span></code>. You provide:</p>
-<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">CXXFLAGS</span> <span class="o">+=</span> <span class="k">$(</span>sherpa_cxx_flags<span class="k">)</span>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">CXXFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">$(</span>sherpa_cxx_flags<span class="k">)</span>
 </pre></div>
 </div>
 <div class="admonition hint">

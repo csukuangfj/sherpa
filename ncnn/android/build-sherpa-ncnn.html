@@ -133,7 +133,7 @@ the default settings of Android Studio during installation.</p>
 <section id="download-sherpa-ncnn">
 <h2>Download sherpa-ncnn<a class="headerlink" href="#download-sherpa-ncnn" title="Permalink to this headline"></a></h2>
 <p>Next, download the source code of <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa-ncnn
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
 </pre></div>
 </div>
 </section>
@@ -187,7 +187,7 @@ the default settings of Android Studio during installation.</p>
 accordingly.</p>
 </div>
 <p>Next, let us set the environment variable <code class="docutils literal notranslate"><span class="pre">ANDROID_NDK</span></code> for later use.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ANDROID_NDK</span><span class="o">=</span>/Users/fangjun/software/my-android/ndk/22.1.7171670
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ANDROID_NDK</span><span class="o">=</span>/Users/fangjun/software/my-android/ndk/22.1.7171670
 </pre></div>
 </div>
 <div class="admonition note">
@@ -229,20 +229,20 @@ most common one.</p>
 </div>
 <section id="build-for-arm64-v8a">
 <h3>Build for arm64-v8a<a class="headerlink" href="#build-for-arm64-v8a" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> sherpa-ncnn <span class="c1"># Go to the root repo</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-ncnn<span class="w"> </span><span class="c1"># Go to the root repo</span>
 ./build-android-arm64-v8a.sh
 </pre></div>
 </div>
 <p>After building, you will find the following shared libraries:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls -lh build-android-arm64-v8a/install/lib/lib*.so
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   848K Dec <span class="m">18</span> <span class="m">16</span>:49 build-android-arm64-v8a/install/lib/libkaldi-native-fbank-core.so
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   <span class="m">3</span>.4M Dec <span class="m">18</span> <span class="m">16</span>:49 build-android-arm64-v8a/install/lib/libncnn.so
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   195K Dec <span class="m">18</span> <span class="m">16</span>:49 build-android-arm64-v8a/install/lib/libsherpa-ncnn-core.so
--rwxr-xr-x  <span class="m">1</span> fangjun  staff    19K Dec <span class="m">18</span> <span class="m">16</span>:49 build-android-arm64-v8a/install/lib/libsherpa-ncnn-jni.so
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-arm64-v8a/install/lib/lib*.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>848K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">16</span>:49<span class="w"> </span>build-android-arm64-v8a/install/lib/libkaldi-native-fbank-core.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">3</span>.4M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">16</span>:49<span class="w"> </span>build-android-arm64-v8a/install/lib/libncnn.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>195K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">16</span>:49<span class="w"> </span>build-android-arm64-v8a/install/lib/libsherpa-ncnn-core.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>19K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">16</span>:49<span class="w"> </span>build-android-arm64-v8a/install/lib/libsherpa-ncnn-jni.so
 </pre></div>
 </div>
 <p>Please copy them to <code class="docutils literal notranslate"><span class="pre">android/SherpaNcnn/app/src/main/jniLibs/arm64-v8a/</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cp build-android-arm64-v8a/install/lib/lib*.so  android/SherpaNcnn/app/src/main/jniLibs/arm64-v8a/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cp<span class="w"> </span>build-android-arm64-v8a/install/lib/lib*.so<span class="w">  </span>android/SherpaNcnn/app/src/main/jniLibs/arm64-v8a/
 </pre></div>
 </div>
 <p>You should see the following screen shot after running the above copy <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
@@ -263,20 +263,20 @@ for details.</p>
 </section>
 <section id="build-for-armeabi-v7a">
 <h3>Build for armeabi-v7a<a class="headerlink" href="#build-for-armeabi-v7a" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> sherpa-ncnn <span class="c1"># Go to the root repo</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-ncnn<span class="w"> </span><span class="c1"># Go to the root repo</span>
 ./build-android-armv7-eabi.sh
 </pre></div>
 </div>
 <p>After building, you will find the following shared libraries:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls -lh build-android-armv7-eabi/install/lib/lib*.so
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   513K Dec <span class="m">18</span> <span class="m">17</span>:04 build-android-armv7-eabi/install/lib/libkaldi-native-fbank-core.so
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   <span class="m">1</span>.9M Dec <span class="m">18</span> <span class="m">17</span>:04 build-android-armv7-eabi/install/lib/libncnn.so
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   163K Dec <span class="m">18</span> <span class="m">17</span>:04 build-android-armv7-eabi/install/lib/libsherpa-ncnn-core.so
--rwxr-xr-x  <span class="m">1</span> fangjun  staff    28K Dec <span class="m">18</span> <span class="m">17</span>:04 build-android-armv7-eabi/install/lib/libsherpa-ncnn-jni.so
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-armv7-eabi/install/lib/lib*.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>513K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:04<span class="w"> </span>build-android-armv7-eabi/install/lib/libkaldi-native-fbank-core.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.9M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:04<span class="w"> </span>build-android-armv7-eabi/install/lib/libncnn.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>163K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:04<span class="w"> </span>build-android-armv7-eabi/install/lib/libsherpa-ncnn-core.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>28K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:04<span class="w"> </span>build-android-armv7-eabi/install/lib/libsherpa-ncnn-jni.so
 </pre></div>
 </div>
 <p>Please copy them to <code class="docutils literal notranslate"><span class="pre">android/SherpaNcnn/app/src/main/jniLibs/armeabi-v7a/</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp build-android-armv7-eabi/install/lib/lib*.so android/SherpaNcnn/app/src/main/jniLibs/armeabi-v7a/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>build-android-armv7-eabi/install/lib/lib*.so<span class="w"> </span>android/SherpaNcnn/app/src/main/jniLibs/armeabi-v7a/
 </pre></div>
 </div>
 <p>You should see the following screen shot after running the above copy <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
@@ -286,20 +286,20 @@ for details.</p>
 </section>
 <section id="build-for-x86-64">
 <h3>Build for x86_64<a class="headerlink" href="#build-for-x86-64" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> sherpa-ncnn <span class="c1"># Go to the root repo</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-ncnn<span class="w"> </span><span class="c1"># Go to the root repo</span>
 ./build-android-x86-64.sh
 </pre></div>
 </div>
 <p>After building, you will find the following shared libraries:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls -lh build-android-x86-64/install/lib/lib*.so
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   901K Dec <span class="m">18</span> <span class="m">17</span>:14 build-android-x86-64/install/lib/libkaldi-native-fbank-core.so
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   <span class="m">6</span>.9M Dec <span class="m">18</span> <span class="m">17</span>:14 build-android-x86-64/install/lib/libncnn.so
--rwxr-xr-x  <span class="m">1</span> fangjun  staff   208K Dec <span class="m">18</span> <span class="m">17</span>:14 build-android-x86-64/install/lib/libsherpa-ncnn-core.so
--rwxr-xr-x  <span class="m">1</span> fangjun  staff    19K Dec <span class="m">18</span> <span class="m">17</span>:14 build-android-x86-64/install/lib/libsherpa-ncnn-jni.so
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-x86-64/install/lib/lib*.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>901K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:14<span class="w"> </span>build-android-x86-64/install/lib/libkaldi-native-fbank-core.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">6</span>.9M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:14<span class="w"> </span>build-android-x86-64/install/lib/libncnn.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>208K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:14<span class="w"> </span>build-android-x86-64/install/lib/libsherpa-ncnn-core.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>19K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:14<span class="w"> </span>build-android-x86-64/install/lib/libsherpa-ncnn-jni.so
 </pre></div>
 </div>
 <p>Please copy them to <code class="docutils literal notranslate"><span class="pre">android/SherpaNcnn/app/src/main/jniLibs/x86_64/</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp build-android-x86-64/install/lib/lib*.so android/SherpaNcnn/app/src/main/jniLibs/x86_64/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>build-android-x86-64/install/lib/lib*.so<span class="w"> </span>android/SherpaNcnn/app/src/main/jniLibs/x86_64/
 </pre></div>
 </div>
 <p>You should see the following screen shot after running the above copy <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
@@ -322,32 +322,32 @@ is from <a class="reference external" href="https://huggingface.co/ptrnull/icefa
 </div>
 <p>Use the following command to download the pre-trained model and place it into
 <code class="docutils literal notranslate"><span class="pre">android/SherpaNcnn/app/src/main/assets/</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> android/SherpaNcnn/app/src/main/assets/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>android/SherpaNcnn/app/src/main/assets/
 
-sudo apt-get install git-lfs
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git-lfs
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/sherpa-ncnn-conv-emformer-transducer-2022-12-06
-<span class="nb">cd</span> sherpa-ncnn-conv-emformer-transducer-2022-12-06
-git lfs pull --include <span class="s2">&quot;*.bin&quot;</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-ncnn-conv-emformer-transducer-2022-12-06
+<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn-conv-emformer-transducer-2022-12-06
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.bin&quot;</span>
 
 <span class="c1"># Now, remove extra files to reduce the file size of the generated apk</span>
-rm -rf .git test_wavs scripts/
-rm export-for-ncnn.sh *.png README.md
+rm<span class="w"> </span>-rf<span class="w"> </span>.git<span class="w"> </span>test_wavs<span class="w"> </span>scripts/
+rm<span class="w"> </span>export-for-ncnn.sh<span class="w"> </span>*.png<span class="w"> </span>README.md
 </pre></div>
 </div>
 <p>In the end, you should have the following files:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls -lh
-total <span class="m">322208</span>
--rw-r--r--  <span class="m">1</span> fangjun  staff   <span class="m">5</span>.9M Dec <span class="m">18</span> <span class="m">17</span>:40 decoder_jit_trace-pnnx.ncnn.bin
--rw-r--r--  <span class="m">1</span> fangjun  staff   439B Dec <span class="m">18</span> <span class="m">17</span>:39 decoder_jit_trace-pnnx.ncnn.param
--rw-r--r--  <span class="m">1</span> fangjun  staff   141M Dec <span class="m">18</span> <span class="m">17</span>:40 encoder_jit_trace-pnnx.ncnn.bin
--rw-r--r--  <span class="m">1</span> fangjun  staff    79K Dec <span class="m">18</span> <span class="m">17</span>:39 encoder_jit_trace-pnnx.ncnn.param
--rw-r--r--  <span class="m">1</span> fangjun  staff   <span class="m">6</span>.9M Dec <span class="m">18</span> <span class="m">17</span>:40 joiner_jit_trace-pnnx.ncnn.bin
--rw-r--r--  <span class="m">1</span> fangjun  staff   490B Dec <span class="m">18</span> <span class="m">17</span>:39 joiner_jit_trace-pnnx.ncnn.param
--rw-r--r--  <span class="m">1</span> fangjun  staff    53K Dec <span class="m">18</span> <span class="m">17</span>:39 tokens.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh
+total<span class="w"> </span><span class="m">322208</span>
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">5</span>.9M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:40<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>439B<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:39<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.param
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>141M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:40<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>79K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:39<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.param
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">6</span>.9M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:40<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>490B<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:39<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.param
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>53K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:39<span class="w"> </span>tokens.txt
 
-$ du -h -d1 .
-157M    .
+$<span class="w"> </span>du<span class="w"> </span>-h<span class="w"> </span>-d1<span class="w"> </span>.
+157M<span class="w">    </span>.
 </pre></div>
 </div>
 <p>You should see the following screen shot after downloading the pre-trained model:</p>
@@ -371,8 +371,8 @@ corresponding code listed in the following screen shot:</p>
 <a class="reference internal image-reference" href="../../_images/build-make-project.png"><img alt="Select ``Build -&gt; Make Project``" src="../../_images/build-make-project.png" style="width: 600px;" /></a>
 </figure>
 <p>You can find the generated APK in <code class="docutils literal notranslate"><span class="pre">android/SherpaNcnn/app/build/outputs/apk/debug/app-debug.apk</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls -lh android/SherpaNcnn/app/build/outputs/apk/debug/app-debug.apk
--rw-r--r--  <span class="m">1</span> fangjun  staff   152M Dec <span class="m">18</span> <span class="m">17</span>:53 android/SherpaNcnn/app/build/outputs/apk/debug/app-debug.apk
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>android/SherpaNcnn/app/build/outputs/apk/debug/app-debug.apk
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>152M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:53<span class="w"> </span>android/SherpaNcnn/app/build/outputs/apk/debug/app-debug.apk
 </pre></div>
 </div>
 <p>Congratulations! You have successfully built an APK for Android.</p>
