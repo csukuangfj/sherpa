@@ -46,7 +46,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../huggingface/index.html">Try sherpa with Huggingface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../streaming_asr/index.html">Streaming ASR</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Non-streaming ASR</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Non-streaming speech recognition</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../standalone/index.html">Standalone</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Conformer transducer based non-streaming ASR</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">aishell demo</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#download-the-pre-trained-model">Download the pre-trained model</a></li>
@@ -97,7 +98,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Non-streaming ASR</a> &raquo;</li>
+          <li><a href="../index.html">Non-streaming speech recognition</a> &raquo;</li>
           <li><a href="index.html">Conformer transducer based non-streaming ASR</a> &raquo;</li>
       <li>aishell demo</li>
       <li class="wy-breadcrumbs-aside">
@@ -195,7 +196,7 @@ and regains the <code class="docutils literal notranslate"><span class="pre">GIL
 </div>
 <p>which gives the following output:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Output of <code class="docutils literal notranslate"><span class="pre">./sherpa/bin/pruned_transducer_statelessX/offline_server.py</span> <span class="pre">--help</span></code></span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Output of <code class="docutils literal notranslate"><span class="pre">./sherpa/bin/pruned_transducer_statelessX/offline_server.py</span> <span class="pre">--help</span></code></span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>usage: offline_server.py [-h] [--port PORT] [--num-device NUM_DEVICE]
                          [--max-batch-size MAX_BATCH_SIZE]
                          [--max-wait-ms MAX_WAIT_MS]
@@ -269,7 +270,7 @@ optional arguments:
 <p>The following shows an example about how to use the above pre-trained model
 to start the server:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Command to start the server using the above pre-trained model</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Command to start the server using the above pre-trained model</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
 
 <span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">1</span>
@@ -292,7 +293,7 @@ sherpa/bin/pruned_transducer_statelessX/offline_server.py<span class="w"> </span
 </div>
 <p>When the server is started, you should see something like below:</p>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Output after starting the server</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">Output after starting the server</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="mi">000</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">offline_server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">371</span><span class="p">]</span> <span class="n">started</span>
 <span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="mi">002</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">707</span><span class="p">]</span> <span class="n">server</span> <span class="n">listening</span> <span class="n">on</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">6010</span>
 <span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="mi">002</span> <span class="n">INFO</span> <span class="p">[</span><span class="n">server</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">707</span><span class="p">]</span> <span class="n">server</span> <span class="n">listening</span> <span class="n">on</span> <span class="p">[::]:</span><span class="mi">6010</span>
@@ -309,7 +310,7 @@ sherpa/bin/pruned_transducer_statelessX/offline_server.py<span class="w"> </span
 </div>
 <p>shows the following help information:</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">Output of <code class="docutils literal notranslate"><span class="pre">./sherpa/bin/pruned_transducer_statelessX/offline_client.py</span> <span class="pre">--help</span></code></span><a class="headerlink" href="#id5" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">Output of <code class="docutils literal notranslate"><span class="pre">./sherpa/bin/pruned_transducer_statelessX/offline_client.py</span> <span class="pre">--help</span></code></span><a class="headerlink" href="#id5" title="Permalink to this code"></a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">offline_client</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">addr</span> <span class="n">SERVER_ADDR</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">port</span> <span class="n">SERVER_PORT</span><span class="p">]</span> <span class="n">sound_files</span> <span class="p">[</span><span class="n">sound_files</span> <span class="o">...</span><span class="p">]</span>
 
 <span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
@@ -328,7 +329,7 @@ sherpa/bin/pruned_transducer_statelessX/offline_server.py<span class="w"> </span
 <p>We provide some test waves in the git repo you just cloned. The following command
 shows you how to start the client:</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Start the client and send multiple sound files for recognition</span><a class="headerlink" href="#id6" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">Start the client and send multiple sound files for recognition</span><a class="headerlink" href="#id6" title="Permalink to this code"></a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
 
 <span class="n">sherpa</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">pruned_transducer_statelessX</span><span class="o">/</span><span class="n">offline_client</span><span class="o">.</span><span class="n">py</span> \
@@ -342,7 +343,7 @@ shows you how to start the client:</p>
 </div>
 <p>You will see the following output from the client side:</p>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Recogntion results received by the client</span><a class="headerlink" href="#id7" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 10 </span><span class="caption-text">Recogntion results received by the client</span><a class="headerlink" href="#id7" title="Permalink to this code"></a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sending</span> <span class="o">./</span><span class="n">icefall</span><span class="o">-</span><span class="n">aishell</span><span class="o">-</span><span class="n">pruned</span><span class="o">-</span><span class="n">transducer</span><span class="o">-</span><span class="n">stateless3</span><span class="o">-</span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">20</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="n">BAC009S0764W0121</span><span class="o">.</span><span class="n">wav</span>
 <span class="o">./</span><span class="n">icefall</span><span class="o">-</span><span class="n">aishell</span><span class="o">-</span><span class="n">pruned</span><span class="o">-</span><span class="n">transducer</span><span class="o">-</span><span class="n">stateless3</span><span class="o">-</span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">20</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="n">BAC009S0764W0121</span><span class="o">.</span><span class="n">wav</span>
  <span class="n">甚至出现交易几乎停滞的情况</span>

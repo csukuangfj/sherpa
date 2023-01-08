@@ -46,7 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../python/huggingface/index.html">Try sherpa with Huggingface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/installation/index.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/streaming_asr/index.html">Streaming ASR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming speech recognition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/faq.html">Frequently asked questions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
@@ -126,6 +126,48 @@ and <code class="docutils literal notranslate"><span class="pre">sherpa-online-m
 <p>This sections lists models trained using <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a>.</p>
 <section id="english">
 <h3>English<a class="headerlink" href="#english" title="Permalink to this headline"></a></h3>
+<section id="icefall-asr-librispeech-pruned-transducer-stateless7-streaming-2022-12-29">
+<h4>icefall-asr-librispeech-pruned-transducer-stateless7-streaming-2022-12-29<a class="headerlink" href="#icefall-asr-librispeech-pruned-transducer-stateless7-streaming-2022-12-29" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with streaming zipformer transducer</span>
+<span class="c1">#</span>
+<span class="c1"># See https://github.com/k2-fsa/icefall/pull/787</span>
+<span class="c1">#</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/Zengwei/icefall-asr-librispeech-pruned-transducer-stateless7-streaming-2022-12-29
+<span class="nb">cd</span><span class="w"> </span>icefall-asr-librispeech-pruned-transducer-stateless7-streaming-2022-12-29
+
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/encoder_jit_trace.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/decoder_jit_trace.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/joiner_jit_trace.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;data/lang_bpe_500/LG.pt&quot;</span>
+
+<span class="k">for</span><span class="w"> </span>m<span class="w"> </span><span class="k">in</span><span class="w"> </span>greedy_search<span class="w"> </span>modified_beam_search<span class="w"> </span>fast_beam_search<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>sherpa-online<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--decoding-method<span class="o">=</span><span class="nv">$m</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--encoder-model<span class="o">=</span>./exp/encoder_jit_trace.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--decoder-model<span class="o">=</span>./exp/decoder_jit_trace.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--joiner-model<span class="o">=</span>./exp/joiner_jit_trace.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--decode-chunk-size<span class="o">=</span><span class="m">32</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/1221-135766-0002.wav
+<span class="k">done</span>
+
+<span class="c1"># For fast_beam_search with LG</span>
+sherpa-online<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoding-method<span class="o">=</span>fast_beam_search<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder-model<span class="o">=</span>./exp/encoder_jit_trace.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder-model<span class="o">=</span>./exp/decoder_jit_trace.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner-model<span class="o">=</span>./exp/joiner_jit_trace.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--lg<span class="o">=</span>./data/lang_bpe_500/LG.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decode-chunk-size<span class="o">=</span><span class="m">32</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./test_wavs/1221-135766-0002.wav
+</pre></div>
+</div>
+</section>
 <section id="icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05">
 <h4>icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05<a class="headerlink" href="#icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05" title="Permalink to this headline"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with ConvEmformer transducer</span>

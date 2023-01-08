@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Non-streaming ASR &mdash; sherpa 1.1 documentation</title>
+  <title>Non-streaming speech recognition &mdash; sherpa 1.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -19,7 +19,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Conformer transducer based non-streaming ASR" href="conformer/index.html" />
+    <link rel="next" title="Standalone" href="standalone/index.html" />
     <link rel="prev" title="Client" href="../streaming_asr/lstm/chinese/client.html" /> 
 </head>
 
@@ -46,7 +46,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../huggingface/index.html">Try sherpa with Huggingface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../streaming_asr/index.html">Streaming ASR</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Non-streaming ASR</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Non-streaming speech recognition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standalone/index.html">Standalone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conformer/index.html">Conformer transducer based non-streaming ASR</a></li>
 </ul>
 </li>
@@ -88,7 +89,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Non-streaming ASR</li>
+      <li>Non-streaming speech recognition</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/python/offline_asr/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -98,13 +99,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="non-streaming-asr">
-<h1>Non-streaming ASR<a class="headerlink" href="#non-streaming-asr" title="Permalink to this headline"></a></h1>
-<p>This part describes how to use <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a> for non-streaming ASR.</p>
-<p>At present, only non-streaming ASR based on <a class="reference external" href="https://arxiv.org/abs/2005.08100">Conformer</a>
-<a class="reference external" href="https://arxiv.org/pdf/1211.3711.pdf">transducer</a> (i.e., Conformer-T) is implemented.</p>
+  <section id="non-streaming-speech-recognition">
+<h1>Non-streaming speech recognition<a class="headerlink" href="#non-streaming-speech-recognition" title="Permalink to this headline"></a></h1>
+<p>This part describes how to use <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a> for non-streaming (i.e., offline)
+speech recognition.</p>
+<p>Two types of models are supported:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://www.cs.toronto.edu/~graves/icml_2006.pdf">CTC</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1211.3711.pdf">transducer</a></p></li>
+</ul>
+</div></blockquote>
+<p>We support standalone speech recognition as well as server/client based
+speech recognition using <a class="reference external" href="https://en.wikipedia.org/wiki/WebSocket">WebSocket</a>.</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="standalone/index.html">Standalone</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standalone/transducer.html">Transducer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standalone/ctc.html">CTC</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="conformer/index.html">Conformer transducer based non-streaming ASR</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="conformer/aishell.html">aishell demo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conformer/librispeech.html">LibriSpeech demo</a></li>
@@ -119,7 +133,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../streaming_asr/lstm/chinese/client.html" class="btn btn-neutral float-left" title="Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="conformer/index.html" class="btn btn-neutral float-right" title="Conformer transducer based non-streaming ASR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="standalone/index.html" class="btn btn-neutral float-right" title="Standalone" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

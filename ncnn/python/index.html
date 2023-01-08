@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Installation" href="../install/index.html" />
-    <link rel="prev" title="sherpa-ncnn" href="../index.html" /> 
+    <link rel="next" title="Endpointing" href="../endpoint.html" />
+    <link rel="prev" title="Embedded Linux (aarch64)" href="../install/aarch64-embedded-linux.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,7 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../python/huggingface/index.html">Try sherpa with Huggingface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/installation/index.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/streaming_asr/index.html">Streaming ASR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming speech recognition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/faq.html">Frequently asked questions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
@@ -57,6 +57,7 @@
 <p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-ncnn</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#method-1">Method 1</a></li>
@@ -78,7 +79,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#recognize-a-file">Recognize a file</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../endpoint.html">Endpointing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
 </ul>
@@ -212,7 +213,7 @@ code below.</p>
 </div></blockquote>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 13 </span><span class="caption-text">Real-time speech recognition with a microphone using <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 17 </span><span class="caption-text">Real-time speech recognition with a microphone using <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -249,7 +250,7 @@ code below.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Started! Please speak&quot;</span><span class="p">)</span>
     <span class="n">recognizer</span> <span class="o">=</span> <span class="n">create_recognizer</span><span class="p">()</span>
     <span class="n">sample_rate</span> <span class="o">=</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">sample_rate</span>
-    <span class="n">samples_per_read</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.02</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>  <span class="c1"># 20ms</span>
+    <span class="n">samples_per_read</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>  <span class="c1"># 0.1 second = 100 ms</span>
     <span class="n">last_result</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="k">with</span> <span class="n">sd</span><span class="o">.</span><span class="n">InputStream</span><span class="p">(</span><span class="n">channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">,</span> <span class="n">samplerate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -366,7 +367,7 @@ all models at present.</p></li>
 </section>
 <section id="read-audio-samples-from-the-microphone">
 <h3>4. Read audio samples from the microphone<a class="headerlink" href="#read-audio-samples-from-the-microphone" title="Permalink to this headline"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">samples_per_read</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.02</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>  <span class="c1"># 20ms</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">samples_per_read</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>  <span class="c1"># 0.1 second = 100 ms</span>
             <span class="n">samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">samples_per_read</span><span class="p">)</span>  <span class="c1"># a blocking read</span>
             <span class="n">samples</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -374,8 +375,8 @@ all models at present.</p></li>
 <p><strong>Note that</strong>:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>It reads <code class="docutils literal notranslate"><span class="pre">20</span> <span class="pre">ms</span></code> of audio samples at a time. You can choose a larger
-value, e.g., <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">ms</span></code>.</p></li>
+<li><p>It reads <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">ms</span></code> of audio samples at a time. You can choose a larger
+value, e.g., <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">ms</span></code>.</p></li>
 <li><p>No queue or callback is used. Instead, we use a blocking read here.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">samples</span></code> array is reshaped to a <code class="docutils literal notranslate"><span class="pre">1-D</span></code> array</p></li>
 </ul>
@@ -448,7 +449,7 @@ encoded.</p>
 </div></blockquote>
 </div>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 14 </span><span class="caption-text">Decode a file with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 18 </span><span class="caption-text">Decode a file with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wave</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -528,8 +529,8 @@ and joiner.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="sherpa-ncnn" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../install/index.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../install/aarch64-embedded-linux.html" class="btn btn-neutral float-left" title="Embedded Linux (aarch64)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../endpoint.html" class="btn btn-neutral float-right" title="Endpointing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
