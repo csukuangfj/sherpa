@@ -125,6 +125,10 @@
              
   <section id="python-api">
 <span id="sherpa-ncnn-python-api"></span><h1>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It works for <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">&gt;=</span> <span class="pre">3.6</span></code> on Linux, macOS, and Windows.</p>
+</div>
 <p>In this section, we describe</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -139,21 +143,30 @@ a microphone</p></li>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">1</span></code> of the  <code class="docutils literal notranslate"><span class="pre">4</span></code> methods below to install the Python package <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>:</p>
 <section id="method-1">
 <h3>Method 1<a class="headerlink" href="#method-1" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sherpa-ncnn
+</pre></div>
+</div>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">1</span></code>, it will install pre-compiled libraries.
+The <code class="docutils literal notranslate"><span class="pre">disadvantage</span></code> is that it may <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">be</span> <span class="pre">optimized</span></code> for your platform,
+while the <code class="docutils literal notranslate"><span class="pre">advantage</span></code> is that you don’t need to install <code class="docutils literal notranslate"><span class="pre">cmake</span></code> or a
+C++ compiler.</p>
+<p>For the following methods, you have to first install:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code>, which can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">instal</span> <span class="pre">cmake</span></code></p></li>
+<li><p>A C++ compiler, e.g., GCC on Linux and macOS, Visual Studio on Windows</p></li>
+</ul>
+</section>
+<section id="method-2">
+<h3>Method 2<a class="headerlink" href="#method-2" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
 <span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
 python3<span class="w"> </span>setup.py<span class="w"> </span>install
 </pre></div>
 </div>
 </section>
-<section id="method-2">
-<h3>Method 2<a class="headerlink" href="#method-2" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/k2-fsa/sherpa-ncnn
-</pre></div>
-</div>
-</section>
 <section id="method-3">
 <h3>Method 3<a class="headerlink" href="#method-3" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sherpa-ncnn
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/k2-fsa/sherpa-ncnn
 </pre></div>
 </div>
 </section>
@@ -176,10 +189,21 @@ make<span class="w"> </span>-j6
 </pre></div>
 </div>
 <p>Let us check whether <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> was installed successfully:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sherpa_ncnn; print(sherpa_ncnn.__version__)&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sherpa_ncnn; print(sherpa_ncnn.__file__)&quot;</span>
+python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import _sherpa_ncnn; print(_sherpa_ncnn.__file__)&quot;</span>
 </pre></div>
 </div>
+<p>They should print the location of <code class="docutils literal notranslate"><span class="pre">sherpa_ncnn</span></code> and <code class="docutils literal notranslate"><span class="pre">_sherpa_ncnn</span></code>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">2</span></code>, and <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">3</span></code>, you can also use</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sherpa_ncnn; print(sherpa_ncnn.__version__)&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
 <p>It should print the version of <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>, e.g., <code class="docutils literal notranslate"><span class="pre">1.1</span></code>.</p>
+</div>
 <p>Next, we describe how to use <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API for speech recognition:</p>
 <blockquote>
 <div><ul class="simple">
