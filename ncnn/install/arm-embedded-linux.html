@@ -164,14 +164,70 @@ run:</p>
 ./build-arm-linux-gnueabihf.sh
 </pre></div>
 </div>
-<p>After building, you will get two binaries:</p>
+<p>After building, you will get three binaries:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w">  </span>build-arm-linux-gnueabihf/install/bin/
-total<span class="w"> </span><span class="m">3</span>.6M
--rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span><span class="m">1</span>.8M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">14</span>:18<span class="w"> </span>sherpa-ncnn
--rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span><span class="m">1</span>.9M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">14</span>:18<span class="w"> </span>sherpa-ncnn-microphone
+
+total<span class="w"> </span><span class="m">6</span>.6M
+-rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span><span class="m">2</span>.2M<span class="w"> </span>Jan<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">21</span>:46<span class="w"> </span>sherpa-ncnn
+-rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span><span class="m">2</span>.2M<span class="w"> </span>Jan<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">21</span>:46<span class="w"> </span>sherpa-ncnn-alsa
 </pre></div>
 </div>
 <p>That’s it!</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-ncnn</span></code> is for decoding a single file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-alsa</span></code> is for real-time speech recongition by reading
+the microphone with <a class="reference external" href="https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture">ALSA</a></p></li>
+</ul>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>We recommend that you use <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-alsa</span></code> on embedded systems such
+as Raspberry pi.</p>
+<p>You need to provide a <code class="docutils literal notranslate"><span class="pre">device_name</span></code> when invoking <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-alsa</span></code>.
+We describe below how to find the device name for you microphone.</p>
+<p>Run the following command:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>arecord<span class="w"> </span>-l
+</pre></div>
+</div>
+</div></blockquote>
+<p>to list all avaliable microphones for recording. If it complains that
+<code class="docutils literal notranslate"><span class="pre">arecord:</span> <span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>, please use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">alsa-utils</span></code>
+to install it.</p>
+<p>If the above command gives the following output:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>****<span class="w"> </span>List<span class="w"> </span>of<span class="w"> </span>CAPTURE<span class="w"> </span>Hardware<span class="w"> </span>Devices<span class="w"> </span>****
+card<span class="w"> </span><span class="m">0</span>:<span class="w"> </span>Audio<span class="w"> </span><span class="o">[</span>Axera<span class="w"> </span>Audio<span class="o">]</span>,<span class="w"> </span>device<span class="w"> </span><span class="m">0</span>:<span class="w"> </span>49ac000.i2s_mst-es8328-hifi-analog<span class="w"> </span>es8328-hifi-analog-0<span class="w"> </span><span class="o">[]</span>
+<span class="w">  </span>Subdevices:<span class="w"> </span><span class="m">1</span>/1
+<span class="w">  </span>Subdevice<span class="w"> </span><span class="c1">#0: subdevice #0</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In this case, I only have 1 microphone. It is <code class="docutils literal notranslate"><span class="pre">card</span> <span class="pre">0</span></code> and that card
+has only <code class="docutils literal notranslate"><span class="pre">device</span> <span class="pre">0</span></code>. To select <code class="docutils literal notranslate"><span class="pre">card</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">device</span> <span class="pre">0</span></code> on that card,
+we need to pass <code class="docutils literal notranslate"><span class="pre">hw:0,0</span></code> to <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-alsa</span></code>. (Note: It has the format
+<code class="docutils literal notranslate"><span class="pre">hw:card_number,device_index</span></code>.)</p>
+<p>For instance, you have to use</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: We use int8 models for encoder and joiner below.</span>
+./bin/sherpa-ncnn-alsa<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/encoder_jit_trace-pnnx.ncnn.int8.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/encoder_jit_trace-pnnx.ncnn.int8.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/decoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/decoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/joiner_jit_trace-pnnx.ncnn.int8.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/joiner_jit_trace-pnnx.ncnn.int8.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;hw:0,0&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Please change the card number and also the device index on the selected card
+accordingly in your own situation. Otherwise, you won’t be able to record
+with your microphone.</p>
+</div>
 <p>Please read <a class="reference internal" href="../pretrained_models/index.html#sherpa-ncnn-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> for usages about
 the generated binaries.</p>
 <p>Read below if you want to learn more.</p>
@@ -193,10 +249,12 @@ Dynamic section at offset 0x1c7ee8 contains 30 entries:
  0x00000001 (NEEDED)                     Shared library: [libc.so.6]
  0x0000000f (RPATH)                      Library rpath: [$ORIGIN]
 
-$ readelf -d build-arm-linux-gnueabihf/install/bin/sherpa-ncnn-microphone
+$ readelf -d build-arm-linux-gnueabihf/install/bin/sherpa-ncnn-alsa
 
-Dynamic section at offset 0x1cbee8 contains 30 entries:
+Dynamic section at offset 0x22ded8 contains 32 entries:
   Tag        Type                         Name/Value
+ 0x00000001 (NEEDED)                     Shared library: [libasound.so.2]
+ 0x00000001 (NEEDED)                     Shared library: [libgomp.so.1]
  0x00000001 (NEEDED)                     Shared library: [libpthread.so.0]
  0x00000001 (NEEDED)                     Shared library: [libstdc++.so.6]
  0x00000001 (NEEDED)                     Shared library: [libm.so.6]

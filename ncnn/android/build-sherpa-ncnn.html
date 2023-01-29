@@ -195,12 +195,12 @@ accordingly.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Note from <a class="reference external" href="https://github.com/Tencent/ncnn/wiki/how-to-build#build-for-android">https://github.com/Tencent/ncnn/wiki/how-to-build#build-for-android</a></p>
-<p>(optional) remove the hardcoded debug flag in Android NDK to fix
+<p>(Important) remove the hardcoded debug flag in Android NDK to fix
 the android-ndk issue: <a class="reference external" href="https://github.com/android/ndk/issues/243">https://github.com/android/ndk/issues/243</a></p>
 <p>1. open <code class="docutils literal notranslate"><span class="pre">$ANDROID_NDK/build/cmake/android.toolchain.cmake</span></code> for ndk &lt; r23
 or <code class="docutils literal notranslate"><span class="pre">$ANDROID_NDK/build/cmake/android-legacy.toolchain.cmake</span></code> for ndk &gt;= r23</p>
 <ol class="arabic simple" start="2">
-<li><p>delete “-g” line</p></li>
+<li><p>delete the line contining “-g”</p></li>
 </ol>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">APPEND</span> <span class="n">ANDROID_COMPILER_FLAGS</span>
@@ -209,6 +209,11 @@ or <code class="docutils literal notranslate"><span class="pre">$ANDROID_NDK/bui
 </pre></div>
 </div>
 </div></blockquote>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you don’t delete the line containin <code class="docutils literal notranslate"><span class="pre">-g</span></code> above, the generated
+library <code class="docutils literal notranslate"><span class="pre">libncnn.so</span></code> can be as large as <code class="docutils literal notranslate"><span class="pre">21</span> <span class="pre">MB</span></code> or even larger!</p>
 </div>
 </section>
 <section id="build-sherpa-ncnn-c-code">

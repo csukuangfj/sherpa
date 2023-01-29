@@ -117,7 +117,7 @@
   <section id="conv-emformer-transducer-based-models">
 <h1>Conv-Emformer-transducer-based Models<a class="headerlink" href="#conv-emformer-transducer-based-models" title="Permalink to this headline"></a></h1>
 <section id="marcoyang-sherpa-ncnn-conv-emformer-transducer-small-2023-01-09-english">
-<h2>marcoyang/sherpa-ncnn-conv-emformer-transducer-small-2023-01-09 (English)<a class="headerlink" href="#marcoyang-sherpa-ncnn-conv-emformer-transducer-small-2023-01-09-english" title="Permalink to this headline"></a></h2>
+<span id="id1"></span><h2>marcoyang/sherpa-ncnn-conv-emformer-transducer-small-2023-01-09 (English)<a class="headerlink" href="#marcoyang-sherpa-ncnn-conv-emformer-transducer-small-2023-01-09-english" title="Permalink to this headline"></a></h2>
 <p>This model is a small version of <a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/conv_emformer_transducer_stateless2">conv-emformer-transducer</a>
 trained in <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a>.</p>
 <p>It only has <code class="docutils literal notranslate"><span class="pre">8.8</span> <span class="pre">million</span> <span class="pre">parameters</span></code> and can be deployed on <code class="docutils literal notranslate"><span class="pre">embedded</span> <span class="pre">devices</span></code>
@@ -266,8 +266,8 @@ screen shot below):</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/2022-12-06-filesize.png"><img alt="File size for sherpa-ncnn-2022-12-06" src="../../_images/2022-12-06-filesize.png" style="width: 800px;" /></a>
 </figure>
-<section id="id2">
-<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<section id="id3">
+<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files with a single channel and the sampling rate
@@ -362,8 +362,8 @@ screen shot below):</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/2022-12-08-filesize.png"><img alt="File size for sherpa-ncnn-2022-12-08" src="../../_images/2022-12-08-filesize.png" style="width: 800px;" /></a>
 </figure>
-<section id="id3">
-<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<section id="id4">
+<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files with a single channel and the sampling rate
@@ -397,8 +397,8 @@ should be 16 kHz.</p>
 <p>in your commandline.</p>
 </div>
 </section>
-<section id="id4">
-<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<section id="id5">
+<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 ./build/bin/sherpa-ncnn-microphone<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-2022-12-08/v2/tokens.txt<span class="w"> </span><span class="se">\</span>
@@ -453,8 +453,8 @@ screen shot below):</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/2022-12-04-filesize.png"><img alt="File size for sherpa-ncnn-2022-12-04" src="../../_images/2022-12-04-filesize.png" style="width: 800px;" /></a>
 </figure>
-<section id="id5">
-<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<section id="id6">
+<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files with a single channel and the sampling rate
@@ -468,8 +468,8 @@ should be 16 kHz.</p>
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-2022-12-04/encoder_jit_trace-epoch-30-avg-10-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-2022-12-04/decoder_jit_trace-epoch-30-avg-10-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-2022-12-04/decoder_jit_trace-epoch-30-avg-10-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-2022-12-04/joiner_jit_trace-epoch-30-avg-10-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-2022-12-04/joiner_jit_trace-epoch-30-avg-10-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-2022-12-04/joiner_jit_trace-epoch-30-avg-10-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-2022-12-04/test_wavs/1089-134686-0001.wav
 </pre></div>
 </div>
@@ -488,8 +488,8 @@ should be 16 kHz.</p>
 <p>in your commandline.</p>
 </div>
 </section>
-<section id="id6">
-<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<section id="id7">
+<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 ./build/bin/sherpa-ncnn-microphone<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-2022-12-04/tokens.txt<span class="w"> </span><span class="se">\</span>
