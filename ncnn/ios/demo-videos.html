@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; sherpa 1.1 documentation</title>
+  <title>Video demos &mdash; sherpa 1.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Linux" href="linux.html" />
-    <link rel="prev" title="sherpa-ncnn" href="../index.html" /> 
+    <link rel="next" title="Build sherpa-ncnn for iOS" href="build-sherpa-ncnn-swift.html" />
+    <link rel="prev" title="iOS" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,18 +57,20 @@
 <p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-ncnn</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="linux.html">Linux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="macos.html">macOS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="windows.html">Windows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="arm-embedded-linux.html">Embedded Linux (arm)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aarch64-embedded-linux.html">Embedded Linux (aarch64)</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../endpoint.html">Endpointing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">iOS</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Video demos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#video-1-chinese-english-on-iphone-14-pro-simulator">Video 1: Chinese + English on iPhone 14 Pro (simulator)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video-2-chinese-english-on-ipad-11-pro-simulator">Video 2: Chinese + English on iPad 11 Pro (simulator)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="build-sherpa-ncnn-swift.html">Build sherpa-ncnn for iOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="for-the-more-curious-swift.html">For the more curious</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
 </ul>
 </li>
@@ -101,9 +103,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">sherpa-ncnn</a> &raquo;</li>
-      <li>Installation</li>
+          <li><a href="index.html">iOS</a> &raquo;</li>
+      <li>Video demos</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/ncnn/install/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/ncnn/ios/demo-videos.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -111,44 +114,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>Please refer to <a class="reference internal" href="../python/index.html#sherpa-ncnn-python-api"><span class="std std-ref">Python API</span></a> for its usage with Python.</p>
-</div>
-<p>In this section, we describe how to install <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> for the following
-platforms:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="linux.html">Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="macos.html">macOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="windows.html">Windows</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#bit-windows-x64">64-bit Windows (x64)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#bit-windows-x86">32-bit Windows (x86)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="arm-embedded-linux.html">Embedded Linux (arm)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="arm-embedded-linux.html#install-toolchain">Install toolchain</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arm-embedded-linux.html#build-sherpa-ncnn">Build sherpa-ncnn</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aarch64-embedded-linux.html">Embedded Linux (aarch64)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aarch64-embedded-linux.html#install-toolchain">Install toolchain</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aarch64-embedded-linux.html#build-sherpa-ncnn">Build sherpa-ncnn</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<p>If you want to build an Android app, please refer to <a class="reference internal" href="../android/index.html#sherpa-ncnn-android"><span class="std std-ref">Android</span></a>.</p>
+  <section id="video-demos">
+<span id="sherpa-ncnn-android-video-demos"></span><h1>Video demos<a class="headerlink" href="#video-demos" title="Permalink to this headline"></a></h1>
+<p>In this page, we list some videos about using <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> for
+real-time speech recognition on <code class="docutils literal notranslate"><span class="pre">iPhone</span></code> and <code class="docutils literal notranslate"><span class="pre">iPad</span></code>.</p>
+<section id="video-1-chinese-english-on-iphone-14-pro-simulator">
+<h2>Video 1: Chinese + English on iPhone 14 Pro (simulator)<a class="headerlink" href="#video-1-chinese-english-on-iphone-14-pro-simulator" title="Permalink to this headline"></a></h2>
+<iframe src="//player.bilibili.com/player.html?bvid=BV11841137TG&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="600" height="600"> </iframe></section>
+<section id="video-2-chinese-english-on-ipad-11-pro-simulator">
+<h2>Video 2: Chinese + English on iPad 11 Pro (simulator)<a class="headerlink" href="#video-2-chinese-english-on-ipad-11-pro-simulator" title="Permalink to this headline"></a></h2>
+<iframe src="//player.bilibili.com/player.html?bvid=BV1qv4y1k7qp&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="600" height="600"> </iframe></section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="sherpa-ncnn" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="linux.html" class="btn btn-neutral float-right" title="Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="iOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="build-sherpa-ncnn-swift.html" class="btn btn-neutral float-right" title="Build sherpa-ncnn for iOS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
