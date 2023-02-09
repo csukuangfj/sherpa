@@ -372,8 +372,36 @@ sherpa-online<span class="w"> </span><span class="se">\</span>
 </section>
 <section id="chinese-english-all-in-one">
 <h3>Chinese + English (all-in-one)<a class="headerlink" href="#chinese-english-all-in-one" title="Permalink to this headline"></a></h3>
+<section id="pfluo-k2fsa-zipformer-chinese-english-mixed">
+<h4>pfluo/k2fsa-zipformer-chinese-english-mixed<a class="headerlink" href="#pfluo-k2fsa-zipformer-chinese-english-mixed" title="Permalink to this headline"></a></h4>
+<p>It is a <a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/pruned_transducer_stateless7_streaming">streaming zipformer model</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model supports both Chinese and English</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/pfluo/k2fsa-zipformer-chinese-english-mixed
+<span class="nb">cd</span><span class="w"> </span>k2fsa-zipformer-chinese-english-mixed
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/encoder_jit_trace.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/decoder_jit_trace.pt&quot;</span>
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/joiner_jit_trace.pt&quot;</span>
+
+<span class="k">for</span><span class="w"> </span>m<span class="w"> </span><span class="k">in</span><span class="w"> </span>greedy_search<span class="w"> </span>modified_beam_search<span class="w"> </span>fast_beam_search<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>sherpa-online<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--decoding-method<span class="o">=</span><span class="nv">$m</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--decode-chunk-size<span class="o">=</span><span class="m">32</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--encoder-model<span class="o">=</span>./exp/encoder_jit_trace.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--decoder-model<span class="o">=</span>./exp/decoder_jit_trace.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--joiner-model<span class="o">=</span>./exp/joiner_jit_trace.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tokens<span class="o">=</span>./data/lang_char_bpe/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/0.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/1.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/2.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/3.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/4.wav
+<span class="k">done</span>
+</pre></div>
+</div>
+</section>
 <section id="icefall-asr-conv-emformer-transducer-stateless2-zh">
 <h4>icefall-asr-conv-emformer-transducer-stateless2-zh<a class="headerlink" href="#icefall-asr-conv-emformer-transducer-stateless2-zh" title="Permalink to this headline"></a></h4>
+<p>It is a <a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/conv_emformer_transducer_stateless2">ConvEmformer model</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model supports both Chinese and English</span>
 <span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/ptrnull/icefall-asr-conv-emformer-transducer-stateless2-zh
 <span class="nb">cd</span><span class="w"> </span>icefall-asr-conv-emformer-transducer-stateless2-zh
@@ -382,23 +410,16 @@ git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </spa
 ln<span class="w"> </span>-sv<span class="w"> </span>cpu_jit-epoch-11-avg-1.pt<span class="w"> </span>cpu_jit.pt
 <span class="nb">cd</span><span class="w"> </span>..
 
-mkdir<span class="w"> </span>test_wavs
-<span class="nb">cd</span><span class="w"> </span>test_wavs
-wget<span class="w"> </span>https://huggingface.co/spaces/k2-fsa/automatic-speech-recognition/resolve/main/test_wavs/tal_csasr/0.wav
-wget<span class="w"> </span>https://huggingface.co/spaces/k2-fsa/automatic-speech-recognition/resolve/main/test_wavs/tal_csasr/210_36476_210_8341_1_1533271973_7057520_132.wav
-wget<span class="w"> </span>https://huggingface.co/spaces/k2-fsa/automatic-speech-recognition/resolve/main/test_wavs/tal_csasr/210_36476_210_8341_1_1533271973_7057520_138.wav
-wget<span class="w"> </span>https://huggingface.co/spaces/k2-fsa/automatic-speech-recognition/resolve/main/test_wavs/tal_csasr/210_36476_210_8341_1_1533271973_7057520_145.wav
-<span class="nb">cd</span><span class="w"> </span>..
-
 <span class="k">for</span><span class="w"> </span>m<span class="w"> </span><span class="k">in</span><span class="w"> </span>greedy_search<span class="w"> </span>modified_beam_search<span class="w"> </span>fast_beam_search<span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <span class="w">  </span>sherpa-online<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--decoding-method<span class="o">=</span><span class="nv">$m</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--tokens<span class="o">=</span>./data/lang_char_bpe/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>./test_wavs/0.wav<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>./test_wavs/210_36476_210_8341_1_1533271973_7057520_132.wav<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>./test_wavs/210_36476_210_8341_1_1533271973_7057520_138.wav<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>./test_wavs/210_36476_210_8341_1_1533271973_7057520_145.wav
+<span class="w">    </span>./test_wavs/1.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/2.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/3.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/4.wav
 <span class="k">done</span>
 </pre></div>
 </div>
