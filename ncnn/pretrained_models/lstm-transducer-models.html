@@ -63,6 +63,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Pre-trained models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="small-models.html">Small models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="zipformer-transucer-models.html">Zipformer-transducer-based Models</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">LSTM-transducer-based Models</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#csukuangfj-sherpa-ncnn-2022-09-05-english">csukuangfj/sherpa-ncnn-2022-09-05 (English)</a></li>
@@ -121,22 +122,41 @@
 <p>This is a model trained using the <a class="reference external" href="https://github.com/SpeechColab/GigaSpeech">GigaSpeech</a> and the <a class="reference external" href="https://www.openslr.org/12">LibriSpeech</a> dataset.</p>
 <p>Please see <a class="reference external" href="https://github.com/k2-fsa/icefall/pull/558">https://github.com/k2-fsa/icefall/pull/558</a> for how the model
 is trained.</p>
-<p>In the following, we describe how to download and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
+<p>You can find the training code at</p>
+<p><a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/lstm_transducer_stateless2">https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/lstm_transducer_stateless2</a></p>
+<p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
+<section id="download-the-model">
+<h3>Download the model<a class="headerlink" href="#download-the-model" title="Permalink to this headline"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
 <span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-ncnn-2022-09-05
-<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn-2022-09-05/bar
+<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn-2022-09-05
 git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.bin&quot;</span>
 </pre></div>
 </div>
-<p>Please check that the file size of the pre-trained models is correct (see the
-screen shot below):</p>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/2022-09-05-filesize.png"><img alt="File size for sherpa-ncnn-2022-09-05" src="../../_images/2022-09-05-filesize.png" style="width: 800px;" /></a>
-</figure>
-<section id="decode-a-single-wave-file-with-build-bin-sherpa-ncnn">
-<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#decode-a-single-wave-file-with-build-bin-sherpa-ncnn" title="Permalink to this headline"></a></h3>
+<p>Please check that the file sizes of the pre-trained models are correct. See
+the file sizes of <code class="docutils literal notranslate"><span class="pre">*.bin</span></code> files below.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># before running `git lfs pull`</span>
+
+sherpa-ncnn-2022-09-05<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>*.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>131B<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:12<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>134B<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:12<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>132B<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:12<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.bin
+
+sherpa-ncnn-2022-09-05<span class="w"> </span>fangjun$<span class="w"> </span>git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.bin&quot;</span>
+
+<span class="c1"># after running `git lfs pull`</span>
+
+sherpa-ncnn-2022-09-05<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>*.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>502K<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:12<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>159M<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:13<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.5M<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:12<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.bin
+</pre></div>
+</div>
+</section>
+<section id="decode-a-single-wave-file">
+<h3>Decode a single wave file<a class="headerlink" href="#decode-a-single-wave-file" title="Permalink to this headline"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files with a single channel and the sampling rate
@@ -144,15 +164,38 @@ should be 16 kHz.</p>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
-./build/bin/sherpa-ncnn<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav
+<span class="k">for</span><span class="w"> </span>method<span class="w"> </span><span class="k">in</span><span class="w"> </span>greedy_search<span class="w"> </span>modified_beam_search<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>./build/bin/sherpa-ncnn<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-05/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-05/encoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-05/encoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-05/decoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-05/decoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-05/joiner_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-05/joiner_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">$method</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>You should see the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ModelConfig(encoder_param=&quot;./sherpa-ncnn-2022-09-05/encoder_jit_trace-pnnx.ncnn.param&quot;, encoder_bin=&quot;./sherpa-ncnn-2022-09-05/encoder_jit_trace-pnnx.ncnn.bin&quot;, decoder_param=&quot;./sherpa-ncnn-2022-09-05/decoder_jit_trace-pnnx.ncnn.param&quot;, decoder_bin=&quot;./sherpa-ncnn-2022-09-05/decoder_jit_trace-pnnx.ncnn.bin&quot;, joiner_param=&quot;./sherpa-ncnn-2022-09-05/joiner_jit_trace-pnnx.ncnn.param&quot;, joiner_bin=&quot;./sherpa-ncnn-2022-09-05/joiner_jit_trace-pnnx.ncnn.bin&quot;, tokens=&quot;./sherpa-ncnn-2022-09-05/tokens.txt&quot;, encoder num_threads=2, decoder num_threads=2, joiner num_threads=2)
+DecoderConfig(method=&quot;greedy_search&quot;, num_active_paths=4, enable_endpoint=False, endpoint_config=EndpointConfig(rule1=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=2.4, min_utterance_length=0), rule2=EndpointRule(must_contain_nonsilence=True, min_trailing_silence=1.4, min_utterance_length=0), rule3=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=0, min_utterance_length=20)))
+wav filename: ./sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav
+wav duration (s): 6.625
+Started!
+Done!
+Recognition result for ./sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav
+ AFTER EARLY NIGHTFALL THE YELLOW LAMPS WOULD LIGHT UP HERE AND THERE THE SQUALID QUARTER OF THE BROTHELS
+ModelConfig(encoder_param=&quot;./sherpa-ncnn-2022-09-05/encoder_jit_trace-pnnx.ncnn.param&quot;, encoder_bin=&quot;./sherpa-ncnn-2022-09-05/encoder_jit_trace-pnnx.ncnn.bin&quot;, decoder_param=&quot;./sherpa-ncnn-2022-09-05/decoder_jit_trace-pnnx.ncnn.param&quot;, decoder_bin=&quot;./sherpa-ncnn-2022-09-05/decoder_jit_trace-pnnx.ncnn.bin&quot;, joiner_param=&quot;./sherpa-ncnn-2022-09-05/joiner_jit_trace-pnnx.ncnn.param&quot;, joiner_bin=&quot;./sherpa-ncnn-2022-09-05/joiner_jit_trace-pnnx.ncnn.bin&quot;, tokens=&quot;./sherpa-ncnn-2022-09-05/tokens.txt&quot;, encoder num_threads=2, decoder num_threads=2, joiner num_threads=2)
+DecoderConfig(method=&quot;modified_beam_search&quot;, num_active_paths=4, enable_endpoint=False, endpoint_config=EndpointConfig(rule1=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=2.4, min_utterance_length=0), rule2=EndpointRule(must_contain_nonsilence=True, min_trailing_silence=1.4, min_utterance_length=0), rule3=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=0, min_utterance_length=20)))
+wav filename: ./sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav
+wav duration (s): 6.625
+Started!
+Done!
+Recognition result for ./sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav
+ AFTER EARLY NIGHTFALL THE YELLOW LAMPS WOULD LIGHT UP HERE AND THERE THE SQUALID QUARTER OF THE BROTHELS
 </pre></div>
 </div>
 <div class="admonition note">
@@ -160,18 +203,20 @@ should be 16 kHz.</p>
 <p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-ncnn.exe</span></code> for Windows.</p>
 </div>
 </section>
-<section id="real-time-speech-recognition-from-a-microphone-with-build-bin-sherpa-ncnn-microphone">
-<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone-with-build-bin-sherpa-ncnn-microphone" title="Permalink to this headline"></a></h3>
+<section id="real-time-speech-recognition-from-a-microphone">
+<h3>Real-time speech recognition from a microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
 ./build/bin/sherpa-ncnn-microphone<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-ncnn-2022-09-05/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/bar/encoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/bar/decoder_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-2022-09-05/bar/joiner_jit_trace-v2-iter-468000-avg-16-pnnx.ncnn.bin
+<span class="w">  </span>./sherpa-ncnn-2022-09-05/encoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-2022-09-05/encoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-2022-09-05/decoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-2022-09-05/decoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-2022-09-05/joiner_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-2022-09-05/joiner_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>greedy_search
 </pre></div>
 </div>
 <div class="admonition note">
@@ -198,7 +243,9 @@ should be 16 kHz.</p>
 <p>This is a model trained using the <a class="reference external" href="https://github.com/wenet-e2e/WenetSpeech">WenetSpeech</a> dataset.</p>
 <p>Please see <a class="reference external" href="https://github.com/k2-fsa/icefall/pull/595">https://github.com/k2-fsa/icefall/pull/595</a> for how the model
 is trained.</p>
-<p>In the following, we describe how to download and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
+<p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
+<section id="id1">
+<h3>Download the model<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
@@ -207,13 +254,28 @@ is trained.</p>
 git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.bin&quot;</span>
 </pre></div>
 </div>
-<p>Please check that the file size of the pre-trained models is correct (see the
-screen shot below):</p>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/2022-09-30-filesize.png"><img alt="File size for sherpa-ncnn-2022-09-30" src="../../_images/2022-09-30-filesize.png" style="width: 800px;" /></a>
-</figure>
-<section id="id1">
-<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p>Please check that the file sizes of the pre-trained models are correct. See
+the file sizes of <code class="docutils literal notranslate"><span class="pre">*.bin</span></code> files below.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># before running `git lfs pull`</span>
+
+sherpa-ncnn-2022-09-30<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>*.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>132B<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:30<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>134B<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:30<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>132B<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:30<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.bin
+
+sherpa-ncnn-2022-09-30<span class="w"> </span>fangjun$<span class="w"> </span>git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.bin&quot;</span>
+
+<span class="c1"># after running `git lfs pull`</span>
+
+sherpa-ncnn-2022-09-30<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>*.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">5</span>.4M<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:30<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>159M<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:31<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">6</span>.4M<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:30<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.bin
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Decode a single wave file<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files with a single channel and the sampling rate
@@ -221,15 +283,38 @@ should be 16 kHz.</p>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
-./build/bin/sherpa-ncnn<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/encoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/encoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/decoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/decoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/joiner_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/joiner_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/test_wavs/0.wav
+<span class="k">for</span><span class="w"> </span>method<span class="w"> </span><span class="k">in</span><span class="w"> </span>greedy_search<span class="w"> </span>modified_beam_search<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>./build/bin/sherpa-ncnn<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-30/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-30/encoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-30/encoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-30/decoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-30/decoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-30/joiner_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-30/joiner_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-2022-09-30/test_wavs/0.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">$method</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>You should see the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ModelConfig(encoder_param=&quot;./sherpa-ncnn-2022-09-30/encoder_jit_trace-pnnx.ncnn.param&quot;, encoder_bin=&quot;./sherpa-ncnn-2022-09-30/encoder_jit_trace-pnnx.ncnn.bin&quot;, decoder_param=&quot;./sherpa-ncnn-2022-09-30/decoder_jit_trace-pnnx.ncnn.param&quot;, decoder_bin=&quot;./sherpa-ncnn-2022-09-30/decoder_jit_trace-pnnx.ncnn.bin&quot;, joiner_param=&quot;./sherpa-ncnn-2022-09-30/joiner_jit_trace-pnnx.ncnn.param&quot;, joiner_bin=&quot;./sherpa-ncnn-2022-09-30/joiner_jit_trace-pnnx.ncnn.bin&quot;, tokens=&quot;./sherpa-ncnn-2022-09-30/tokens.txt&quot;, encoder num_threads=2, decoder num_threads=2, joiner num_threads=2)
+DecoderConfig(method=&quot;greedy_search&quot;, num_active_paths=4, enable_endpoint=False, endpoint_config=EndpointConfig(rule1=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=2.4, min_utterance_length=0), rule2=EndpointRule(must_contain_nonsilence=True, min_trailing_silence=1.4, min_utterance_length=0), rule3=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=0, min_utterance_length=20)))
+wav filename: ./sherpa-ncnn-2022-09-30/test_wavs/0.wav
+wav duration (s): 5.61462
+Started!
+Done!
+Recognition result for ./sherpa-ncnn-2022-09-30/test_wavs/0.wav
+对我做了介绍那么我想说的是呢大家如果对我的研究感兴趣
+ModelConfig(encoder_param=&quot;./sherpa-ncnn-2022-09-30/encoder_jit_trace-pnnx.ncnn.param&quot;, encoder_bin=&quot;./sherpa-ncnn-2022-09-30/encoder_jit_trace-pnnx.ncnn.bin&quot;, decoder_param=&quot;./sherpa-ncnn-2022-09-30/decoder_jit_trace-pnnx.ncnn.param&quot;, decoder_bin=&quot;./sherpa-ncnn-2022-09-30/decoder_jit_trace-pnnx.ncnn.bin&quot;, joiner_param=&quot;./sherpa-ncnn-2022-09-30/joiner_jit_trace-pnnx.ncnn.param&quot;, joiner_bin=&quot;./sherpa-ncnn-2022-09-30/joiner_jit_trace-pnnx.ncnn.bin&quot;, tokens=&quot;./sherpa-ncnn-2022-09-30/tokens.txt&quot;, encoder num_threads=2, decoder num_threads=2, joiner num_threads=2)
+DecoderConfig(method=&quot;modified_beam_search&quot;, num_active_paths=4, enable_endpoint=False, endpoint_config=EndpointConfig(rule1=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=2.4, min_utterance_length=0), rule2=EndpointRule(must_contain_nonsilence=True, min_trailing_silence=1.4, min_utterance_length=0), rule3=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=0, min_utterance_length=20)))
+wav filename: ./sherpa-ncnn-2022-09-30/test_wavs/0.wav
+wav duration (s): 5.61462
+Started!
+Done!
+Recognition result for ./sherpa-ncnn-2022-09-30/test_wavs/0.wav
+对我做了介绍那么我想说的是呢大家如果对我的研究感兴趣
 </pre></div>
 </div>
 <div class="admonition caution">
@@ -243,18 +328,20 @@ should be 16 kHz.</p>
 <p>in your commandline.</p>
 </div>
 </section>
-<section id="id2">
-<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<section id="id3">
+<h3>Real-time speech recognition from a microphone<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
 ./build/bin/sherpa-ncnn-microphone<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/encoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/encoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/decoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/decoder_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/joiner_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>./sherpa-ncnn-2022-09-30/joiner_jit_trace-v2-epoch-11-avg-2-pnnx.ncnn.bin
+<span class="w">  </span>./sherpa-ncnn-2022-09-30/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-2022-09-30/encoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-2022-09-30/encoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-2022-09-30/decoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-2022-09-30/decoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-2022-09-30/joiner_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-2022-09-30/joiner_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>greedy_search
 </pre></div>
 </div>
 <div class="admonition note">
