@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Python API" href="../python/index.html" />
-    <link rel="prev" title="Embedded Linux (arm)" href="arm-embedded-linux.html" /> 
+    <link rel="next" title="Python" href="../python/index.html" />
+    <link rel="prev" title="Windows" href="windows.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,31 +55,27 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cpp/pretrained_models/index.html">Pre-trained models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ncnn/index.html">sherpa-ncnn</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">onnx</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-ncnn</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-onnx</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="linux.html">Linux</a></li>
 <li class="toctree-l3"><a class="reference internal" href="macos.html">macOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="windows.html">Windows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="arm-embedded-linux.html">Embedded Linux (arm)</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Embedded Linux (aarch64)</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#install-toolchain">Install toolchain</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build-sherpa-ncnn">Build sherpa-ncnn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-sherpa-onnx">Build sherpa-onnx</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../endpoint.html">Endpointing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">onnx</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../onnx/index.html">sherpa-onnx</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Triton</span></p>
 <ul>
@@ -104,11 +100,11 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">sherpa-ncnn</a> &raquo;</li>
+          <li><a href="../index.html">sherpa-onnx</a> &raquo;</li>
           <li><a href="index.html">Installation</a> &raquo;</li>
       <li>Embedded Linux (aarch64)</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/ncnn/install/aarch64-embedded-linux.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/onnx/install/aarch64-embedded-linux.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -118,10 +114,18 @@
              
   <section id="embedded-linux-aarch64">
 <h1>Embedded Linux (aarch64)<a class="headerlink" href="#embedded-linux-aarch64" title="Permalink to this headline"></a></h1>
-<p>This page describes how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> for embedded Linux (aarch64, 64-bit)
+<p>This page describes how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> for embedded Linux (aarch64, 64-bit)
 with cross-compiling on an x86 machine with Ubuntu OS.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>By cross-compiling we mean that you do the compilation on a <code class="docutils literal notranslate"><span class="pre">x86_64</span></code> machine.
+And you copy the generated binaries from a <code class="docutils literal notranslate"><span class="pre">x86_64</span></code> machine and run them on
+an <code class="docutils literal notranslate"><span class="pre">aarch64</span></code> machine.</p>
+<p>If you want to compile <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> on an <code class="docutils literal notranslate"><span class="pre">aarch64</span></code> machine directly,
+please see <a class="reference internal" href="linux.html#install-sherpa-onnx-on-linux"><span class="std std-ref">Linux</span></a>.</p>
+</div>
 <section id="install-toolchain">
-<span id="sherpa-ncnn-install-for-aarch64-embedded-linux"></span><h2>Install toolchain<a class="headerlink" href="#install-toolchain" title="Permalink to this headline"></a></h2>
+<span id="sherpa-onnx-install-for-aarch64-embedded-linux"></span><h2>Install toolchain<a class="headerlink" href="#install-toolchain" title="Permalink to this headline"></a></h2>
 <p>The first step is to install a toolchain for cross-compiling.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -156,37 +160,47 @@ run:</p>
 </pre></div>
 </div>
 <p>Congratulations! You have successfully installed a toolchain for cross-compiling
-<a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
+<a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 </section>
-<section id="build-sherpa-ncnn">
-<h2>Build sherpa-ncnn<a class="headerlink" href="#build-sherpa-ncnn" title="Permalink to this headline"></a></h2>
-<p>Finally, let us build <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
-<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
+<section id="build-sherpa-onnx">
+<h2>Build sherpa-onnx<a class="headerlink" href="#build-sherpa-onnx" title="Permalink to this headline"></a></h2>
+<p>Finally, let us build <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
+<span class="nb">cd</span><span class="w"> </span>sherpa-onnx
 ./build-aarch64-linux-gnu.sh
 </pre></div>
 </div>
 <p>After building, you will get two binaries:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-aarch64-linux-gnu/install/bin/
-total<span class="w"> </span>10M
--rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span><span class="m">3</span>.4M<span class="w"> </span>Jan<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">21</span>:16<span class="w"> </span>sherpa-ncnn
--rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span><span class="m">3</span>.4M<span class="w"> </span>Jan<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">21</span>:16<span class="w"> </span>sherpa-ncnn-alsa
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-onnx$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-aarch64-linux-gnu/install/bin/
+total<span class="w"> </span>378K
+-rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span>187K<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">21</span>:55<span class="w"> </span>sherpa-onnx
+-rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span>191K<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">21</span>:55<span class="w"> </span>sherpa-onnx-alsa
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please also copy the <code class="docutils literal notranslate"><span class="pre">onnxruntime</span></code> lib to your embedded systems and put it
+into the same directory as <code class="docutils literal notranslate"><span class="pre">sherpa-onnx</span></code> and <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-alsa</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-onnx$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-aarch64-linux-gnu/install/lib/*onnxruntime*
+lrw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w">  </span><span class="m">24</span><span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">21</span>:38<span class="w"> </span>build-aarch64-linux-gnu/install/lib/libonnxruntime.so<span class="w"> </span>-&gt;<span class="w"> </span>libonnxruntime.so.1.14.0
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span>15M<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">21</span>:38<span class="w"> </span>build-aarch64-linux-gnu/install/lib/libonnxruntime.so.1.14.0
+</pre></div>
+</div>
 </div>
 <p>That’s it!</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-ncnn</span></code> is for decoding a single file</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-alsa</span></code> is for real-time speech recongition by reading
+<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-onnx</span></code> is for decoding a single file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-onnx-alsa</span></code> is for real-time speech recongition by reading
 the microphone with <a class="reference external" href="https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture">ALSA</a></p></li>
 </ul>
 </div>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>We recommend that you use <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-alsa</span></code> on embedded systems such
+<p>We recommend that you use <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-alsa</span></code> on embedded systems such
 as Raspberry pi.</p>
-<p>You need to provide a <code class="docutils literal notranslate"><span class="pre">device_name</span></code> when invoking <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-alsa</span></code>.
+<p>You need to provide a <code class="docutils literal notranslate"><span class="pre">device_name</span></code> when invoking <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-alsa</span></code>.
 We describe below how to find the device name for you microphone.</p>
 <p>Run the following command:</p>
 <blockquote>
@@ -208,19 +222,16 @@ card<span class="w"> </span><span class="m">3</span>:<span class="w"> </span>UAC
 </div></blockquote>
 <p>In this case, I only have 1 microphone. It is <code class="docutils literal notranslate"><span class="pre">card</span> <span class="pre">3</span></code> and that card
 has only <code class="docutils literal notranslate"><span class="pre">device</span> <span class="pre">0</span></code>. To select <code class="docutils literal notranslate"><span class="pre">card</span> <span class="pre">3</span></code> and <code class="docutils literal notranslate"><span class="pre">device</span> <span class="pre">0</span></code> on that card,
-we need to pass <code class="docutils literal notranslate"><span class="pre">hw:3,0</span></code> to <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-alsa</span></code>. (Note: It has the format
+we need to pass <code class="docutils literal notranslate"><span class="pre">hw:3,0</span></code> to <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-alsa</span></code>. (Note: It has the format
 <code class="docutils literal notranslate"><span class="pre">hw:card_number,device_index</span></code>.)</p>
 <p>For instance, you have to use</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bin/sherpa-ncnn-alsa<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/encoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/encoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/decoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/decoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/joiner_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/joiner_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;hw:3,0&quot;</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sherpa-onnx-alsa<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/joiner-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>hw:3,0
 </pre></div>
 </div>
 </div></blockquote>
@@ -228,51 +239,15 @@ we need to pass <code class="docutils literal notranslate"><span class="pre">hw:
 accordingly in your own situation. Otherwise, you won’t be able to record
 with your microphone.</p>
 </div>
-<p>Please read <a class="reference internal" href="../pretrained_models/index.html#sherpa-ncnn-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> for usages about
+<p>Please read <a class="reference internal" href="../pretrained_models/index.html#sherpa-onnx-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> for usages about
 the generated binaries.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>If you want to select a pre-trained model for Raspberry that can be
-run on real-time, we recommend you to use
-<a class="reference internal" href="../pretrained_models/conv-emformer-transducer-models.html#marcoyang-sherpa-ncnn-conv-emformer-transducer-small-2023-01-09-english"><span class="std std-ref">marcoyang/sherpa-ncnn-conv-emformer-transducer-small-2023-01-09 (English)</span></a>.</p>
+run on real-time, we recommend you to
+use <a class="reference internal" href="../pretrained_models/zipformer-transducer-models.html#sherpa-onnx-zipformer-transducer-models"><span class="std std-ref">Zipformer-transducer-based Models</span></a>.</p>
 </div>
-<p>Read below if you want to learn more.</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>By default, all external dependencies are statically linked. That means,
-the generated binaries are self-contained.</p>
-<p>You can use the following commands to check that and you will find
-they depend only on system libraries.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ readelf -d build-aarch64-linux-gnu/install/bin/sherpa-ncnn
-
-Dynamic section at offset 0x302a80 contains 30 entries:
-  Tag        Type                         Name/Value
- 0x0000000000000001 (NEEDED)             Shared library: [libgomp.so.1]
- 0x0000000000000001 (NEEDED)             Shared library: [libpthread.so.0]
- 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]
- 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
- 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
- 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
- 0x000000000000000f (RPATH)              Library rpath: [$ORIGIN]
-
-$ readelf -d build-aarch64-linux-gnu/install/bin/sherpa-ncnn-alsa
-
-Dynamic section at offset 0x34ea48 contains 31 entries:
-  Tag        Type                         Name/Value
- 0x0000000000000001 (NEEDED)             Shared library: [libasound.so.2]
- 0x0000000000000001 (NEEDED)             Shared library: [libgomp.so.1]
- 0x0000000000000001 (NEEDED)             Shared library: [libpthread.so.0]
- 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]
- 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
- 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
- 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
- 0x000000000000000f (RPATH)              Library rpath: [$ORIGIN]
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<p>Please create an issue at <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn/issues">https://github.com/k2-fsa/sherpa-ncnn/issues</a>
+<p>Please create an issue at <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/issues">https://github.com/k2-fsa/sherpa-onnx/issues</a>
 if you have any problems.</p>
 </section>
 </section>
@@ -281,8 +256,8 @@ if you have any problems.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="arm-embedded-linux.html" class="btn btn-neutral float-left" title="Embedded Linux (arm)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../python/index.html" class="btn btn-neutral float-right" title="Python API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="windows.html" class="btn btn-neutral float-left" title="Windows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../python/index.html" class="btn btn-neutral float-right" title="Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

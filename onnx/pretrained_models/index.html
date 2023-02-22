@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Small models &mdash; sherpa 1.1 documentation</title>
+  <title>Pre-trained models &mdash; sherpa 1.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Zipformer-transducer-based Models" href="zipformer-transucer-models.html" />
-    <link rel="prev" title="Pre-trained models" href="index.html" /> 
+    <link rel="next" title="Zipformer-transducer-based Models" href="zipformer-transducer-models.html" />
+    <link rel="prev" title="Install the Python Package" href="../python/install.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,26 +55,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cpp/pretrained_models/index.html">Pre-trained models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-ncnn</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../endpoint.html">Endpointing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Pre-trained models</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Small models</a></li>
-<li class="toctree-l3"><a class="reference internal" href="zipformer-transucer-models.html">Zipformer-transducer-based Models</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lstm-transducer-models.html">LSTM-transducer-based Models</a></li>
-<li class="toctree-l3"><a class="reference internal" href="conv-emformer-transducer-models.html">Conv-Emformer-transducer-based Models</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ncnn/index.html">sherpa-ncnn</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">onnx</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../onnx/index.html">sherpa-onnx</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-onnx</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pre-trained models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="zipformer-transducer-models.html">Zipformer-transducer-based Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstm-transducer-models.html">LSTM-transducer-based Models</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Triton</span></p>
 <ul>
@@ -99,11 +94,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">sherpa-ncnn</a> &raquo;</li>
-          <li><a href="index.html">Pre-trained models</a> &raquo;</li>
-      <li>Small models</li>
+          <li><a href="../index.html">sherpa-onnx</a> &raquo;</li>
+      <li>Pre-trained models</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/ncnn/pretrained_models/small-models.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/onnx/pretrained_models/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -111,30 +105,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="small-models">
-<h1>Small models<a class="headerlink" href="#small-models" title="Permalink to this headline"></a></h1>
-<p>In this section, we list models with fewer parameters that are suitable for
-resource constrained embedded systems.</p>
+  <section id="pre-trained-models">
+<span id="sherpa-onnx-pre-trained-models"></span><h1>Pre-trained models<a class="headerlink" href="#pre-trained-models" title="Permalink to this headline"></a></h1>
+<p>In this section, we describe how to download and use all
+available pre-trained models.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>If you are using Raspberry Pi 4, this section is not so helpful for you
-since all models in <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> are able to run in real-time on it.</p>
-<p>This page is especially useful for systems with less resource than
-Raspberry Pi 4.</p>
+<p>Please install <a class="reference external" href="https://git-lfs.com/">git-lfs</a> before you continue.</p>
 </div>
-<ul class="simple">
-<li><p><a class="reference internal" href="conv-emformer-transducer-models.html#marcoyang-sherpa-ncnn-conv-emformer-transducer-small-2023-01-09-english"><span class="std std-ref">marcoyang/sherpa-ncnn-conv-emformer-transducer-small-2023-01-09 (English)</span></a></p></li>
-<li><p><a class="reference internal" href="zipformer-transucer-models.html#sherpa-ncnn-streaming-zipformer-small-bilingual-zh-en-2023-02-16"><span class="std std-ref">csukuangfj/sherpa-ncnn-streaming-zipformer-small-bilingual-zh-en-2023-02-16 (Bilingual, Chinese + English)</span></a></p></li>
-<li><p><a class="reference internal" href="lstm-transducer-models.html#marcoyang-sherpa-ncnn-lstm-transducer-small-2023-02-13-bilingual"><span class="std std-ref">marcoyang/sherpa-ncnn-lstm-transducer-small-2023-02-13 (Bilingual, Chinese + English)</span></a></p></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="zipformer-transducer-models.html">Zipformer-transducer-based Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-en-2023-02-21-english">csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-02-21 (English)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="zipformer-transducer-models.html#download-the-model">Download the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zipformer-transducer-models.html#decode-a-single-wave-file">Decode a single wave file</a></li>
 </ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20-bilingual-chinese-english">sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="zipformer-transducer-models.html#id1">Download the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zipformer-transducer-models.html#id2">Decode a single wave file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21-japanese">csukuangfj/sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21 (Japanese)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="zipformer-transducer-models.html#id3">Download the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zipformer-transducer-models.html#id4">Decode a single wave file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lstm-transducer-models.html">LSTM-transducer-based Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lstm-transducer-models.html#csukuangfj-sherpa-onnx-lstm-en-2023-02-17-english">csukuangfj/sherpa-onnx-lstm-en-2023-02-17 (English)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstm-transducer-models.html#download-the-model">Download the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstm-transducer-models.html#decode-a-single-wave-file">Decode a single wave file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lstm-transducer-models.html#csukuangfj-sherpa-onnx-lstm-zh-2023-02-20-chinese">csukuangfj/sherpa-onnx-lstm-zh-2023-02-20 (Chinese)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lstm-transducer-models.html#id1">Download the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lstm-transducer-models.html#id2">Decode a single wave file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Pre-trained models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="zipformer-transucer-models.html" class="btn btn-neutral float-right" title="Zipformer-transducer-based Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../python/install.html" class="btn btn-neutral float-left" title="Install the Python Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="zipformer-transducer-models.html" class="btn btn-neutral float-right" title="Zipformer-transducer-based Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

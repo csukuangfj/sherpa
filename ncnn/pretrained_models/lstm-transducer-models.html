@@ -66,6 +66,7 @@
 <li class="toctree-l3"><a class="reference internal" href="small-models.html">Small models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="zipformer-transucer-models.html">Zipformer-transducer-based Models</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">LSTM-transducer-based Models</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#marcoyang-sherpa-ncnn-lstm-transducer-small-2023-02-13-bilingual-chinese-english">marcoyang/sherpa-ncnn-lstm-transducer-small-2023-02-13 (Bilingual, Chinese + English)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#csukuangfj-sherpa-ncnn-2022-09-05-english">csukuangfj/sherpa-ncnn-2022-09-05 (English)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#csukuangfj-sherpa-ncnn-2022-09-30-chinese">csukuangfj/sherpa-ncnn-2022-09-30 (Chinese)</a></li>
 </ul>
@@ -117,6 +118,71 @@
              
   <section id="lstm-transducer-based-models">
 <h1>LSTM-transducer-based Models<a class="headerlink" href="#lstm-transducer-based-models" title="Permalink to this headline"></a></h1>
+<section id="marcoyang-sherpa-ncnn-lstm-transducer-small-2023-02-13-bilingual-chinese-english">
+<span id="marcoyang-sherpa-ncnn-lstm-transducer-small-2023-02-13-bilingual"></span><h2>marcoyang/sherpa-ncnn-lstm-transducer-small-2023-02-13 (Bilingual, Chinese + English)<a class="headerlink" href="#marcoyang-sherpa-ncnn-lstm-transducer-small-2023-02-13-bilingual-chinese-english" title="Permalink to this headline"></a></h2>
+<p>This model is a small version of <a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/lstm_transducer_stateless3">lstm-transducer</a>
+trained in <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a>.</p>
+<p>It only has <code class="docutils literal notranslate"><span class="pre">13.3</span> <span class="pre">million</span> <span class="pre">parameters</span></code> and can be deployed on <code class="docutils literal notranslate"><span class="pre">embedded</span> <span class="pre">devices</span></code>
+for real-time speech recognition. You can find the models in <code class="docutils literal notranslate"><span class="pre">fp16</span></code> format
+at <a class="reference external" href="https://huggingface.co/marcoyang/sherpa-ncnn-lstm-transducer-small-2023-02-13">https://huggingface.co/marcoyang/sherpa-ncnn-lstm-transducer-small-2023-02-13</a>.</p>
+<p>The model is trained on a bi-lingual dataset <code class="docutils literal notranslate"><span class="pre">tal_csasr</span></code> (Chinese + English), so it can be used
+for both Chinese and English.</p>
+<p>In the following, we show you how to download it and
+deploy it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
+<p>Please use the following commands to download it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
+
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/marcoyang/sherpa-ncnn-lstm-transducer-small-2023-02-13
+
+<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn-lstm-transducer-small-2023-02-13
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.bin&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please refer to <a class="reference internal" href="../install/arm-embedded-linux.html#sherpa-ncnn-embedded-linux-arm-install"><span class="std std-ref">Embedded Linux (arm)</span></a> for how to
+compile <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> for a 32-bit ARM platform.</p>
+</div>
+<section id="decode-a-single-wave-file-with-build-bin-sherpa-ncnn">
+<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#decode-a-single-wave-file-with-build-bin-sherpa-ncnn" title="Permalink to this headline"></a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It supports decoding only wave files with a single channel and the sampling rate
+should be 16 kHz.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
+
+./build/bin/sherpa-ncnn<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-lstm-transducer-small-2023-02-13/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-lstm-transducer-small-2023-02-13/encoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-lstm-transducer-small-2023-02-13/encoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-lstm-transducer-small-2023-02-13/decoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-lstm-transducer-small-2023-02-13/decoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-lstm-transducer-small-2023-02-13/joiner_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-lstm-transducer-small-2023-02-13/joiner_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-lstm-transducer-small-2023-02-13/test_wavs/0.wav
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default option uses 4 threads and <code class="docutils literal notranslate"><span class="pre">greedy_search</span></code> for decoding.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-ncnn.exe</span></code> for Windows.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you use Windows and get encoding issues, please run:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CHCP<span class="w"> </span><span class="m">65001</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>in your commandline.</p>
+</div>
+</section>
+</section>
 <section id="csukuangfj-sherpa-ncnn-2022-09-05-english">
 <h2>csukuangfj/sherpa-ncnn-2022-09-05 (English)<a class="headerlink" href="#csukuangfj-sherpa-ncnn-2022-09-05-english" title="Permalink to this headline"></a></h2>
 <p>This is a model trained using the <a class="reference external" href="https://github.com/SpeechColab/GigaSpeech">GigaSpeech</a> and the <a class="reference external" href="https://www.openslr.org/12">LibriSpeech</a> dataset.</p>
@@ -125,8 +191,6 @@ is trained.</p>
 <p>You can find the training code at</p>
 <p><a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/lstm_transducer_stateless2">https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/lstm_transducer_stateless2</a></p>
 <p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
-<section id="download-the-model">
-<h3>Download the model<a class="headerlink" href="#download-the-model" title="Permalink to this headline"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
@@ -154,9 +218,6 @@ sherpa-ncnn-2022-09-05<span class="w"> </span>fangjun$<span class="w"> </span>ls
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.5M<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:12<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.bin
 </pre></div>
 </div>
-</section>
-<section id="decode-a-single-wave-file">
-<h3>Decode a single wave file<a class="headerlink" href="#decode-a-single-wave-file" title="Permalink to this headline"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files with a single channel and the sampling rate
@@ -202,9 +263,6 @@ Recognition result for ./sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav
 <p class="admonition-title">Note</p>
 <p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-ncnn.exe</span></code> for Windows.</p>
 </div>
-</section>
-<section id="real-time-speech-recognition-from-a-microphone">
-<h3>Real-time speech recognition from a microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
 ./build/bin/sherpa-ncnn-microphone<span class="w"> </span><span class="se">\</span>
@@ -237,15 +295,12 @@ Recognition result for ./sherpa-ncnn-2022-09-05/test_wavs/1089-134686-0001.wav
 <div class="video_wrapper" style="padding-bottom: 67.500000%; padding-top: 30px; position: relative; width: 120%">
 <iframe allowfullscreen="true" src="https://www.youtube.com/embed/m6ynSxycpX0" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
 </iframe></div></section>
-</section>
 <section id="csukuangfj-sherpa-ncnn-2022-09-30-chinese">
 <h2>csukuangfj/sherpa-ncnn-2022-09-30 (Chinese)<a class="headerlink" href="#csukuangfj-sherpa-ncnn-2022-09-30-chinese" title="Permalink to this headline"></a></h2>
 <p>This is a model trained using the <a class="reference external" href="https://github.com/wenet-e2e/WenetSpeech">WenetSpeech</a> dataset.</p>
 <p>Please see <a class="reference external" href="https://github.com/k2-fsa/icefall/pull/595">https://github.com/k2-fsa/icefall/pull/595</a> for how the model
 is trained.</p>
 <p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
-<section id="id1">
-<h3>Download the model<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
@@ -273,9 +328,6 @@ sherpa-ncnn-2022-09-30<span class="w"> </span>fangjun$<span class="w"> </span>ls
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">6</span>.4M<span class="w"> </span>Feb<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:30<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.bin
 </pre></div>
 </div>
-</section>
-<section id="id2">
-<h3>Decode a single wave file<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files with a single channel and the sampling rate
@@ -327,9 +379,6 @@ Recognition result for ./sherpa-ncnn-2022-09-30/test_wavs/0.wav
 </div></blockquote>
 <p>in your commandline.</p>
 </div>
-</section>
-<section id="id3">
-<h3>Real-time speech recognition from a microphone<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
 ./build/bin/sherpa-ncnn-microphone<span class="w"> </span><span class="se">\</span>
@@ -362,7 +411,6 @@ Recognition result for ./sherpa-ncnn-2022-09-30/test_wavs/0.wav
 <div class="video_wrapper" style="padding-bottom: 67.500000%; padding-top: 30px; position: relative; width: 120%">
 <iframe allowfullscreen="true" src="https://www.youtube.com/embed/bbQfoRT75oM" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%">
 </iframe></div></section>
-</section>
 </section>
 
 
