@@ -63,11 +63,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-onnx</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Pre-trained models</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Zipformer-transducer-based Models</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#csukuangfj-sherpa-onnx-streaming-zipformer-en-2023-02-21-english">csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-02-21 (English)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20-bilingual-chinese-english">sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#csukuangfj-sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21-japanese">csukuangfj/sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21 (Japanese)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="lstm-transducer-models.html">LSTM-transducer-based Models</a></li>
@@ -120,7 +120,7 @@
 <p>which supports only English as it is trained on the <a class="reference external" href="https://www.openslr.org/12">LibriSpeech</a> corpus.</p>
 <p>You can find the training code at</p>
 <p><a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/pruned_transducer_stateless7_streaming">https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/pruned_transducer_stateless7_streaming</a></p>
-<p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
+<p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <section id="download-the-model">
 <h3>Download the model<a class="headerlink" href="#download-the-model" title="Permalink to this headline"></a></h3>
 <p>Please use the following commands to download it.</p>
@@ -191,9 +191,27 @@ Real time factor (RTF): 0.527 / 6.625 = 0.080
 </pre></div>
 </div>
 </section>
+<section id="real-time-speech-recognition-from-a-microphone">
+<h3>Real-time speech recognition from a microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
+./build/bin/sherpa-onnx-microphone<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/joiner-epoch-99-avg-1.onnx
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If your system is Linux (including embedded Linux), you can also use
+<a class="reference internal" href="../install/aarch64-embedded-linux.html#sherpa-onnx-alsa"><span class="std std-ref">sherpa-onnx-alsa</span></a> to do real-time speech recognition with your
+microphone if <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-microphone</span></code> does not work for you.</p>
+</div>
+</section>
 </section>
 <section id="sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20-bilingual-chinese-english">
-<h2>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)<a class="headerlink" href="#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20-bilingual-chinese-english" title="Permalink to this headline"></a></h2>
+<span id="sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"></span><h2>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)<a class="headerlink" href="#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20-bilingual-chinese-english" title="Permalink to this headline"></a></h2>
 <p>This model is converted from</p>
 <p><a class="reference external" href="https://huggingface.co/pfluo/k2fsa-zipformer-chinese-english-mixed">https://huggingface.co/pfluo/k2fsa-zipformer-chinese-english-mixed</a></p>
 <p>which supports both Chinese and English. The model is contributed by the community
@@ -279,99 +297,22 @@ Real time factor (RTF): 0.429 / 5.100 = 0.084
 </pre></div>
 </div>
 </section>
-</section>
-<section id="csukuangfj-sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21-japanese">
-<h2>csukuangfj/sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21 (Japanese)<a class="headerlink" href="#csukuangfj-sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21-japanese" title="Permalink to this headline"></a></h2>
-<p>This model is converted from</p>
-<p><a class="reference external" href="https://huggingface.co/TeoWenShen/icefall-asr-csj-pruned-transducer-stateless7-streaming-230208/tree/main/exp_fluent">https://huggingface.co/TeoWenShen/icefall-asr-csj-pruned-transducer-stateless7-streaming-230208/tree/main/exp_fluent</a></p>
-<p>which supports only Japanese as it is trained on the <a class="reference external" href="https://clrd.ninjal.ac.jp/csj/en/index.html">CSJ</a> corpus.</p>
-<p>You can find the training code at</p>
-<p><a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/csj/ASR/pruned_transducer_stateless7_streaming">https://github.com/k2-fsa/icefall/tree/master/egs/csj/ASR/pruned_transducer_stateless7_streaming</a></p>
-<p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <section id="id3">
-<h3>Download the model<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
-<p>Please use the following commands to download it.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;test_wavs/*.wav&quot;</span>
-</pre></div>
-</div>
-<p>Please check that the file sizes of the pre-trained models are correct. See
-the file sizes of <code class="docutils literal notranslate"><span class="pre">*.onnx</span></code> files below.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># before running `git lfs pull`</span>
-
-sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>*.onnx
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>132B<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22</span>:35<span class="w"> </span>decoder-epoch-99-avg-1.onnx
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>134B<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22</span>:35<span class="w"> </span>encoder-epoch-99-avg-1.onnx
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>132B<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22</span>:35<span class="w"> </span>joiner-epoch-99-avg-1.onnx
-
-<span class="c1"># after running `git lfs pull`</span>
-
-sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>*.onnx
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">7</span>.4M<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22</span>:36<span class="w"> </span>decoder-epoch-99-avg-1.onnx
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>337M<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22</span>:37<span class="w"> </span>encoder-epoch-99-avg-1.onnx
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">6</span>.4M<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22</span>:37<span class="w"> </span>joiner-epoch-99-avg-1.onnx
-</pre></div>
-</div>
-</section>
-<section id="id4">
-<h3>Decode a single wave file<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>It supports decoding only wave files with a single channel and the sampling rate
-should be 16 kHz.</p>
-</div>
+<h3>Real-time speech recognition from a microphone<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21/joiner-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21/test_wavs/interview_aps-smp.wav
+./build/bin/sherpa-onnx-microphone<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/joiner-epoch-99-avg-1.onnx
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx.exe</span></code> for Windows.</p>
-</div>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>If you use Windows and get encoding issues, please run:</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CHCP<span class="w"> </span><span class="m">65001</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p>in your commandline.</p>
-</div>
-<p>You should see the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OnlineRecognizerConfig(
-feat_config=FeatureExtractorConfig(sampling_rate=16000, feature_dim=80),
-model_config=OnlineTransducerModelConfig(
-  encoder_filename=&quot;./sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21/encoder-epoch-99-avg-1.onnx&quot;,
-  decoder_filename=&quot;./sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21/decoder-epoch-99-avg-1.onnx&quot;,
-  joiner_filename=&quot;./sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21/joiner-epoch-99-avg-1.onnx&quot;,
-  num_threads=2, debug=False),
-tokens=&quot;./sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21/tokens.txt&quot;)
-wav filename: ./sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21/test_wavs/interview_aps-smp.wav
-wav duration (s): 71.750
-Started
-Done!
-Recognition result for ./sherpa-onnx-streaming-zipformer-ja-fluent-2023-02-21/test_wavs/interview_aps-smp.wav:
-質問させいただきます読んだんですけれども分からなかった理解遠く及ばずという感じで言葉の意味からお聞きした方がいい
-と思うんだパラ言語情報っていう言葉と後ホルマント後調音運動っていうことについてまず初めに聞かせてください常っての
-は分かりますよね言葉ですよねそんで言語情報っていうのはね簡単に言えば単語の意味辞書に書いてありますよねそれから単
-語がくっ付いた時にくっ付いてほら文を作ったりする時に助詞が名詞に助詞がくっ付いて動詞があって最後に助動詞があって
-ってのはそういう普通に言語学の教科書に書いてあるようなそれが言語情報ですねでパラって言葉はね語源的にはね何とかの
-横にとかね隣りにとかねそういう意味なんですよでつまり言語からちょっとずれたとこにある情報だけどだけど実際には存在
-してる情報っていうことです
-num threads: 2
-Elapsed seconds: 5.563 s
-Real time factor (RTF): 5.563 / 71.750 = 0.078
-</pre></div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If your system is Linux (including embedded Linux), you can also use
+<a class="reference internal" href="../install/aarch64-embedded-linux.html#sherpa-onnx-alsa"><span class="std std-ref">sherpa-onnx-alsa</span></a> to do real-time speech recognition with your
+microphone if <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-microphone</span></code> does not work for you.</p>
 </div>
 </section>
 </section>

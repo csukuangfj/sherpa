@@ -63,6 +63,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-onnx</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Pre-trained models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="zipformer-transducer-models.html">Zipformer-transducer-based Models</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">LSTM-transducer-based Models</a><ul>
@@ -190,6 +191,24 @@ Real time factor (RTF): 1.805 / 6.625 = 0.272
 </pre></div>
 </div>
 </section>
+<section id="real-time-speech-recognition-from-a-microphone">
+<h3>Real-time speech recognition from a microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
+./build/bin/sherpa-onnx-microphone<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/joiner-epoch-99-avg-1.onnx
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If your system is Linux (including embedded Linux), you can also use
+<a class="reference internal" href="../install/aarch64-embedded-linux.html#sherpa-onnx-alsa"><span class="std std-ref">sherpa-onnx-alsa</span></a> to do real-time speech recognition with your
+microphone if <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-microphone</span></code> does not work for you.</p>
+</div>
+</section>
 </section>
 <section id="csukuangfj-sherpa-onnx-lstm-zh-2023-02-20-chinese">
 <h2>csukuangfj/sherpa-onnx-lstm-zh-2023-02-20 (Chinese)<a class="headerlink" href="#csukuangfj-sherpa-onnx-lstm-zh-2023-02-20-chinese" title="Permalink to this headline"></a></h2>
@@ -275,6 +294,24 @@ num threads: 2
 Elapsed seconds: 1.611 s
 Real time factor (RTF): 1.611 / 5.611 = 0.287
 </pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Real-time speech recognition from a microphone<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
+./build/bin/sherpa-onnx-microphone<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/encoder-epoch-11-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/decoder-epoch-11-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/joiner-epoch-11-avg-1.onnx
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If your system is Linux (including embedded Linux), you can also use
+<a class="reference internal" href="../install/aarch64-embedded-linux.html#sherpa-onnx-alsa"><span class="std std-ref">sherpa-onnx-alsa</span></a> to do real-time speech recognition with your
+microphone if <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-microphone</span></code> does not work for you.</p>
 </div>
 </section>
 </section>
