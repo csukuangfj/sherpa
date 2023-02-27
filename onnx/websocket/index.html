@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Windows &mdash; sherpa 1.1 documentation</title>
+  <title>WebSocket &mdash; sherpa 1.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Embedded Linux (aarch64)" href="aarch64-embedded-linux.html" />
-    <link rel="prev" title="macOS" href="macos.html" /> 
+    <link rel="next" title="Streaming WebSocket server and client" href="online-websocket.html" />
+    <link rel="prev" title="Build sherpa-onnx for iOS" href="../ios/build-sherpa-onnx-swift.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -61,20 +61,14 @@
 <p class="caption" role="heading"><span class="caption-text">onnx</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-onnx</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="linux.html">Linux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="macos.html">macOS</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Windows</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#bit-windows-x64">64-bit Windows (x64)</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="aarch64-embedded-linux.html">Embedded Linux (aarch64)</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">WebSocket</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="online-websocket.html">Streaming WebSocket server and client</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
 </ul>
 </li>
@@ -103,10 +97,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">sherpa-onnx</a> &raquo;</li>
-          <li><a href="index.html">Installation</a> &raquo;</li>
-      <li>Windows</li>
+      <li>WebSocket</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/onnx/install/windows.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/onnx/websocket/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -114,33 +107,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="windows">
-<h1>Windows<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h1>
-<p>This page describes how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> on Windows.</p>
-<section id="bit-windows-x64">
-<h2>64-bit Windows (x64)<a class="headerlink" href="#bit-windows-x64" title="Permalink to this headline"></a></h2>
-<p>All you need is to run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx
-mkdir<span class="w"> </span>build
-<span class="nb">cd</span><span class="w"> </span>build
-cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>..
-cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>Release<span class="w"> </span>--<span class="w"> </span>-m:6
-</pre></div>
+  <section id="websocket">
+<span id="sherpa-onnx-websocket"></span><h1>WebSocket<a class="headerlink" href="#websocket" title="Permalink to this headline"></a></h1>
+<p>In this section, we describe how to use the <a class="reference external" href="https://en.wikipedia.org/wiki/WebSocket">WebSocket</a> server and client
+for real-time speech recognition with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/WebSocket">WebSocket</a> server is implemented in C++ with the help of
+<a class="reference external" href="https://github.com/zaphoyd/websocketpp">websocketpp</a> and <a class="reference external" href="https://github.com/chriskohlhoff/asio">asio</a>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It does not depend on <a class="reference external" href="https://github.com/boostorg/boost">boost</a>.</p>
+<p>It does not depend on <a class="reference external" href="https://github.com/boostorg/boost">boost</a>.</p>
+<p>It does not depend on <a class="reference external" href="https://github.com/boostorg/boost">boost</a>.</p>
 </div>
-<p>After building, you will find an executable <code class="docutils literal notranslate"><span class="pre">sherpa-onnx.exe</span></code> inside the <code class="docutils literal notranslate"><span class="pre">bin/Release</span></code> directory.</p>
-<p>That’s it!</p>
-<p>Please refer to <a class="reference internal" href="../pretrained_models/index.html#sherpa-onnx-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> for a list of pre-trained
-models.</p>
-</section>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="online-websocket.html">Streaming WebSocket server and client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="online-websocket.html#build-sherpa-onnx-with-websocket-support">Build <cite>sherpa-onnx</cite> with WebSocket support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="online-websocket.html#view-the-server-usage">View the server usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="online-websocket.html#start-the-server">Start the server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="online-websocket.html#view-the-usage-of-the-client-c">View the usage of the client (C++)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="online-websocket.html#start-the-client-c">Start the client (C++)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="online-websocket.html#view-the-usage-of-the-client-python">View the usage of the client (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="online-websocket.html#start-the-client-python">Start the client (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="online-websocket.html#start-the-client-python-with-microphone">Start the client (Python, with microphone)</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="macos.html" class="btn btn-neutral float-left" title="macOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="aarch64-embedded-linux.html" class="btn btn-neutral float-right" title="Embedded Linux (aarch64)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../ios/build-sherpa-onnx-swift.html" class="btn btn-neutral float-left" title="Build sherpa-onnx for iOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="online-websocket.html" class="btn btn-neutral float-right" title="Streaming WebSocket server and client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

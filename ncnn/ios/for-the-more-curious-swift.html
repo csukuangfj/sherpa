@@ -130,179 +130,110 @@
 <p>Please have a look at <code class="docutils literal notranslate"><span class="pre">./build-ios.sh</span></code> so that you know what it does for you.</p>
 </div>
 <p>The above command generates files inside the directory <code class="docutils literal notranslate"><span class="pre">./build-ios</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-ios/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-ios
 total<span class="w"> </span><span class="m">1912</span>
-drwxr-xr-x<span class="w">  </span><span class="m">13</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>416B<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:43<span class="w"> </span>build-arm64
-drwxr-xr-x<span class="w">  </span><span class="m">13</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>416B<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:45<span class="w"> </span>build-simulator
-drwxr-xr-x<span class="w">  </span><span class="m">16</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>512B<span class="w"> </span>Jan<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">12</span>:53<span class="w"> </span>openmp-11.0.0.src
+drwxr-xr-x<span class="w">   </span><span class="m">6</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>192B<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:48<span class="w"> </span>build
+drwxr-xr-x<span class="w">   </span><span class="m">4</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>128B<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:46<span class="w"> </span>install
+drwxr-xr-x<span class="w">  </span><span class="m">15</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>480B<span class="w"> </span>Feb<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">18</span>:09<span class="w"> </span>openmp-11.0.0.src
 -rw-r--r--<span class="w">   </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>952K<span class="w"> </span>Dec<span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">2021</span><span class="w"> </span>openmp-11.0.0.src.tar.xz
-drwxr-xr-x<span class="w">   </span><span class="m">6</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>192B<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:47<span class="w"> </span>openmp.framework
-drwxr-xr-x<span class="w">   </span><span class="m">6</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>192B<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:47<span class="w"> </span>sherpa-ncnn.framework
+drwxr-xr-x<span class="w">   </span><span class="m">6</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>192B<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:44<span class="w"> </span>openmp.xcframework
+drwxr-xr-x<span class="w">   </span><span class="m">6</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>192B<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:48<span class="w"> </span>sherpa-ncnn.xcframework
 </pre></div>
 </div>
-<p>What is interesting is the two framework folders <code class="docutils literal notranslate"><span class="pre">openmp.framework</span></code> and <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.framework</span></code>.
+<p>What is interesting here is the two framework folders <code class="docutils literal notranslate"><span class="pre">openmp.xcframework</span></code>
+and <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.xcframework</span></code>.
 All other folders can be safely removed. We only need the two framework folders.</p>
 <p>In the following, we describe the content in these two framework folders.</p>
-<section id="openmp-framework">
-<h3>openmp.framework<a class="headerlink" href="#openmp-framework" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sherpa-ncnn fangjun$ tree build-ios/openmp.framework/
-build-ios/openmp.framework/
-├── Headers -&gt; Versions/Current/Headers
-├── Resources -&gt; Versions/Current/Resources
-├── Versions
-│   ├── A
-│   │   ├── Headers
-│   │   │   └── omp.h
-│   │   ├── Resources
-│   │   │   └── Info.plist
-│   │   └── openmp
-│   └── Current -&gt; A
-└── openmp -&gt; Versions/Current/openmp
+<section id="openmp-xcframework">
+<h3>openmp.xcframework<a class="headerlink" href="#openmp-xcframework" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tree build-ios/openmp.xcframework/
+build-ios/openmp.xcframework/
+├── Headers
+│   └── omp.h
+├── Info.plist
+├── ios-arm64
+│   └── libomp.a
+└── ios-arm64_x86_64-simulator
+    └── libomp.a
 
-7 directories, 4 files
+3 directories, 4 files
 </pre></div>
 </div>
 <p><strong>Explanation</strong>:</p>
 <blockquote>
-<div><ul>
+<div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">omp.h</span></code>: The header file, which is used by <a class="reference external" href="https://github.com/tencent/ncnn">ncnn</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Info.plist</span></code>: A file that is dedicated for framework on macOS/iOS</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">openmp</span></code>: A static library</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>./build-ios/openmp.framework/openmp
-lrwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>23B<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:47<span class="w"> </span>./build-ios/openmp.framework/openmp<span class="w"> </span>-&gt;<span class="w"> </span>Versions/Current/openmp
-
-$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>./build-ios/openmp.framework/Versions/Current/openmp
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">2</span>.6M<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:47<span class="w"> </span>./build-ios/openmp.framework/Versions/Current/openmp
-
-<span class="c1"># Don&#39;t be scared about the file size of ``openmp``. It contains libraries for 4</span>
-<span class="c1"># different architectures, i.e., i386, x86_64, arm64, and arm64e.</span>
-
-$<span class="w"> </span>lipo<span class="w"> </span>-info<span class="w"> </span>./build-ios/openmp.framework/Versions/Current/openmp
-Architectures<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>fat<span class="w"> </span>file:<span class="w"> </span>./build-ios/openmp.framework/Versions/Current/openmp<span class="w"> </span>are:<span class="w"> </span>i386<span class="w"> </span>x86_64<span class="w"> </span>arm64<span class="w"> </span>arm64e
-
-$<span class="w"> </span>file<span class="w"> </span>./build-ios/openmp.framework/Versions/Current/openmp
-./build-ios/openmp.framework/Versions/Current/openmp:<span class="w"> </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">4</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>i386:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library<span class="o">]</span><span class="w"> </span><span class="o">[</span>x86_64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library<span class="o">]</span><span class="w"> </span><span class="o">[</span>arm64<span class="o">]</span><span class="w"> </span><span class="o">[</span>arm64e<span class="o">]</span>
-./build-ios/openmp.framework/Versions/Current/openmp<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>i386<span class="o">)</span>:<span class="w">   </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
-./build-ios/openmp.framework/Versions/Current/openmp<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>x86_64<span class="o">)</span>:<span class="w"> </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
-./build-ios/openmp.framework/Versions/Current/openmp<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64<span class="o">)</span>:<span class="w">  </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
-./build-ios/openmp.framework/Versions/Current/openmp<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64e<span class="o">)</span>:<span class="w"> </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
-
-$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-ios/openmp-11.0.0.src/build-simulator/install/lib/libomp.a
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.4M<span class="w"> </span>Jan<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">20</span>:32<span class="w"> </span>build-ios/openmp-11.0.0.src/build-simulator/install/lib/libomp.a
-
-$<span class="w"> </span>file<span class="w"> </span>build-ios/openmp-11.0.0.src/build-simulator/install/lib/libomp.a
-build-ios/openmp-11.0.0.src/build-simulator/install/lib/libomp.a:<span class="w"> </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>i386:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library<span class="o">]</span><span class="w"> </span><span class="o">[</span>x86_64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library<span class="o">]</span>
-build-ios/openmp-11.0.0.src/build-simulator/install/lib/libomp.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>i386<span class="o">)</span>:<span class="w">       </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
-build-ios/openmp-11.0.0.src/build-simulator/install/lib/libomp.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>x86_64<span class="o">)</span>:<span class="w">     </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
-
-$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-ios/openmp-11.0.0.src/build-arm64/install/lib/libomp.a
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.3M<span class="w"> </span>Jan<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">20</span>:34<span class="w"> </span>build-ios/openmp-11.0.0.src/build-arm64/install/lib/libomp.a
-
-$<span class="w"> </span>file<span class="w"> </span>build-ios/openmp-11.0.0.src/build-arm64/install/lib/libomp.a
-build-ios/openmp-11.0.0.src/build-arm64/install/lib/libomp.a:<span class="w"> </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>arm64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library<span class="o">]</span><span class="w"> </span><span class="o">[</span>arm64e:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library<span class="o">]</span>
-build-ios/openmp-11.0.0.src/build-arm64/install/lib/libomp.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64<span class="o">)</span>:<span class="w">  </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
-build-ios/openmp-11.0.0.src/build-arm64/install/lib/libomp.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64e<span class="o">)</span>:<span class="w"> </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
-</pre></div>
-</div>
-</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ios-arm64/libopm.a</span></code>: A static library for iOS device, e.g., for iPhone</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ios-arm64_x86_64-simulator/libomp.a</span></code>: A static library for iOS
+simulators, including simulators for Intel chips and Apple Silicon (e.g., M1)</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="sherpa-ncnn-framework">
-<h3>sherpa-ncnn.framework<a class="headerlink" href="#sherpa-ncnn-framework" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>tree<span class="w"> </span>build-ios/sherpa-ncnn.framework/
-build-ios/sherpa-ncnn.framework/
-├──<span class="w"> </span>Headers<span class="w"> </span>-&gt;<span class="w"> </span>Versions/Current/Headers
-├──<span class="w"> </span>Resources<span class="w"> </span>-&gt;<span class="w"> </span>Versions/Current/Resources
-├──<span class="w"> </span>Versions
-│<span class="w">   </span>├──<span class="w"> </span>A
-│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>Headers
-│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>sherpa-ncnn
-│<span class="w">   </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>c-api
-│<span class="w">   </span>│<span class="w">   </span>│<span class="w">           </span>└──<span class="w"> </span>c-api.h
-│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>Resources
-│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Info.plist
-│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>sherpa-ncnn
-│<span class="w">   </span>└──<span class="w"> </span>Current<span class="w"> </span>-&gt;<span class="w"> </span>A
-└──<span class="w"> </span>sherpa-ncnn<span class="w"> </span>-&gt;<span class="w"> </span>Versions/Current/sherpa-ncnn
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>file<span class="w"> </span>build-ios/openmp.xcframework/ios-arm64_x86_64-simulator/libomp.a
+build-ios/openmp.xcframework/ios-arm64_x86_64-simulator/libomp.a:<span class="w"> </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>x86_64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library<span class="o">]</span><span class="w"> </span><span class="o">[</span>arm64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library<span class="o">]</span>
+build-ios/openmp.xcframework/ios-arm64_x86_64-simulator/libomp.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>x86_64<span class="o">)</span>:<span class="w">     </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
+build-ios/openmp.xcframework/ios-arm64_x86_64-simulator/libomp.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64<span class="o">)</span>:<span class="w">      </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
 
-<span class="m">9</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">4</span><span class="w"> </span>files
+sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>lipo<span class="w"> </span>-info<span class="w"> </span>build-ios/openmp.xcframework/ios-arm64_x86_64-simulator/libomp.a
+Architectures<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>fat<span class="w"> </span>file:<span class="w"> </span>build-ios/openmp.xcframework/ios-arm64_x86_64-simulator/libomp.a<span class="w"> </span>are:<span class="w"> </span>x86_64<span class="w"> </span>arm64
+
+sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>file<span class="w"> </span>build-ios/openmp.xcframework/ios-arm64/libomp.a
+build-ios/openmp.xcframework/ios-arm64/libomp.a:<span class="w"> </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
+
+sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>lipo<span class="w"> </span>-info<span class="w"> </span>build-ios/openmp.xcframework/ios-arm64/libomp.a
+Non-fat<span class="w"> </span>file:<span class="w"> </span>build-ios/openmp.xcframework/ios-arm64/libomp.a<span class="w"> </span>is<span class="w"> </span>architecture:<span class="w"> </span>arm64
+</pre></div>
+</div>
+</section>
+<section id="sherpa-ncnn-xcframework">
+<h3>sherpa-ncnn.xcframework<a class="headerlink" href="#sherpa-ncnn-xcframework" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>tree<span class="w"> </span>build-ios/sherpa-ncnn.xcframework/
+build-ios/sherpa-ncnn.xcframework/
+├──<span class="w"> </span>Headers
+│<span class="w">   </span>└──<span class="w"> </span>sherpa-ncnn
+│<span class="w">       </span>└──<span class="w"> </span>c-api
+│<span class="w">           </span>└──<span class="w"> </span>c-api.h
+├──<span class="w"> </span>Info.plist
+├──<span class="w"> </span>ios-arm64
+│<span class="w">   </span>└──<span class="w"> </span>sherpa-ncnn.a
+└──<span class="w"> </span>ios-arm64_x86_64-simulator
+<span class="w">    </span>└──<span class="w"> </span>sherpa-ncnn.a
+
+<span class="m">5</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">4</span><span class="w"> </span>files
 </pre></div>
 </div>
 <p><strong>Explanation</strong>:</p>
 <blockquote>
-<div><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">c-api.h</span></code>: The header file, which is copied from <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn/blob/master/sherpa-ncnn/c-api/c-api.h">https://github.com/k2-fsa/sherpa-ncnn/blob/master/sherpa-ncnn/c-api/c-api.h</a></p></li>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">c-api.h</span></code>: The header file, which is copied from
+<a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn/blob/master/sherpa-ncnn/c-api/c-api.h">https://github.com/k2-fsa/sherpa-ncnn/blob/master/sherpa-ncnn/c-api/c-api.h</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Info.plist</span></code>: A file that is dedicated for framework on macOS/iOS</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sherpa-ncnn</span></code>: A static library</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-ios/sherpa-ncnn.framework/sherpa-ncnn
-lrwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>28B<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:47<span class="w"> </span>build-ios/sherpa-ncnn.framework/sherpa-ncnn<span class="w"> </span>-&gt;<span class="w"> </span>Versions/Current/sherpa-ncnn
-
-sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-ios/sherpa-ncnn.framework/Versions/Current/sherpa-ncnn
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>25M<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:47<span class="w"> </span>build-ios/sherpa-ncnn.framework/Versions/Current/sherpa-ncnn
-
-<span class="c1"># Don&#39;t be scared about the file size of ``sherpa-ncnn``. It contains libraries for 4</span>
-<span class="c1"># different architectures, i.e., i386, x86_64, arm64, and arm64e.</span>
-
-sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>lipo<span class="w"> </span>-info<span class="w"> </span>build-ios/sherpa-ncnn.framework/Versions/Current/sherpa-ncnn
-Architectures<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>fat<span class="w"> </span>file:<span class="w"> </span>build-ios/sherpa-ncnn.framework/Versions/Current/sherpa-ncnn<span class="w"> </span>are:<span class="w"> </span>i386<span class="w"> </span>x86_64<span class="w"> </span>arm64<span class="w"> </span>arm64e
-
-sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>file<span class="w"> </span>build-ios/sherpa-ncnn.framework/Versions/Current/sherpa-ncnn
-build-ios/sherpa-ncnn.framework/Versions/Current/sherpa-ncnn:<span class="w"> </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">4</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>i386:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="o">]</span><span class="w"> </span><span class="o">[</span>x86_64<span class="o">]</span><span class="w"> </span><span class="o">[</span>arm64<span class="o">]</span><span class="w"> </span><span class="o">[</span>arm64e<span class="o">]</span>
-build-ios/sherpa-ncnn.framework/Versions/Current/sherpa-ncnn<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>i386<span class="o">)</span>:<span class="w">   </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/sherpa-ncnn.framework/Versions/Current/sherpa-ncnn<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>x86_64<span class="o">)</span>:<span class="w"> </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/sherpa-ncnn.framework/Versions/Current/sherpa-ncnn<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64<span class="o">)</span>:<span class="w">  </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/sherpa-ncnn.framework/Versions/Current/sherpa-ncnn<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64e<span class="o">)</span>:<span class="w"> </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-
-sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-ios/build-simulator/install/lib/lib*.a
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>248K<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:47<span class="w"> </span>build-ios/build-simulator/install/lib/libkaldi-native-fbank-core.a
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>16M<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:47<span class="w"> </span>build-ios/build-simulator/install/lib/libncnn.a
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">9</span>.9K<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:47<span class="w"> </span>build-ios/build-simulator/install/lib/libsherpa-ncnn-c-api.a
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>615K<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:47<span class="w"> </span>build-ios/build-simulator/install/lib/libsherpa-ncnn-core.a
-
-sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>file<span class="w"> </span>build-ios/build-simulator/install/lib/lib*.a
-build-ios/build-simulator/install/lib/libkaldi-native-fbank-core.a:<span class="w"> </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>i386:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="o">]</span><span class="w"> </span><span class="o">[</span>x86_64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="o">]</span>
-build-ios/build-simulator/install/lib/libkaldi-native-fbank-core.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>i386<span class="o">)</span>:<span class="w">     </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/build-simulator/install/lib/libkaldi-native-fbank-core.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>x86_64<span class="o">)</span>:<span class="w">   </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/build-simulator/install/lib/libncnn.a:<span class="w">                    </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>i386:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="o">]</span><span class="w"> </span><span class="o">[</span>x86_64<span class="o">]</span>
-build-ios/build-simulator/install/lib/libncnn.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>i386<span class="o">)</span>:<span class="w">        </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/build-simulator/install/lib/libncnn.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>x86_64<span class="o">)</span>:<span class="w">      </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/build-simulator/install/lib/libsherpa-ncnn-c-api.a:<span class="w">       </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>i386:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library<span class="o">]</span><span class="w"> </span><span class="o">[</span>x86_64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library<span class="o">]</span>
-build-ios/build-simulator/install/lib/libsherpa-ncnn-c-api.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>i386<span class="o">)</span>:<span class="w">   </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
-build-ios/build-simulator/install/lib/libsherpa-ncnn-c-api.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>x86_64<span class="o">)</span>:<span class="w"> </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
-build-ios/build-simulator/install/lib/libsherpa-ncnn-core.a:<span class="w">        </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>i386:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="o">]</span><span class="w"> </span><span class="o">[</span>x86_64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="o">]</span>
-build-ios/build-simulator/install/lib/libsherpa-ncnn-core.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>i386<span class="o">)</span>:<span class="w">    </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/build-simulator/install/lib/libsherpa-ncnn-core.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>x86_64<span class="o">)</span>:<span class="w">  </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-
-sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-ios/build-arm64/install/lib/lib*.a
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>221K<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:45<span class="w"> </span>build-ios/build-arm64/install/lib/libkaldi-native-fbank-core.a
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">7</span>.2M<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:45<span class="w"> </span>build-ios/build-arm64/install/lib/libncnn.a
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">9</span>.1K<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:45<span class="w"> </span>build-ios/build-arm64/install/lib/libsherpa-ncnn-c-api.a
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>579K<span class="w"> </span>Jan<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">14</span>:45<span class="w"> </span>build-ios/build-arm64/install/lib/libsherpa-ncnn-core.a
-sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>file<span class="w"> </span>build-ios/build-arm64/install/lib/lib*.a
-build-ios/build-arm64/install/lib/libkaldi-native-fbank-core.a:<span class="w"> </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>arm64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="o">]</span><span class="w"> </span><span class="o">[</span>arm64e:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="o">]</span>
-build-ios/build-arm64/install/lib/libkaldi-native-fbank-core.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64<span class="o">)</span>:<span class="w">        </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/build-arm64/install/lib/libkaldi-native-fbank-core.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64e<span class="o">)</span>:<span class="w">       </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/build-arm64/install/lib/libncnn.a:<span class="w">                    </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>arm64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="o">]</span><span class="w"> </span><span class="o">[</span>arm64e<span class="o">]</span>
-build-ios/build-arm64/install/lib/libncnn.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64<span class="o">)</span>:<span class="w">   </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/build-arm64/install/lib/libncnn.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64e<span class="o">)</span>:<span class="w">  </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/build-arm64/install/lib/libsherpa-ncnn-c-api.a:<span class="w">       </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>arm64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library<span class="o">]</span><span class="w"> </span><span class="o">[</span>arm64e:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library<span class="o">]</span>
-build-ios/build-arm64/install/lib/libsherpa-ncnn-c-api.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64<span class="o">)</span>:<span class="w">      </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
-build-ios/build-arm64/install/lib/libsherpa-ncnn-c-api.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64e<span class="o">)</span>:<span class="w">     </span>current<span class="w"> </span>ar<span class="w"> </span>archive<span class="w"> </span>random<span class="w"> </span>library
-build-ios/build-arm64/install/lib/libsherpa-ncnn-core.a:<span class="w">        </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>arm64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="o">]</span><span class="w"> </span><span class="o">[</span>arm64e:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="o">]</span>
-build-ios/build-arm64/install/lib/libsherpa-ncnn-core.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64<span class="o">)</span>:<span class="w">       </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-build-ios/build-arm64/install/lib/libsherpa-ncnn-core.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64e<span class="o">)</span>:<span class="w">      </span>current<span class="w"> </span>ar<span class="w"> </span>archive
-</pre></div>
-</div>
-</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ios-arm64/sherpa-ncnn.a</span></code>: A static library for iOS, e.g., iPhone</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ios-arm64_x86_64-simulator/sherpa-ncnn.a</span></code>: A static library for
+simulators, including simulators for Intel chips and Apple Silicon (e.g., M1)</p></li>
 </ul>
 </div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>file<span class="w"> </span>build-ios/sherpa-ncnn.xcframework/ios-arm64_x86_64-simulator/sherpa-ncnn.a
+build-ios/sherpa-ncnn.xcframework/ios-arm64_x86_64-simulator/sherpa-ncnn.a:<span class="w"> </span>Mach-O<span class="w"> </span>universal<span class="w"> </span>binary<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>architectures:<span class="w"> </span><span class="o">[</span>x86_64:current<span class="w"> </span>ar<span class="w"> </span>archive<span class="o">]</span><span class="w"> </span><span class="o">[</span>arm64<span class="o">]</span>
+build-ios/sherpa-ncnn.xcframework/ios-arm64_x86_64-simulator/sherpa-ncnn.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>x86_64<span class="o">)</span>:<span class="w">   </span>current<span class="w"> </span>ar<span class="w"> </span>archive
+build-ios/sherpa-ncnn.xcframework/ios-arm64_x86_64-simulator/sherpa-ncnn.a<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>architecture<span class="w"> </span>arm64<span class="o">)</span>:<span class="w">    </span>current<span class="w"> </span>ar<span class="w"> </span>archive
+
+sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>lipo<span class="w"> </span>-info<span class="w"> </span>build-ios/sherpa-ncnn.xcframework/ios-arm64_x86_64-simulator/sherpa-ncnn.a
+Architectures<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>fat<span class="w"> </span>file:<span class="w"> </span>build-ios/sherpa-ncnn.xcframework/ios-arm64_x86_64-simulator/sherpa-ncnn.a<span class="w"> </span>are:<span class="w"> </span>x86_64<span class="w"> </span>arm64
+
+sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>file<span class="w"> </span>build-ios/sherpa-ncnn.xcframework/ios-arm64/sherpa-ncnn.a
+build-ios/sherpa-ncnn.xcframework/ios-arm64/sherpa-ncnn.a:<span class="w"> </span>current<span class="w"> </span>ar<span class="w"> </span>archive
+
+sherpa-ncnn<span class="w"> </span>fangjun$<span class="w"> </span>lipo<span class="w"> </span>-info<span class="w"> </span>build-ios/sherpa-ncnn.xcframework/ios-arm64/sherpa-ncnn.a
+Non-fat<span class="w"> </span>file:<span class="w"> </span>build-ios/sherpa-ncnn.xcframework/ios-arm64/sherpa-ncnn.a<span class="w"> </span>is<span class="w"> </span>architecture:<span class="w"> </span>arm64
+</pre></div>
+</div>
 </section>
 </section>
 <section id="how-to-use-files-generated-by-build-ios-sh-in-xcode">
 <h2>How to use files generated by ./build-ios.sh in Xcode<a class="headerlink" href="#how-to-use-files-generated-by-build-ios-sh-in-xcode" title="Permalink to this headline"></a></h2>
-<p>In this section, we describe how to use <code class="docutils literal notranslate"><span class="pre">openmp.framework</span></code> and <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.framework</span></code>
-in Xcode.</p>
+<p>In this section, we describe how to use <code class="docutils literal notranslate"><span class="pre">openmp.xcframework</span></code> and
+<code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.xcframework</span></code> in Xcode.</p>
 <p>The underlying implementation of <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> is in C++. It also provides
 <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn/blob/master/sherpa-ncnn/c-api/c-api.h">C API</a>.</p>
 <p>To use <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">API</span></code> in Xcode with <a class="reference external" href="https://github.com/apple/swift">Swift</a>, we have to
@@ -330,7 +261,7 @@ the screenshot below for reference:</p>
 </div>
 <p>After adding the bridging header to your iOS project, Xcode will complain
 it cannot find <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn/c-api/c-api.h</span></code>. The fix is to add the path
-<code class="docutils literal notranslate"><span class="pre">build-ios/sherpa-ncnn.framework/Headers</span></code> to <code class="docutils literal notranslate"><span class="pre">Header</span> <span class="pre">Search</span> <span class="pre">Paths</span></code> by changing
+<code class="docutils literal notranslate"><span class="pre">build-ios/sherpa-ncnn.xcframework/Headers</span></code> to <code class="docutils literal notranslate"><span class="pre">Header</span> <span class="pre">Search</span> <span class="pre">Paths</span></code> by changing
 <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">Search</span> <span class="pre">Paths</span> <span class="pre">-&gt;</span> <span class="pre">Header</span> <span class="pre">Search</span> <span class="pre">Paths</span></code>, as is shown in the
 following screenshot:</p>
 <blockquote>
@@ -344,20 +275,20 @@ following screenshot:</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Instead of using an absolute path, we use
-<code class="docutils literal notranslate"><span class="pre">${PROJECT_DIR}/../../build-ios/sherpa-ncnn.framework/Headers/</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">${PROJECT_DIR}/../../build-ios/sherpa-ncnn.xcframework/Headers/</span></code></p>
 <p>For instance, my <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> is downloaded to
-<code class="docutils literal notranslate"><span class="pre">/Users/fangjun/open-source/sherpa-ncnn</span></code> and the path to <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.framework</span></code>
-is <code class="docutils literal notranslate"><span class="pre">/Users/fangjun/open-source/sherpa-ncnn/build-ios/sherpa-ncnn.framework</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">/Users/fangjun/open-source/sherpa-ncnn</span></code> and the path to <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.xcframework</span></code>
+is <code class="docutils literal notranslate"><span class="pre">/Users/fangjun/open-source/sherpa-ncnn/build-ios/sherpa-ncnn.xcframework</span></code>.</p>
 <p>The value of <code class="docutils literal notranslate"><span class="pre">PROJECT_DIR</span></code> is
 <code class="docutils literal notranslate"><span class="pre">/Users/fangjun/open-source/sherpa-ncnn/ios-swift/SherpaNcnn</span></code>, so
-we can use <code class="docutils literal notranslate"><span class="pre">${PROJECT_DIR}/../../build-ios/sherpa-ncnn.framework/Headers/</span></code>.</p>
+we can use <code class="docutils literal notranslate"><span class="pre">${PROJECT_DIR}/../../build-ios/sherpa-ncnn.xcframework/Headers/</span></code>.</p>
 <p>Also note that <code class="docutils literal notranslate"><span class="pre">PROJECT_DIR</span></code> is a pre-defined variable in Xcode.</p>
 </div>
 <p>Please also add <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn/blob/master/swift-api-examples/SherpaNcnn.swift">SherpaNcnn.swift</a>
 to your iOS project, which is a utility to make it easier to access functions from the bridging header.</p>
-<p>The next thing is to add <code class="docutils literal notranslate"><span class="pre">openmp.framework</span></code> and <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.framework</span></code>
+<p>The next thing is to add <code class="docutils literal notranslate"><span class="pre">openmp.xcframework</span></code> and <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.xcframework</span></code>
 as dependencies to you iOS project. Select <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">Phases</span> <span class="pre">-&gt;</span> <span class="pre">Link</span> <span class="pre">Binary</span> <span class="pre">with</span> <span class="pre">Libraries</span></code>
-and then click <code class="docutils literal notranslate"><span class="pre">+</span></code> to add <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.framework</span></code> and <code class="docutils literal notranslate"><span class="pre">openmp.framework</span></code>.
+and then click <code class="docutils literal notranslate"><span class="pre">+</span></code> to add <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.xcframework</span></code> and <code class="docutils literal notranslate"><span class="pre">openmp.xcframework</span></code>.
 See the screenshot below for reference:</p>
 <blockquote>
 <div><figure class="align-center" id="id3">
@@ -370,8 +301,8 @@ See the screenshot below for reference:</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>After clicking <code class="docutils literal notranslate"><span class="pre">+</span></code>, please select <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Other...</span> <span class="pre">-&gt;</span> <span class="pre">Add</span> <span class="pre">Files..</span></code>, and then
-add the path to <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.framework</span></code>.</p>
-<p>Repeat the step for <code class="docutils literal notranslate"><span class="pre">openmp.framework</span></code>.</p>
+add the path to <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn.xcframework</span></code>.</p>
+<p>Repeat the step for <code class="docutils literal notranslate"><span class="pre">openmp.xcframework</span></code>.</p>
 <p>See the screenshot below for reference:</p>
 <blockquote>
 <div><figure class="align-center" id="id4">

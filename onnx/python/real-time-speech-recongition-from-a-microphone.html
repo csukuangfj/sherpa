@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python &mdash; sherpa 1.1 documentation</title>
+  <title>Real-time speech recognition from a microphone &mdash; sherpa 1.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Install the Python Package" href="install.html" />
-    <link rel="prev" title="Embedded Linux (aarch64)" href="../install/aarch64-embedded-linux.html" /> 
+    <link rel="next" title="Android" href="../android/index.html" />
+    <link rel="prev" title="Decode a file" href="decode-a-file.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -62,10 +62,14 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-onnx</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="install.html">Install the Python Package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="decode-a-file.html">Decode a file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="real-time-speech-recongition-from-a-microphone.html">Real-time speech recognition from a microphone</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Real-time speech recognition from a microphone</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#with-endpoint-detection">With endpoint detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#without-endpoint-detection">Without endpoint detection</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
@@ -99,9 +103,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">sherpa-onnx</a> &raquo;</li>
-      <li>Python</li>
+          <li><a href="index.html">Python</a> &raquo;</li>
+      <li>Real-time speech recognition from a microphone</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/onnx/python/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/onnx/python/real-time-speech-recongition-from-a-microphone.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -109,34 +114,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="python">
-<h1>Python<a class="headerlink" href="#python" title="Permalink to this headline"></a></h1>
-<p>In this section, we describe how to install the Python package <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Install the Python Package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#method-1-from-pre-compiled-wheels">Method 1 (From pre-compiled wheels)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#method-2-from-source">Method 2 (From source)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#method-3-for-developers">Method 3 (For developers)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#check-your-installation">Check your installation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="decode-a-file.html">Decode a file</a></li>
-<li class="toctree-l1"><a class="reference internal" href="real-time-speech-recongition-from-a-microphone.html">Real-time speech recognition from a microphone</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="real-time-speech-recongition-from-a-microphone.html#with-endpoint-detection">With endpoint detection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="real-time-speech-recongition-from-a-microphone.html#without-endpoint-detection">Without endpoint detection</a></li>
-</ul>
-</li>
-</ul>
+  <section id="real-time-speech-recognition-from-a-microphone">
+<h1>Real-time speech recognition from a microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone" title="Permalink to this headline"></a></h1>
+<p>In this section, we demonstrate how to use the Python API of <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>
+for real-time speech recognition with a microphone.</p>
+<section id="with-endpoint-detection">
+<h2>With endpoint detection<a class="headerlink" href="#with-endpoint-detection" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
+python3<span class="w"> </span>./python-api-examples/speech-recognition-from-microphone-with-endpoint-detection.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/joiner-epoch-99-avg-1.onnx
+</pre></div>
 </div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><code class="docutils literal notranslate"><span class="pre">speech-recognition-from-microphone-with-endpoint-detection.py</span></code> is from <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/blob/master/python-api-examples/speech-recognition-from-microphone-with-endpoint-detection.py">https://github.com/k2-fsa/sherpa-onnx/blob/master/python-api-examples/speech-recognition-from-microphone-with-endpoint-detection.py</a></p>
+<p>In the above demo, the model files are
+from <a class="reference internal" href="../pretrained_models/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a>.</p>
+</div>
+</section>
+<section id="without-endpoint-detection">
+<h2>Without endpoint detection<a class="headerlink" href="#without-endpoint-detection" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
+python3<span class="w"> </span>./python-api-examples/speech-recognition-from-microphone.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/joiner-epoch-99-avg-1.onnx
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><code class="docutils literal notranslate"><span class="pre">speech-recognition-from-microphone.py</span></code> is from <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/blob/master/python-api-examples/speech-recognition-from-microphone.py">https://github.com/k2-fsa/sherpa-onnx/blob/master/python-api-examples/speech-recognition-from-microphone.py</a></p>
+<p>In the above demo, the model files are
+from <a class="reference internal" href="../pretrained_models/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a>.</p>
+</div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../install/aarch64-embedded-linux.html" class="btn btn-neutral float-left" title="Embedded Linux (aarch64)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="install.html" class="btn btn-neutral float-right" title="Install the Python Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="decode-a-file.html" class="btn btn-neutral float-left" title="Decode a file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../android/index.html" class="btn btn-neutral float-right" title="Android" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

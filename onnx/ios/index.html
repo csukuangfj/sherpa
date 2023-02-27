@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Windows &mdash; sherpa 1.1 documentation</title>
+  <title>iOS &mdash; sherpa 1.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Embedded Linux (aarch64)" href="aarch64-embedded-linux.html" />
-    <link rel="prev" title="macOS" href="macos.html" /> 
+    <link rel="next" title="Build sherpa-onnx for iOS" href="build-sherpa-onnx-swift.html" />
+    <link rel="prev" title="Build sherpa-onnx for Android" href="../android/build-sherpa-onnx.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -61,19 +61,13 @@
 <p class="caption" role="heading"><span class="caption-text">onnx</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-onnx</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="linux.html">Linux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="macos.html">macOS</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Windows</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#bit-windows-x64">64-bit Windows (x64)</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="aarch64-embedded-linux.html">Embedded Linux (aarch64)</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">iOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="build-sherpa-onnx-swift.html">Build sherpa-onnx for iOS</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
 </ul>
@@ -103,10 +97,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">sherpa-onnx</a> &raquo;</li>
-          <li><a href="index.html">Installation</a> &raquo;</li>
-      <li>Windows</li>
+      <li>iOS</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/onnx/install/windows.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/onnx/ios/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -114,33 +107,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="windows">
-<h1>Windows<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h1>
-<p>This page describes how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> on Windows.</p>
-<section id="bit-windows-x64">
-<h2>64-bit Windows (x64)<a class="headerlink" href="#bit-windows-x64" title="Permalink to this headline"></a></h2>
-<p>All you need is to run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx
-mkdir<span class="w"> </span>build
-<span class="nb">cd</span><span class="w"> </span>build
-cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>..
-cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>Release<span class="w"> </span>--<span class="w"> </span>-m:6
-</pre></div>
+  <section id="ios">
+<span id="sherpa-onnx-ios"></span><h1>iOS<a class="headerlink" href="#ios" title="Permalink to this headline"></a></h1>
+<p>In this section, we describe how to build an iOS app for <code class="docutils literal notranslate"><span class="pre">real-time</span></code> speech
+recognition with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> and run it within a simulator on your Mac,
+run it on you iPhone or iPad.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>During speech recognition, it does not need to access the Internet.
+Everyting is processed locally on your device.</p>
 </div>
-<p>After building, you will find an executable <code class="docutils literal notranslate"><span class="pre">sherpa-onnx.exe</span></code> inside the <code class="docutils literal notranslate"><span class="pre">bin/Release</span></code> directory.</p>
-<p>That’s it!</p>
-<p>Please refer to <a class="reference internal" href="../pretrained_models/index.html#sherpa-onnx-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> for a list of pre-trained
-models.</p>
-</section>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="build-sherpa-onnx-swift.html">Build sherpa-onnx for iOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="build-sherpa-onnx-swift.html#requirement">Requirement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build-sherpa-onnx-swift.html#download-sherpa-onnx">Download sherpa-onnx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build-sherpa-onnx-swift.html#build-sherpa-onnx-in-commandline-c-part">Build sherpa-onnx (in commandline, C++ Part)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build-sherpa-onnx-swift.html#build-sherpa-onnx-in-xcode">Build sherpa-onnx (in Xcode)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build-sherpa-onnx-swift.html#run-sherpa-onnx-on-your-iphone-ipad">Run sherpa-onnx on your iPhone/iPad</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="macos.html" class="btn btn-neutral float-left" title="macOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="aarch64-embedded-linux.html" class="btn btn-neutral float-right" title="Embedded Linux (aarch64)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../android/build-sherpa-onnx.html" class="btn btn-neutral float-left" title="Build sherpa-onnx for Android" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="build-sherpa-onnx-swift.html" class="btn btn-neutral float-right" title="Build sherpa-onnx for iOS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
