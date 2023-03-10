@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Linux &mdash; sherpa 1.1 documentation</title>
+  <title>Installation videos &mdash; sherpa 1.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="macOS" href="macos.html" />
-    <link rel="prev" title="Installation videos" href="videos.html" /> 
+    <link rel="next" title="Linux" href="linux.html" />
+    <link rel="prev" title="Installation" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,8 +58,11 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-ncnn</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="videos.html">Installation videos</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Linux</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installation videos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#window-64-bit">Window (64-bit)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="linux.html">Linux</a></li>
 <li class="toctree-l3"><a class="reference internal" href="macos.html">macOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="windows.html">Windows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arm-embedded-linux.html">Embedded Linux (arm)</a></li>
@@ -105,9 +108,9 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">sherpa-ncnn</a> &raquo;</li>
           <li><a href="index.html">Installation</a> &raquo;</li>
-      <li>Linux</li>
+      <li>Installation videos</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/ncnn/install/linux.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/ncnn/install/videos.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -115,91 +118,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="linux">
-<h1>Linux<a class="headerlink" href="#linux" title="Permalink to this headline"></a></h1>
-<p>This page describes how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> on Linux.</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>For the Python API, please refer to <a class="reference internal" href="../python/index.html#sherpa-ncnn-python-api"><span class="std std-ref">Python API</span></a>.</p>
+  <section id="installation-videos">
+<h1>Installation videos<a class="headerlink" href="#installation-videos" title="Permalink to this headline"></a></h1>
+<p>This section presents some videos about how to install and use <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
+<section id="window-64-bit">
+<h2>Window (64-bit)<a class="headerlink" href="#window-64-bit" title="Permalink to this headline"></a></h2>
+<p>The following <a class="reference external" href="https://www.bilibili.com/video/BV158411c7Nu/">video</a>
+shows how to install and use <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> on 64-bit Windows.</p>
+<p>Thanks to <a class="reference external" href="https://space.bilibili.com/7990701">https://space.bilibili.com/7990701</a> for his contribution.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>It is in Chinese.</p>
 </div>
-<p>All you need is to run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
-<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
-mkdir<span class="w"> </span>build
-<span class="nb">cd</span><span class="w"> </span>build
-cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>..
-make<span class="w"> </span>-j6
-</pre></div>
-</div>
-<p>After building, you will find two executables inside the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>bin/
-total<span class="w"> </span>13M
--rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span><span class="m">6</span>.5M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">11</span>:31<span class="w"> </span>sherpa-ncnn
--rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span><span class="m">6</span>.5M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">11</span>:31<span class="w"> </span>sherpa-ncnn-microphone
-</pre></div>
-</div>
-<p>That’s it!</p>
-<p>Please read <a class="reference internal" href="../pretrained_models/index.html#sherpa-ncnn-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> for usages about
-the generated binaries.</p>
-<p>Read below if you want to learn more.</p>
-<p>You can strip the binaries by</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>strip<span class="w"> </span>bin/sherpa-ncnn
-$<span class="w"> </span>strip<span class="w"> </span>bin/sherpa-ncnn-microphone
-</pre></div>
-</div>
-<p>After stripping, the file size of each binary is:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>bin/
-total<span class="w"> </span>12M
--rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span><span class="m">5</span>.8M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">11</span>:35<span class="w"> </span>sherpa-ncnn
--rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>kuangfangjun<span class="w"> </span>root<span class="w"> </span><span class="m">5</span>.8M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">11</span>:36<span class="w"> </span>sherpa-ncnn-microphone
-</pre></div>
-</div>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>By default, all external dependencies are statically linked. That means,
-the generated binaries are self-contained.</p>
-<p>You can use the following commands to check that and you will find
-they depend only on system libraries.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ readelf -d bin/sherpa-ncnn
-
-Dynamic section at offset 0x5c0650 contains 34 entries:
-  Tag        Type                         Name/Value
- 0x0000000000000001 (NEEDED)             Shared library: [libgomp.so.1]
- 0x0000000000000001 (NEEDED)             Shared library: [libpthread.so.0]
- 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]
- 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
- 0x0000000000000001 (NEEDED)             Shared library: [libmvec.so.1]
- 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
- 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
- 0x000000000000001d (RUNPATH)            Library runpath: [$ORIGIN:]
-
-$ readelf -d bin/sherpa-ncnn-microphone
-
-Dynamic section at offset 0x5c45d0 contains 34 entries:
-  Tag        Type                         Name/Value
- 0x0000000000000001 (NEEDED)             Shared library: [libpthread.so.0]
- 0x0000000000000001 (NEEDED)             Shared library: [libgomp.so.1]
- 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]
- 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
- 0x0000000000000001 (NEEDED)             Shared library: [libmvec.so.1]
- 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
- 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
- 0x000000000000001d (RUNPATH)            Library runpath: [$ORIGIN:]
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<p>Please create an issue at <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn/issues">https://github.com/k2-fsa/sherpa-ncnn/issues</a>
-if you have any problems.</p>
+<iframe src="//player.bilibili.com/player.html?aid=225586112&bvid=BV158411c7Nu&cid=1040608821&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="600" height="600" > </iframe></section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="videos.html" class="btn btn-neutral float-left" title="Installation videos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="macos.html" class="btn btn-neutral float-right" title="macOS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="linux.html" class="btn btn-neutral float-right" title="Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; sherpa 1.1 documentation</title>
+  <title>Jetson Nano &mdash; sherpa 1.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Linux" href="linux.html" />
-    <link rel="prev" title="sherpa-onnx" href="../index.html" /> 
+    <link rel="next" title="Jetson NX" href="jetson-nx.html" />
+    <link rel="prev" title="Raspberry Pi 3B E14" href="raspberry-pi-3.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,26 +55,31 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cpp/pretrained_models/index.html">Pre-trained models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../ncnn/index.html">sherpa-ncnn</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">onnx</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-onnx</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="linux.html">Linux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="macos.html">macOS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="windows.html">Windows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aarch64-embedded-linux.html">Embedded Linux (aarch64)</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-ncnn</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../endpoint.html">Endpointing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="raspberry-pi-3.html">Raspberry Pi 3B E14</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Jetson Nano</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#board-info">Board info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rtf-4-threads">RTF (4 threads)</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="jetson-nx.html">Jetson NX</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../faq.html">FAQs</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">onnx</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../onnx/index.html">sherpa-onnx</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Triton</span></p>
 <ul>
@@ -99,10 +104,11 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">sherpa-onnx</a> &raquo;</li>
-      <li>Installation</li>
+          <li><a href="../index.html">sherpa-ncnn</a> &raquo;</li>
+          <li><a href="index.html">Examples</a> &raquo;</li>
+      <li>Jetson Nano</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/onnx/install/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/ncnn/examples/jetson-nano.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -110,43 +116,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="installation">
-<span id="install-sherpa-onnx"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
-<p>In this section, we describe how to install <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> on various platforms.</p>
-<p><strong>Requirements</strong>:</p>
+  <section id="jetson-nano">
+<h1>Jetson Nano<a class="headerlink" href="#jetson-nano" title="Permalink to this headline"></a></h1>
+<p>This page posts some screenshots of running <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> on <a class="reference external" href="https://developer.nvidia.com/embedded/jetson-nano-developer-kit">Jetson Nano</a>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can find pre-compiled binaries used in this example at</p>
 <blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CMake</span> <span class="pre">&gt;=</span> <span class="pre">3.13</span></code></p></li>
-<li><p>A compiler that supports at least <code class="docutils literal notranslate"><span class="pre">C++14</span></code></p></li>
-</ul>
+<div><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-ncnn-pre-compiled-binaries/tree/main/aarch64">https://huggingface.co/csukuangfj/sherpa-ncnn-pre-compiled-binaries/tree/main/aarch64</a></p>
 </div></blockquote>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="linux.html">Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="macos.html">macOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="windows.html">Windows</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#bit-windows-x64">64-bit Windows (x64)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html#bit-windows-x86">32-bit Windows (x86)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aarch64-embedded-linux.html">Embedded Linux (aarch64)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aarch64-embedded-linux.html#install-toolchain">Install toolchain</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aarch64-embedded-linux.html#build-sherpa-onnx">Build sherpa-onnx</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aarch64-embedded-linux.html#sherpa-onnx-alsa">sherpa-onnx-alsa</a></li>
-</ul>
-</li>
-</ul>
 </div>
-<p>If you want to build an Android app, please refer to <a class="reference internal" href="../android/index.html#sherpa-onnx-android"><span class="std std-ref">Android</span></a>.
-If you want to build an iOS app, please refer to <a class="reference internal" href="../ios/index.html#sherpa-onnx-ios"><span class="std std-ref">iOS</span></a>.</p>
+<section id="board-info">
+<h2>Board info<a class="headerlink" href="#board-info" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/lscpu2.jpg"><img alt="Output of lscpu" src="../../_images/lscpu2.jpg" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="rtf-4-threads">
+<h2>RTF (4 threads)<a class="headerlink" href="#rtf-4-threads" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="ncnn/examples/pic/jetson-nano/rtf-4-threads.jpg"><img alt="RTF for 4 threads" src="ncnn/examples/pic/jetson-nano/rtf-4-threads.jpg" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="sherpa-onnx" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="linux.html" class="btn btn-neutral float-right" title="Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="raspberry-pi-3.html" class="btn btn-neutral float-left" title="Raspberry Pi 3B E14" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="jetson-nx.html" class="btn btn-neutral float-right" title="Jetson NX" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

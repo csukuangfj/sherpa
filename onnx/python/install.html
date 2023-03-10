@@ -143,7 +143,16 @@ python3<span class="w"> </span>setup.py<span class="w"> </span>install
 <span class="nb">cd</span><span class="w"> </span>sherpa-onnx
 mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
-cmake<span class="w"> </span>-DSHERPA_ONNX_ENABLE_PYTHON<span class="o">=</span>ON<span class="w"> </span>..
+
+cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_ONNX_ENABLE_PYTHON<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DBUILD_SHARED_LIBS<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_ONNX_ENABLE_CHECK<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_ONNX_ENABLE_PORTAUDIO<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_ONNX_ENABLE_C_API<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_ONNX_ENABLE_WEBSOCKET<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>..
+
 make<span class="w"> </span>-j
 <span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>/../sherpa-onnx/python/:<span class="nv">$PWD</span>/lib:<span class="nv">$PYTHONPATH</span>
 </pre></div>

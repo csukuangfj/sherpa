@@ -66,6 +66,7 @@
 <li class="toctree-l3"><a class="reference internal" href="macos.html">macOS</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Windows</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#bit-windows-x64">64-bit Windows (x64)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bit-windows-x86">32-bit Windows (x86)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="aarch64-embedded-linux.html">Embedded Linux (aarch64)</a></li>
@@ -117,6 +118,11 @@
   <section id="windows">
 <h1>Windows<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h1>
 <p>This page describes how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> on Windows.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>MinGW is known not to work.
+Please install <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Studio</span></code> before you continue.</p>
+</div>
 <section id="bit-windows-x64">
 <h2>64-bit Windows (x64)<a class="headerlink" href="#bit-windows-x64" title="Permalink to this headline"></a></h2>
 <p>All you need is to run:</p>
@@ -125,6 +131,37 @@
 mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
 cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>..
+cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>Release<span class="w"> </span>--<span class="w"> </span>-m:6
+</pre></div>
+</div>
+<p>After building, you will find an executable <code class="docutils literal notranslate"><span class="pre">sherpa-onnx.exe</span></code> inside the <code class="docutils literal notranslate"><span class="pre">bin/Release</span></code> directory.</p>
+<p>That’s it!</p>
+<p>Please refer to <a class="reference internal" href="../pretrained_models/index.html#sherpa-onnx-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> for a list of pre-trained
+models.</p>
+</section>
+<section id="bit-windows-x86">
+<h2>32-bit Windows (x86)<a class="headerlink" href="#bit-windows-x86" title="Permalink to this headline"></a></h2>
+<p>All you need is to run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
+<span class="nb">cd</span><span class="w"> </span>sherpa-onnx
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+
+<span class="c1"># Please select one toolset among VS 2015, 2017, 2019, and 2022 below</span>
+<span class="c1"># We use VS 2022 as an example.</span>
+
+<span class="c1"># For Visual Studio 2015</span>
+<span class="c1"># cmake -T v140,host=x64 -A Win32 -D CMAKE_BUILD_TYPE=Release ..</span>
+
+<span class="c1"># For Visual Studio 2017</span>
+<span class="c1"># cmake -T v141,host=x64 -A Win32 -D CMAKE_BUILD_TYPE=Release ..</span>
+
+<span class="c1"># For Visual Studio 2019</span>
+<span class="c1"># cmake -T v142,host=x64 -A Win32 -D CMAKE_BUILD_TYPE=Release ..</span>
+
+<span class="c1"># For Visual Studio 2022</span>
+cmake<span class="w"> </span>-T<span class="w"> </span>v143,host<span class="o">=</span>x64<span class="w"> </span>-A<span class="w"> </span>Win32<span class="w"> </span>-D<span class="w"> </span><span class="nv">CMAKE_BUILD_TYPE</span><span class="o">=</span>Release<span class="w"> </span>..
+
 cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>Release<span class="w"> </span>--<span class="w"> </span>-m:6
 </pre></div>
 </div>

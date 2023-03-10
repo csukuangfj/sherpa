@@ -219,6 +219,7 @@ Android ABIs:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">arm64-v8a</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">armv7-eabi</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">x86_64</span></code></p></li>
 </ul>
 </div></blockquote>
@@ -235,7 +236,7 @@ most common one.</p>
 </pre></div>
 </div>
 <p>After building, you will find the following shared libraries:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-arm64-v8a/install/lib/lib*.so
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-arm64-v8a/install/lib/lib*.so
 -rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>848K<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">15</span>:54<span class="w"> </span>build-android-arm64-v8a/install/lib/libkaldi-native-fbank-core.so
 -rw-r--r--@<span class="w"> </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>13M<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">15</span>:54<span class="w"> </span>build-android-arm64-v8a/install/lib/libonnxruntime.so
 -rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>29K<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">15</span>:54<span class="w"> </span>build-android-arm64-v8a/install/lib/libsherpa-onnx-c-api.so
@@ -244,12 +245,37 @@ most common one.</p>
 </pre></div>
 </div>
 <p>Please copy them to <code class="docutils literal notranslate"><span class="pre">android/SherpaOnnx/app/src/main/jniLibs/arm64-v8a/</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cp<span class="w"> </span>build-android-arm64-v8a/install/lib/lib*.so<span class="w">  </span>android/SherpaOnnx/app/src/main/jniLibs/arm64-v8a/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>build-android-arm64-v8a/install/lib/lib*.so<span class="w">  </span>android/SherpaOnnx/app/src/main/jniLibs/arm64-v8a/
 </pre></div>
 </div>
 <p>You should see the following screen shot after running the above copy <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/so-libs-for-arm64-v8a1.png"><img alt="Generated shared libraries for arm64-v8a" src="../../_images/so-libs-for-arm64-v8a1.png" style="width: 600px;" /></a>
+</figure>
+</section>
+<section id="build-for-armv7-eabi">
+<h3>Build for armv7-eabi<a class="headerlink" href="#build-for-armv7-eabi" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-onnx<span class="w"> </span><span class="c1"># Go to the root repo</span>
+./build-android-armv7-eabi.sh
+</pre></div>
+</div>
+<p>After building, you will find the following shared libraries:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-armv7-eabi/install/lib/lib*.so
+
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>513K<span class="w"> </span>Mar<span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">21</span>:48<span class="w"> </span>build-android-armv7-eabi/install/lib/libkaldi-native-fbank-core.so
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">9</span>.1M<span class="w"> </span>Mar<span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">21</span>:48<span class="w"> </span>build-android-armv7-eabi/install/lib/libonnxruntime.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>19K<span class="w"> </span>Mar<span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">21</span>:48<span class="w"> </span>build-android-armv7-eabi/install/lib/libsherpa-onnx-c-api.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>298K<span class="w"> </span>Mar<span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">21</span>:48<span class="w"> </span>build-android-armv7-eabi/install/lib/libsherpa-onnx-core.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>22K<span class="w"> </span>Mar<span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">21</span>:48<span class="w"> </span>build-android-armv7-eabi/install/lib/libsherpa-onnx-jni.so
+</pre></div>
+</div>
+<p>Please copy them to <code class="docutils literal notranslate"><span class="pre">android/SherpaOnnx/app/src/main/jniLibs/armeabi-v7a</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>build-android-armv7-eabi/install/lib/lib*.so<span class="w"> </span>android/SherpaOnnx/app/src/main/jniLibs/armeabi-v7a/
+</pre></div>
+</div>
+<p>You should see the following screen shot after running the above copy <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/so-libs-for-armv7a-eabi.png"><img alt="Generated shared libraries for armv7-eabi" src="../../_images/so-libs-for-armv7a-eabi.png" style="width: 600px;" /></a>
 </figure>
 </section>
 <section id="build-for-x86-64">
@@ -259,7 +285,8 @@ most common one.</p>
 </pre></div>
 </div>
 <p>After building, you will find the following shared libraries:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-x86-64/install/lib/lib*.so
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-x86-64/install/lib/lib*.so
+
 -rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>901K<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:00<span class="w"> </span>build-android-x86-64/install/lib/libkaldi-native-fbank-core.so
 -rw-r--r--@<span class="w"> </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>15M<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:00<span class="w"> </span>build-android-x86-64/install/lib/libonnxruntime.so
 -rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>347K<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:00<span class="w"> </span>build-android-x86-64/install/lib/libsherpa-onnx-core.so
@@ -267,7 +294,7 @@ most common one.</p>
 </pre></div>
 </div>
 <p>Please copy them to <code class="docutils literal notranslate"><span class="pre">android/SherpaOnnx/app/src/main/jniLibs/x86_64/</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cp<span class="w"> </span>build-android-x86-64/install/lib/lib*.so<span class="w"> </span>android/SherpaOnnx/app/src/main/jniLibs/x86_64/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>build-android-x86-64/install/lib/lib*.so<span class="w"> </span>android/SherpaOnnx/app/src/main/jniLibs/x86_64/
 </pre></div>
 </div>
 <p>You should see the following screen shot after running the above copy <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
@@ -303,14 +330,16 @@ rm<span class="w"> </span>*.sh<span class="w"> </span>README.md
 </pre></div>
 </div>
 <p>In the end, you should have the following files:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh
+
 total<span class="w"> </span><span class="m">696984</span>
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>13M<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">21</span>:45<span class="w"> </span>decoder-epoch-99-avg-1.onnx
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>315M<span class="w"> </span>Feb<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">21</span>:18<span class="w"> </span>encoder-epoch-99-avg-1.onnx
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>12M<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">21</span>:45<span class="w"> </span>joiner-epoch-99-avg-1.onnx
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>55K<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">21</span>:45<span class="w"> </span>tokens.txt
 
-$<span class="w"> </span>du<span class="w"> </span>-h<span class="w"> </span>.
+du<span class="w"> </span>-h<span class="w"> </span>.
+
 340M<span class="w">    </span>.
 </pre></div>
 </div>
@@ -335,7 +364,8 @@ corresponding code listed in the following screen shot:</p>
 <a class="reference internal image-reference" href="../../_images/build-make-project1.png"><img alt="Select ``Build -&gt; Make Project``" src="../../_images/build-make-project1.png" style="width: 600px;" /></a>
 </figure>
 <p>You can find the generated APK in <code class="docutils literal notranslate"><span class="pre">android/SherpaOnnx/app/build/outputs/apk/debug/app-debug.apk</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>android/SherpaOnnx/app/build/outputs/apk/debug/app-debug.apk
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>android/SherpaOnnx/app/build/outputs/apk/debug/app-debug.apk
+
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>331M<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:17<span class="w"> </span>android/SherpaOnnx/app/build/outputs/apk/debug/app-debug.apk
 </pre></div>
 </div>
