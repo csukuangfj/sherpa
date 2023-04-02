@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Streaming WebSocket server and client &mdash; sherpa 1.1 documentation</title>
+  <title>Streaming WebSocket server and client &mdash; sherpa 1.2 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -19,7 +19,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Pre-trained models" href="../pretrained_models/index.html" />
+    <link rel="next" title="Non-streaming WebSocket server and client" href="offline-websocket.html" />
     <link rel="prev" title="WebSocket" href="index.html" /> 
 </head>
 
@@ -31,7 +31,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.1
+                1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -77,6 +77,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#start-the-client-python-with-microphone">Start the client (Python, with microphone)</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="offline-websocket.html">Non-streaming WebSocket server and client</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
@@ -119,7 +120,7 @@
            <div itemprop="articleBody">
              
   <section id="streaming-websocket-server-and-client">
-<h1>Streaming WebSocket server and client<a class="headerlink" href="#streaming-websocket-server-and-client" title="Permalink to this headline"></a></h1>
+<span id="onnx-streaming-websocket-server-and-client"></span><h1>Streaming WebSocket server and client<a class="headerlink" href="#streaming-websocket-server-and-client" title="Permalink to this headline"></a></h1>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Please refer to <a class="reference internal" href="../install/index.html#install-sherpa-onnx"><span class="std std-ref">Installation</span></a> to install <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>
@@ -129,10 +130,13 @@ before you read this section.</p>
 <h2>Build <cite>sherpa-onnx</cite> with WebSocket support<a class="headerlink" href="#build-sherpa-onnx-with-websocket-support" title="Permalink to this headline"></a></h2>
 <p>By default, it will generate the following binaries after <a class="reference internal" href="../install/index.html#install-sherpa-onnx"><span class="std std-ref">Installation</span></a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-onnx<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build/bin/*websocket*
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.0M<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">18</span>:56<span class="w"> </span>build/bin/sherpa-onnx-online-websocket-client
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.1M<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">18</span>:56<span class="w"> </span>build/bin/sherpa-onnx-online-websocket-server
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.1M<span class="w"> </span>Mar<span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="m">22</span>:09<span class="w"> </span>build/bin/sherpa-onnx-offline-websocket-server
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.0M<span class="w"> </span>Mar<span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="m">22</span>:09<span class="w"> </span>build/bin/sherpa-onnx-online-websocket-client
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.2M<span class="w"> </span>Mar<span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="m">22</span>:09<span class="w"> </span>build/bin/sherpa-onnx-online-websocket-server
 </pre></div>
 </div>
+<p>Please refer to <a class="reference internal" href="offline-websocket.html#onnx-non-streaming-websocket-server-and-client"><span class="std std-ref">Non-streaming WebSocket server and client</span></a>
+for the usage of <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-offline-websocket-server</span></code>.</p>
 </section>
 <section id="view-the-server-usage">
 <h2>View the server usage<a class="headerlink" href="#view-the-server-usage" title="Permalink to this headline"></a></h2>
@@ -141,7 +145,7 @@ before you read this section.</p>
 </pre></div>
 </div>
 <p>The above command will print the following help information:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">I</span><span class="p">]</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">fangjun</span><span class="o">/</span><span class="nb">open</span><span class="o">-</span><span class="n">source</span><span class="o">/</span><span class="n">sherpa</span><span class="o">-</span><span class="n">onnx</span><span class="o">/</span><span class="n">sherpa</span><span class="o">-</span><span class="n">onnx</span><span class="o">/</span><span class="n">csrc</span><span class="o">/</span><span class="n">parse</span><span class="o">-</span><span class="n">options</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">525</span><span class="p">:</span><span class="n">void</span> <span class="n">sherpa_onnx</span><span class="p">::</span><span class="n">ParseOptions</span><span class="p">::</span><span class="n">PrintUsage</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span> <span class="n">const</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 
 <span class="n">Automatic</span> <span class="n">speech</span> <span class="n">recognition</span> <span class="k">with</span> <span class="n">sherpa</span><span class="o">-</span><span class="n">onnx</span> <span class="n">using</span> <span class="n">websocket</span><span class="o">.</span>
 
@@ -167,6 +171,8 @@ before you read this section.</p>
 <span class="n">Options</span><span class="p">:</span>
   <span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">batch</span><span class="o">-</span><span class="n">size</span>            <span class="p">:</span> <span class="n">Max</span> <span class="n">batch</span> <span class="n">size</span> <span class="k">for</span> <span class="n">recognition</span><span class="o">.</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
   <span class="o">--</span><span class="n">loop</span><span class="o">-</span><span class="n">interval</span><span class="o">-</span><span class="n">ms</span>          <span class="p">:</span> <span class="n">It</span> <span class="n">determines</span> <span class="n">how</span> <span class="n">often</span> <span class="n">the</span> <span class="n">decoder</span> <span class="n">loop</span> <span class="n">runs</span><span class="o">.</span>  <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+  <span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">active</span><span class="o">-</span><span class="n">paths</span>          <span class="p">:</span> <span class="n">beam</span> <span class="n">size</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">modified</span> <span class="n">beam</span> <span class="n">search</span><span class="o">.</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="o">--</span><span class="n">decoding</span><span class="o">-</span><span class="n">method</span>           <span class="p">:</span> <span class="n">decoding</span> <span class="n">method</span><span class="p">,</span><span class="n">now</span> <span class="n">support</span> <span class="n">greedy_search</span> <span class="ow">and</span> <span class="n">modified_beam_search</span><span class="o">.</span> <span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;greedy_search&quot;</span><span class="p">)</span>
   <span class="o">--</span><span class="n">rule3</span><span class="o">-</span><span class="nb">min</span><span class="o">-</span><span class="n">utterance</span><span class="o">-</span><span class="n">length</span> <span class="p">:</span> <span class="n">This</span> <span class="n">endpointing</span> <span class="n">rule3</span> <span class="n">requires</span> <span class="n">utterance</span><span class="o">-</span><span class="n">length</span> <span class="p">(</span><span class="ow">in</span> <span class="n">seconds</span><span class="p">)</span> <span class="n">to</span> <span class="n">be</span> <span class="o">&gt;=</span> <span class="n">this</span> <span class="n">value</span><span class="o">.</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
   <span class="o">--</span><span class="n">rule3</span><span class="o">-</span><span class="nb">min</span><span class="o">-</span><span class="n">trailing</span><span class="o">-</span><span class="n">silence</span> <span class="p">:</span> <span class="n">This</span> <span class="n">endpointing</span> <span class="n">rule3</span> <span class="n">requires</span> <span class="n">duration</span> <span class="n">of</span> <span class="n">trailing</span> <span class="n">silence</span> <span class="ow">in</span> <span class="n">seconds</span><span class="p">)</span> <span class="n">to</span> <span class="n">be</span> <span class="o">&gt;=</span> <span class="n">this</span> <span class="n">value</span><span class="o">.</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
   <span class="o">--</span><span class="n">rule3</span><span class="o">-</span><span class="n">must</span><span class="o">-</span><span class="n">contain</span><span class="o">-</span><span class="n">nonsilence</span> <span class="p">:</span> <span class="n">If</span> <span class="kc">True</span><span class="p">,</span> <span class="k">for</span> <span class="n">this</span> <span class="n">endpointing</span> <span class="n">rule3</span> <span class="n">to</span> <span class="n">apply</span> <span class="n">there</span> <span class="n">must</span> <span class="n">be</span> <span class="n">nonsilence</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">best</span><span class="o">-</span><span class="n">path</span> <span class="n">traceback</span><span class="o">.</span> <span class="n">For</span> <span class="n">decoding</span><span class="p">,</span> <span class="n">a</span> <span class="n">non</span><span class="o">-</span><span class="n">blank</span> <span class="n">token</span> <span class="ow">is</span> <span class="n">considered</span> <span class="k">as</span> <span class="n">non</span><span class="o">-</span><span class="n">silence</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="n">false</span><span class="p">)</span>
@@ -184,7 +190,7 @@ before you read this section.</p>
   <span class="o">--</span><span class="n">tokens</span>                    <span class="p">:</span> <span class="n">Path</span> <span class="n">to</span> <span class="n">tokens</span><span class="o">.</span><span class="n">txt</span> <span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
   <span class="o">--</span><span class="n">num</span><span class="o">-</span><span class="n">work</span><span class="o">-</span><span class="n">threads</span>          <span class="p">:</span> <span class="n">Thread</span> <span class="n">pool</span> <span class="n">size</span> <span class="k">for</span> <span class="k">for</span> <span class="n">neural</span> <span class="n">network</span> <span class="n">computation</span> <span class="ow">and</span> <span class="n">decoding</span><span class="o">.</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
   <span class="o">--</span><span class="n">encoder</span>                   <span class="p">:</span> <span class="n">Path</span> <span class="n">to</span> <span class="n">encoder</span><span class="o">.</span><span class="n">onnx</span> <span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-  <span class="o">--</span><span class="n">sample</span><span class="o">-</span><span class="n">rate</span>               <span class="p">:</span> <span class="n">Sampling</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">waveform</span><span class="o">.</span> <span class="n">Must</span> <span class="n">match</span> <span class="n">the</span> <span class="n">one</span> <span class="n">expected</span> <span class="n">by</span> <span class="n">the</span> <span class="n">model</span><span class="o">.</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="mi">16000</span><span class="p">)</span>
+  <span class="o">--</span><span class="n">sample</span><span class="o">-</span><span class="n">rate</span>               <span class="p">:</span> <span class="n">Sampling</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">waveform</span><span class="o">.</span> <span class="n">Note</span><span class="p">:</span> <span class="n">You</span> <span class="n">can</span> <span class="n">have</span> <span class="n">a</span> <span class="n">different</span> <span class="n">sample</span> <span class="n">rate</span> <span class="k">for</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">waveform</span><span class="o">.</span> <span class="n">We</span> <span class="n">will</span> <span class="n">do</span> <span class="n">resampling</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">feature</span> <span class="n">extractor</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="mi">16000</span><span class="p">)</span>
   <span class="o">--</span><span class="n">rule2</span><span class="o">-</span><span class="nb">min</span><span class="o">-</span><span class="n">trailing</span><span class="o">-</span><span class="n">silence</span> <span class="p">:</span> <span class="n">This</span> <span class="n">endpointing</span> <span class="n">rule2</span> <span class="n">requires</span> <span class="n">duration</span> <span class="n">of</span> <span class="n">trailing</span> <span class="n">silence</span> <span class="ow">in</span> <span class="n">seconds</span><span class="p">)</span> <span class="n">to</span> <span class="n">be</span> <span class="o">&gt;=</span> <span class="n">this</span> <span class="n">value</span><span class="o">.</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="mf">1.2</span><span class="p">)</span>
   <span class="o">--</span><span class="n">log</span><span class="o">-</span><span class="n">file</span>                  <span class="p">:</span> <span class="n">Path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">log</span> <span class="n">file</span><span class="o">.</span> <span class="n">Logs</span> <span class="n">are</span> <span class="n">appended</span> <span class="n">to</span> <span class="n">this</span> <span class="n">file</span> <span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;./log.txt&quot;</span><span class="p">)</span>
   <span class="o">--</span><span class="n">rule1</span><span class="o">-</span><span class="nb">min</span><span class="o">-</span><span class="n">utterance</span><span class="o">-</span><span class="n">length</span> <span class="p">:</span> <span class="n">This</span> <span class="n">endpointing</span> <span class="n">rule1</span> <span class="n">requires</span> <span class="n">utterance</span><span class="o">-</span><span class="n">length</span> <span class="p">(</span><span class="ow">in</span> <span class="n">seconds</span><span class="p">)</span> <span class="n">to</span> <span class="n">be</span> <span class="o">&gt;=</span> <span class="n">this</span> <span class="n">value</span><span class="o">.</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
@@ -195,11 +201,17 @@ before you read this section.</p>
   <span class="o">--</span><span class="n">help</span>                      <span class="p">:</span> <span class="n">Print</span> <span class="n">out</span> <span class="n">usage</span> <span class="n">message</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="n">false</span><span class="p">)</span>
   <span class="o">--</span><span class="nb">print</span><span class="o">-</span><span class="n">args</span>                <span class="p">:</span> <span class="n">Print</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span> <span class="n">arguments</span> <span class="p">(</span><span class="n">to</span> <span class="n">stderr</span><span class="p">)</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
 
+
 </pre></div>
 </div>
 </section>
 <section id="start-the-server">
 <h2>Start the server<a class="headerlink" href="#start-the-server" title="Permalink to this headline"></a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Please refer to <a class="reference internal" href="../pretrained_models/index.html#sherpa-onnx-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a>
+for a list of pre-trained models.</p>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build/bin/sherpa-onnx-online-websocket-server<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--port<span class="o">=</span><span class="m">6006</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--num-work-threads<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
@@ -223,7 +235,7 @@ before you read this section.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>In the above demo, the model files are
-from <a class="reference internal" href="../pretrained_models/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a>.</p>
+from <a class="reference internal" href="../pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -374,7 +386,7 @@ for <code class="docutils literal notranslate"><span class="pre">--server-addr</
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="WebSocket" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../pretrained_models/index.html" class="btn btn-neutral float-right" title="Pre-trained models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="offline-websocket.html" class="btn btn-neutral float-right" title="Non-streaming WebSocket server and client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

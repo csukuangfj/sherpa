@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build sherpa-onnx for iOS &mdash; sherpa 1.1 documentation</title>
+  <title>Build sherpa-onnx for iOS &mdash; sherpa 1.2 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -31,7 +31,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.1
+                1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -218,7 +218,7 @@ screenshot:</p>
 <p>The reason for the above error is that we have not provided the pre-trained
 model yet.</p>
 <p>The file <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/blob/master/ios-swift/SherpaOnnx/SherpaOnnx/ViewController.swift#L88">ViewController.swift</a>
-pre-selects the pre-trained model to be <a class="reference internal" href="../pretrained_models/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a>,
+pre-selects the pre-trained model to be <a class="reference internal" href="../pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a>,
 shown in the screenshot below:</p>
 <blockquote>
 <div><figure class="align-center" id="id7">
@@ -228,8 +228,8 @@ shown in the screenshot below:</p>
 </figcaption>
 </figure>
 </div></blockquote>
-<p>Let us add the pre-trained model <a class="reference internal" href="../pretrained_models/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a>
-to Xcode. Please follow <a class="reference internal" href="../pretrained_models/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a>
+<p>Let us add the pre-trained model <a class="reference internal" href="../pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a>
+to Xcode. Please follow <a class="reference internal" href="../pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a>
 to download it from <a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20">huggingface</a>.
 You can download it to any directory as you like.</p>
 <p>Please right click the project <code class="docutils literal notranslate"><span class="pre">SherpaOnnx</span></code> and select <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Files</span> <span class="pre">to</span> <span class="pre">&quot;SherpaOnnx&quot;...</span></code>

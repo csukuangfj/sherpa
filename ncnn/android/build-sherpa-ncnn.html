@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build sherpa-ncnn for Android &mdash; sherpa 1.1 documentation</title>
+  <title>Build sherpa-ncnn for Android &mdash; sherpa 1.2 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -31,7 +31,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.1
+                1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -347,17 +347,21 @@ rm<span class="w"> </span>export-for-ncnn.sh<span class="w"> </span>*.png<span c
 </div>
 <p>In the end, you should have the following files:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh
-total<span class="w"> </span><span class="m">322208</span>
+total<span class="w"> </span><span class="m">525224</span>
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">5</span>.9M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:40<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.bin
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>439B<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:39<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.param
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>141M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:40<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>99M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:40<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.int8.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>78K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:40<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.int8.param
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>79K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:39<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.param
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">6</span>.9M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:40<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">3</span>.5M<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:40<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.int8.bin
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>498B<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:40<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.int8.param
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>490B<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:39<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.param
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>53K<span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">17</span>:39<span class="w"> </span>tokens.txt
 
 $<span class="w"> </span>du<span class="w"> </span>-h<span class="w"> </span>-d1<span class="w"> </span>.
-157M<span class="w">    </span>.
+256M<span class="w">    </span>.
 </pre></div>
 </div>
 <p>You should see the following screen shot after downloading the pre-trained model:</p>
@@ -401,7 +405,7 @@ and you will see the following screen shot:</p>
 </figure>
 <p>You can see from the above screen shot that most part of the APK
 is occupied by the pre-trained model, while the runtime, including the shared
-libraries, is only <code class="docutils literal notranslate"><span class="pre">1.6</span> <span class="pre">MB</span></code>.</p>
+libraries, is only <code class="docutils literal notranslate"><span class="pre">1.7</span> <span class="pre">MB</span></code>.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>We have pre-built APKs that can be downloaded from

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python API &mdash; sherpa 1.1 documentation</title>
+  <title>Python API &mdash; sherpa 1.2 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -31,7 +31,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.1
+                1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -146,6 +146,12 @@ a microphone</p></li>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">1</span></code> of the  <code class="docutils literal notranslate"><span class="pre">4</span></code> methods below to install the Python package <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>:</p>
 <section id="method-1">
 <h3>Method 1<a class="headerlink" href="#method-1" title="Permalink to this headline"></a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This method works only on <code class="docutils literal notranslate"><span class="pre">x86/x86_64</span></code> systems: Linux, macOS and Windows.</p>
+<p>For other architectures, e.g., Mac M1, Raspberry Pi, etc, please
+use Method 2, 3, or 4.</p>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sherpa-ncnn
 </pre></div>
 </div>
@@ -155,7 +161,7 @@ while the <code class="docutils literal notranslate"><span class="pre">advantage
 C++ compiler.</p>
 <p>For the following methods, you have to first install:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code>, which can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">instal</span> <span class="pre">cmake</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code>, which can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cmake</span></code></p></li>
 <li><p>A C++ compiler, e.g., GCC on Linux and macOS, Visual Studio on Windows</p></li>
 </ul>
 </section>
