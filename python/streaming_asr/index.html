@@ -20,7 +20,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Endpointing" href="endpointing.html" />
+    <link rel="next" title="Standalone" href="standalone/index.html" />
     <link rel="prev" title="Install from source" href="../installation/from-source.html" /> 
 </head>
 
@@ -47,6 +47,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../huggingface/index.html">Try sherpa with Huggingface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Streaming ASR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standalone/index.html">Standalone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpointing.html">Endpointing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="secure-connections.html">Secure connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emformer/index.html">Emformer transducer based streaming ASR</a></li>
@@ -107,12 +108,30 @@
   <section id="streaming-asr">
 <h1>Streaming ASR<a class="headerlink" href="#streaming-asr" title="Permalink to this headline"></a></h1>
 <p>This page describes how to use <a class="reference external" href="https://github.com/k2-fsa/sherpa">sherpa</a> for streaming ASR.</p>
-<p>Currently, implemented streaming ASR models include:
-<a class="reference external" href="https://arxiv.org/pdf/2010.10759.pdf">Emformer</a> <a class="reference external" href="https://arxiv.org/pdf/1211.3711.pdf">transducer</a> (i.e., Emformer-T)
-and <a class="reference external" href="https://arxiv.org/pdf/2110.05241.pdf">ConvEmformer</a> <a class="reference external" href="https://arxiv.org/pdf/1211.3711.pdf">transducer</a> (i.e., ConvEmformer-T).
-and <cite>LSTM</cite> <a class="reference external" href="https://arxiv.org/pdf/1211.3711.pdf">transducer</a> (i.e., LSTM-T).</p>
+<p>The following types of transducer models are supported:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2010.10759.pdf">Emformer</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2110.05241.pdf">ConvEmformer</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LSTM</span></code></p></li>
+<li><p><a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/pruned_transducer_stateless7_streaming">Zipformer</a></p></li>
+</ul>
+</div></blockquote>
+<p>We support standalone speech recognition as well as server/client based
+speech recognition using <a class="reference external" href="https://en.wikipedia.org/wiki/WebSocket">WebSocket</a>.</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="standalone/index.html">Standalone</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standalone/transducer.html">Transducer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standalone/transducer.html#download-the-pre-trained-model">Download the pre-trained model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standalone/transducer.html#greedy-search">greedy search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standalone/transducer.html#modified-beam-search">modified beam search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standalone/transducer.html#fast-beam-search">fast_beam_search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standalone/transducer.html#fast-beam-search-with-lg">fast_beam_search with LG</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="endpointing.html">Endpointing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="endpointing.html#endpointing-demo-english">Endpointing Demo (English)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpointing.html#endpointing-demo-chinese">Endpointing Demo (Chinese)</a><ul>
@@ -186,7 +205,7 @@ and <cite>LSTM</cite> <a class="reference external" href="https://arxiv.org/pdf/
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../installation/from-source.html" class="btn btn-neutral float-left" title="Install from source" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="endpointing.html" class="btn btn-neutral float-right" title="Endpointing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="standalone/index.html" class="btn btn-neutral float-right" title="Standalone" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
