@@ -71,6 +71,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#csukuangfj-sherpa-ncnn-streaming-zipformer-en-2023-02-13-english">csukuangfj/sherpa-ncnn-streaming-zipformer-en-2023-02-13 (English)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#csukuangfj-sherpa-ncnn-streaming-zipformer-bilingual-zh-en-2023-02-13-bilingual-chinese-english">csukuangfj/sherpa-ncnn-streaming-zipformer-bilingual-zh-en-2023-02-13 (Bilingual, Chinese + English)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#csukuangfj-sherpa-ncnn-streaming-zipformer-small-bilingual-zh-en-2023-02-16-bilingual-chinese-english">csukuangfj/sherpa-ncnn-streaming-zipformer-small-bilingual-zh-en-2023-02-16 (Bilingual, Chinese + English)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shaojieli-sherpa-ncnn-streaming-zipformer-fr-2023-04-14">shaojieli/sherpa-ncnn-streaming-zipformer-fr-2023-04-14</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="lstm-transducer-models.html">LSTM-transducer-based Models</a></li>
@@ -742,6 +743,100 @@ git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </spa
 <span class="w">    </span><span class="nv">$method</span>
 <span class="k">done</span>
 </pre></div>
+</div>
+</section>
+</section>
+<section id="shaojieli-sherpa-ncnn-streaming-zipformer-fr-2023-04-14">
+<span id="sherpa-ncnn-streaming-zipformer-fr-2023-04-14"></span><h2>shaojieli/sherpa-ncnn-streaming-zipformer-fr-2023-04-14<a class="headerlink" href="#shaojieli-sherpa-ncnn-streaming-zipformer-fr-2023-04-14" title="Permalink to this headline"></a></h2>
+<p>This model is converted from</p>
+<p><a class="reference external" href="https://huggingface.co/shaojieli/icefall-asr-commonvoice-fr-pruned-transducer-stateless7-streaming-2023-04-02">https://huggingface.co/shaojieli/icefall-asr-commonvoice-fr-pruned-transducer-stateless7-streaming-2023-04-02</a></p>
+<p>which supports only French as it is trained on the <a class="reference external" href="https://commonvoice.mozilla.org">CommonVoice</a> corpus.
+In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
+<section id="id15">
+<h3>Download the model<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<p>Please use the following commands to download it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
+
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/shaojieli/sherpa-ncnn-streaming-zipformer-fr-2023-04-14
+<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn-streaming-zipformer-fr-2023-04-14
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.bin&quot;</span>
+</pre></div>
+</div>
+<p>Please check that the file sizes of the pre-trained models are correct. See
+the file sizes of <code class="docutils literal notranslate"><span class="pre">*.bin</span></code> files below.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-ncnn-streaming-zipformer-fr-2023-04-14<span class="w"> </span>shaojieli$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>*.bin
+
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>lishaojie<span class="w"> </span>Students<span class="w"> </span>509K<span class="w"> </span>4月<span class="w">  </span><span class="m">12</span><span class="w"> </span><span class="m">13</span>:37<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>lishaojie<span class="w"> </span>Students<span class="w"> </span>133M<span class="w"> </span>4月<span class="w">  </span><span class="m">12</span><span class="w"> </span><span class="m">13</span>:37<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.bin
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>lishaojie<span class="w"> </span>Students<span class="w"> </span><span class="m">1</span>.4M<span class="w"> </span>4月<span class="w">  </span><span class="m">12</span><span class="w"> </span><span class="m">13</span>:37<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.bin
+</pre></div>
+</div>
+<p>To decode a file, please use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
+<span class="k">for</span><span class="w"> </span>method<span class="w"> </span><span class="k">in</span><span class="w"> </span>greedy_search<span class="w"> </span>modified_beam_search<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>./build/bin/sherpa-ncnn<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/encoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/encoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/decoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/decoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/joiner_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/joiner_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">$method</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>You should see the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>RecognizerConfig(feat_config=FeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=ModelConfig(encoder_param=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/encoder_jit_trace-pnnx.ncnn.param&quot;, encoder_bin=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/encoder_jit_trace-pnnx.ncnn.bin&quot;, decoder_param=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/decoder_jit_trace-pnnx.ncnn.param&quot;, decoder_bin=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/decoder_jit_trace-pnnx.ncnn.bin&quot;, joiner_param=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/joiner_jit_trace-pnnx.ncnn.param&quot;, joiner_bin=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/joiner_jit_trace-pnnx.ncnn.bin&quot;, tokens=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/tokens.txt&quot;, encoder num_threads=2, decoder num_threads=2, joiner num_threads=2), decoder_config=DecoderConfig(method=&quot;greedy_search&quot;, num_active_paths=4), endpoint_config=EndpointConfig(rule1=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=2.4, min_utterance_length=0), rule2=EndpointRule(must_contain_nonsilence=True, min_trailing_silence=1.4, min_utterance_length=0), rule3=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=0, min_utterance_length=20)), enable_endpoint=False)
+wav filename: ./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav
+wav duration (s): 7.128
+Started!
+Done!
+Recognition result for ./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav
+text:  CE SITE CONTIENT QUATRE TOMBEAUX DE LA DYNASTIE ASHÉMÉNIDE ET SEPT DES SASSANDIDES
+timestamps: 0.96 1.44 1.52 1.76 1.96 2.08 2.28 2.56 2.64 2.76 2.8 2.96 3.04 3.2 3.28 3.4 3.48 3.72 3.8 4 4.16 4.24 4.32 4.44 4.6 4.68 4.92 5.2 5.52 5.84 6.04 6.12 6.24 6.56 6.68 
+Elapsed seconds: 1.082 s
+Real time factor (RTF): 1.082 / 7.128 = 0.152
+RecognizerConfig(feat_config=FeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=ModelConfig(encoder_param=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/encoder_jit_trace-pnnx.ncnn.param&quot;, encoder_bin=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/encoder_jit_trace-pnnx.ncnn.bin&quot;, decoder_param=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/decoder_jit_trace-pnnx.ncnn.param&quot;, decoder_bin=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/decoder_jit_trace-pnnx.ncnn.bin&quot;, joiner_param=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/joiner_jit_trace-pnnx.ncnn.param&quot;, joiner_bin=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/joiner_jit_trace-pnnx.ncnn.bin&quot;, tokens=&quot;./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/tokens.txt&quot;, encoder num_threads=2, decoder num_threads=2, joiner num_threads=2), decoder_config=DecoderConfig(method=&quot;modified_beam_search&quot;, num_active_paths=4), endpoint_config=EndpointConfig(rule1=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=2.4, min_utterance_length=0), rule2=EndpointRule(must_contain_nonsilence=True, min_trailing_silence=1.4, min_utterance_length=0), rule3=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=0, min_utterance_length=20)), enable_endpoint=False)
+wav filename: ./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav
+wav duration (s): 7.128
+Started!
+Done!
+Recognition result for ./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav
+text:  CE SITE CONTIENT QUATRE TOMBEAUX DE LA DYNASTIE ASHÉMÉNIDE ET SEPT DES SASSANDIDES
+timestamps: 0.96 1.44 1.52 1.76 1.96 2.08 2.28 2.56 2.64 2.76 2.8 2.96 3.04 3.2 3.28 3.4 3.48 3.72 3.8 4 4.16 4.24 4.32 4.44 4.6 4.68 4.92 5.2 5.52 5.84 6.04 6.12 6.24 6.56 6.68 
+Elapsed seconds: 0.812 s
+Real time factor (RTF): 0.812 / 7.128 = 0.114
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-ncnn.exe</span></code> for Windows.</p>
+</div>
+</section>
+<section id="id16">
+<h3>Real-time speech recognition from a microphone<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
+./build/bin/sherpa-ncnn-microphone<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/encoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/encoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/decoder_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/decoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/joiner_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/joiner_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-ncnn-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>greedy_search
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If your system is Linux (including embedded Linux), you can also use
+<a class="reference internal" href="../install/aarch64-embedded-linux.html#sherpa-ncnn-alsa"><span class="std std-ref">sherpa-ncnn-alsa</span></a> to do real-time speech recognition with your
+microphone if <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-microphone</span></code> does not work for you.</p>
 </div>
 </section>
 </section>

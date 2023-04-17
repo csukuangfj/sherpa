@@ -397,6 +397,144 @@ microphone if <code class="docutils literal notranslate"><span class="pre">sherp
 </div>
 </section>
 </section>
+<section id="shaojieli-sherpa-onnx-streaming-zipformer-fr-2023-04-14">
+<span id="sherpa-onnx-streaming-zipformer-fr-2023-04-14"></span><h2>shaojieli/sherpa-onnx-streaming-zipformer-fr-2023-04-14<a class="headerlink" href="#shaojieli-sherpa-onnx-streaming-zipformer-fr-2023-04-14" title="Permalink to this headline"></a></h2>
+<p>This model is converted from</p>
+<p><a class="reference external" href="https://huggingface.co/shaojieli/icefall-asr-commonvoice-fr-pruned-transducer-stateless7-streaming-2023-04-02">https://huggingface.co/shaojieli/icefall-asr-commonvoice-fr-pruned-transducer-stateless7-streaming-2023-04-02</a></p>
+<p>which supports only French as it is trained on the <a class="reference external" href="https://commonvoice.mozilla.org">CommonVoice</a> corpus.
+In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
+<section id="id6">
+<h3>Download the model<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p>Please use the following commands to download it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/shaojieli/sherpa-onnx-streaming-zipformer-fr-2023-04-14
+<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-streaming-zipformer-fr-2023-04-14
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
+</pre></div>
+</div>
+<p>Please check that the file sizes of the pre-trained models are correct. See
+the file sizes of <code class="docutils literal notranslate"><span class="pre">*.onnx</span></code> files below.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-onnx-streaming-zipformer-fr-2023-04-14<span class="w"> </span>shaojieli$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>*.bin
+
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>lishaojie<span class="w"> </span>Students<span class="w">  </span><span class="m">1</span>.3M<span class="w"> </span>4月<span class="w">  </span><span class="m">14</span><span class="w"> </span><span class="m">14</span>:09<span class="w"> </span>decoder-epoch-29-avg-9-with-averaged-model.int8.onnx
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>lishaojie<span class="w"> </span>Students<span class="w">  </span><span class="m">2</span>.0M<span class="w"> </span>4月<span class="w">  </span><span class="m">14</span><span class="w"> </span><span class="m">14</span>:09<span class="w"> </span>decoder-epoch-29-avg-9-with-averaged-model.onnx
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>lishaojie<span class="w"> </span>Students<span class="w">  </span>121M<span class="w"> </span>4月<span class="w">  </span><span class="m">14</span><span class="w"> </span><span class="m">14</span>:09<span class="w"> </span>encoder-epoch-29-avg-9-with-averaged-model.int8.onnx
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>lishaojie<span class="w"> </span>Students<span class="w">  </span>279M<span class="w"> </span>4月<span class="w">  </span><span class="m">14</span><span class="w"> </span><span class="m">14</span>:09<span class="w"> </span>encoder-epoch-29-avg-9-with-averaged-model.onnx
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>lishaojie<span class="w"> </span>Students<span class="w">  </span>254K<span class="w"> </span>4月<span class="w">  </span><span class="m">14</span><span class="w"> </span><span class="m">14</span>:09<span class="w"> </span>joiner-epoch-29-avg-9-with-averaged-model.int8.onnx
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>lishaojie<span class="w"> </span>Students<span class="w"> </span>1003K<span class="w"> </span>4月<span class="w">  </span><span class="m">14</span><span class="w"> </span><span class="m">14</span>:09<span class="w"> </span>joiner-epoch-29-avg-9-with-averaged-model.onnx
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>Decode a single wave file<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It supports decoding only wave files of a single channel with 16-bit
+encoded samples, while the sampling rate does not need to be 16 kHz.</p>
+</div>
+<section id="id8">
+<h4>fp32<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<p>The following code shows how to use <code class="docutils literal notranslate"><span class="pre">fp32</span></code> models to decode a wave file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/encoder-epoch-29-avg-9-with-averaged-model.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/decoder-epoch-29-avg-9-with-averaged-model.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/joiner-epoch-29-avg-9-with-averaged-model.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx.exe</span></code> for Windows.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you use Windows and get encoding issues, please run:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CHCP<span class="w"> </span><span class="m">65001</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>in your commandline.</p>
+</div>
+<p>You should see the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OnlineRecognizerConfig(feat_config=FeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OnlineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-streaming-zipformer-fr-2023-04-14/encoder-epoch-29-avg-9-with-averaged-model.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-streaming-zipformer-fr-2023-04-14/decoder-epoch-29-avg-9-with-averaged-model.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-streaming-zipformer-fr-2023-04-14/joiner-epoch-29-avg-9-with-averaged-model.onnx&quot;, tokens=&quot;./sherpa-onnx-streaming-zipformer-fr-2023-04-14/tokens.txt&quot;, num_threads=2, debug=False), endpoint_config=EndpointConfig(rule1=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=2.4, min_utterance_length=0), rule2=EndpointRule(must_contain_nonsilence=True, min_trailing_silence=1.2, min_utterance_length=0), rule3=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=0, min_utterance_length=20)), enable_endpoint=True, max_active_paths=4, decoding_method=&quot;greedy_search&quot;)
+sampling rate of input file: 16000
+wav filename: ./sherpa-onnx-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav
+wav duration (s): 7.128
+Started
+Done!
+Recognition result for ./sherpa-onnx-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav:
+ CE SITE CONTIENT QUATRE TOMBEAUX DE LA DYNASTIE ASHÉMÉNIDE ET SEPT DES SASSANDIDES
+num threads: 2
+decoding method: greedy_search
+Elapsed seconds: 0.458 s
+Real time factor (RTF): 0.458 / 7.128 = 0.064
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h4>int8<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
+<p>The following code shows how to use <code class="docutils literal notranslate"><span class="pre">fp32</span></code> models to decode a wave file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/encoder-epoch-29-avg-9-with-averaged-model.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/decoder-epoch-29-avg-9-with-averaged-model.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/joiner-epoch-29-avg-9-with-averaged-model.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx.exe</span></code> for Windows.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you use Windows and get encoding issues, please run:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CHCP<span class="w"> </span><span class="m">65001</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>in your commandline.</p>
+</div>
+<p>You should see the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OnlineRecognizerConfig(feat_config=FeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OnlineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-streaming-zipformer-fr-2023-04-14/encoder-epoch-29-avg-9-with-averaged-model.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-streaming-zipformer-fr-2023-04-14/decoder-epoch-29-avg-9-with-averaged-model.int8.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-streaming-zipformer-fr-2023-04-14/joiner-epoch-29-avg-9-with-averaged-model.int8.onnx&quot;, tokens=&quot;./sherpa-onnx-streaming-zipformer-fr-2023-04-14/tokens.txt&quot;, num_threads=2, debug=False), endpoint_config=EndpointConfig(rule1=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=2.4, min_utterance_length=0), rule2=EndpointRule(must_contain_nonsilence=True, min_trailing_silence=1.2, min_utterance_length=0), rule3=EndpointRule(must_contain_nonsilence=False, min_trailing_silence=0, min_utterance_length=20)), enable_endpoint=True, max_active_paths=4, decoding_method=&quot;greedy_search&quot;)
+sampling rate of input file: 16000
+wav filename: ./sherpa-onnx-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav
+wav duration (s): 7.128
+Started
+Done!
+Recognition result for ./sherpa-onnx-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav:
+ CE SITE CONTIENT QUATRE TOMBEAUX DE LA DYNASTIE ASHÉMÉNIDE ET SEPT DES SASSANDIDES
+num threads: 2
+decoding method: greedy_search
+Elapsed seconds: 0.485 s
+Real time factor (RTF): 0.485 / 7.128 = 0.068
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id10">
+<h3>Real-time speech recognition from a microphone<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+./build/bin/sherpa-onnx-microphone<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/encoder-epoch-29-avg-9-with-averaged-model.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/decoder-epoch-29-avg-9-with-averaged-model.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/joiner-epoch-29-avg-9-with-averaged-model.onnx<span class="w"> </span><span class="se">\</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If your system is Linux (including embedded Linux), you can also use
+<a class="reference internal" href="../../install/aarch64-embedded-linux.html#sherpa-onnx-alsa"><span class="std std-ref">sherpa-onnx-alsa</span></a> to do real-time speech recognition with your
+microphone if <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-microphone</span></code> does not work for you.</p>
+</div>
+</section>
+</section>
 </section>
 
 
