@@ -17,6 +17,7 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -117,14 +118,20 @@
            <div itemprop="articleBody">
              
   <section id="linux">
-<h1>Linux<a class="headerlink" href="#linux" title="Permalink to this headline"></a></h1>
+<span id="install-sherpa-ncnn-on-linux"></span><h1>Linux<a class="headerlink" href="#linux" title="Permalink to this headline"></a></h1>
 <p>This page describes how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> on Linux.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can follow this section if you want to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> directly
+on your board.</p>
+</div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>For the Python API, please refer to <a class="reference internal" href="../python/index.html#sherpa-ncnn-python-api"><span class="std std-ref">Python API</span></a>.</p>
 </div>
 <p>All you need is to run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">x86/x86_64</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">32-bit ARM</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">64-bit ARM</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
 <span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
 mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
@@ -132,6 +139,31 @@ cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<s
 make<span class="w"> </span>-j6
 </pre></div>
 </div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
+<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_C_FLAGS<span class="o">=</span><span class="s2">&quot;-march=armv7-a -mfloat-abi=hard -mfpu=neon&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_CXX_FLAGS<span class="o">=</span><span class="s2">&quot;-march=armv7-a -mfloat-abi=hard -mfpu=neon&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>..
+make<span class="w"> </span>-j6
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
+<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_C_FLAGS<span class="o">=</span><span class="s2">&quot;-march=armv8-a&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_CXX_FLAGS<span class="o">=</span><span class="s2">&quot;-march=armv8-a&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>..
+make<span class="w"> </span>-j6
+</pre></div>
+</div>
+</div></div>
 <p>After building, you will find two executables inside the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>bin/
 total<span class="w"> </span>13M

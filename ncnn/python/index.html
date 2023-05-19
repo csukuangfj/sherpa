@@ -17,6 +17,7 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -64,7 +65,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#method-1">Method 1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#method-2">Method 2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#method-3">Method 3</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#method-4-for-developers">Method 4 (For developers)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#method-4-for-developers-and-embedded-boards">Method 4 (For developers and embedded boards)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#real-time-recognition-with-a-microphone">Real-time recognition with a microphone</a><ul>
@@ -180,9 +181,10 @@ python3<span class="w"> </span>setup.py<span class="w"> </span>install
 </pre></div>
 </div>
 </section>
-<section id="method-4-for-developers">
-<h3>Method 4 (For developers)<a class="headerlink" href="#method-4-for-developers" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
+<section id="method-4-for-developers-and-embedded-boards">
+<h3>Method 4 (For developers and embedded boards)<a class="headerlink" href="#method-4-for-developers-and-embedded-boards" title="Permalink to this headline"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">x86/x86_64</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">32-bit ARM</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">64-bit ARM</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
 <span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
 mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
@@ -198,6 +200,43 @@ make<span class="w"> </span>-j6
 <span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>/lib:<span class="nv">$PWD</span>/../sherpa-ncnn/python:<span class="nv">$PYTHONPATH</span>
 </pre></div>
 </div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
+<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+
+cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="nv">SHERPA_NCNN_ENABLE_PYTHON</span><span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="nv">SHERPA_NCNN_ENABLE_PORTAUDIO</span><span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="nv">BUILD_SHARED_LIBS</span><span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_C_FLAGS<span class="o">=</span><span class="s2">&quot;-march=armv7-a -mfloat-abi=hard -mfpu=neon&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_CXX_FLAGS<span class="o">=</span><span class="s2">&quot;-march=armv7-a -mfloat-abi=hard -mfpu=neon&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>..
+
+make<span class="w"> </span>-j6
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>/lib:<span class="nv">$PWD</span>/../sherpa-ncnn/python:<span class="nv">$PYTHONPATH</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
+<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+
+cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="nv">SHERPA_NCNN_ENABLE_PYTHON</span><span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="nv">SHERPA_NCNN_ENABLE_PORTAUDIO</span><span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="nv">BUILD_SHARED_LIBS</span><span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_C_FLAGS<span class="o">=</span><span class="s2">&quot;-march=armv8-a&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_CXX_FLAGS<span class="o">=</span><span class="s2">&quot;-march=armv8-a&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>..
+
+make<span class="w"> </span>-j6
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>/lib:<span class="nv">$PWD</span>/../sherpa-ncnn/python:<span class="nv">$PYTHONPATH</span>
+</pre></div>
+</div>
+</div></div>
 <p>Let us check whether <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> was installed successfully:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sherpa_ncnn; print(sherpa_ncnn.__file__)&quot;</span>
 python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import _sherpa_ncnn; print(_sherpa_ncnn.__file__)&quot;</span>
