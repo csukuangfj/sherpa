@@ -69,6 +69,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="aarch64-embedded-linux.html">Embedded Linux (aarch64)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv64-embedded-linux.html">Embedded Linux (riscv64)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python API</a></li>
@@ -262,29 +263,29 @@ the generated binaries are self-contained.</p>
 <p>You can use the following commands to check that and you will find
 they depend only on system libraries.</p>
 <blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ readelf -d build-arm-linux-gnueabihf/install/bin/sherpa-ncnn
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>readelf<span class="w"> </span>-d<span class="w"> </span>build-arm-linux-gnueabihf/install/bin/sherpa-ncnn
 
-Dynamic section at offset 0x1c7ee8 contains 30 entries:
-  Tag        Type                         Name/Value
- 0x00000001 (NEEDED)                     Shared library: [libstdc++.so.6]
- 0x00000001 (NEEDED)                     Shared library: [libm.so.6]
- 0x00000001 (NEEDED)                     Shared library: [libgcc_s.so.1]
- 0x00000001 (NEEDED)                     Shared library: [libpthread.so.0]
- 0x00000001 (NEEDED)                     Shared library: [libc.so.6]
- 0x0000000f (RPATH)                      Library rpath: [$ORIGIN]
+Dynamic<span class="w"> </span>section<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span>0x1c7ee8<span class="w"> </span>contains<span class="w"> </span><span class="m">30</span><span class="w"> </span>entries:
+<span class="w">  </span>Tag<span class="w">        </span>Type<span class="w">                         </span>Name/Value
+<span class="w"> </span>0x00000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">                     </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libstdc++.so.6<span class="o">]</span>
+<span class="w"> </span>0x00000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">                     </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libm.so.6<span class="o">]</span>
+<span class="w"> </span>0x00000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">                     </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libgcc_s.so.1<span class="o">]</span>
+<span class="w"> </span>0x00000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">                     </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libpthread.so.0<span class="o">]</span>
+<span class="w"> </span>0x00000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">                     </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libc.so.6<span class="o">]</span>
+<span class="w"> </span>0x0000000f<span class="w"> </span><span class="o">(</span>RPATH<span class="o">)</span><span class="w">                      </span>Library<span class="w"> </span>rpath:<span class="w"> </span><span class="o">[</span><span class="nv">$ORIGIN</span><span class="o">]</span>
 
-$ readelf -d build-arm-linux-gnueabihf/install/bin/sherpa-ncnn-alsa
+$<span class="w"> </span>readelf<span class="w"> </span>-d<span class="w"> </span>build-arm-linux-gnueabihf/install/bin/sherpa-ncnn-alsa
 
-Dynamic section at offset 0x22ded8 contains 32 entries:
-  Tag        Type                         Name/Value
- 0x00000001 (NEEDED)                     Shared library: [libasound.so.2]
- 0x00000001 (NEEDED)                     Shared library: [libgomp.so.1]
- 0x00000001 (NEEDED)                     Shared library: [libpthread.so.0]
- 0x00000001 (NEEDED)                     Shared library: [libstdc++.so.6]
- 0x00000001 (NEEDED)                     Shared library: [libm.so.6]
- 0x00000001 (NEEDED)                     Shared library: [libgcc_s.so.1]
- 0x00000001 (NEEDED)                     Shared library: [libc.so.6]
- 0x0000000f (RPATH)                      Library rpath: [$ORIGIN]
+Dynamic<span class="w"> </span>section<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span>0x22ded8<span class="w"> </span>contains<span class="w"> </span><span class="m">32</span><span class="w"> </span>entries:
+<span class="w">  </span>Tag<span class="w">        </span>Type<span class="w">                         </span>Name/Value
+<span class="w"> </span>0x00000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">                     </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libasound.so.2<span class="o">]</span>
+<span class="w"> </span>0x00000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">                     </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libgomp.so.1<span class="o">]</span>
+<span class="w"> </span>0x00000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">                     </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libpthread.so.0<span class="o">]</span>
+<span class="w"> </span>0x00000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">                     </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libstdc++.so.6<span class="o">]</span>
+<span class="w"> </span>0x00000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">                     </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libm.so.6<span class="o">]</span>
+<span class="w"> </span>0x00000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">                     </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libgcc_s.so.1<span class="o">]</span>
+<span class="w"> </span>0x00000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">                     </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libc.so.6<span class="o">]</span>
+<span class="w"> </span>0x0000000f<span class="w"> </span><span class="o">(</span>RPATH<span class="o">)</span><span class="w">                      </span>Library<span class="w"> </span>rpath:<span class="w"> </span><span class="o">[</span><span class="nv">$ORIGIN</span><span class="o">]</span>
 </pre></div>
 </div>
 </div></blockquote>
