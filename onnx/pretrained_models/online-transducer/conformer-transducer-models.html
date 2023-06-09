@@ -168,10 +168,10 @@ encoded samples, while the sampling rate does not need to be 16 kHz.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 ./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/joiner-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/joiner-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/test_wavs/0.wav
 </pre></div>
 </div>
@@ -211,10 +211,10 @@ Real time factor (RTF): 0.559 / 5.611 = 0.100
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 ./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-streaming-conformer-zh-2023-05-23/test_wavs/0.wav
 </pre></div>
 </div>

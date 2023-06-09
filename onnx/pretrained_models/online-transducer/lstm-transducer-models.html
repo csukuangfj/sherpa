@@ -168,10 +168,10 @@ encoded samples, while the sampling rate does not need to be 16 kHz.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 ./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/joiner-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-lstm-en-2023-02-17/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-lstm-en-2023-02-17/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-lstm-en-2023-02-17/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-lstm-en-2023-02-17/joiner-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/test_wavs/0.wav
 </pre></div>
 </div>
@@ -204,10 +204,10 @@ Real time factor (RTF): 2.927 / 6.625 = 0.442
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 ./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-lstm-en-2023-02-17/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-lstm-en-2023-02-17/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-lstm-en-2023-02-17/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-lstm-en-2023-02-17/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-lstm-en-2023-02-17/test_wavs/0.wav
 </pre></div>
 </div>
@@ -294,10 +294,10 @@ encoded samples, while the sampling rate does not need to be 16 kHz.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 ./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/encoder-epoch-11-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/decoder-epoch-11-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/joiner-epoch-11-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-lstm-zh-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-lstm-zh-2023-02-20/encoder-epoch-11-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-lstm-zh-2023-02-20/decoder-epoch-11-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-lstm-zh-2023-02-20/joiner-epoch-11-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/test_wavs/0.wav
 </pre></div>
 </div>
@@ -339,10 +339,10 @@ Real time factor (RTF): 3.030 / 5.611 = 0.540
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 ./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/encoder-epoch-11-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/decoder-epoch-11-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/joiner-epoch-11-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-lstm-zh-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-lstm-zh-2023-02-20/encoder-epoch-11-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-lstm-zh-2023-02-20/decoder-epoch-11-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-lstm-zh-2023-02-20/joiner-epoch-11-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-lstm-zh-2023-02-20/test_wavs/0.wav
 </pre></div>
 </div>

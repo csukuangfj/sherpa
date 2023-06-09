@@ -168,10 +168,10 @@ encoded samples, while the sampling rate does not need to be 16 kHz.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 ./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/joiner-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/joiner-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/test_wavs/0.wav
 </pre></div>
 </div>
@@ -203,10 +203,10 @@ Real time factor (RTF): 0.825 / 6.625 = 0.125
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 ./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-streaming-zipformer-en-2023-02-21/test_wavs/0.wav
 </pre></div>
 </div>
@@ -294,10 +294,10 @@ encoded samples, while the sampling rate does not need to be 16 kHz.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 ./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/joiner-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/joiner-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/test_wavs/1.wav
 </pre></div>
 </div>
@@ -339,10 +339,10 @@ Real time factor (RTF): 0.815 / 6.625 = 0.123
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 ./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/test_wavs/1.wav
 </pre></div>
 </div>
@@ -437,11 +437,12 @@ encoded samples, while the sampling rate does not need to be 16 kHz.</p>
 <h4>fp32<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
 <p>The following code shows how to use <code class="docutils literal notranslate"><span class="pre">fp32</span></code> models to decode a wave file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
 ./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/encoder-epoch-29-avg-9-with-averaged-model.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/decoder-epoch-29-avg-9-with-averaged-model.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/joiner-epoch-29-avg-9-with-averaged-model.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/encoder-epoch-29-avg-9-with-averaged-model.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/decoder-epoch-29-avg-9-with-averaged-model.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/joiner-epoch-29-avg-9-with-averaged-model.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav
 </pre></div>
 </div>
@@ -479,11 +480,12 @@ Real time factor (RTF): 0.458 / 7.128 = 0.064
 <h4>int8<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
 <p>The following code shows how to use <code class="docutils literal notranslate"><span class="pre">fp32</span></code> models to decode a wave file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
 ./build/bin/sherpa-onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/encoder-epoch-29-avg-9-with-averaged-model.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/decoder-epoch-29-avg-9-with-averaged-model.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/joiner-epoch-29-avg-9-with-averaged-model.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/encoder-epoch-29-avg-9-with-averaged-model.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/decoder-epoch-29-avg-9-with-averaged-model.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/joiner-epoch-29-avg-9-with-averaged-model.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-streaming-zipformer-fr-2023-04-14/test_wavs/common_voice_fr_19364697.wav
 </pre></div>
 </div>
