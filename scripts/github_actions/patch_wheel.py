@@ -76,8 +76,8 @@ def process(out_dir: Path, whl: Path, py_version: str):
 
 
 def main():
-    print(args)
     args = get_args()
+    print(args)
     in_dir = args.in_dir
     out_dir = args.out_dir
     out_dir.mkdir(exist_ok=True, parents=True)
