@@ -108,7 +108,7 @@ jobs:
           id
           ls -lh
           ls -lh ./wheels/
-          sudo ./scripts/github_actions/patch_wheel.py --in-dir ./wheels --out-dir ./wheelhouse
+          sudo ./scripts/github_actions/patch_wheel.py --in-dir ./wheels --out-dir ./wheelhouse --py-version ${{ matrix.python-version }}
 
           ls -lh ./wheelhouse/
 

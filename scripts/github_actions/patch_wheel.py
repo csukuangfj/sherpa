@@ -24,14 +24,19 @@ def get_args():
         required=True,
         help="Output directory.",
     )
+    parser.add_argument(
+        "--py-version",
+        type=str,
+        required=True,
+        help="Python version, e.g., 3.8, 3.9, 3.10, 3.11, etc",
+    )
 
     return parser.parse_args()
 
 
-def process(out_dir: Path, whl: Path):
+def process(out_dir: Path, whl: Path, py_version: str):
     tmp_dir = out_dir / "tmp"
     subprocess.check_call(f"unzip {whl} -d {tmp_dir}", shell=True)
-    py_version = ".".join(sys.version.split(".")[:2])
     rpath_list = [
         f"$ORIGIN/../lib/python{py_version}/site-packages/k2_sherpa.libs",
         f"$ORIGIN/../lib/python{py_version}/site-packages/torch/lib",
@@ -71,12 +76,15 @@ def process(out_dir: Path, whl: Path):
 
 
 def main():
-    in_dir = get_args().in_dir
-    out_dir = get_args().out_dir
+    print(args)
+    args = get_args()
+    in_dir = args.in_dir
+    out_dir = args.out_dir
     out_dir.mkdir(exist_ok=True, parents=True)
+    py_version = args.py_version
 
     for whl in in_dir.glob("*.whl"):
-        process(out_dir, whl)
+        process(out_dir, whl, py_version)
 
 
 if __name__ == "__main__":

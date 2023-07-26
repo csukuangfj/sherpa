@@ -2,6 +2,8 @@ name: build-wheels-cpu-ubuntu
 
 on:
   push:
+    branch:
+      - wheel-fix
     tags:
       - '*'
   workflow_dispatch:
@@ -24,8 +26,8 @@ jobs:
         id: set-matrix
         run: |
           # outputting for debugging purposes
-          python ./scripts/github_actions/generate_build_matrix.py
-          MATRIX=$(python ./scripts/github_actions/generate_build_matrix.py)
+          python ./scripts/github_actions/generate_build_matrix.py --test-only-latest-torch
+          MATRIX=$(python ./scripts/github_actions/generate_build_matrix.py --test-only-latest-torch)
           echo "::set-output name=matrix::${MATRIX}"
 
   build-manylinux-wheels:
@@ -83,7 +85,7 @@ jobs:
         run: |
           ls -lh
           ls -lh ./wheels/
-          sudo ./scripts/github_actions/patch_wheel.py --in-dir ./wheels --out-dir ./wheelhouse
+          sudo ./scripts/github_actions/patch_wheel.py --in-dir ./wheels --out-dir ./wheelhouse --py-version ${{ matrix.python-version }}
 
           ls -lh ./wheelhouse/
 
