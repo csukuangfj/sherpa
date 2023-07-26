@@ -2,7 +2,7 @@ name: build-wheels-cpu-ubuntu
 
 on:
   push:
-    branch:
+    branches:
       - wheel-fix
     tags:
       - '*'
