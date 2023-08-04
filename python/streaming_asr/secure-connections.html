@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Secure connections &mdash; sherpa 1.2 documentation</title>
+  <title>Secure connections &mdash; sherpa 1.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
@@ -19,9 +19,7 @@
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Emformer transducer based streaming ASR" href="emformer/index.html" />
-    <link rel="prev" title="Endpointing" href="endpointing.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -32,7 +30,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.2
+                1.3
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -42,48 +40,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">For Python users</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../huggingface/index.html">Try sherpa with Huggingface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Streaming ASR</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="standalone/index.html">Standalone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="endpointing.html">Endpointing</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Secure connections</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#generate-a-certificate">Generate a certificate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#start-the-https-server">Start the https server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#start-the-websocket-server">Start the websocket server</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../social-groups.html">Social groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../huggingface/index.html">Run Next-gen Kaldi in your browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pretrained-models.html">Pre-trained models</a></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="emformer/index.html">Emformer transducer based streaming ASR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conv_emformer/index.html">ConvEmformer transducer based streaming ASR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conformer/index.html">Conformer transducer based streaming ASR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lstm/index.html">LSTM transducer based streaming ASR</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../offline_asr/index.html">Non-streaming speech recognition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently asked questions</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
+<p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../cpp/installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../cpp/pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sherpa/index.html">sherpa</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
+<p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa-ncnn</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../ncnn/index.html">sherpa-ncnn</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">onnx</span></p>
+<p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa-onnx</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../onnx/index.html">sherpa-onnx</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Triton</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/server/index.html">Triton-server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/client/index.html">Triton-client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/perf/index.html">Perf Analyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/overview.html">Triton</a></li>
 </ul>
 
         </div>
@@ -100,7 +77,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Streaming ASR</a> &raquo;</li>
       <li>Secure connections</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/python/streaming_asr/secure-connections.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -153,7 +129,7 @@ will show you the following page:</p>
 <figure class="align-center" id="id3" style="width: 600px">
 <img alt="Your-connection-is-not-secure" src="../../_images/1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Click the <code class="docutils literal notranslate"><span class="pre">Advanced</span></code> button.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<p><span class="caption-text">Click the <code class="docutils literal notranslate"><span class="pre">Advanced</span></code> button.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <div class="admonition hint">
@@ -166,14 +142,14 @@ replace <code class="docutils literal notranslate"><span class="pre">0.0.0.0</sp
 <figure class="align-center" id="id4" style="width: 600px">
 <img alt="After-clicking-the-advanced-button" src="../../_images/2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">After clicking the <code class="docutils literal notranslate"><span class="pre">Advanced</span></code> button.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<p><span class="caption-text">After clicking the <code class="docutils literal notranslate"><span class="pre">Advanced</span></code> button.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>Now click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">exception</span></code> and then click “Confirm security exception” below:</p>
 <figure class="align-center" id="id5" style="width: 600px">
 <img alt="Click-confirm-security-exception" src="../../_images/3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Click <code class="docutils literal notranslate"><span class="pre">Confirm</span> <span class="pre">security</span> <span class="pre">exception</span></code>.
+<p><span class="caption-text">Click <code class="docutils literal notranslate"><span class="pre">Confirm</span> <span class="pre">security</span> <span class="pre">exception</span></code>.
 After clicking the advanced button</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
@@ -220,10 +196,7 @@ connection to the websocket server <code class="docutils literal notranslate"><s
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="endpointing.html" class="btn btn-neutral float-left" title="Endpointing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="emformer/index.html" class="btn btn-neutral float-right" title="Emformer transducer based streaming ASR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

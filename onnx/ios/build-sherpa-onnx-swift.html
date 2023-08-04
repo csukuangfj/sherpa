@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build sherpa-onnx for iOS &mdash; sherpa 1.2 documentation</title>
+  <title>Build sherpa-onnx for iOS &mdash; sherpa 1.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
@@ -32,7 +32,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.2
+                1.3
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -42,24 +42,21 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">For Python users</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../python/huggingface/index.html">Try sherpa with Huggingface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/streaming_asr/index.html">Streaming ASR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming speech recognition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/faq.html">Frequently asked questions</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../social-groups.html">Social groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../huggingface/index.html">Run Next-gen Kaldi in your browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pretrained-models.html">Pre-trained models</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
+<p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../cpp/installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../cpp/pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sherpa/index.html">sherpa</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
+<p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa-ncnn</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../ncnn/index.html">sherpa-ncnn</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">onnx</span></p>
+<p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa-onnx</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-onnx</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
@@ -83,11 +80,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Triton</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/server/index.html">Triton-server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/client/index.html">Triton-client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/perf/index.html">Perf Analyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/overview.html">Triton</a></li>
 </ul>
 
         </div>
@@ -172,7 +165,7 @@ open<span class="w"> </span>SherpaOnnx.xcodeproj
 <div><figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../../_images/start-xcode-for-sherpa-onnx.png"><img alt="Screenshot after running the command ``open SherpaOnnx.xcodeproj``" src="../../_images/start-xcode-for-sherpa-onnx.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Screenshot after running the command <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">SherpaOnnx.xcodeproj</span></code></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Screenshot after running the command <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">SherpaOnnx.xcodeproj</span></code></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -182,7 +175,7 @@ below:</p>
 <div><figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../../_images/select-product-build1.png"><img alt="Screenshot for selecting ``Product -&gt; Build``" src="../../_images/select-product-build1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Screenshot for selecting <code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">-&gt;</span> <span class="pre">Build</span></code></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Screenshot for selecting <code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">-&gt;</span> <span class="pre">Build</span></code></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -191,7 +184,7 @@ below:</p>
 <div><figure class="align-center" id="id4">
 <a class="reference internal image-reference" href="../../_images/after-finishing-build1.png"><img alt="Screenshot after finishing the build." src="../../_images/after-finishing-build1.png" style="width: 100px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Screenshot after finishing the build.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Screenshot after finishing the build.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -202,7 +195,7 @@ screenshot:</p>
 <div><figure class="align-center" id="id5">
 <a class="reference internal image-reference" href="../../_images/run-the-project1.png"><img alt="Screenshot for ``Product -&gt; Run``." src="../../_images/run-the-project1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Screenshot for <code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">-&gt;</span> <span class="pre">Run</span></code>.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Screenshot for <code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">-&gt;</span> <span class="pre">Run</span></code>.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -212,7 +205,7 @@ screenshot:</p>
 <div><figure class="align-center" id="id6">
 <a class="reference internal image-reference" href="../../_images/error-no-model1.png"><img alt="Screenshot for the error" src="../../_images/error-no-model1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Screenshot for the error</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Screenshot for the error</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -225,7 +218,7 @@ shown in the screenshot below:</p>
 <div><figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="../../_images/pre-trained-model-11.png"><img alt="Screenshot for the pre-selected pre-trained model" src="../../_images/pre-trained-model-11.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Screenshot for the pre-selected pre-trained model</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Screenshot for the pre-selected pre-trained model</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -239,7 +232,7 @@ in the popup menu, as is shown in the screenshot below:</p>
 <div><figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="../../_images/step-to-add-pre-trained-model-11.png"><img alt="Screenshot for adding files to SherpaOnnx" src="../../_images/step-to-add-pre-trained-model-11.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Screenshot for adding files to SherpaOnnx</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Screenshot for adding files to SherpaOnnx</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -251,7 +244,7 @@ model.</p>
 <div><figure class="align-center" id="id9">
 <a class="reference internal image-reference" href="../../_images/step-to-add-pre-trained-model-21.png"><img alt="Screenshot for navigating to the folder containing the downloaded pre-trained" src="../../_images/step-to-add-pre-trained-model-21.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Screenshot for navigating to the folder containing the downloaded pre-trained</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Screenshot for navigating to the folder containing the downloaded pre-trained</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -260,7 +253,7 @@ model.</p>
 <div><figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../../_images/step-to-add-pre-trained-model-31.png"><img alt="Screenshot for selecting required files" src="../../_images/step-to-add-pre-trained-model-31.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Screenshot for selecting required files</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Screenshot for selecting required files</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -270,7 +263,7 @@ screenshot:</p>
 <div><figure class="align-center" id="id11">
 <a class="reference internal image-reference" href="../../_images/step-to-add-pre-trained-model-41.png"><img alt="Screenshot after add pre-trained model files" src="../../_images/step-to-add-pre-trained-model-41.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Screenshot after add pre-trained model files</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Screenshot after add pre-trained model files</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -280,7 +273,7 @@ to run the project and you should finally see the following screenshot:</p>
 <div><figure class="align-center" id="id12">
 <a class="reference internal image-reference" href="../../_images/run1.png"><img alt="Screenshot for a successful run." src="../../_images/run1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Screenshot for a successful run.</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Screenshot for a successful run.</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -289,7 +282,7 @@ to run the project and you should finally see the following screenshot:</p>
 <div><figure class="align-center" id="id13">
 <a class="reference internal image-reference" href="../../_images/run-21.png"><img alt="Screenshot for recording and recognition." src="../../_images/run-21.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Screenshot for recording and recognition.</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Screenshot for recording and recognition.</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -305,7 +298,7 @@ though it is in a simulator.</p>
 <div><figure class="align-center" id="id14">
 <a class="reference internal image-reference" href="../../_images/xcode-settings1.png"><img alt="Screenshot for ``Xcode -&gt; Settings...``" src="../../_images/xcode-settings1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Screenshot for <code class="docutils literal notranslate"><span class="pre">Xcode</span> <span class="pre">-&gt;</span> <span class="pre">Settings...</span></code></span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Screenshot for <code class="docutils literal notranslate"><span class="pre">Xcode</span> <span class="pre">-&gt;</span> <span class="pre">Settings...</span></code></span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -315,31 +308,31 @@ your Apple ID, as is shown in the following <code class="docutils literal notran
 <div><figure class="align-center" id="id15">
 <a class="reference internal image-reference" href="../../_images/add-an-account1.png"><img alt="Screenshot for selecting ``Account`` and click ``+``." src="../../_images/add-an-account1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Screenshot for selecting <code class="docutils literal notranslate"><span class="pre">Account</span></code> and click <code class="docutils literal notranslate"><span class="pre">+</span></code>.</span><a class="headerlink" href="#id15" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Screenshot for selecting <code class="docutils literal notranslate"><span class="pre">Account</span></code> and click <code class="docutils literal notranslate"><span class="pre">+</span></code>.</span><a class="headerlink" href="#id15" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id16">
 <a class="reference internal image-reference" href="../../_images/add-an-account-21.png"><img alt="Screenshot for selecting ``Apple ID`` and click ``Continue``" src="../../_images/add-an-account-21.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Screenshot for selecting <code class="docutils literal notranslate"><span class="pre">Apple</span> <span class="pre">ID</span></code> and click <code class="docutils literal notranslate"><span class="pre">Continue</span></code></span><a class="headerlink" href="#id16" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Screenshot for selecting <code class="docutils literal notranslate"><span class="pre">Apple</span> <span class="pre">ID</span></code> and click <code class="docutils literal notranslate"><span class="pre">Continue</span></code></span><a class="headerlink" href="#id16" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id17">
 <a class="reference internal image-reference" href="../../_images/add-an-account-31.png"><img alt="Screenshot for adding your Apple ID and click ``Next``" src="../../_images/add-an-account-31.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Screenshot for adding your Apple ID and click <code class="docutils literal notranslate"><span class="pre">Next</span></code></span><a class="headerlink" href="#id17" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Screenshot for adding your Apple ID and click <code class="docutils literal notranslate"><span class="pre">Next</span></code></span><a class="headerlink" href="#id17" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id18">
 <a class="reference internal image-reference" href="../../_images/add-an-account-41.png"><img alt="Screenshot for entering your password and click ``Next``" src="../../_images/add-an-account-41.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Screenshot for entering your password and click <code class="docutils literal notranslate"><span class="pre">Next</span></code></span><a class="headerlink" href="#id18" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Screenshot for entering your password and click <code class="docutils literal notranslate"><span class="pre">Next</span></code></span><a class="headerlink" href="#id18" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id19">
 <a class="reference internal image-reference" href="../../_images/add-an-account-51.png"><img alt="Screenshot after adding your Apple ID" src="../../_images/add-an-account-51.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 60 </span><span class="caption-text">Screenshot after adding your Apple ID</span><a class="headerlink" href="#id19" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Screenshot after adding your Apple ID</span><a class="headerlink" href="#id19" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -350,7 +343,7 @@ to select my iPhone.</p>
 <div><figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../../_images/select-device1.png"><img alt="Screenshot for selecting your device" src="../../_images/select-device1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Screenshot for selecting your device</span><a class="headerlink" href="#id20" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Screenshot for selecting your device</span><a class="headerlink" href="#id20" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -359,7 +352,7 @@ to select my iPhone.</p>
 <div><figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="../../_images/select-device-21.png"><img alt="Screenshot after selecting your device" src="../../_images/select-device-21.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Screenshot after selecting your device</span><a class="headerlink" href="#id21" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Screenshot after selecting your device</span><a class="headerlink" href="#id21" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -369,7 +362,7 @@ device, as is shown in the following screenshot:</p>
 <div><figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../../_images/run-31.png"><img alt="Screenshot for selecting ``Product -&gt; Run``" src="../../_images/run-31.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Screenshot for selecting <code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">-&gt;</span> <span class="pre">Run</span></code></span><a class="headerlink" href="#id22" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">Screenshot for selecting <code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">-&gt;</span> <span class="pre">Run</span></code></span><a class="headerlink" href="#id22" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -379,7 +372,7 @@ screenshot:</p>
 <div><figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="../../_images/run-4.png"><img alt="Screenshot for running sherpa-onnx on your device" src="../../_images/run-4.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Screenshot for running sherpa-onnx on your device</span><a class="headerlink" href="#id23" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Screenshot for running sherpa-onnx on your device</span><a class="headerlink" href="#id23" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -389,7 +382,7 @@ about running it on my iPhone:</p>
 <div><figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../../_images/run-5.png"><img alt="Screenshot for running `sherpa-onnx`_ on iPhone" src="../../_images/run-5.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Screenshot for running <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> on iPhone</span><a class="headerlink" href="#id24" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Screenshot for running <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> on iPhone</span><a class="headerlink" href="#id24" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>

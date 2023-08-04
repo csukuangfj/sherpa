@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Offline transducer models &mdash; sherpa 1.2 documentation</title>
+  <title>Offline transducer models &mdash; sherpa 1.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
@@ -19,9 +19,7 @@
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Online transducer models" href="online_transducer.html" />
-    <link rel="prev" title="NeMo" href="offline_ctc/nemo.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -32,7 +30,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.2
+                1.3
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -42,48 +40,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">For Python users</span></p>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../social-groups.html">Social groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../huggingface/index.html">Run Next-gen Kaldi in your browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pretrained-models.html">Pre-trained models</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../python/huggingface/index.html">Try sherpa with Huggingface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/streaming_asr/index.html">Streaming ASR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming speech recognition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sherpa/index.html">sherpa</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Pre-trained models</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="offline_ctc/index.html">Offline CTC models</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Offline transducer models</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#icefall">icefall</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#english">English</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#chinese">Chinese</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#chinese-english">Chinese + English</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tibetan">Tibetan</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="online_transducer.html">Online transducer models</a></li>
-</ul>
-</li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
+<p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa-ncnn</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../ncnn/index.html">sherpa-ncnn</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">onnx</span></p>
+<p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa-onnx</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../onnx/index.html">sherpa-onnx</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Triton</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/server/index.html">Triton-server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/client/index.html">Triton-client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/perf/index.html">Perf Analyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/overview.html">Triton</a></li>
 </ul>
 
         </div>
@@ -100,7 +77,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Pre-trained models</a> &raquo;</li>
       <li>Offline transducer models</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/cpp/pretrained_models/offline_transducer.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -126,9 +102,32 @@ anything.</p>
 </div>
 <section id="icefall">
 <h2>icefall<a class="headerlink" href="#icefall" title="Permalink to this headline"></a></h2>
-<p>This sections lists models trained using <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a>.</p>
+<p>This section lists models trained using <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a>.</p>
 <section id="english">
 <h3>English<a class="headerlink" href="#english" title="Permalink to this headline"></a></h3>
+<section id="icefall-asr-cv-corpus-13-0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17">
+<h4>icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17<a class="headerlink" href="#icefall-asr-cv-corpus-13-0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17" title="Permalink to this headline"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using Common Voice 13.0 with zipformer transducer</span>
+<span class="c1">#</span>
+<span class="c1"># See https://github.com/k2-fsa/icefall/pull/997</span>
+<span class="c1">#</span>
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/yfyeung/icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17
+<span class="nb">cd</span><span class="w"> </span>icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17
+
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;cpu_jit-epoch-60-avg-20.pt&quot;</span>
+
+<span class="k">for</span><span class="w"> </span>m<span class="w"> </span><span class="k">in</span><span class="w"> </span>greedy_search<span class="w"> </span>modified_beam_search<span class="w"> </span>fast_beam_search<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>sherpa-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--decoding-method<span class="o">=</span><span class="nv">$m</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--nn-model<span class="o">=</span>./exp/cpu_jit-epoch-60-avg-20.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>./test_wavs/1221-135766-0002.wav
+<span class="k">done</span>
+</pre></div>
+</div>
+</section>
 <section id="icefall-asr-librispeech-zipformer-2023-05-15">
 <span id="id1"></span><h4>icefall-asr-librispeech-zipformer-2023-05-15<a class="headerlink" href="#icefall-asr-librispeech-zipformer-2023-05-15" title="Permalink to this headline"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with zipformer transducer</span>
@@ -435,9 +434,42 @@ done
 </section>
 <section id="chinese">
 <h3>Chinese<a class="headerlink" href="#chinese" title="Permalink to this headline"></a></h3>
+<section id="icefall-asr-zipformer-wenetspeech-20230615">
+<h4>icefall-asr-zipformer-wenetspeech-20230615<a class="headerlink" href="#icefall-asr-zipformer-wenetspeech-20230615" title="Permalink to this headline"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># This model is trained using WenetSpeech
+#
+# See https://github.com/k2-fsa/icefall/pull/1130
+#
+GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/pkufool/icefall-asr-zipformer-wenetspeech-20230615
+
+cd icefall-asr-zipformer-wenetspeech-20230615
+git lfs pull --include &quot;exp/jit_script.pt&quot;
+git lfs pull --include &quot;data/lang_char/LG.pt&quot;
+
+for m in greedy_search modified_beam_search fast_beam_search; do
+  sherpa-offline \
+    --decoding-method=$m \
+    --nn-model=./exp/jit_script.pt \
+    --tokens=./data/lang_char/tokens.txt \
+    ./test_wavs/DEV_T0000000000.wav \
+    ./test_wavs/DEV_T0000000001.wav \
+    ./test_wavs/DEV_T0000000002.wav
+done
+
+sherpa-offline \
+  --decoding-method=fast_beam_search \
+  --nn-model=./exp/jit_script.pt \
+  --lg=./data/lang_char/LG.pt \
+  --tokens=./data/lang_char/tokens.txt \
+  ./test_wavs/DEV_T0000000000.wav \
+  ./test_wavs/DEV_T0000000001.wav \
+  ./test_wavs/DEV_T0000000002.wav
+</pre></div>
+</div>
+</section>
 <section id="icefall-asr-wenetspeech-pruned-transducer-stateless2">
 <h4>icefall_asr_wenetspeech_pruned_transducer_stateless2<a class="headerlink" href="#icefall-asr-wenetspeech-pruned-transducer-stateless2" title="Permalink to this headline"></a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This models is trained using WenetSpeech</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using WenetSpeech</span>
 <span class="c1">#</span>
 <span class="c1"># See https://github.com/k2-fsa/icefall/pull/349</span>
 <span class="c1">#</span>
@@ -461,7 +493,7 @@ ln<span class="w"> </span>-s<span class="w"> </span>cpu_jit_epoch_10_avg_2_torch
 <span class="k">done</span>
 
 sherpa-offline<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--decoding-method<span class="o">=</span><span class="nv">$m</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoding-method<span class="o">=</span>fast_beam_search<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--nn-model<span class="o">=</span>./exp/cpu_jit.pt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--lg<span class="o">=</span>./data/lang_char/LG.pt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tokens<span class="o">=</span>./data/lang_char/tokens.txt<span class="w"> </span><span class="se">\</span>
@@ -473,7 +505,7 @@ sherpa-offline<span class="w"> </span><span class="se">\</span>
 </section>
 <section id="icefall-asr-aidatatang-200zh-pruned-transducer-stateless2">
 <h4>icefall_asr_aidatatang-200zh_pruned_transducer_stateless2<a class="headerlink" href="#icefall-asr-aidatatang-200zh-pruned-transducer-stateless2" title="Permalink to this headline"></a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This models is trained using aidatatang_200zh</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using aidatatang_200zh</span>
 <span class="c1">#</span>
 <span class="c1"># See https://github.com/k2-fsa/icefall/pull/355</span>
 <span class="c1">#</span>
@@ -499,7 +531,7 @@ ln<span class="w"> </span>-sv<span class="w"> </span>cpu_jit_torch.1.7.1.pt<span
 </section>
 <section id="icefall-asr-alimeeting-pruned-transducer-stateless7">
 <h4>icefall-asr-alimeeting-pruned-transducer-stateless7<a class="headerlink" href="#icefall-asr-alimeeting-pruned-transducer-stateless7" title="Permalink to this headline"></a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This models is trained using alimeeting (https://www.openslr.org/119/)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using alimeeting (https://www.openslr.org/119/)</span>
 <span class="c1">#</span>
 <span class="c1"># See https://github.com/k2-fsa/icefall/pull/751</span>
 <span class="c1">#</span>
@@ -525,7 +557,7 @@ git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </spa
 <h3>Chinese + English<a class="headerlink" href="#chinese-english" title="Permalink to this headline"></a></h3>
 <section id="icefall-asr-tal-csasr-pruned-transducer-stateless5">
 <h4>icefall_asr_tal-csasr_pruned_transducer_stateless5<a class="headerlink" href="#icefall-asr-tal-csasr-pruned-transducer-stateless5" title="Permalink to this headline"></a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This models is trained using TAL_CSASR dataset from</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using TAL_CSASR dataset from</span>
 <span class="c1"># https://ai.100tal.com/dataset</span>
 <span class="c1"># where each utterance contains both English and Chinese.</span>
 <span class="c1">#</span>
@@ -631,10 +663,7 @@ sherpa-offline<span class="w"> </span><span class="se">\</span>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="offline_ctc/nemo.html" class="btn btn-neutral float-left" title="NeMo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="online_transducer.html" class="btn btn-neutral float-right" title="Online transducer models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

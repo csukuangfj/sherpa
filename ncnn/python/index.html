@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python API &mdash; sherpa 1.2 documentation</title>
+  <title>Python API &mdash; sherpa 1.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
@@ -21,7 +21,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Endpointing" href="../endpoint.html" />
+    <link rel="next" title="C API" href="../c-api/index.html" />
     <link rel="prev" title="Embedded Linux (riscv64)" href="../install/riscv64-embedded-linux.html" /> 
 </head>
 
@@ -33,7 +33,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.2
+                1.3
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -43,20 +43,17 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">For Python users</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../python/huggingface/index.html">Try sherpa with Huggingface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/streaming_asr/index.html">Streaming ASR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming speech recognition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/faq.html">Frequently asked questions</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../social-groups.html">Social groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../huggingface/index.html">Run Next-gen Kaldi in your browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pretrained-models.html">Pre-trained models</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
+<p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../cpp/installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../cpp/pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sherpa/index.html">sherpa</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
+<p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa-ncnn</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-ncnn</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
@@ -81,6 +78,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#recognize-a-file">Recognize a file</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../c-api/index.html">C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../endpoint.html">Endpointing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
@@ -90,17 +88,13 @@
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">onnx</span></p>
+<p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa-onnx</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../onnx/index.html">sherpa-onnx</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Triton</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/server/index.html">Triton-server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/client/index.html">Triton-client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../triton/perf/index.html">Perf Analyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../triton/overview.html">Triton</a></li>
 </ul>
 
         </div>
@@ -286,7 +280,7 @@ code below.</p>
 </div></blockquote>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 17 </span><span class="caption-text">Real-time speech recognition with a microphone using <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Real-time speech recognition with a microphone using <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -325,7 +319,9 @@ code below.</p>
     <span class="n">sample_rate</span> <span class="o">=</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">sample_rate</span>
     <span class="n">samples_per_read</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>  <span class="c1"># 0.1 second = 100 ms</span>
     <span class="n">last_result</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    <span class="k">with</span> <span class="n">sd</span><span class="o">.</span><span class="n">InputStream</span><span class="p">(</span><span class="n">channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">,</span> <span class="n">samplerate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">sd</span><span class="o">.</span><span class="n">InputStream</span><span class="p">(</span>
+        <span class="n">channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">,</span> <span class="n">samplerate</span><span class="o">=</span><span class="n">sample_rate</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">samples_per_read</span><span class="p">)</span>  <span class="c1"># a blocking read</span>
             <span class="n">samples</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -344,8 +340,6 @@ code below.</p>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">main</span><span class="p">()</span>
-    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Caught Ctrl + C. Exiting&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -424,7 +418,7 @@ and joiner.</p>
 <section id="start-recording">
 <h3>3. Start recording<a class="headerlink" href="#start-recording" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">sample_rate</span> <span class="o">=</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">sample_rate</span>
-    <span class="k">with</span> <span class="n">sd</span><span class="o">.</span><span class="n">InputStream</span><span class="p">(</span><span class="n">channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">,</span> <span class="n">samplerate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">sd</span><span class="o">.</span><span class="n">InputStream</span><span class="p">(</span>
 </pre></div>
 </div>
 <p><strong>Note that</strong>:</p>
@@ -441,8 +435,8 @@ all models at present.</p></li>
 <section id="read-audio-samples-from-the-microphone">
 <h3>4. Read audio samples from the microphone<a class="headerlink" href="#read-audio-samples-from-the-microphone" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">samples_per_read</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>  <span class="c1"># 0.1 second = 100 ms</span>
-            <span class="n">samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">samples_per_read</span><span class="p">)</span>  <span class="c1"># a blocking read</span>
-            <span class="n">samples</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 </pre></div>
 </div>
 <p><strong>Note that</strong>:</p>
@@ -457,7 +451,7 @@ value, e.g., <code class="docutils literal notranslate"><span class="pre">200</s
 </section>
 <section id="invoke-the-recognizer-with-audio-samples">
 <h3>5. Invoke the recognizer with audio samples<a class="headerlink" href="#invoke-the-recognizer-with-audio-samples" title="Permalink to this headline"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>            <span class="n">recognizer</span><span class="o">.</span><span class="n">accept_waveform</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>            <span class="n">samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">samples_per_read</span><span class="p">)</span>  <span class="c1"># a blocking read</span>
 </pre></div>
 </div>
 <p><strong>Note that</strong>:</p>
@@ -472,10 +466,10 @@ automatically. There is no separate call for decoding.</p></li>
 </section>
 <section id="get-the-recognition-result">
 <h3>6. Get the recognition result<a class="headerlink" href="#get-the-recognition-result" title="Permalink to this headline"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>            <span class="n">result</span> <span class="o">=</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">text</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>            <span class="n">samples</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">recognizer</span><span class="o">.</span><span class="n">accept_waveform</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">text</span>
             <span class="k">if</span> <span class="n">last_result</span> <span class="o">!=</span> <span class="n">result</span><span class="p">:</span>
-                <span class="n">last_result</span> <span class="o">=</span> <span class="n">result</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We use <code class="docutils literal notranslate"><span class="pre">recognizer.text</span></code> to get the recognition result. To avoid
@@ -527,7 +521,7 @@ encoded.</p>
 </div></blockquote>
 </div>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 18 </span><span class="caption-text">Decode a file with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Decode a file with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wave</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -546,7 +540,9 @@ encoded.</p>
         <span class="n">num_threads</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;./sherpa-ncnn-conv-emformer-transducer-2022-12-06/test_wavs/1.wav&quot;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">&quot;./sherpa-ncnn-conv-emformer-transducer-2022-12-06/test_wavs/1.wav&quot;</span>
+    <span class="p">)</span>
     <span class="k">with</span> <span class="n">wave</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">assert</span> <span class="n">f</span><span class="o">.</span><span class="n">getframerate</span><span class="p">()</span> <span class="o">==</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">,</span> <span class="p">(</span>
             <span class="n">f</span><span class="o">.</span><span class="n">getframerate</span><span class="p">(),</span>
@@ -563,16 +559,14 @@ encoded.</p>
 
     <span class="n">recognizer</span><span class="o">.</span><span class="n">accept_waveform</span><span class="p">(</span><span class="n">recognizer</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">,</span> <span class="n">samples_float32</span><span class="p">)</span>
 
-    <span class="n">tail_paddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">recognizer</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">tail_paddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+        <span class="nb">int</span><span class="p">(</span><span class="n">recognizer</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span>
+    <span class="p">)</span>
     <span class="n">recognizer</span><span class="o">.</span><span class="n">accept_waveform</span><span class="p">(</span><span class="n">recognizer</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">,</span> <span class="n">tail_paddings</span><span class="p">)</span>
 
     <span class="n">recognizer</span><span class="o">.</span><span class="n">input_finished</span><span class="p">()</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="n">recognizer</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -608,7 +602,7 @@ and joiner.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../install/riscv64-embedded-linux.html" class="btn btn-neutral float-left" title="Embedded Linux (riscv64)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../endpoint.html" class="btn btn-neutral float-right" title="Endpointing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../c-api/index.html" class="btn btn-neutral float-right" title="C API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
