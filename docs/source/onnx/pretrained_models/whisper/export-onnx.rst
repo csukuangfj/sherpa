@@ -102,9 +102,9 @@ Now the generated files so far are as follows:
   -rw-r--r--  1 fangjun  staff    36M Aug  7 15:45 tiny.en-encoder.ort
   -rw-r--r--  1 fangjun  staff   816K Aug  7 15:43 tiny.en-tokens.txt
 
-``*.ort`` are the corresponding `onnxruntime`_ format.
+``*.ort`` is the corresponding `onnxruntime`_ format.
 
-To check whether the export model works correctly, we can use
+To check whether the exported model works correctly, we can use
 
   `<https://github.com/k2-fsa/sherpa-onnx/blob/master/scripts/whisper/test.py>`_
 
