@@ -134,6 +134,7 @@ mkdir<span class="w"> </span>build-shared
 <span class="nb">cd</span><span class="w"> </span>build-shared
 
 cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_NCNN_ENABLE_C_API<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-DBUILD_SHARED_LIBS<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span>/tmp/sherpa-ncnn/shared<span class="w"> </span><span class="se">\</span>
@@ -195,6 +196,7 @@ mkdir<span class="w"> </span>build-static
 <span class="nb">cd</span><span class="w"> </span>build-static
 
 cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_NCNN_ENABLE_C_API<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-DBUILD_SHARED_LIBS<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span>/tmp/sherpa-ncnn/static<span class="w"> </span><span class="se">\</span>
