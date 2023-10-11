@@ -325,11 +325,7 @@ Real-time speech recognition from a microphone
 csukuangfj/sherpa-ncnn-streaming-zipformer-bilingual-zh-en-2023-02-13 (Bilingual, Chinese + English)
 ----------------------------------------------------------------------------------------------------
 
-This model is converted from
-
-`<https://huggingface.co/pfluo/k2fsa-zipformer-chinese-english-mixed>`_
-
-which supports both Chinese and English. The model is contributed by the community
+This model supports both Chinese and English. It is contributed by the community
 and is trained on tens of thousands of some internal dataset.
 
 In the following, we describe how to download it and use it with `sherpa-ncnn`_.
