@@ -79,7 +79,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
 </ul>
@@ -187,6 +189,16 @@ cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </
 <p>That’s it!</p>
 <p>Please refer to <a class="reference internal" href="../pretrained_models/index.html#sherpa-onnx-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> for a list of pre-trained
 models.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>By default, it builds static libraries of <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>. To get dynamic/shared
+libraries, please pass <code class="docutils literal notranslate"><span class="pre">-DBUILD_SHARED_LIBS=ON</span></code> to <code class="docutils literal notranslate"><span class="pre">cmake</span></code>. That is, use</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>-DBUILD_SHARED_LIBS<span class="o">=</span>ON<span class="w"> </span>..
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 </section>
 </section>
 

@@ -67,8 +67,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../websocket/index.html">WebSocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Pre-trained models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../online-transducer/index.html">Online transducer models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../online-paraformer/index.html">Online paraformer models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../offline-transducer/index.html">Offline transducer models</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">Offline paraformer models</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Paraformer models</a></li>
@@ -76,8 +78,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../offline-ctc/index.html">Offline CTC models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../whisper/index.html">Whisper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../small-online-models.html">Small models</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
 </ul>
@@ -122,6 +126,10 @@ before you read this section.</p>
 </div>
 <section id="csukuangfj-sherpa-onnx-paraformer-zh-2023-03-28-chinese">
 <span id="sherpa-onnx-offline-paraformer-zh-2023-03-28-chinese"></span><h2>csukuangfj/sherpa-onnx-paraformer-zh-2023-03-28 (Chinese)<a class="headerlink" href="#csukuangfj-sherpa-onnx-paraformer-zh-2023-03-28-chinese" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This model does not support timestamps.</p>
+</div>
 <p>This model is converted from</p>
 <p><a class="reference external" href="https://www.modelscope.cn/models/damo/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch">https://www.modelscope.cn/models/damo/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch</a></p>
 <p>The code for converting can be found at</p>
@@ -278,6 +286,112 @@ Real time factor (RTF): 0.604 / 19.502 = 0.031
 ./build/bin/sherpa-onnx-microphone-offline<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-paraformer-zh-2023-03-28/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--paraformer<span class="o">=</span>./sherpa-onnx-paraformer-zh-2023-03-28/model.int8.onnx
+</pre></div>
+</div>
+</section>
+</section>
+<section id="csukuangfj-sherpa-onnx-paraformer-zh-2023-09-14-chinese">
+<span id="sherpa-onnx-offline-paraformer-zh-2023-09-14-chinese"></span><h2>csukuangfj/sherpa-onnx-paraformer-zh-2023-09-14 (Chinese)<a class="headerlink" href="#csukuangfj-sherpa-onnx-paraformer-zh-2023-09-14-chinese" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This model supports timestamps.</p>
+</div>
+<p>This model is converted from</p>
+<p><a class="reference external" href="https://www.modelscope.cn/models/damo/speech_paraformer-large-vad-punc_asr_nat-zh-cn-16k-common-vocab8404-onnx/file/view/master/quickstart.md">https://www.modelscope.cn/models/damo/speech_paraformer-large-vad-punc_asr_nat-zh-cn-16k-common-vocab8404-onnx/file/view/master/quickstart.md</a></p>
+<p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
+<section id="id1">
+<h3>Download the model<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p>Please use the following commands to download it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
+<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-paraformer-zh-2023-09-14
+<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-paraformer-zh-2023-09-14
+git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
+</pre></div>
+</div>
+<p>Please check that the file sizes of the pre-trained models are correct. See
+the file sizes of <code class="docutils literal notranslate"><span class="pre">*.onnx</span></code> files below.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-onnx-paraformer-zh-2023-09-14$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>*.onnx
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>232M<span class="w"> </span>Sep<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">13</span>:46<span class="w"> </span>model.int8.onnx
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Decode wave files<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It supports decoding only wave files of a single channel with 16-bit
+encoded samples, while the sampling rate does not need to be 16 kHz.</p>
+</div>
+<section id="id3">
+<h4>int8<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
+<p>The following code shows how to use <code class="docutils literal notranslate"><span class="pre">int8</span></code> models to decode wave files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
+./build/bin/sherpa-onnx-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-paraformer-zh-2023-09-14/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--paraformer<span class="o">=</span>./sherpa-onnx-paraformer-zh-2023-09-14/model.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--model-type<span class="o">=</span>paraformer<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-paraformer-zh-2023-09-14/test_wavs/0.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-paraformer-zh-2023-09-14/test_wavs/1.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-paraformer-zh-2023-09-14/test_wavs/2.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./sherpa-onnx-paraformer-zh-2023-09-14/test_wavs/8k.wav
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx-offline.exe</span></code> for Windows.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you use Windows and get encoding issues, please run:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CHCP<span class="w"> </span><span class="m">65001</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>in your commandline.</p>
+</div>
+<p>You should see the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./sherpa-onnx-paraformer-zh-2023-09-14/tokens.txt --paraformer=./sherpa-onnx-paraformer-zh-2023-09-14/model.int8.onnx --model-type=paraformer ./sherpa-onnx-paraformer-zh-2023-09-14/test_wavs/0.wav ./sherpa-onnx-paraformer-zh-2023-09-14/test_wavs/1.wav ./sherpa-onnx-paraformer-zh-2023-09-14/test_wavs/2.wav ./sherpa-onnx-paraformer-zh-2023-09-14/test_wavs/8k.wav 
+
+OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;&quot;, decoder_filename=&quot;&quot;, joiner_filename=&quot;&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;./sherpa-onnx-paraformer-zh-2023-09-14/model.int8.onnx&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), whisper=OfflineWhisperModelConfig(encoder=&quot;&quot;, decoder=&quot;&quot;, language=&quot;&quot;, task=&quot;transcribe&quot;), tdnn=OfflineTdnnModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-paraformer-zh-2023-09-14/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;, model_type=&quot;paraformer&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, context_score=1.5)
+Creating recognizer ...
+Started
+/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/offline-stream.cc:AcceptWaveformImpl:117 Creating a resampler:
+   in_sample_rate: 8000
+   output_sample_rate: 16000
+
+Done!
+
+./sherpa-onnx-paraformer-zh-2023-09-14/test_wavs/0.wav
+{&quot;text&quot;:&quot;对我做了介绍啊那么我想说的是呢大家如果对我的研究感兴趣呢你&quot;,&quot;timestamps&quot;:&quot;[0.36, 0.48, 0.62, 0.72, 0.86, 1.02, 1.32, 1.74, 1.90, 2.10, 2.20, 2.38, 2.50, 2.62, 2.74, 3.18, 3.32, 3.52, 3.62, 3.74, 3.82, 3.90, 3.98, 4.08, 4.20, 4.34, 4.56, 4.74, 5.10]&quot;,&quot;tokens&quot;:[&quot;对&quot;,&quot;我&quot;,&quot;做&quot;,&quot;了&quot;,&quot;介&quot;,&quot;绍&quot;,&quot;啊&quot;,&quot;那&quot;,&quot;么&quot;,&quot;我&quot;,&quot;想&quot;,&quot;说&quot;,&quot;的&quot;,&quot;是&quot;,&quot;呢&quot;,&quot;大&quot;,&quot;家&quot;,&quot;如&quot;,&quot;果&quot;,&quot;对&quot;,&quot;我&quot;,&quot;的&quot;,&quot;研&quot;,&quot;究&quot;,&quot;感&quot;,&quot;兴&quot;,&quot;趣&quot;,&quot;呢&quot;,&quot;你&quot;]}
+----
+./sherpa-onnx-paraformer-zh-2023-09-14/test_wavs/1.wav
+{&quot;text&quot;:&quot;重点呢想谈三个问题首先呢就是这一轮全球金融动荡的表现&quot;,&quot;timestamps&quot;:&quot;[0.16, 0.30, 0.42, 0.56, 0.72, 0.96, 1.08, 1.18, 1.30, 2.08, 2.26, 2.44, 2.58, 2.72, 2.98, 3.14, 3.26, 3.46, 3.62, 3.80, 3.88, 4.02, 4.12, 4.20, 4.36, 4.56]&quot;,&quot;tokens&quot;:[&quot;重&quot;,&quot;点&quot;,&quot;呢&quot;,&quot;想&quot;,&quot;谈&quot;,&quot;三&quot;,&quot;个&quot;,&quot;问&quot;,&quot;题&quot;,&quot;首&quot;,&quot;先&quot;,&quot;呢&quot;,&quot;就&quot;,&quot;是&quot;,&quot;这&quot;,&quot;一&quot;,&quot;轮&quot;,&quot;全&quot;,&quot;球&quot;,&quot;金&quot;,&quot;融&quot;,&quot;动&quot;,&quot;荡&quot;,&quot;的&quot;,&quot;表&quot;,&quot;现&quot;]}
+----
+./sherpa-onnx-paraformer-zh-2023-09-14/test_wavs/2.wav
+{&quot;text&quot;:&quot;深入的分析这一次全球金融动荡背后的根源&quot;,&quot;timestamps&quot;:&quot;[0.34, 0.54, 0.66, 0.80, 1.08, 1.52, 1.72, 1.90, 2.42, 2.68, 2.86, 2.96, 3.16, 3.26, 3.46, 3.54, 3.66, 3.80, 3.90]&quot;,&quot;tokens&quot;:[&quot;深&quot;,&quot;入&quot;,&quot;的&quot;,&quot;分&quot;,&quot;析&quot;,&quot;这&quot;,&quot;一&quot;,&quot;次&quot;,&quot;全&quot;,&quot;球&quot;,&quot;金&quot;,&quot;融&quot;,&quot;动&quot;,&quot;荡&quot;,&quot;背&quot;,&quot;后&quot;,&quot;的&quot;,&quot;根&quot;,&quot;源&quot;]}
+----
+./sherpa-onnx-paraformer-zh-2023-09-14/test_wavs/8k.wav
+{&quot;text&quot;:&quot;甚至出现交易几乎停滞的情况&quot;,&quot;timestamps&quot;:&quot;[0.50, 0.78, 1.04, 1.18, 1.52, 1.78, 2.06, 2.24, 2.50, 2.66, 2.88, 3.10, 3.30]&quot;,&quot;tokens&quot;:[&quot;甚&quot;,&quot;至&quot;,&quot;出&quot;,&quot;现&quot;,&quot;交&quot;,&quot;易&quot;,&quot;几&quot;,&quot;乎&quot;,&quot;停&quot;,&quot;滞&quot;,&quot;的&quot;,&quot;情&quot;,&quot;况&quot;]}
+----
+num threads: 2
+decoding method: greedy_search
+Elapsed seconds: 0.957 s
+Real time factor (RTF): 0.957 / 19.502 = 0.049
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id4">
+<h3>Speech recognition from a microphone<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
+./build/bin/sherpa-onnx-microphone-offline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-paraformer-zh-2023-09-14/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--paraformer<span class="o">=</span>./sherpa-onnx-paraformer-zh-2023-09-14/model.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--model-type<span class="o">=</span>paraformer
 </pre></div>
 </div>
 </section>

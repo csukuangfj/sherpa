@@ -144,9 +144,8 @@ a microphone</p></li>
 <h3>Method 1<a class="headerlink" href="#method-1" title="Permalink to this headline"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>This method works only on <code class="docutils literal notranslate"><span class="pre">x86/x86_64</span></code> systems: Linux, macOS and Windows.</p>
-<p>For other architectures, e.g., Mac M1, Raspberry Pi, etc, please
-use Method 2, 3, or 4.</p>
+<p>This method supports <code class="docutils literal notranslate"><span class="pre">x86_64</span></code>, <code class="docutils literal notranslate"><span class="pre">arm64</span></code> (e.g., Mac M1, 64-bit Raspberry Pi),
+and <code class="docutils literal notranslate"><span class="pre">arm32</span></code> (e.g., 32-bit Raspberry Pi).</p>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sherpa-ncnn
 </pre></div>
@@ -279,8 +278,8 @@ code below.</p>
 <div><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn/blob/master/python-api-examples/speech-recognition-from-microphone.py">https://github.com/k2-fsa/sherpa-ncnn/blob/master/python-api-examples/speech-recognition-from-microphone.py</a></p>
 </div></blockquote>
 </div>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Real-time speech recognition with a microphone using <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Real-time speech recognition with a microphone using <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -520,8 +519,8 @@ encoded.</p>
 <div><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn/blob/master/python-api-examples/decode-file.py">https://github.com/k2-fsa/sherpa-ncnn/blob/master/python-api-examples/decode-file.py</a></p>
 </div></blockquote>
 </div>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Decode a file with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Decode a file with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wave</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
