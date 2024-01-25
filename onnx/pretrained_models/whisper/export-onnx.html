@@ -16,6 +16,7 @@
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -68,9 +69,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Pre-trained models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../online-transducer/index.html">Online transducer models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../online-paraformer/index.html">Online paraformer models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../online-ctc/index.html">Online CTC models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../offline-transducer/index.html">Offline transducer models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../offline-paraformer/index.html">Offline paraformer models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../offline-ctc/index.html">Offline CTC models</a></li>
@@ -81,9 +84,11 @@
 <li class="toctree-l4"><a class="reference internal" href="huggingface.html">Huggingface space</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../wenet/index.html">WeNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../small-online-models.html">Small models</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
@@ -121,10 +126,10 @@
            <div itemprop="articleBody">
              
   <section id="export-whisper-to-onnx">
-<h1>Export Whisper to ONNX<a class="headerlink" href="#export-whisper-to-onnx" title="Permalink to this headline"></a></h1>
+<h1>Export Whisper to ONNX<a class="headerlink" href="#export-whisper-to-onnx" title="Permalink to this heading"></a></h1>
 <p>This section describes how to export <a class="reference external" href="https://github.com/openai/whisper/">Whisper</a> models to <a class="reference external" href="https://github.com/onnx/onnx">onnx</a>.</p>
 <section id="available-models">
-<h2>Available models<a class="headerlink" href="#available-models" title="Permalink to this headline"></a></h2>
+<h2>Available models<a class="headerlink" href="#available-models" title="Permalink to this heading"></a></h2>
 <p>Note that we have already exported <a class="reference external" href="https://github.com/openai/whisper/">Whisper</a> models to <a class="reference external" href="https://github.com/onnx/onnx">onnx</a> and they are available
 from the following huggingface repositories:</p>
 <table class="docutils align-default">
@@ -145,8 +150,26 @@ from the following huggingface repositories:</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">small.en</span></code></p></td>
 <td><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-whisper-small.en">https://huggingface.co/csukuangfj/sherpa-onnx-whisper-small.en</a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">medium.en</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">distil-small.en</span></code></p></td>
+<td><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-whisper-distil-small.en">https://huggingface.co/csukuangfj/sherpa-onnx-whisper-distil-small.en</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">medium.en</span></code></p></td>
 <td><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-whisper-medium.en">https://huggingface.co/csukuangfj/sherpa-onnx-whisper-medium.en</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">distil-medium.en</span></code></p></td>
+<td><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-whisper-distil-medium.en">https://huggingface.co/csukuangfj/sherpa-onnx-whisper-distil-medium.en</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tiny</span></code></p></td>
+<td><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-whisper-tiny">https://huggingface.co/csukuangfj/sherpa-onnx-whisper-tiny</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">base</span></code></p></td>
+<td><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-whisper-base">https://huggingface.co/csukuangfj/sherpa-onnx-whisper-base</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">small</span></code></p></td>
+<td><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-whisper-small">https://huggingface.co/csukuangfj/sherpa-onnx-whisper-small</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">medium</span></code></p></td>
+<td><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-whisper-medium">https://huggingface.co/csukuangfj/sherpa-onnx-whisper-medium</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -154,7 +177,7 @@ from the following huggingface repositories:</p>
 are exported, please read below.</p>
 </section>
 <section id="export-to-onnx">
-<h2>Export to onnx<a class="headerlink" href="#export-to-onnx" title="Permalink to this headline"></a></h2>
+<h2>Export to onnx<a class="headerlink" href="#export-to-onnx" title="Permalink to this heading"></a></h2>
 <p>We use</p>
 <blockquote>
 <div><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/blob/master/scripts/whisper/export-onnx.py">https://github.com/k2-fsa/sherpa-onnx/blob/master/scripts/whisper/export-onnx.py</a></p>
@@ -258,7 +281,7 @@ python3<span class="w"> </span>./test.py<span class="w"> </span><span class="se"
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

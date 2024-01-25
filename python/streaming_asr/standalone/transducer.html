@@ -16,6 +16,7 @@
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -88,7 +89,7 @@
            <div itemprop="articleBody">
              
   <section id="transducer">
-<h1>Transducer<a class="headerlink" href="#transducer" title="Permalink to this headline"></a></h1>
+<h1>Transducer<a class="headerlink" href="#transducer" title="Permalink to this heading"></a></h1>
 <p>In this section, we describe how to use pre-trained <a class="reference external" href="https://arxiv.org/pdf/1211.3711.pdf">transducer</a>
 models for online (i.e., streaming) speech recognition.</p>
 <div class="admonition hint">
@@ -106,7 +107,7 @@ to demonstrate how to decode sound files.</p>
 from source.</p>
 </div>
 <section id="download-the-pre-trained-model">
-<h2>Download the pre-trained model<a class="headerlink" href="#download-the-pre-trained-model" title="Permalink to this headline"></a></h2>
+<h2>Download the pre-trained model<a class="headerlink" href="#download-the-pre-trained-model" title="Permalink to this heading"></a></h2>
 <p>Please refer to <a class="reference internal" href="../../../sherpa/pretrained_models/online_transducer.html#icefall-asr-librispeech-pruned-transducer-stateless7-streaming-2022-12-29"><span class="std std-ref">icefall-asr-librispeech-pruned-transducer-stateless7-streaming-2022-12-29</span></a>
 for detailed instructions.</p>
 <p>For ease of reference, we duplicate the download commands below:</p>
@@ -124,7 +125,7 @@ git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </spa
 <p>In the following, we describe different decoding methods.</p>
 </section>
 <section id="greedy-search">
-<h2>greedy search<a class="headerlink" href="#greedy-search" title="Permalink to this headline"></a></h2>
+<h2>greedy search<a class="headerlink" href="#greedy-search" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa
 
 python3<span class="w"> </span>./sherpa/bin/online_transducer_asr.py<span class="w"> </span><span class="se">\</span>
@@ -138,7 +139,7 @@ python3<span class="w"> </span>./sherpa/bin/online_transducer_asr.py<span class=
 </div>
 </section>
 <section id="modified-beam-search">
-<h2>modified beam search<a class="headerlink" href="#modified-beam-search" title="Permalink to this headline"></a></h2>
+<h2>modified beam search<a class="headerlink" href="#modified-beam-search" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa
 
 python3<span class="w"> </span>./sherpa/bin/online_transducer_asr.py<span class="w"> </span><span class="se">\</span>
@@ -152,7 +153,7 @@ python3<span class="w"> </span>./sherpa/bin/online_transducer_asr.py<span class=
 </div>
 </section>
 <section id="fast-beam-search">
-<h2>fast_beam_search<a class="headerlink" href="#fast-beam-search" title="Permalink to this headline"></a></h2>
+<h2>fast_beam_search<a class="headerlink" href="#fast-beam-search" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa
 
 python3<span class="w"> </span>./sherpa/bin/online_transducer_asr.py<span class="w"> </span><span class="se">\</span>
@@ -166,7 +167,7 @@ python3<span class="w"> </span>./sherpa/bin/online_transducer_asr.py<span class=
 </div>
 </section>
 <section id="fast-beam-search-with-lg">
-<h2>fast_beam_search with LG<a class="headerlink" href="#fast-beam-search-with-lg" title="Permalink to this headline"></a></h2>
+<h2>fast_beam_search with LG<a class="headerlink" href="#fast-beam-search-with-lg" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa
 
 python3<span class="w"> </span>./sherpa/bin/online_transducer_asr.py<span class="w"> </span><span class="se">\</span>
@@ -190,7 +191,7 @@ python3<span class="w"> </span>./sherpa/bin/online_transducer_asr.py<span class=
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

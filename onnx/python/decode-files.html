@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -81,7 +82,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
@@ -118,7 +121,7 @@
            <div itemprop="articleBody">
              
   <section id="decode-files">
-<h1>Decode files<a class="headerlink" href="#decode-files" title="Permalink to this headline"></a></h1>
+<h1>Decode files<a class="headerlink" href="#decode-files" title="Permalink to this heading"></a></h1>
 <p>In this section, we demonstrate how to use the Python API of <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>
 to decode files.</p>
 <div class="admonition hint">
@@ -128,7 +131,7 @@ to decode files.</p>
 not need to be 16 kHz</p>
 </div>
 <section id="streaming-zipformer">
-<h2>Streaming zipformer<a class="headerlink" href="#streaming-zipformer" title="Permalink to this headline"></a></h2>
+<h2>Streaming zipformer<a class="headerlink" href="#streaming-zipformer" title="Permalink to this heading"></a></h2>
 <p>We use <a class="reference internal" href="../pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a> as
 an example below.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
@@ -185,7 +188,7 @@ Real time factor (RTF): 3.907/17.640 = 0.221
 </div>
 </section>
 <section id="non-streaming-zipformer">
-<h2>Non-streaming zipformer<a class="headerlink" href="#non-streaming-zipformer" title="Permalink to this headline"></a></h2>
+<h2>Non-streaming zipformer<a class="headerlink" href="#non-streaming-zipformer" title="Permalink to this heading"></a></h2>
 <p>We use <a class="reference internal" href="../pretrained_models/offline-transducer/zipformer-transducer-models.html#sherpa-onnx-zipformer-en-2023-04-01"><span class="std std-ref">csukuangfj/sherpa-onnx-zipformer-en-2023-04-01 (English)</span></a> as
 an example below.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
@@ -234,7 +237,7 @@ Real time factor (RTF): 2.567/4.825 = 0.532
 </div>
 </section>
 <section id="non-streaming-paraformer">
-<h2>Non-streaming paraformer<a class="headerlink" href="#non-streaming-paraformer" title="Permalink to this headline"></a></h2>
+<h2>Non-streaming paraformer<a class="headerlink" href="#non-streaming-paraformer" title="Permalink to this heading"></a></h2>
 <p>We use <a class="reference internal" href="../pretrained_models/offline-paraformer/paraformer-models.html#sherpa-onnx-offline-paraformer-zh-2023-03-28-chinese"><span class="std std-ref">csukuangfj/sherpa-onnx-paraformer-zh-2023-03-28 (Chinese)</span></a> as
 an example below.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
@@ -293,7 +296,7 @@ Real time factor (RTF): 1.663/4.204 = 0.396
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -115,14 +116,14 @@
            <div itemprop="articleBody">
              
   <section id="conv-emformer-transducer-based-models">
-<h1>Conv-Emformer-transducer-based Models<a class="headerlink" href="#conv-emformer-transducer-based-models" title="Permalink to this headline"></a></h1>
+<h1>Conv-Emformer-transducer-based Models<a class="headerlink" href="#conv-emformer-transducer-based-models" title="Permalink to this heading"></a></h1>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Please refer to <a class="reference internal" href="../install/index.html#install-sherpa-ncnn"><span class="std std-ref">Installation</span></a> to install <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>
 before you read this section.</p>
 </div>
 <section id="marcoyang-sherpa-ncnn-conv-emformer-transducer-small-2023-01-09-english">
-<span id="id1"></span><h2>marcoyang/sherpa-ncnn-conv-emformer-transducer-small-2023-01-09 (English)<a class="headerlink" href="#marcoyang-sherpa-ncnn-conv-emformer-transducer-small-2023-01-09-english" title="Permalink to this headline"></a></h2>
+<span id="id1"></span><h2>marcoyang/sherpa-ncnn-conv-emformer-transducer-small-2023-01-09 (English)<a class="headerlink" href="#marcoyang-sherpa-ncnn-conv-emformer-transducer-small-2023-01-09-english" title="Permalink to this heading"></a></h2>
 <p>This model is a small version of <a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/conv_emformer_transducer_stateless2">conv-emformer-transducer</a>
 trained in <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a>.</p>
 <p>It only has <code class="docutils literal notranslate"><span class="pre">8.8</span> <span class="pre">million</span> <span class="pre">parameters</span></code> and can be deployed on <code class="docutils literal notranslate"><span class="pre">embedded</span> <span class="pre">devices</span></code>
@@ -136,17 +137,10 @@ deploy it with <a class="reference external" href="https://github.com/k2-fsa/she
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/marcoyang/sherpa-ncnn-conv-emformer-transducer-small-2023-01-09
-
-<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn-conv-emformer-transducer-small-2023-01-09
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.bin&quot;</span>
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn/releases/download/models/sherpa-ncnn-conv-emformer-transducer-small-2023-01-09.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-ncnn-conv-emformer-transducer-small-2023-01-09.tar.bz2
 </pre></div>
 </div>
-<p>Please check that the file size of the pre-trained models is correct (see the
-screen shot below):</p>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/2023-01-09-filesize.jpg"><img alt="File size for sherpa-ncnn-conv-emformer-transducer-small-2023-01-09" src="../../_images/2023-01-09-filesize.jpg" style="width: 800px;" /></a>
-</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Please refer to <a class="reference internal" href="../install/arm-embedded-linux.html#sherpa-ncnn-embedded-linux-arm-install"><span class="std std-ref">Embedded Linux (arm)</span></a> for how to
@@ -156,7 +150,7 @@ test the pre-trained model on an embedded device, whose CPU is
 (Quad core ARM Cortex-A7).</p>
 </div>
 <section id="decode-a-single-wave-file-with-build-bin-sherpa-ncnn">
-<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#decode-a-single-wave-file-with-build-bin-sherpa-ncnn" title="Permalink to this headline"></a></h3>
+<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#decode-a-single-wave-file-with-build-bin-sherpa-ncnn" title="Permalink to this heading"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files with a single channel and the sampling rate
@@ -199,7 +193,7 @@ should be 16 kHz.</p>
 </div>
 </section>
 <section id="decode-a-single-wave-file-with-build-bin-sherpa-ncnn-with-int8-quantization">
-<h3>Decode a single wave file with ./build/bin/sherpa-ncnn (with int8 quantization)<a class="headerlink" href="#decode-a-single-wave-file-with-build-bin-sherpa-ncnn-with-int8-quantization" title="Permalink to this headline"></a></h3>
+<h3>Decode a single wave file with ./build/bin/sherpa-ncnn (with int8 quantization)<a class="headerlink" href="#decode-a-single-wave-file-with-build-bin-sherpa-ncnn-with-int8-quantization" title="Permalink to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We also support int8 quantization to compresss the model and speed up inference.
@@ -241,7 +235,7 @@ time factor (RTF) is still less than <code class="docutils literal notranslate">
 </section>
 </section>
 <section id="csukuangfj-sherpa-ncnn-conv-emformer-transducer-2022-12-06-chinese-english">
-<span id="sherpa-ncnn-mixed-english-chinese-conv-emformer-model"></span><h2>csukuangfj/sherpa-ncnn-conv-emformer-transducer-2022-12-06 (Chinese + English)<a class="headerlink" href="#csukuangfj-sherpa-ncnn-conv-emformer-transducer-2022-12-06-chinese-english" title="Permalink to this headline"></a></h2>
+<span id="sherpa-ncnn-mixed-english-chinese-conv-emformer-model"></span><h2>csukuangfj/sherpa-ncnn-conv-emformer-transducer-2022-12-06 (Chinese + English)<a class="headerlink" href="#csukuangfj-sherpa-ncnn-conv-emformer-transducer-2022-12-06-chinese-english" title="Permalink to this heading"></a></h2>
 <p>This model is converted from <a class="reference external" href="https://huggingface.co/ptrnull/icefall-asr-conv-emformer-transducer-stateless2-zh">https://huggingface.co/ptrnull/icefall-asr-conv-emformer-transducer-stateless2-zh</a>,
 which supports both Chinese and English.</p>
 <div class="admonition hint">
@@ -261,29 +255,12 @@ by visiting:</p>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-ncnn-conv-emformer-transducer-2022-12-06
-<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn-conv-emformer-transducer-2022-12-06
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.bin&quot;</span>
-</pre></div>
-</div>
-<p>Please check that the file size of the pre-trained models is correct (see the
-output below):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>*ncnn*<span class="o">{</span>param,bin<span class="o">}</span>
-
--rw-r--r--@<span class="w"> </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">5</span>.9M<span class="w"> </span>Dec<span class="w">  </span><span class="m">6</span><span class="w"> </span><span class="m">12</span>:06<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>439B<span class="w"> </span>Feb<span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="m">20</span>:23<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.param
--rw-r--r--@<span class="w"> </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>141M<span class="w"> </span>Dec<span class="w">  </span><span class="m">6</span><span class="w"> </span><span class="m">12</span>:06<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>99M<span class="w"> </span>Dec<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">11</span>:03<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.int8.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>78K<span class="w"> </span>Mar<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">10</span>:33<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.int8.param
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>79K<span class="w"> </span>Jan<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">21</span>:13<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.param
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">6</span>.9M<span class="w"> </span>Dec<span class="w">  </span><span class="m">6</span><span class="w"> </span><span class="m">12</span>:06<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">3</span>.5M<span class="w"> </span>Dec<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">11</span>:03<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.int8.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>498B<span class="w"> </span>Dec<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">11</span>:02<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.int8.param
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>490B<span class="w"> </span>Dec<span class="w">  </span><span class="m">6</span><span class="w"> </span><span class="m">12</span>:05<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.param
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn/releases/download/models/sherpa-ncnn-conv-emformer-transducer-2022-12-06.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-ncnn-conv-emformer-transducer-2022-12-06.tar.bz2
 </pre></div>
 </div>
 <section id="id3">
-<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files with a single channel and the sampling rate
@@ -318,7 +295,7 @@ should be 16 kHz.</p>
 </div>
 </section>
 <section id="real-time-speech-recognition-from-a-microphone-with-build-bin-sherpa-ncnn-microphone">
-<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone-with-build-bin-sherpa-ncnn-microphone" title="Permalink to this headline"></a></h3>
+<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone-with-build-bin-sherpa-ncnn-microphone" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 ./build/bin/sherpa-ncnn-microphone<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-2022-12-06/tokens.txt<span class="w"> </span><span class="se">\</span>
@@ -357,7 +334,7 @@ should be 16 kHz.</p>
 </section>
 </section>
 <section id="csukuangfj-sherpa-ncnn-conv-emformer-transducer-2022-12-08-chinese">
-<h2>csukuangfj/sherpa-ncnn-conv-emformer-transducer-2022-12-08 (Chinese)<a class="headerlink" href="#csukuangfj-sherpa-ncnn-conv-emformer-transducer-2022-12-08-chinese" title="Permalink to this headline"></a></h2>
+<h2>csukuangfj/sherpa-ncnn-conv-emformer-transducer-2022-12-08 (Chinese)<a class="headerlink" href="#csukuangfj-sherpa-ncnn-conv-emformer-transducer-2022-12-08-chinese" title="Permalink to this heading"></a></h2>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>This is a very small model that can be run in real-time on embedded sytems.</p>
@@ -367,28 +344,12 @@ should be 16 kHz.</p>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-ncnn-conv-emformer-transducer-2022-12-08
-<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn-conv-emformer-transducer-2022-12-08
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.bin&quot;</span>
-</pre></div>
-</div>
-<p>Please check that the file size of the pre-trained models is correct (see the
-output below):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-ncnn-conv-emformer-transducer-2022-12-08<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>*.ncnn.*
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">5</span>.4M<span class="w"> </span>Dec<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">12</span>:53<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>439B<span class="w"> </span>Dec<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">12</span>:53<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.param
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>16M<span class="w"> </span>Dec<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">12</span>:53<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>11M<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:06<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.int8.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>33K<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:06<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.int8.param
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>34K<span class="w"> </span>Dec<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">12</span>:53<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.param
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">6</span>.2M<span class="w"> </span>Dec<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">12</span>:53<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">3</span>.1M<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:06<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.int8.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>498B<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:06<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.int8.param
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>490B<span class="w"> </span>Dec<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">12</span>:53<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.param
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn/releases/download/models/sherpa-ncnn-conv-emformer-transducer-2022-12-08.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-ncnn-conv-emformer-transducer-2022-12-08.tar.bz2
 </pre></div>
 </div>
 <section id="id4">
-<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files with a single channel and the sampling rate
@@ -423,7 +384,7 @@ should be 16 kHz.</p>
 </div>
 </section>
 <section id="id5">
-<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 ./build/bin/sherpa-ncnn-microphone<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-2022-12-08/tokens.txt<span class="w"> </span><span class="se">\</span>
@@ -462,34 +423,18 @@ should be 16 kHz.</p>
 </section>
 </section>
 <section id="csukuangfj-sherpa-ncnn-conv-emformer-transducer-2022-12-04-english">
-<h2>csukuangfj/sherpa-ncnn-conv-emformer-transducer-2022-12-04 (English)<a class="headerlink" href="#csukuangfj-sherpa-ncnn-conv-emformer-transducer-2022-12-04-english" title="Permalink to this headline"></a></h2>
+<h2>csukuangfj/sherpa-ncnn-conv-emformer-transducer-2022-12-04 (English)<a class="headerlink" href="#csukuangfj-sherpa-ncnn-conv-emformer-transducer-2022-12-04-english" title="Permalink to this heading"></a></h2>
 <p>This model is trained using <a class="reference external" href="https://github.com/SpeechColab/GigaSpeech">GigaSpeech</a> and <a class="reference external" href="https://www.openslr.org/12">LibriSpeech</a>. It supports only English.</p>
 <p>In the following, we describe how to download and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-ncnn-conv-emformer-transducer-2022-12-04
-<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn-conv-emformer-transducer-2022-12-04
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.bin&quot;</span>
-</pre></div>
-</div>
-<p>Please check that the file size of the pre-trained models is correct (see the
-output below):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-ncnn-conv-emformer-transducer-2022-12-04<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>*.ncnn*
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>502K<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:47<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>437B<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:36<span class="w"> </span>decoder_jit_trace-pnnx.ncnn.param
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>141M<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:48<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>99M<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:47<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.int8.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>78K<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:36<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.int8.param
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>79K<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:36<span class="w"> </span>encoder_jit_trace-pnnx.ncnn.param
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.5M<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:47<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>774K<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:47<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.int8.bin
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>496B<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:36<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.int8.param
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>488B<span class="w"> </span>Apr<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">21</span>:36<span class="w"> </span>joiner_jit_trace-pnnx.ncnn.param
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn/releases/download/models/sherpa-ncnn-conv-emformer-transducer-2022-12-04.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-ncnn-conv-emformer-transducer-2022-12-04.tar.bz2
 </pre></div>
 </div>
 <section id="id6">
-<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3>Decode a single wave file with ./build/bin/sherpa-ncnn<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files with a single channel and the sampling rate
@@ -524,7 +469,7 @@ should be 16 kHz.</p>
 </div>
 </section>
 <section id="id7">
-<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<h3>Real-time speech recognition from a microphone with build/bin/sherpa-ncnn-microphone<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-ncnn
 ./build/bin/sherpa-ncnn-microphone<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-2022-12-04/tokens.txt<span class="w"> </span><span class="se">\</span>
@@ -575,7 +520,7 @@ should be 16 kHz.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

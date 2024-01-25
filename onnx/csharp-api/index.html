@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -85,7 +86,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
@@ -121,7 +124,7 @@
            <div itemprop="articleBody">
              
   <section id="c-api">
-<span id="sherpa-onnx-csharp-api"></span><h1>C# API<a class="headerlink" href="#c-api" title="Permalink to this headline"></a></h1>
+<span id="sherpa-onnx-csharp-api"></span><h1>C# API<a class="headerlink" href="#c-api" title="Permalink to this heading"></a></h1>
 <p>In this section, we describe how to use the <code class="docutils literal notranslate"><span class="pre">C#</span></code>
 API examples of <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">C#</span></code> API of <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> supports both streaming and non-streaming speech recognition.</p>
@@ -179,7 +182,7 @@ If not, please follow <a class="reference external" href="https://dotnet.microso
 <p><code class="docutils literal notranslate"><span class="pre">.Net</span></code> supports Windows, macOS, and Linux.</p>
 </div>
 <section id="decode-files-with-non-streaming-models">
-<h2>Decode files with non-streaming models<a class="headerlink" href="#decode-files-with-non-streaming-models" title="Permalink to this headline"></a></h2>
+<h2>Decode files with non-streaming models<a class="headerlink" href="#decode-files-with-non-streaming-models" title="Permalink to this heading"></a></h2>
 <p>First, let us build the example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
 <span class="nb">cd</span><span class="w"> </span>sherpa-onnx/dotnet-examples/offline-decode-files/
@@ -254,7 +257,7 @@ Copyright<span class="w"> </span><span class="o">(</span>c<span class="o">)</spa
 <p>Now let us refer to <a class="reference internal" href="../pretrained_models/index.html#sherpa-onnx-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> to download a non-streaming model.</p>
 <p>We give several examples below for demonstration.</p>
 <section id="non-streaming-transducer">
-<h3>Non-streaming transducer<a class="headerlink" href="#non-streaming-transducer" title="Permalink to this headline"></a></h3>
+<h3>Non-streaming transducer<a class="headerlink" href="#non-streaming-transducer" title="Permalink to this heading"></a></h3>
 <p>We will use <a class="reference internal" href="../pretrained_models/offline-transducer/zipformer-transducer-models.html#sherpa-onnx-zipformer-en-2023-06-26-english"><span class="std std-ref">csukuangfj/sherpa-onnx-zipformer-en-2023-06-26 (English)</span></a> as an example.</p>
 <p>First, let us download it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-onnx/dotnet-examples/offline-decode-files
@@ -294,7 +297,7 @@ git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </spa
 </div>
 </section>
 <section id="non-streaming-paraformer">
-<h3>Non-streaming paraformer<a class="headerlink" href="#non-streaming-paraformer" title="Permalink to this headline"></a></h3>
+<h3>Non-streaming paraformer<a class="headerlink" href="#non-streaming-paraformer" title="Permalink to this heading"></a></h3>
 <p>We will use <a class="reference internal" href="../pretrained_models/offline-paraformer/paraformer-models.html#sherpa-onnx-offline-paraformer-zh-2023-03-28-chinese"><span class="std std-ref">csukuangfj/sherpa-onnx-paraformer-zh-2023-03-28 (Chinese)</span></a> as an example.</p>
 <p>First, let us download it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-onnx/dotnet-examples/offline-decode-files
@@ -332,7 +335,7 @@ git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </spa
 </div>
 </section>
 <section id="non-streaming-ctc-model-from-nemo">
-<h3>Non-streaming CTC model from NeMo<a class="headerlink" href="#non-streaming-ctc-model-from-nemo" title="Permalink to this headline"></a></h3>
+<h3>Non-streaming CTC model from NeMo<a class="headerlink" href="#non-streaming-ctc-model-from-nemo" title="Permalink to this heading"></a></h3>
 <p>We will use <a class="reference internal" href="../pretrained_models/offline-ctc/nemo/english.html#stt-en-conformer-ctc-medium-nemo-sherpa-onnx"><span class="std std-ref">stt_en_conformer_ctc_medium</span></a> as an example.</p>
 <p>First, let us download it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-onnx/dotnet-examples/offline-decode-files
@@ -371,7 +374,7 @@ git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </spa
 </section>
 </section>
 <section id="decode-files-with-streaming-models">
-<h2>Decode files with streaming models<a class="headerlink" href="#decode-files-with-streaming-models" title="Permalink to this headline"></a></h2>
+<h2>Decode files with streaming models<a class="headerlink" href="#decode-files-with-streaming-models" title="Permalink to this heading"></a></h2>
 <p>First, let us build the example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
 <span class="nb">cd</span><span class="w"> </span>sherpa-onnx/dotnet-examples/online-decode-files
@@ -438,7 +441,7 @@ Copyright<span class="w"> </span><span class="o">(</span>c<span class="o">)</spa
 <p>Now let us refer to <a class="reference internal" href="../pretrained_models/index.html#sherpa-onnx-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> to download a streaming model.</p>
 <p>We give one example below for demonstration.</p>
 <section id="streaming-transducer">
-<h3>Streaming transducer<a class="headerlink" href="#streaming-transducer" title="Permalink to this headline"></a></h3>
+<h3>Streaming transducer<a class="headerlink" href="#streaming-transducer" title="Permalink to this heading"></a></h3>
 <p>We will use <a class="reference internal" href="../pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-en-2023-06-26-english"><span class="std std-ref">csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-06-26 (English)</span></a> as an example.</p>
 <p>First, let us download it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-onnx/dotnet-examples/online-decode-files/
@@ -479,7 +482,7 @@ git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </spa
 </section>
 </section>
 <section id="real-time-speech-recognition-from-microphone">
-<h2>Real-time speech recognition from microphone<a class="headerlink" href="#real-time-speech-recognition-from-microphone" title="Permalink to this headline"></a></h2>
+<h2>Real-time speech recognition from microphone<a class="headerlink" href="#real-time-speech-recognition-from-microphone" title="Permalink to this heading"></a></h2>
 <p>First, let us build the example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
 <span class="nb">cd</span><span class="w"> </span>sherpa-onnx/dotnet-examples/speech-recognition-from-microphone
@@ -540,7 +543,7 @@ Copyright<span class="w"> </span><span class="o">(</span>c<span class="o">)</spa
 <p>Now let us refer to <a class="reference internal" href="../pretrained_models/index.html#sherpa-onnx-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> to download a streaming model.</p>
 <p>We give one example below for demonstration.</p>
 <section id="id1">
-<h3>Streaming transducer<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<h3>Streaming transducer<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>We will use <a class="reference internal" href="../pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-en-2023-06-26-english"><span class="std std-ref">csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-06-26 (English)</span></a> as an example.</p>
 <p>First, let us download it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-onnx/dotnet-examples/speech-recognition-from-microphone
@@ -599,7 +602,7 @@ Started!<span class="w"> </span>Please<span class="w"> </span>speak
 </section>
 </section>
 <section id="colab">
-<h2>colab<a class="headerlink" href="#colab" title="Permalink to this headline"></a></h2>
+<h2>colab<a class="headerlink" href="#colab" title="Permalink to this heading"></a></h2>
 <p>We provide a colab notebook
 <a class="reference external" href="https://github.com/k2-fsa/colab/blob/master/sherpa-onnx/sherpa_onnx_csharp_api_example.ipynb"><img alt="Sherpa-onnx csharp api example colab notebook" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
 for you to try the <code class="docutils literal notranslate"><span class="pre">C#</span></code> API examples of <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
@@ -617,7 +620,7 @@ for you to try the <code class="docutils literal notranslate"><span class="pre">
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

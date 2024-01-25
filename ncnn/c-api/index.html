@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/tabs.js"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -111,7 +112,7 @@
            <div itemprop="articleBody">
              
   <section id="c-api">
-<span id="sherpa-ncnn-c-api"></span><h1>C API<a class="headerlink" href="#c-api" title="Permalink to this headline"></a></h1>
+<span id="sherpa-ncnn-c-api"></span><h1>C API<a class="headerlink" href="#c-api" title="Permalink to this heading"></a></h1>
 <p>In this section, we describe how to use the C API of <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
 <p>Specifically, we will describe:</p>
 <blockquote>
@@ -121,11 +122,11 @@
 </ul>
 </div></blockquote>
 <section id="generate-required-files">
-<h2>Generate required files<a class="headerlink" href="#generate-required-files" title="Permalink to this headline"></a></h2>
+<h2>Generate required files<a class="headerlink" href="#generate-required-files" title="Permalink to this heading"></a></h2>
 <p>Before using the C API of <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>, we need to first build required
 libraries. You can choose either to build static libraries or shared libraries.</p>
 <section id="build-shared-libraries">
-<h3>Build shared libraries<a class="headerlink" href="#build-shared-libraries" title="Permalink to this headline"></a></h3>
+<h3>Build shared libraries<a class="headerlink" href="#build-shared-libraries" title="Permalink to this heading"></a></h3>
 <p>Assume that we want to put library files and header files in the directory
 <code class="docutils literal notranslate"><span class="pre">/tmp/sherpa-ncnn/shared</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
@@ -187,7 +188,7 @@ make<span class="w"> </span>install
 </div></div>
 </section>
 <section id="build-static-libraries">
-<h3>Build static libraries<a class="headerlink" href="#build-static-libraries" title="Permalink to this headline"></a></h3>
+<h3>Build static libraries<a class="headerlink" href="#build-static-libraries" title="Permalink to this heading"></a></h3>
 <p>Assume that we want to put library files and header files in the directory
 <code class="docutils literal notranslate"><span class="pre">/tmp/sherpa-ncnn/static</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
@@ -229,7 +230,7 @@ make<span class="w"> </span>install
 </section>
 </section>
 <section id="build-decode-file-c-api-c-with-generated-files">
-<h2>Build decode-file-c-api.c with generated files<a class="headerlink" href="#build-decode-file-c-api-c-with-generated-files" title="Permalink to this headline"></a></h2>
+<h2>Build decode-file-c-api.c with generated files<a class="headerlink" href="#build-decode-file-c-api-c-with-generated-files" title="Permalink to this heading"></a></h2>
 <p>To build the following file:</p>
 <blockquote>
 <div><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn/blob/master/c-api-examples/decode-file-c-api.c">https://github.com/k2-fsa/sherpa-ncnn/blob/master/c-api-examples/decode-file-c-api.c</a></p>
@@ -263,7 +264,7 @@ gcc<span class="w"> </span>-o<span class="w"> </span>decode-file-c-api<span clas
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

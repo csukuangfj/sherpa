@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -102,7 +103,7 @@
            <div itemprop="articleBody">
              
   <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
 <p>We prepare a dockerfile based on official triton docker containers. The customized dockerfile intergrates <a class="reference external" href="https://github.com/triton-inference-server/server">Triton-server</a>, <a class="reference external" href="https://github.com/triton-inference-server/client">Triton-client</a> and
 sherpa-related requirements into a single image. You need to install <a class="reference external" href="https://www.docker.com">Docker</a> first before starting installation.</p>
 <div class="admonition hint">
@@ -110,7 +111,7 @@ sherpa-related requirements into a single image. You need to install <a class="r
 <p>For your production environment, you could build triton manually to reduce the size of container.</p>
 </div>
 <section id="build-triton-image">
-<h2>Build Triton Image<a class="headerlink" href="#build-triton-image" title="Permalink to this headline"></a></h2>
+<h2>Build Triton Image<a class="headerlink" href="#build-triton-image" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa
 <span class="nb">cd</span><span class="w"> </span>sherpa/triton
 docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>Dockerfile/Dockerfile.server<span class="w"> </span>-t<span class="w"> </span>sherpa_triton_server:latest
@@ -122,7 +123,7 @@ docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </s
 </div>
 </section>
 <section id="launch-a-inference-container">
-<h2>Launch a inference container<a class="headerlink" href="#launch-a-inference-container" title="Permalink to this headline"></a></h2>
+<h2>Launch a inference container<a class="headerlink" href="#launch-a-inference-container" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span>--name<span class="w"> </span>sherpa_server<span class="w"> </span>--net<span class="w"> </span>host<span class="w"> </span>--shm-size<span class="o">=</span>1g<span class="w"> </span>-it<span class="w"> </span>sherpa_triton_server:latest
 </pre></div>
 </div>
@@ -141,7 +142,7 @@ docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </s
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

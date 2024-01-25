@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -102,10 +103,10 @@
            <div itemprop="articleBody">
              
   <section id="triton-server">
-<h1>Triton-server<a class="headerlink" href="#triton-server" title="Permalink to this headline"></a></h1>
+<h1>Triton-server<a class="headerlink" href="#triton-server" title="Permalink to this heading"></a></h1>
 <p>This page gives serveral examples to deploy streaming and offline ASR pretrained models with Triton server.</p>
 <section id="deploy-streaming-asr-models-with-onnx">
-<h2>Deploy streaming ASR models with Onnx<a class="headerlink" href="#deploy-streaming-asr-models-with-onnx" title="Permalink to this headline"></a></h2>
+<h2>Deploy streaming ASR models with Onnx<a class="headerlink" href="#deploy-streaming-asr-models-with-onnx" title="Permalink to this heading"></a></h2>
 <p>First, we need to export pretrained models with Onnx.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">SHERPA_SRC</span><span class="o">=</span>./sherpa
 <span class="nb">export</span><span class="w"> </span><span class="nv">ICEFALL_SRC</span><span class="o">=</span>/workspace/icefall
@@ -143,7 +144,7 @@ bash<span class="w"> </span>scripts/start_streaming_server.sh
 </div>
 </section>
 <section id="deploy-offline-asr-models-with-torchscript">
-<h2>Deploy offline ASR models with torchscript<a class="headerlink" href="#deploy-offline-asr-models-with-torchscript" title="Permalink to this headline"></a></h2>
+<h2>Deploy offline ASR models with torchscript<a class="headerlink" href="#deploy-offline-asr-models-with-torchscript" title="Permalink to this heading"></a></h2>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>Currently, we only support FP32 offline ASR inference for torchscript backend. Streaming ASR and FP16 inference are not supported.</p>
@@ -190,7 +191,7 @@ bash<span class="w"> </span>scripts/start_offline_server_jit.sh
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

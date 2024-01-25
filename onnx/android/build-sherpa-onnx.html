@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -80,7 +81,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
@@ -117,9 +120,42 @@
            <div itemprop="articleBody">
              
   <section id="build-sherpa-onnx-for-android">
-<span id="sherpa-onnx-install-android-studio"></span><h1>Build sherpa-onnx for Android<a class="headerlink" href="#build-sherpa-onnx-for-android" title="Permalink to this headline"></a></h1>
+<span id="sherpa-onnx-install-android-studio"></span><h1>Build sherpa-onnx for Android<a class="headerlink" href="#build-sherpa-onnx-for-android" title="Permalink to this heading"></a></h1>
+<p>You can use this section for both <code class="docutils literal notranslate"><span class="pre">speech-to-text</span></code> (STT, ASR)
+and <code class="docutils literal notranslate"><span class="pre">text-to-speech</span></code> (TTS).</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The build scripts mentioned in this section run on both Linux and macOS.</p>
+<p>If you are using Windows or if you don’t want to build the shared libraries,
+you can download pre-built shared libraries by visiting the release page
+<a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/">https://github.com/k2-fsa/sherpa-onnx/releases/</a></p>
+<p>For instance, for the relase <code class="docutils literal notranslate"><span class="pre">v1.9.0</span></code>, you can visit
+<a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/tag/v1.9.0">https://github.com/k2-fsa/sherpa-onnx/releases/tag/v1.9.0</a>
+and download the file <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-v1.9.0-android.tar.bz2</span></code>
+using the following command:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.9.0/sherpa-onnx-v1.9.0-android.tar.bz2
+</pre></div>
+</div>
+</div></blockquote>
+<p>Please always use the latest release.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This section is originally written for speech-to-text. However, it is
+also applicable to other folders in <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/tree/master/android">https://github.com/k2-fsa/sherpa-onnx/tree/master/android</a>.</p>
+<p>For instance, you can replace <code class="docutils literal notranslate"><span class="pre">SherpaOnnx</span></code> in this section with</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SherpaOnnx2Pass</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SherpaOnnxTts</span></code>  (this is for text-to-speech)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SherpaOnnxVad</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SherpaOnnxVadAsr</span></code></p></li>
+</ul>
+</div></blockquote>
+</div>
 <section id="install-android-studio">
-<h2>Install Android Studio<a class="headerlink" href="#install-android-studio" title="Permalink to this headline"></a></h2>
+<h2>Install Android Studio<a class="headerlink" href="#install-android-studio" title="Permalink to this heading"></a></h2>
 <p>The first step is to download and install Android Studio.</p>
 <p>Please refer to <a class="reference external" href="https://developer.android.com/studio">https://developer.android.com/studio</a> for how to install
 Android Studio.</p>
@@ -132,14 +168,14 @@ the default settings of Android Studio during installation.</p>
 </div>
 </section>
 <section id="download-sherpa-onnx">
-<h2>Download sherpa-onnx<a class="headerlink" href="#download-sherpa-onnx" title="Permalink to this headline"></a></h2>
+<h2>Download sherpa-onnx<a class="headerlink" href="#download-sherpa-onnx" title="Permalink to this heading"></a></h2>
 <p>Next, download the source code of <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
 </pre></div>
 </div>
 </section>
 <section id="install-ndk">
-<h2>Install NDK<a class="headerlink" href="#install-ndk" title="Permalink to this headline"></a></h2>
+<h2>Install NDK<a class="headerlink" href="#install-ndk" title="Permalink to this heading"></a></h2>
 <p>Step 1, start Android Studio.</p>
 <blockquote>
 <div><figure class="align-default" id="id2">
@@ -211,7 +247,7 @@ or <code class="docutils literal notranslate"><span class="pre">$ANDROID_NDK/bui
 </div>
 </section>
 <section id="build-sherpa-onnx-c-code">
-<h2>Build sherpa-onnx (C++ code)<a class="headerlink" href="#build-sherpa-onnx-c-code" title="Permalink to this headline"></a></h2>
+<h2>Build sherpa-onnx (C++ code)<a class="headerlink" href="#build-sherpa-onnx-c-code" title="Permalink to this heading"></a></h2>
 <p>After installing <code class="docutils literal notranslate"><span class="pre">NDK</span></code>, it is time to build the C++ code of <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <p>In the following, we show how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> for the following
 Android ABIs:</p>
@@ -220,6 +256,7 @@ Android ABIs:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">arm64-v8a</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">armv7-eabi</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">x86_64</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x86</span></code></p></li>
 </ul>
 </div></blockquote>
 <div class="admonition caution">
@@ -228,8 +265,25 @@ Android ABIs:</p>
 most common one.</p>
 <p>If you want to test the app on an emulator, you probably need <code class="docutils literal notranslate"><span class="pre">x86_64</span></code>.</p>
 </div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Building scripts for this section are for macOS and Linux. If you are
+using Windows or if you don’t want to build the shared libraries by yourself,
+you can download pre-compiled shared libraries for this section by visiting</p>
+<blockquote>
+<div><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases">https://github.com/k2-fsa/sherpa-onnx/releases</a></p>
+</div></blockquote>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>We provide a colab notebook
+<a class="reference external" href="https://github.com/k2-fsa/colab/blob/master/sherpa-onnx/build_sherpa_onnx_for_android.ipynb"><img alt="build sherpa-onnx for android colab notebook" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
+for you to try this section step by step.</p>
+<p>If you are using Windows or you don’t want to setup your local environment
+to build the C++ libraries, please use the above colab notebook.</p>
+</div>
 <section id="build-for-arm64-v8a">
-<h3>Build for arm64-v8a<a class="headerlink" href="#build-for-arm64-v8a" title="Permalink to this headline"></a></h3>
+<h3>Build for arm64-v8a<a class="headerlink" href="#build-for-arm64-v8a" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-onnx<span class="w"> </span><span class="c1"># Go to the root repo</span>
 ./build-android-arm64-v8a.sh
 </pre></div>
@@ -251,9 +305,15 @@ most common one.</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/so-libs-for-arm64-v8a1.png"><img alt="Generated shared libraries for arm64-v8a" src="../../_images/so-libs-for-arm64-v8a1.png" style="width: 600px;" /></a>
 </figure>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You may see more files than it is shown in the screenshot. That is totally fine
+since we are extending <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>. The first thing to remember is to always
+use the wildcard <code class="docutils literal notranslate"><span class="pre">lib*.so</span></code> in the <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
+</div>
 </section>
 <section id="build-for-armv7-eabi">
-<h3>Build for armv7-eabi<a class="headerlink" href="#build-for-armv7-eabi" title="Permalink to this headline"></a></h3>
+<h3>Build for armv7-eabi<a class="headerlink" href="#build-for-armv7-eabi" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-onnx<span class="w"> </span><span class="c1"># Go to the root repo</span>
 ./build-android-armv7-eabi.sh
 </pre></div>
@@ -278,7 +338,7 @@ most common one.</p>
 </figure>
 </section>
 <section id="build-for-x86-64">
-<h3>Build for x86_64<a class="headerlink" href="#build-for-x86-64" title="Permalink to this headline"></a></h3>
+<h3>Build for x86_64<a class="headerlink" href="#build-for-x86-64" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-onnx<span class="w"> </span><span class="c1"># Go to the root repo</span>
 ./build-android-x86-64.sh
 </pre></div>
@@ -301,9 +361,16 @@ most common one.</p>
 <a class="reference internal image-reference" href="../../_images/so-libs-for-x86-641.png"><img alt="Generated shared libraries for x86_64" src="../../_images/so-libs-for-x86-641.png" style="width: 600px;" /></a>
 </figure>
 </section>
+<section id="build-for-x86">
+<h3>Build for x86<a class="headerlink" href="#build-for-x86" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-onnx<span class="w"> </span><span class="c1"># Go to the root repo</span>
+./build-android-x86.sh
+</pre></div>
+</div>
+</section>
 </section>
 <section id="download-pre-trained-models">
-<h2>Download pre-trained models<a class="headerlink" href="#download-pre-trained-models" title="Permalink to this headline"></a></h2>
+<h2>Download pre-trained models<a class="headerlink" href="#download-pre-trained-models" title="Permalink to this heading"></a></h2>
 <p>Please read <a class="reference internal" href="../pretrained_models/index.html#sherpa-onnx-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> for all available pre-trained
 models.</p>
 <p>In the following, we use a pre-trained model <a class="reference internal" href="../pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a>,
@@ -356,7 +423,7 @@ corresponding code listed in the following screen shot:</p>
 </div>
 </section>
 <section id="generate-apk">
-<h2>Generate APK<a class="headerlink" href="#generate-apk" title="Permalink to this headline"></a></h2>
+<h2>Generate APK<a class="headerlink" href="#generate-apk" title="Permalink to this heading"></a></h2>
 <p>Finally, it is time to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> to generate an APK package.</p>
 <p>Select <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">-&gt;</span> <span class="pre">Make</span> <span class="pre">Project</span></code>, as shown in the following screen shot.</p>
 <figure class="align-default">
@@ -372,7 +439,7 @@ corresponding code listed in the following screen shot:</p>
 <p>Read below to learn more.</p>
 </section>
 <section id="analyze-the-apk">
-<h2>Analyze the APK<a class="headerlink" href="#analyze-the-apk" title="Permalink to this headline"></a></h2>
+<h2>Analyze the APK<a class="headerlink" href="#analyze-the-apk" title="Permalink to this heading"></a></h2>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/analyze-apk1.png"><img alt="Select ``Build -&gt; Analyze APK ...``" src="../../_images/analyze-apk1.png" style="width: 600px;" /></a>
 </figure>
@@ -396,6 +463,9 @@ size of the library is somewhat a bit larger.</p>
 </div></blockquote>
 <p>Please refer to <a class="reference external" href="https://onnxruntime.ai/docs/build/custom.html">https://onnxruntime.ai/docs/build/custom.html</a> for a
 custom build to reduce the file size of <code class="docutils literal notranslate"><span class="pre">libonnxruntime.so</span></code>.</p>
+<p>Note that we are constantly updating the version of <code class="docutils literal notranslate"><span class="pre">onnxruntime</span></code>. By
+the time you are reading this section, we may be using the latest version
+of <code class="docutils literal notranslate"><span class="pre">onnxruntime</span></code>.</p>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -417,7 +487,7 @@ custom build to reduce the file size of <code class="docutils literal notranslat
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

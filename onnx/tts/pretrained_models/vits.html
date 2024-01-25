@@ -16,11 +16,12 @@
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Frequently Asked Question (FAQs)" href="../faq.html" />
+    <link rel="next" title="Piper" href="../piper.html" />
     <link rel="prev" title="Pre-trained models" href="index.html" /> 
 </head>
 
@@ -68,13 +69,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Text-to-speech (TTS)</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../hf-space.html">Huggingface space</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">Pre-trained models</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">vits</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../piper.html">Piper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mms.html">MMS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../faq.html">Frequently Asked Question (FAQs)</a></li>
 </ul>
 </li>
@@ -114,11 +119,19 @@
            <div itemprop="articleBody">
              
   <section id="vits">
-<h1>vits<a class="headerlink" href="#vits" title="Permalink to this headline"></a></h1>
+<h1>vits<a class="headerlink" href="#vits" title="Permalink to this heading"></a></h1>
 <p>This page lists pre-trained <a class="reference external" href="https://github.com/jaywalnut310/vits">vits</a> models.</p>
 <section id="all-models-in-a-single-table">
-<h2>All models in a single table<a class="headerlink" href="#all-models-in-a-single-table" title="Permalink to this headline"></a></h2>
+<h2>All models in a single table<a class="headerlink" href="#all-models-in-a-single-table" title="Permalink to this heading"></a></h2>
 <p>The following table summarizes the information of all models in this page.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since there are more than <code class="docutils literal notranslate"><span class="pre">100</span></code> pre-trained models for over <code class="docutils literal notranslate"><span class="pre">40</span></code> languages,
+we don’t list all of them on this page. Please find them at
+<a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models">https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models</a>.</p>
+<p>You can try all the models at the following huggingface space.
+<a class="reference external" href="https://huggingface.co/spaces/k2-fsa/text-to-speech">https://huggingface.co/spaces/k2-fsa/text-to-speech</a>.</p>
+</div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>You can find Android APKs for each model at the following page</p>
@@ -148,6 +161,34 @@
 <td><p>116</p></td>
 <td><p>8000</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vits-zh-hf-fanchen-c"><span class="std std-ref">csukuangfj/vits-zh-hf-fanchen-C (Chinese, 1 female)</span></a></p></td>
+<td><p>Chinese</p></td>
+<td><p>1</p></td>
+<td><p>N/A</p></td>
+<td><p>116</p></td>
+<td><p>16000</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#vits-zh-hf-fanchen-wnj"><span class="std std-ref">csukuangfj/vits-zh-hf-fanchen-wnj (Chinese, 1 male)</span></a></p></td>
+<td><p>Chinese</p></td>
+<td><p>1</p></td>
+<td><p>N/A</p></td>
+<td><p>116</p></td>
+<td><p>16000</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vits-zh-hf-theresa"><span class="std std-ref">csukuangfj/vits-zh-hf-theresa (Chinese, 804 speakers)</span></a></p></td>
+<td><p>Chinese</p></td>
+<td><p>804</p></td>
+<td><p>N/A</p></td>
+<td><p>117</p></td>
+<td><p>22050</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#vits-zh-hf-eula"><span class="std std-ref">csukuangfj/vits-zh-hf-eula (Chinese, 804 speakers)</span></a></p></td>
+<td><p>Chinese</p></td>
+<td><p>804</p></td>
+<td><p>N/A</p></td>
+<td><p>117</p></td>
+<td><p>22050</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#vits-model-vits-ljspeech"><span class="std std-ref">ljspeech (English, single-speaker)</span></a></p></td>
 <td><p>English (US)</p></td>
 <td><p>1 (Female)</p></td>
@@ -173,7 +214,7 @@
 </table>
 </section>
 <section id="ljspeech-english-single-speaker">
-<span id="vits-model-vits-ljspeech"></span><h2>ljspeech (English, single-speaker)<a class="headerlink" href="#ljspeech-english-single-speaker" title="Permalink to this headline"></a></h2>
+<span id="vits-model-vits-ljspeech"></span><h2>ljspeech (English, single-speaker)<a class="headerlink" href="#ljspeech-english-single-speaker" title="Permalink to this heading"></a></h2>
 <p>This model is converted from <a class="reference external" href="https://drive.google.com/file/d/1q86w74Ygw2hNzYP9cWkeClGT5X25PvBT/view?usp=drive_link">pretrained_ljspeech.pth</a>,
 which is trained by the <a class="reference external" href="https://github.com/jaywalnut310/vits">vits</a> author <a class="reference external" href="https://github.com/jaywalnut310">Jaehyeon Kim</a> on
 the <a class="reference external" href="https://keithito.com/LJ-Speech-Dataset/">LJ Speech</a> dataset. It supports only English and is a single-speaker model.</p>
@@ -184,7 +225,7 @@ the <a class="reference external" href="https://keithito.com/LJ-Speech-Dataset/"
 </div>
 <p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <section id="download-the-model">
-<h3>Download the model<a class="headerlink" href="#download-the-model" title="Permalink to this headline"></a></h3>
+<h3>Download the model<a class="headerlink" href="#download-the-model" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
@@ -202,7 +243,7 @@ the file sizes of <code class="docutils literal notranslate"><span class="pre">*
 </div>
 </section>
 <section id="generate-speech-with-executable-compiled-from-c">
-<h3>Generate speech with executable compiled from C++<a class="headerlink" href="#generate-speech-with-executable-compiled-from-c" title="Permalink to this headline"></a></h3>
+<h3>Generate speech with executable compiled from C++<a class="headerlink" href="#generate-speech-with-executable-compiled-from-c" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 ./build/bin/sherpa-onnx-offline-tts<span class="w"> </span><span class="se">\</span>
@@ -246,7 +287,7 @@ Sample<span class="w"> </span>Encoding:<span class="w"> </span><span class="m">1
   </tr>
 </table></section>
 <section id="generate-speech-with-python-script">
-<h3>Generate speech with Python script<a class="headerlink" href="#generate-speech-with-python-script" title="Permalink to this headline"></a></h3>
+<h3>Generate speech with Python script<a class="headerlink" href="#generate-speech-with-python-script" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 python3<span class="w"> </span>./python-api-examples/offline-tts.py<span class="w"> </span><span class="se">\</span>
@@ -291,7 +332,7 @@ Sample<span class="w"> </span>Encoding:<span class="w"> </span><span class="m">1
 </table></section>
 </section>
 <section id="vctk-english-multi-speaker-109-speakers">
-<span id="vits-model-vits-vctk"></span><h2>VCTK (English, multi-speaker, 109 speakers)<a class="headerlink" href="#vctk-english-multi-speaker-109-speakers" title="Permalink to this headline"></a></h2>
+<span id="vits-model-vits-vctk"></span><h2>VCTK (English, multi-speaker, 109 speakers)<a class="headerlink" href="#vctk-english-multi-speaker-109-speakers" title="Permalink to this heading"></a></h2>
 <p>This model is converted from <a class="reference external" href="https://drive.google.com/file/d/11aHOlhnxzjpdWDpsz1vFDCzbeEfoIxru/view?usp=drive_link">pretrained_vctk.pth</a>,
 which is trained by the <a class="reference external" href="https://github.com/jaywalnut310/vits">vits</a> author <a class="reference external" href="https://github.com/jaywalnut310">Jaehyeon Kim</a> on
 the <a class="reference external" href="https://datashare.ed.ac.uk/handle/10283/2950">VCTK</a> dataset. It supports only English and is a multi-speaker model. It contains
@@ -303,7 +344,7 @@ the <a class="reference external" href="https://datashare.ed.ac.uk/handle/10283/
 </div>
 <p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <section id="id2">
-<h3>Download the model<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<h3>Download the model<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
@@ -321,7 +362,7 @@ the file sizes of <code class="docutils literal notranslate"><span class="pre">*
 </div>
 </section>
 <section id="id3">
-<h3>Generate speech with executable compiled from C++<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<h3>Generate speech with executable compiled from C++<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <p>Since there are 109 speakers available, we can choose a speaker from 0 to 198.
 The default speaker ID is 0.</p>
 <p>We use speaker ID 0, 10, and 108 below to generate audio for the same text.</p>
@@ -397,7 +438,7 @@ The default speaker ID is 0.</p>
   </tr>
 </table></section>
 <section id="id4">
-<h3>Generate speech with Python script<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<h3>Generate speech with Python script<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <p>We use speaker ID 30, 66, and 99 below to generate audio for different transcripts.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
@@ -472,7 +513,7 @@ python3<span class="w"> </span>./python-api-examples/offline-tts.py<span class="
 </table></section>
 </section>
 <section id="aishell3-chinese-multi-speaker-174-speakers">
-<span id="vits-model-aishell3"></span><h2>aishell3 (Chinese, multi-speaker, 174 speakers)<a class="headerlink" href="#aishell3-chinese-multi-speaker-174-speakers" title="Permalink to this headline"></a></h2>
+<span id="vits-model-aishell3"></span><h2>aishell3 (Chinese, multi-speaker, 174 speakers)<a class="headerlink" href="#aishell3-chinese-multi-speaker-174-speakers" title="Permalink to this heading"></a></h2>
 <p>This model is converted from <a class="reference external" href="https://huggingface.co/jackyqs/vits-aishell3-175-chinese">https://huggingface.co/jackyqs/vits-aishell3-175-chinese</a>,
 which is trained on the <a class="reference external" href="https://www.openslr.org/93/">aishell3</a> dataset. It supports only Chinese and it’s a multi-speaker model.
 It contains 174 speakers.</p>
@@ -483,7 +524,7 @@ It contains 174 speakers.</p>
 </div>
 <p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <section id="id5">
-<h3>Download the model<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<h3>Download the model<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
@@ -501,7 +542,7 @@ the file sizes of <code class="docutils literal notranslate"><span class="pre">*
 </div>
 </section>
 <section id="id6">
-<h3>Generate speech with executable compiled from C++<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3>Generate speech with executable compiled from C++<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <p>Since there are 174 speakers available, we can choose a speaker from 0 to 173.
 The default speaker ID is 0.</p>
 <p>We use speaker ID 10, 33, and 99 below to generate audio for the same text.</p>
@@ -533,6 +574,23 @@ The default speaker ID is 0.</p>
 </pre></div>
 </div>
 <p>It will generate 3 files: <code class="docutils literal notranslate"><span class="pre">liliana-10.wav</span></code>, <code class="docutils literal notranslate"><span class="pre">liliana-33.wav</span></code>, and <code class="docutils literal notranslate"><span class="pre">liliana-99.wav</span></code>.</p>
+<p>We also support rule-based text normalization, which is implemented with <a class="reference external" href="https://www.openfst.org/">OpenFst</a>.
+Currently, only number normalization is supported.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>We will support other normalization rules later.</p>
+</div>
+<p>The following is an example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build/bin/sherpa-onnx-offline-tts<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-model<span class="o">=</span>./vits-zh-aishell3/vits-aishell3.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-lexicon<span class="o">=</span>./vits-zh-aishell3/lexicon.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-tokens<span class="o">=</span>./vits-zh-aishell3/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tts-rule-fsts<span class="o">=</span>./vits-zh-aishell3/rule.fst<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--sid<span class="o">=</span><span class="m">66</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-filename<span class="o">=</span>./rule-66.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;35年前，他于长沙出生, 在长白山长大。9年前他当上了银行的领导，主管行政。1天前莅临我行指导工作。&quot;</span>
+</pre></div>
+</div>
 <table>
   <tr>
     <th>Wave filename</th>
@@ -575,9 +633,21 @@ The default speaker ID is 0.</p>
       林美丽最美丽、最漂亮、最可爱！
     </td>
   </tr>
+  <tr>
+    <td>rule-66.wav</td>
+    <td>
+     <audio title="Generated ./rle66-99.wav" controls="controls">
+           <source src="/sherpa/_static/vits-zh-aishell3/rule-66.wav" type="audio/wav">
+           Your browser does not support the <code>audio</code> element.
+     </audio>
+    </td>
+    <td>
+      35年前，他于长沙出生, 在长白山长大。9年前他当上了银行的领导，主管行政。1天前莅临我行指导工作。
+    </td>
+  </tr>
 </table></section>
 <section id="id7">
-<h3>Generate speech with Python script<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<h3>Generate speech with Python script<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
 <p>We use speaker ID 21, 41, and 45 below to generate audio for different transcripts.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
@@ -607,6 +677,17 @@ python3<span class="w"> </span>./python-api-examples/offline-tts.py<span class="
 </pre></div>
 </div>
 <p>It will generate 3 files: <code class="docutils literal notranslate"><span class="pre">liubei-21.wav</span></code>, <code class="docutils literal notranslate"><span class="pre">demokelite-41.wav</span></code>, and <code class="docutils literal notranslate"><span class="pre">zhugeliang-45.wav</span></code>.</p>
+<p>The Python script also supports rule-based text normalization.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>./python-api-examples/offline-tts.py<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--vits-model<span class="o">=</span>./vits-zh-aishell3/vits-aishell3.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--vits-lexicon<span class="o">=</span>./vits-zh-aishell3/lexicon.txt<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--vits-tokens<span class="o">=</span>./vits-zh-aishell3/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--tts-rule-fsts<span class="o">=</span>./vits-zh-aishell3/rule.fst<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--sid<span class="o">=</span><span class="m">103</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--output-filename<span class="o">=</span>./rule-103.wav<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="s2">&quot;根据第7次全国人口普查结果表明，我国总人口有1443497378人。普查登记的大陆31个省、自治区、直辖市和现役军人的人口共1411778724人。&quot;</span>
+</pre></div>
+</div>
 <table>
   <tr>
     <th>Wave filename</th>
@@ -649,13 +730,302 @@ python3<span class="w"> </span>./python-api-examples/offline-tts.py<span class="
       夫君子之行，静以修身，俭以养德，非淡泊无以明志，非宁静无以致远。
     </td>
   </tr>
+  <tr>
+    <td>rule-103.wav</td>
+    <td>
+     <audio title="Generated ./rule-103.wav" controls="controls">
+           <source src="/sherpa/_static/vits-zh-aishell3/rule-103.wav" type="audio/wav">
+           Your browser does not support the <code>audio</code> element.
+     </audio>
+    </td>
+    <td>
+      根据第7次全国人口普查结果表明，我国总人口有1443497378人。普查登记的大陆31个省、自治区、直辖市和现役军人的人口共1411778724人。
+    </td>
+  </tr>
 </table></section>
 </section>
+<section id="csukuangfj-vits-zh-hf-fanchen-c-chinese-1-female">
+<span id="vits-zh-hf-fanchen-c"></span><h2>csukuangfj/vits-zh-hf-fanchen-C (Chinese, 1 female)<a class="headerlink" href="#csukuangfj-vits-zh-hf-fanchen-c-chinese-1-female" title="Permalink to this heading"></a></h2>
+<p>You can download the model at
+<a class="reference external" href="https://huggingface.co/csukuangfj/vits-zh-hf-fanchen-C/tree/main">https://huggingface.co/csukuangfj/vits-zh-hf-fanchen-C/tree/main</a></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This model is converted from
+<a class="reference external" href="https://huggingface.co/spaces/lkz99/tts_model/tree/main/zh">https://huggingface.co/spaces/lkz99/tts_model/tree/main/zh</a></p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># information about model files</span>
+
+ls<span class="w"> </span>-lh<span class="w"> </span>vits-zh-hf-fanchen-C
+
+total<span class="w"> </span>117M
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span>346K<span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">14</span>:57<span class="w"> </span>lexicon.txt
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span>63K<span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">14</span>:57<span class="w"> </span>rule.fst
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">331</span><span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">14</span>:57<span class="w"> </span>tokens.txt
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span>116M<span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">10</span>:55<span class="w"> </span>vits-zh-hf-fanchen-C.onnx
+</pre></div>
+</div>
+<p><strong>usage</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-onnx-offline-tts<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-model<span class="o">=</span>./vits-zh-hf-fanchen-C/vits-zh-hf-fanchen-C.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-lexicon<span class="o">=</span>./vits-zh-hf-fanchen-C/lexicon.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-tokens<span class="o">=</span>./vits-zh-hf-fanchen-C/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-length-scale<span class="o">=</span><span class="m">0</span>.5<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-filename<span class="o">=</span><span class="s2">&quot;./value-2x.wav&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;小米的核心价值观是什么？答案是真诚热爱！&quot;</span>
+
+sherpa-onnx-offline-tts<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-model<span class="o">=</span>./vits-zh-hf-fanchen-C/vits-zh-hf-fanchen-C.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-lexicon<span class="o">=</span>./vits-zh-hf-fanchen-C/lexicon.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-tokens<span class="o">=</span>./vits-zh-hf-fanchen-C/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-length-scale<span class="o">=</span><span class="m">1</span>.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tts-rule-fsts<span class="o">=</span>./vits-zh-hf-fanchen-C/rule.fst<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-filename<span class="o">=</span><span class="s2">&quot;./numbers.wav&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;小米有13岁了&quot;</span>
+</pre></div>
+</div>
+<table>
+  <tr>
+    <th>Wave filename</th>
+    <th>Content</th>
+    <th>Text</th>
+  </tr>
+  <tr>
+    <td>value-2x.wav</td>
+    <td>
+     <audio title="Generated ./value-2x.wav" controls="controls">
+           <source src="/sherpa/_static/vits-zh-hf-fanchen-C/value-2x.wav" type="audio/wav">
+           Your browser does not support the <code>audio</code> element.
+     </audio>
+    </td>
+    <td>
+      小米的核心价值观是什么？答案是真诚热爱！
+    </td>
+  </tr>
+  <tr>
+    <td>numbers.wav</td>
+    <td>
+     <audio title="Generated ./numbers.wav" controls="controls">
+           <source src="/sherpa/_static/vits-zh-hf-fanchen-C/numbers.wav" type="audio/wav">
+           Your browser does not support the <code>audio</code> element.
+     </audio>
+    </td>
+    <td>
+      小米有13岁了
+    </td>
+  </tr>
+</table></section>
+<section id="csukuangfj-vits-zh-hf-fanchen-wnj-chinese-1-male">
+<span id="vits-zh-hf-fanchen-wnj"></span><h2>csukuangfj/vits-zh-hf-fanchen-wnj (Chinese, 1 male)<a class="headerlink" href="#csukuangfj-vits-zh-hf-fanchen-wnj-chinese-1-male" title="Permalink to this heading"></a></h2>
+<p>You can download the model at
+<a class="reference external" href="https://huggingface.co/csukuangfj/vits-zh-hf-fanchen-wnj/tree/main">https://huggingface.co/csukuangfj/vits-zh-hf-fanchen-wnj/tree/main</a></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This model is converted from
+<a class="reference external" href="https://huggingface.co/spaces/lkz99/tts_model/blob/main/G_wnj_latest.pth">https://huggingface.co/spaces/lkz99/tts_model/blob/main/G_wnj_latest.pth</a></p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># information about model files</span>
+
+ls<span class="w"> </span>-lh<span class="w"> </span>vits-zh-hf-fanchen-wnj
+
+total<span class="w"> </span>116M
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span>346K<span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">15</span>:12<span class="w"> </span>lexicon.txt
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span>63K<span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">15</span>:12<span class="w"> </span>rule.fst
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">331</span><span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">15</span>:12<span class="w"> </span>tokens.txt
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span>116M<span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">06</span>:34<span class="w"> </span>vits-zh-hf-fanchen-wnj.onnx
+</pre></div>
+</div>
+<p><strong>usage</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-onnx-offline-tts<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-model<span class="o">=</span>./vits-zh-hf-fanchen-wnj/vits-zh-hf-fanchen-wnj.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-lexicon<span class="o">=</span>./vits-zh-hf-fanchen-wnj/lexicon.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-tokens<span class="o">=</span>./vits-zh-hf-fanchen-wnj/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-filename<span class="o">=</span><span class="s2">&quot;./kuayue.wav&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;升级人车家全生态，小米迎跨越时刻。&quot;</span>
+
+sherpa-onnx-offline-tts<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-model<span class="o">=</span>./vits-zh-hf-fanchen-wnj/vits-zh-hf-fanchen-wnj.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-lexicon<span class="o">=</span>./vits-zh-hf-fanchen-wnj/lexicon.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-tokens<span class="o">=</span>./vits-zh-hf-fanchen-wnj/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tts-rule-fsts<span class="o">=</span>./vits-zh-hf-fanchen-wnj/rule.fst<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-filename<span class="o">=</span><span class="s2">&quot;./os.wav&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;这一全新操作系统，是小米13年来技术积淀的结晶。&quot;</span>
+</pre></div>
+</div>
+<table>
+  <tr>
+    <th>Wave filename</th>
+    <th>Content</th>
+    <th>Text</th>
+  </tr>
+  <tr>
+    <td>kuayue.wav</td>
+    <td>
+     <audio title="Generated ./kuayue.wav" controls="controls">
+           <source src="/sherpa/_static/vits-zh-hf-fanchen-wnj/kuayue.wav" type="audio/wav">
+           Your browser does not support the <code>audio</code> element.
+     </audio>
+    </td>
+    <td>
+      升级人车家全生态，小米迎跨越时刻。
+    </td>
+  </tr>
+  <tr>
+    <td>os.wav</td>
+    <td>
+     <audio title="Generated ./os.wav" controls="controls">
+           <source src="/sherpa/_static/vits-zh-hf-fanchen-wnj/os.wav" type="audio/wav">
+           Your browser does not support the <code>audio</code> element.
+     </audio>
+    </td>
+    <td>
+      这一全新操作系统，是小米13年来技术积淀的结晶。
+    </td>
+  </tr>
+</table></section>
+<section id="csukuangfj-vits-zh-hf-theresa-chinese-804-speakers">
+<span id="vits-zh-hf-theresa"></span><h2>csukuangfj/vits-zh-hf-theresa (Chinese, 804 speakers)<a class="headerlink" href="#csukuangfj-vits-zh-hf-theresa-chinese-804-speakers" title="Permalink to this heading"></a></h2>
+<p>You can download the model at
+<a class="reference external" href="https://huggingface.co/csukuangfj/vits-zh-hf-theresa/tree/main">https://huggingface.co/csukuangfj/vits-zh-hf-theresa/tree/main</a></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This model is converted from
+<a class="reference external" href="https://huggingface.co/spaces/zomehwh/vits-models-genshin-bh3/tree/main/pretrained_models/theresa">https://huggingface.co/spaces/zomehwh/vits-models-genshin-bh3/tree/main/pretrained_models/theresa</a></p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># information about model files</span>
+
+ls<span class="w"> </span>-lh<span class="w"> </span>vits-zh-hf-theresa
+
+total<span class="w"> </span>117M
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span>384K<span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">15</span>:26<span class="w"> </span>lexicon.txt
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span>63K<span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">15</span>:26<span class="w"> </span>rule.fst
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span>117M<span class="w"> </span>Nov<span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">17</span>:04<span class="w"> </span>theresa.onnx
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">268</span><span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">15</span>:26<span class="w"> </span>tokens.txt
+</pre></div>
+</div>
+<p><strong>usage</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-onnx-offline-tts<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-model<span class="o">=</span>./vits-zh-hf-theresa/theresa.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-lexicon<span class="o">=</span>./vits-zh-hf-theresa/lexicon.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-tokens<span class="o">=</span>./vits-zh-hf-theresa/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--sid<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-filename<span class="o">=</span><span class="s2">&quot;./reai-0.wav&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;真诚就是不欺人也不自欺。热爱就是全心投入并享受其中。&quot;</span>
+
+sherpa-onnx-offline-tts<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-model<span class="o">=</span>./vits-zh-hf-theresa/theresa.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-lexicon<span class="o">=</span>./vits-zh-hf-theresa/lexicon.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-tokens<span class="o">=</span>./vits-zh-hf-theresa/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tts-rule-fsts<span class="o">=</span>./vits-zh-hf-theresa/rule.fst<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--debug<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--sid<span class="o">=</span><span class="m">88</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-filename<span class="o">=</span><span class="s2">&quot;./mi14-88.wav&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;小米14一周销量破1000000!&quot;</span>
+</pre></div>
+</div>
+<table>
+  <tr>
+    <th>Wave filename</th>
+    <th>Content</th>
+    <th>Text</th>
+  </tr>
+  <tr>
+    <td>reai-0.wav</td>
+    <td>
+     <audio title="Generated ./reai-0.wav" controls="controls">
+           <source src="/sherpa/_static/vits-zh-hf-theresa/reai-0.wav" type="audio/wav">
+           Your browser does not support the <code>audio</code> element.
+     </audio>
+    </td>
+    <td>
+      真诚就是不欺人也不自欺。热爱就是全心投入并享受其中。
+    </td>
+  </tr>
+  <tr>
+    <td>m14-88.wav</td>
+    <td>
+     <audio title="Generated ./mi14-88.wav" controls="controls">
+           <source src="/sherpa/_static/vits-zh-hf-theresa/mi14-88.wav" type="audio/wav">
+           Your browser does not support the <code>audio</code> element.
+     </audio>
+    </td>
+    <td>
+      小米14一周销量破1000000!
+    </td>
+  </tr>
+</table></section>
+<section id="csukuangfj-vits-zh-hf-eula-chinese-804-speakers">
+<span id="vits-zh-hf-eula"></span><h2>csukuangfj/vits-zh-hf-eula (Chinese, 804 speakers)<a class="headerlink" href="#csukuangfj-vits-zh-hf-eula-chinese-804-speakers" title="Permalink to this heading"></a></h2>
+<p>You can download the model at
+<a class="reference external" href="https://huggingface.co/csukuangfj/vits-zh-hf-eula/tree/main">https://huggingface.co/csukuangfj/vits-zh-hf-eula/tree/main</a></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This model is converted from
+<a class="reference external" href="https://huggingface.co/spaces/zomehwh/vits-models-genshin-bh3/tree/main/pretrained_models/eula">https://huggingface.co/spaces/zomehwh/vits-models-genshin-bh3/tree/main/pretrained_models/eula</a></p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># information about model files</span>
+
+ls<span class="w"> </span>-lh<span class="w"> </span>vits-zh-hf-eula
+
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span>117M<span class="w"> </span>Nov<span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">17</span>:00<span class="w"> </span>eula.onnx
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span>384K<span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">15</span>:42<span class="w"> </span>lexicon.txt
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span>63K<span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">15</span>:42<span class="w"> </span>rule.fst
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">268</span><span class="w"> </span>Nov<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">15</span>:42<span class="w"> </span>tokens.txt
+</pre></div>
+</div>
+<p><strong>usage</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-onnx-offline-tts<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-model<span class="o">=</span>./vits-zh-hf-eula/eula.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-lexicon<span class="o">=</span>./vits-zh-hf-eula/lexicon.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-tokens<span class="o">=</span>./vits-zh-hf-eula/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--debug<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--sid<span class="o">=</span><span class="m">666</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-filename<span class="o">=</span><span class="s2">&quot;./news-666.wav&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;小米在今天上午举办的核心干部大会上，公布了新十年的奋斗目标和科技战略，并发布了小米价值观的八条诠释。&quot;</span>
+
+sherpa-onnx-offline-tts<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-model<span class="o">=</span>./vits-zh-hf-eula/eula.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-lexicon<span class="o">=</span>./vits-zh-hf-eula/lexicon.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-tokens<span class="o">=</span>./vits-zh-hf-eula/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tts-rule-fsts<span class="o">=</span>./vits-zh-hf-eula/rule.fst<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--sid<span class="o">=</span><span class="m">99</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-filename<span class="o">=</span><span class="s2">&quot;./news-99.wav&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;9月25日消息，雷军今日在微博发文称&quot;</span>
+</pre></div>
+</div>
+<table>
+  <tr>
+    <th>Wave filename</th>
+    <th>Content</th>
+    <th>Text</th>
+  </tr>
+  <tr>
+    <td>news-666.wav</td>
+    <td>
+     <audio title="Generated ./news-666.wav" controls="controls">
+           <source src="/sherpa/_static/vits-zh-hf-eula/news-666.wav" type="audio/wav">
+           Your browser does not support the <code>audio</code> element.
+     </audio>
+    </td>
+    <td>
+      小米在今天上午举办的核心干部大会上，公布了新十年的奋斗目标和科技战略，并发布了小米价值观的八条诠释。
+    </td>
+  </tr>
+  <tr>
+    <td>news-99.wav</td>
+    <td>
+     <audio title="Generated ./news-99.wav" controls="controls">
+           <source src="/sherpa/_static/vits-zh-hf-eula/news-99.wav" type="audio/wav">
+           Your browser does not support the <code>audio</code> element.
+     </audio>
+    </td>
+    <td>
+      9月25日消息，雷军今日在微博发文称
+    </td>
+  </tr>
+</table></section>
 <section id="en-us-lessac-medium-english-single-speaker">
-<span id="vits-model-en-us-lessac-medium"></span><h2>en_US-lessac-medium (English, single-speaker)<a class="headerlink" href="#en-us-lessac-medium-english-single-speaker" title="Permalink to this headline"></a></h2>
-<p>This model is converted from <a class="reference external" href="https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/lessac/medium">https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/lessac/medium</a>.
-You can find the colab notebook for the conversion at the following
-address <a class="reference external" href="https://github.com/k2-fsa/colab/blob/master/sherpa-onnx/piper/convert_de_DE_thorsten_medium.ipynb">https://github.com/k2-fsa/colab/blob/master/sherpa-onnx/piper/convert_de_DE_thorsten_medium.ipynb</a></p>
+<span id="vits-model-en-us-lessac-medium"></span><h2>en_US-lessac-medium (English, single-speaker)<a class="headerlink" href="#en-us-lessac-medium-english-single-speaker" title="Permalink to this heading"></a></h2>
+<p>This model is converted from <a class="reference external" href="https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/lessac/medium">https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/lessac/medium</a>.</p>
 <p>The dataset used to train the model is <a class="reference external" href="https://www.cstr.ed.ac.uk/projects/blizzard/2013/lessac_blizzard2013/">lessac_blizzard2013</a>.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -663,34 +1033,48 @@ address <a class="reference external" href="https://github.com/k2-fsa/colab/blob
 </div>
 <p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <section id="id8">
-<h3>Download the model<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<h3>Download the model<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/vits-piper-en_US-lessac-medium
-<span class="nb">cd</span><span class="w"> </span>vits-piper-en_US-lessac-medium
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-en_US-lessac-medium.tar.bz2
+tar<span class="w"> </span>xf<span class="w"> </span>vits-piper-en_US-lessac-medium.tar.bz2
 </pre></div>
 </div>
-<p>Please check that the file sizes of the pre-trained models are correct. See
-the file sizes of <code class="docutils literal notranslate"><span class="pre">*.onnx</span></code> files below.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vits-piper-en_US-lessac-medium<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>*.onnx
-
--rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w"> </span>staff<span class="w"> </span>61M<span class="w"> </span>Oct<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">05</span>:21<span class="w"> </span>en_US-lessac-medium.onnx
-</pre></div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can find a lot of pre-trained models for over 40 languages at
+<cite>&lt;https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models&gt;</cite>.</p>
 </div>
 </section>
 <section id="id9">
-<h3>Generate speech with executable compiled from C++<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<h3>Generate speech with executable compiled from C++<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 ./build/bin/sherpa-onnx-offline-tts<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--vits-model<span class="o">=</span>./vits-piper-en_US-lessac-medium/en_US-lessac-medium.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--vits-lexicon<span class="o">=</span>./vits-piper-en_US-lessac-medium/lexicon.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-data-dir<span class="o">=</span>./vits-piper-en_US-lessac-medium/espeak-ng-data<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--vits-tokens<span class="o">=</span>./vits-piper-en_US-lessac-medium/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--output-filename<span class="o">=</span>./liliana-piper-en_US-lessac-medium.wav<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="s1">&#39;liliana, the most beautiful and lovely assistant of our team!&#39;</span>
 </pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can also use</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
+./build/bin/sherpa-onnx-offline-tts-play<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-model<span class="o">=</span>./vits-piper-en_US-lessac-medium/en_US-lessac-medium.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-data-dir<span class="o">=</span>./vits-piper-en_US-lessac-medium/espeak-ng-data<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-tokens<span class="o">=</span>./vits-piper-en_US-lessac-medium/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-filename<span class="o">=</span>./liliana-piper-en_US-lessac-medium.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;liliana, the most beautiful and lovely assistant of our team!&#39;</span>
+</pre></div>
+</div>
+<p>which will play the audio as it is generating.</p>
+</div></blockquote>
 </div>
 <p>After running, it will generate a file <code class="docutils literal notranslate"><span class="pre">liliana-piper.wav</span></code> in the current directory.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>soxi<span class="w"> </span>./liliana-piper-en_US-lessac-medium.wav
@@ -725,17 +1109,33 @@ Sample<span class="w"> </span>Encoding:<span class="w"> </span><span class="m">1
   </tr>
 </table></section>
 <section id="id10">
-<h3>Generate speech with Python script<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<h3>Generate speech with Python script<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 python3<span class="w"> </span>./python-api-examples/offline-tts.py<span class="w"> </span><span class="se">\</span>
 <span class="w"> </span>--vits-model<span class="o">=</span>./vits-piper-en_US-lessac-medium/en_US-lessac-medium.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>--vits-lexicon<span class="o">=</span>./vits-piper-en_US-lessac-medium/lexicon.txt<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>--vits-data-dir<span class="o">=</span>./vits-piper-en_US-lessac-medium/espeak-ng-data<span class="w"> </span><span class="se">\</span>
 <span class="w"> </span>--vits-tokens<span class="o">=</span>./vits-piper-en_US-lessac-medium/tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>--output-filename<span class="o">=</span>./liliana-piper-en_US-lessac-medium.wav<span class="w"> </span><span class="se">\</span>
 <span class="w"> </span>--output-filename<span class="o">=</span>./armstrong-piper-en_US-lessac-medium.wav<span class="w"> </span><span class="se">\</span>
 <span class="w"> </span><span class="s2">&quot;That&#39;s one small step for a man, a giant leap for mankind.&quot;</span>
 </pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can also use</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
+python3<span class="w"> </span>./python-api-examples/offline-tts-play.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-model<span class="o">=</span>./vits-piper-en_US-lessac-medium/en_US-lessac-medium.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-data-dir<span class="o">=</span>./vits-piper-en_US-lessac-medium/espeak-ng-data<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--vits-tokens<span class="o">=</span>./vits-piper-en_US-lessac-medium/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-filename<span class="o">=</span>./armstrong-piper-en_US-lessac-medium.wav<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;That&#39;s one small step for a man, a giant leap for mankind.&quot;</span>
+</pre></div>
+</div>
+<p>which will play the audio as it is generating.</p>
+</div></blockquote>
 </div>
 <p>After running, it will generate a file <code class="docutils literal notranslate"><span class="pre">armstrong-piper-en_US-lessac-medium.wav</span></code> in the current directory.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>soxi<span class="w"> </span>./armstrong-piper-en_US-lessac-medium.wav
@@ -777,13 +1177,13 @@ Sample<span class="w"> </span>Encoding:<span class="w"> </span><span class="m">1
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Pre-trained models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../faq.html" class="btn btn-neutral float-right" title="Frequently Asked Question (FAQs)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../piper.html" class="btn btn-neutral float-right" title="Piper" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

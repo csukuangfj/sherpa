@@ -16,6 +16,7 @@
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -68,9 +69,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Pre-trained models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../online-transducer/index.html">Online transducer models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../online-paraformer/index.html">Online paraformer models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../online-ctc/index.html">Online CTC models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../offline-transducer/index.html">Offline transducer models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../offline-paraformer/index.html">Offline paraformer models</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../index.html">Offline CTC models</a><ul class="current">
@@ -79,9 +82,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../whisper/index.html">Whisper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../wenet/index.html">WeNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../small-online-models.html">Small models</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
@@ -120,7 +125,7 @@
            <div itemprop="articleBody">
              
   <section id="english">
-<h1>English<a class="headerlink" href="#english" title="Permalink to this headline"></a></h1>
+<h1>English<a class="headerlink" href="#english" title="Permalink to this heading"></a></h1>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Please refer to <a class="reference internal" href="../../../install/index.html#install-sherpa-onnx"><span class="std std-ref">Installation</span></a> to install <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>
@@ -140,7 +145,7 @@ as an example in this section. You can use other scripts such as</p>
 </div>
 <p>This page lists offline CTC models from <a class="reference external" href="https://github.com/NVIDIA/NeMo">NeMo</a> for English.</p>
 <section id="stt-en-citrinet-512">
-<h2>stt_en_citrinet_512<a class="headerlink" href="#stt-en-citrinet-512" title="Permalink to this headline"></a></h2>
+<h2>stt_en_citrinet_512<a class="headerlink" href="#stt-en-citrinet-512" title="Permalink to this heading"></a></h2>
 <p>This model is converted from</p>
 <blockquote>
 <div><p><a class="reference external" href="https://catalog.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/stt_en_citrinet_512">https://catalog.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/stt_en_citrinet_512</a></p>
@@ -149,7 +154,7 @@ as an example in this section. You can use other scripts such as</p>
 with over 7000 hours of english speech.</p>
 <p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <section id="download-the-model">
-<h3>Download the model<a class="headerlink" href="#download-the-model" title="Permalink to this headline"></a></h3>
+<h3>Download the model<a class="headerlink" href="#download-the-model" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
@@ -167,7 +172,7 @@ the file sizes of <code class="docutils literal notranslate"><span class="pre">*
 </div>
 </section>
 <section id="decode-wave-files">
-<h3>Decode wave files<a class="headerlink" href="#decode-wave-files" title="Permalink to this headline"></a></h3>
+<h3>Decode wave files<a class="headerlink" href="#decode-wave-files" title="Permalink to this heading"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files of a single channel with 16-bit
@@ -223,7 +228,7 @@ Real time factor (RTF): 4.963 / 28.165 = 0.176
 </section>
 </section>
 <section id="stt-en-conformer-ctc-small">
-<h2>stt_en_conformer_ctc_small<a class="headerlink" href="#stt-en-conformer-ctc-small" title="Permalink to this headline"></a></h2>
+<h2>stt_en_conformer_ctc_small<a class="headerlink" href="#stt-en-conformer-ctc-small" title="Permalink to this heading"></a></h2>
 <p>This model is converted from</p>
 <blockquote>
 <div><p><a class="reference external" href="https://registry.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/stt_en_conformer_ctc_small">https://registry.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/stt_en_conformer_ctc_small</a></p>
@@ -233,7 +238,7 @@ NeMo ASRSet with around 16000 hours of english speech. The model transcribes
 speech in lower case english alphabet along with spaces and apostrophes.</p>
 <p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <section id="id1">
-<h3>Download the model<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<h3>Download the model<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
@@ -251,7 +256,7 @@ the file sizes of <code class="docutils literal notranslate"><span class="pre">*
 </div>
 </section>
 <section id="id2">
-<h3>Decode wave files<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<h3>Decode wave files<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files of a single channel with 16-bit
@@ -307,7 +312,7 @@ Real time factor (RTF): 0.665 / 28.165 = 0.024
 </section>
 </section>
 <section id="stt-en-conformer-ctc-medium">
-<span id="stt-en-conformer-ctc-medium-nemo-sherpa-onnx"></span><h2>stt_en_conformer_ctc_medium<a class="headerlink" href="#stt-en-conformer-ctc-medium" title="Permalink to this headline"></a></h2>
+<span id="stt-en-conformer-ctc-medium-nemo-sherpa-onnx"></span><h2>stt_en_conformer_ctc_medium<a class="headerlink" href="#stt-en-conformer-ctc-medium" title="Permalink to this heading"></a></h2>
 <p>This model is converted from</p>
 <blockquote>
 <div><p><a class="reference external" href="https://registry.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/stt_en_conformer_ctc_medium">https://registry.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/stt_en_conformer_ctc_medium</a></p>
@@ -317,7 +322,7 @@ trained on NeMo ASRSet with around 16000 hours of english speech. The model
 transcribes speech in lower case english alphabet along with spaces and apostrophes.</p>
 <p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <section id="id3">
-<h3>Download the model<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<h3>Download the model<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
@@ -335,7 +340,7 @@ the file sizes of <code class="docutils literal notranslate"><span class="pre">*
 </div>
 </section>
 <section id="id4">
-<h3>Decode wave files<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<h3>Decode wave files<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files of a single channel with 16-bit
@@ -391,7 +396,7 @@ Real time factor (RTF): 1.184 / 28.165 = 0.042
 </section>
 </section>
 <section id="stt-en-conformer-ctc-large">
-<h2>stt_en_conformer_ctc_large<a class="headerlink" href="#stt-en-conformer-ctc-large" title="Permalink to this headline"></a></h2>
+<h2>stt_en_conformer_ctc_large<a class="headerlink" href="#stt-en-conformer-ctc-large" title="Permalink to this heading"></a></h2>
 <p>This model is converted from</p>
 <blockquote>
 <div><p><a class="reference external" href="https://registry.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/stt_en_conformer_ctc_large">https://registry.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/stt_en_conformer_ctc_large</a></p>
@@ -401,7 +406,7 @@ trained on NeMo ASRSet with around 24500 hours of english speech. The model
 transcribes speech in lower case english alphabet along with spaces and apostrophes</p>
 <p>In the following, we describe how to download it and use it with <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <section id="id5">
-<h3>Download the model<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<h3>Download the model<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
@@ -419,7 +424,7 @@ the file sizes of <code class="docutils literal notranslate"><span class="pre">*
 </div>
 </section>
 <section id="id6">
-<h3>Decode wave files<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<h3>Decode wave files<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It supports decoding only wave files of a single channel with 16-bit
@@ -487,7 +492,7 @@ Real time factor (RTF): 3.553 / 28.165 = 0.126
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

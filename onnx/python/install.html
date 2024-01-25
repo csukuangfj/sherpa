@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/tabs.js"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -83,7 +84,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
@@ -120,10 +123,10 @@
            <div itemprop="articleBody">
              
   <section id="install-the-python-package">
-<span id="install-sherpa-onnx-python"></span><h1>Install the Python Package<a class="headerlink" href="#install-the-python-package" title="Permalink to this headline"></a></h1>
+<span id="install-sherpa-onnx-python"></span><h1>Install the Python Package<a class="headerlink" href="#install-the-python-package" title="Permalink to this heading"></a></h1>
 <p>You can select one of the following methods to install the Python package.</p>
 <section id="method-1-from-pre-compiled-wheels">
-<h2>Method 1 (From pre-compiled wheels)<a class="headerlink" href="#method-1-from-pre-compiled-wheels" title="Permalink to this headline"></a></h2>
+<h2>Method 1 (From pre-compiled wheels)<a class="headerlink" href="#method-1-from-pre-compiled-wheels" title="Permalink to this heading"></a></h2>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>This method supports <code class="docutils literal notranslate"><span class="pre">x86_64</span></code>, <code class="docutils literal notranslate"><span class="pre">arm64</span></code> (e.g., Mac M1, 64-bit Raspberry Pi),
@@ -143,7 +146,7 @@ ls<span class="w"> </span>-lh<span class="w"> </span><span class="k">$(</span>di
 </div>
 </section>
 <section id="method-2-from-source">
-<h2>Method 2 (From source)<a class="headerlink" href="#method-2-from-source" title="Permalink to this headline"></a></h2>
+<h2>Method 2 (From source)<a class="headerlink" href="#method-2-from-source" title="Permalink to this heading"></a></h2>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">CPU</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Nvidia GPU (CUDA)</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
 <span class="nb">cd</span><span class="w"> </span>sherpa-onnx
@@ -159,7 +162,7 @@ python3<span class="w"> </span>setup.py<span class="w"> </span>install
 </div></div>
 </section>
 <section id="method-3-for-developers">
-<h2>Method 3 (For developers)<a class="headerlink" href="#method-3-for-developers" title="Permalink to this headline"></a></h2>
+<h2>Method 3 (For developers)<a class="headerlink" href="#method-3-for-developers" title="Permalink to this heading"></a></h2>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">CPU</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Nvidia GPU (CUDA)</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
 <span class="nb">cd</span><span class="w"> </span>sherpa-onnx
@@ -208,7 +211,7 @@ to install CUDA toolkit.</p>
 </div></div>
 </section>
 <section id="check-your-installation">
-<h2>Check your installation<a class="headerlink" href="#check-your-installation" title="Permalink to this headline"></a></h2>
+<h2>Check your installation<a class="headerlink" href="#check-your-installation" title="Permalink to this heading"></a></h2>
 <p>To check that <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> has been successfully installed, please use:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sherpa_onnx; print(sherpa_onnx.__file__)&quot;</span>
 </pre></div>
@@ -238,7 +241,7 @@ models.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

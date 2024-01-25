@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/tabs.js"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -108,10 +109,10 @@
            <div itemprop="articleBody">
              
   <section id="from-source">
-<span id="install-sherpa-from-source"></span><h1>From source<a class="headerlink" href="#from-source" title="Permalink to this headline"></a></h1>
+<span id="install-sherpa-from-source"></span><h1>From source<a class="headerlink" href="#from-source" title="Permalink to this heading"></a></h1>
 <p>This section describe how to install <code class="docutils literal notranslate"><span class="pre">k2-fsa/sherpa</span></code> from source.</p>
 <section id="install-dependencies">
-<h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline"></a></h2>
+<h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this heading"></a></h2>
 <p>Before installing <code class="docutils literal notranslate"><span class="pre">k2-fsa/sherpa</span></code> from source, we have to install the following
 dependencies.</p>
 <blockquote>
@@ -126,13 +127,13 @@ dependencies.</p>
 commands to install the dependencies:</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">torch</span><span class="o">==</span><span class="m">2</span>.0.1+cpu<span class="w"> </span>-f<span class="w"> </span>https://download.pytorch.org/whl/torch_stable.html
-pip<span class="w"> </span>install<span class="w"> </span><span class="nv">k2</span><span class="o">==</span><span class="m">1</span>.24.3.dev20230719+cpu.torch2.0.1<span class="w"> </span>-f<span class="w"> </span>https://k2-fsa.github.io/k2/cpu.html
-pip<span class="w"> </span>install<span class="w"> </span><span class="nv">kaldifeat</span><span class="o">==</span><span class="m">1</span>.24.dev20230724+cpu.torch2.0.1<span class="w"> </span>-f<span class="w"> </span>https://csukuangfj.github.io/kaldifeat/cpu.html
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">k2</span><span class="o">==</span><span class="m">1</span>.24.4.dev20231220+cpu.torch2.0.1<span class="w"> </span>-f<span class="w"> </span>https://k2-fsa.github.io/k2/cpu.html
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">kaldifeat</span><span class="o">==</span><span class="m">1</span>.25.3.dev20231221+cpu.torch2.0.1<span class="w"> </span>-f<span class="w"> </span>https://csukuangfj.github.io/kaldifeat/cpu.html
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">torch</span><span class="o">==</span><span class="m">2</span>.0.1+cpu<span class="w"> </span>-f<span class="w"> </span>https://download.pytorch.org/whl/torch_stable.html
-pip<span class="w"> </span>install<span class="w"> </span><span class="nv">k2</span><span class="o">==</span><span class="m">1</span>.24.3.dev20230720+cpu.torch2.0.1<span class="w"> </span>-f<span class="w"> </span>https://k2-fsa.github.io/k2/cpu.html
-pip<span class="w"> </span>install<span class="w"> </span><span class="nv">kaldifeat</span><span class="o">==</span><span class="m">1</span>.24.dev20230724+cpu.torch2.0.1<span class="w"> </span>-f<span class="w"> </span>https://csukuangfj.github.io/kaldifeat/cpu.html
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">k2</span><span class="o">==</span><span class="m">1</span>.24.4.dev20231220+cpu.torch2.0.1<span class="w"> </span>-f<span class="w"> </span>https://k2-fsa.github.io/k2/cpu.html
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">kaldifeat</span><span class="o">==</span><span class="m">1</span>.25.3.dev20231221+cpu.torch2.0.1<span class="w"> </span>-f<span class="w"> </span>https://csukuangfj.github.io/kaldifeat/cpu.html
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><p>To be done.</p>
@@ -141,8 +142,8 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="nv">kaldi
 commands to install the dependencies:</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">torch</span><span class="o">==</span><span class="m">2</span>.0.1+cu117<span class="w"> </span>-f<span class="w"> </span>https://download.pytorch.org/whl/torch_stable.html
-pip<span class="w"> </span>install<span class="w"> </span><span class="nv">k2</span><span class="o">==</span><span class="m">1</span>.24.3.dev20230718+cuda11.7.torch2.0.1<span class="w"> </span>-f<span class="w"> </span>https://k2-fsa.github.io/k2/cuda.html
-pip<span class="w"> </span>install<span class="w"> </span><span class="nv">kaldifeat</span><span class="o">==</span><span class="m">1</span>.24.dev20230724+cuda11.7.torch2.0.1<span class="w">  </span>-f<span class="w"> </span>https://csukuangfj.github.io/kaldifeat/cuda.html
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">k2</span><span class="o">==</span><span class="m">1</span>.24.4.dev20231220+cuda11.7.torch2.0.1<span class="w"> </span>-f<span class="w"> </span>https://k2-fsa.github.io/k2/cuda.html
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">kaldifeat</span><span class="o">==</span><span class="m">1</span>.25.3.dev20231221+cuda11.7.torch2.0.1<span class="w">  </span>-f<span class="w"> </span>https://csukuangfj.github.io/kaldifeat/cuda.html
 </pre></div>
 </div>
 </div></blockquote>
@@ -151,7 +152,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="nv">kaldi
 <p>Now we can start to build <code class="docutils literal notranslate"><span class="pre">k2-fsa/sherpa</span></code> from source.</p>
 </section>
 <section id="for-general-users">
-<h2>For general users<a class="headerlink" href="#for-general-users" title="Permalink to this headline"></a></h2>
+<h2>For general users<a class="headerlink" href="#for-general-users" title="Permalink to this heading"></a></h2>
 <p>You can use the following commands to install <a class="reference external" href="http://github.com/k2-fsa/sherpa">k2-fsa/sherpa</a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Please make sure you have installed PyTorch, k2, and kaldifeat</span>
 <span class="c1"># before you continue</span>
@@ -170,7 +171,7 @@ pip<span class="w"> </span>uninstall<span class="w"> </span>k2-sherpa
 <p>Please see <a class="reference internal" href="check_your_installation.html#check-sherpa-installation"><span class="std std-ref">Check your installation</span></a>.</p>
 </section>
 <section id="for-developers-and-advanced-users">
-<h2>For developers and advanced users<a class="headerlink" href="#for-developers-and-advanced-users" title="Permalink to this headline"></a></h2>
+<h2>For developers and advanced users<a class="headerlink" href="#for-developers-and-advanced-users" title="Permalink to this heading"></a></h2>
 <p>You can also use the following commands to install <a class="reference external" href="http://github.com/k2-fsa/sherpa">k2-fsa/sherpa</a>.</p>
 <p>The advantage is that you can have several versions of <a class="reference external" href="http://github.com/k2-fsa/sherpa">k2-fsa/sherpa</a>
 in a single environment.</p>
@@ -200,7 +201,7 @@ make<span class="w"> </span>-j
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

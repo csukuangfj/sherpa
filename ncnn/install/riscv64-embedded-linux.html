@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -116,11 +117,11 @@
            <div itemprop="articleBody">
              
   <section id="embedded-linux-riscv64">
-<h1>Embedded Linux (riscv64)<a class="headerlink" href="#embedded-linux-riscv64" title="Permalink to this headline"></a></h1>
+<h1>Embedded Linux (riscv64)<a class="headerlink" href="#embedded-linux-riscv64" title="Permalink to this heading"></a></h1>
 <p>This page describes how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> for embedded Linux (RISC-V, 64-bit)
 with cross-compiling on an x86 machine with Ubuntu OS.</p>
 <section id="install-toolchain">
-<h2>Install toolchain<a class="headerlink" href="#install-toolchain" title="Permalink to this headline"></a></h2>
+<h2>Install toolchain<a class="headerlink" href="#install-toolchain" title="Permalink to this heading"></a></h2>
 <p>The first step is to install a toolchain for cross-compiling.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>gcc-riscv64-linux-gnu
 sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>g++-riscv64-linux-gnu
@@ -142,7 +143,7 @@ warranty<span class="p">;</span><span class="w"> </span>not<span class="w"> </sp
 </div>
 </section>
 <section id="build-sherpa-ncnn">
-<h2>Build sherpa-ncnn<a class="headerlink" href="#build-sherpa-ncnn" title="Permalink to this headline"></a></h2>
+<h2>Build sherpa-ncnn<a class="headerlink" href="#build-sherpa-ncnn" title="Permalink to this heading"></a></h2>
 <p>Next, let us build <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
 <span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
@@ -247,7 +248,7 @@ if you have any problems.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

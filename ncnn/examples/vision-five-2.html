@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -114,7 +115,7 @@
            <div itemprop="articleBody">
              
   <section id="visionfive-2">
-<h1>VisionFive 2<a class="headerlink" href="#visionfive-2" title="Permalink to this headline"></a></h1>
+<h1>VisionFive 2<a class="headerlink" href="#visionfive-2" title="Permalink to this heading"></a></h1>
 <p>This page describes how to run <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> on <a class="reference external" href="https://www.starfivetech.com/en/site/boards">VisionFive2</a>, which is a
 64-bit RISC-V board with 4 CPUs.</p>
 <div class="admonition hint">
@@ -137,11 +138,11 @@ the resulting <code class="docutils literal notranslate"><span class="pre">sdcar
 <p>The username for this image is <code class="docutils literal notranslate"><span class="pre">root</span></code> and the password is <code class="docutils literal notranslate"><span class="pre">starfive</span></code>.</p>
 </div>
 <section id="board-info">
-<h2>Board info<a class="headerlink" href="#board-info" title="Permalink to this headline"></a></h2>
+<h2>Board info<a class="headerlink" href="#board-info" title="Permalink to this heading"></a></h2>
 <a class="reference internal image-reference" href="../../_images/lscpu.jpg"><img alt="Output of lscpu and /proc/cpuinfo" src="../../_images/lscpu.jpg" style="height: 450px;" /></a>
 </section>
 <section id="rtf-4-threads">
-<h2>RTF (4 threads)<a class="headerlink" href="#rtf-4-threads" title="Permalink to this headline"></a></h2>
+<h2>RTF (4 threads)<a class="headerlink" href="#rtf-4-threads" title="Permalink to this heading"></a></h2>
 <p>We use <a class="reference internal" href="../pretrained_models/zipformer-transucer-models.html#sherpa-ncnn-streaming-zipformer-small-bilingual-zh-en-2023-02-16"><span class="std std-ref">csukuangfj/sherpa-ncnn-streaming-zipformer-small-bilingual-zh-en-2023-02-16 (Bilingual, Chinese + English)</span></a>
 for testing. The RTF is given below:</p>
 <a class="reference internal image-reference" href="../../_images/rtf.jpg"><img alt="RTF for 4 threads with greedy search" src="../../_images/rtf.jpg" style="width: 800px;" /></a>
@@ -164,7 +165,7 @@ copy and paste them if you want to test it by yourself.</p>
 </div>
 </section>
 <section id="real-time-speech-recognition-with-a-microphone">
-<h2>Real-time speech recognition with a microphone<a class="headerlink" href="#real-time-speech-recognition-with-a-microphone" title="Permalink to this headline"></a></h2>
+<h2>Real-time speech recognition with a microphone<a class="headerlink" href="#real-time-speech-recognition-with-a-microphone" title="Permalink to this heading"></a></h2>
 <p>Since the board does not have microphones, we use a USB microphone for testing.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
@@ -204,7 +205,7 @@ which provides support for USB microphones.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

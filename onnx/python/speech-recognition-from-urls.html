@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -80,7 +81,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
@@ -117,7 +120,7 @@
            <div itemprop="articleBody">
              
   <section id="speech-recognition-from-urls">
-<h1>Speech recognition from URLs<a class="headerlink" href="#speech-recognition-from-urls" title="Permalink to this headline"></a></h1>
+<h1>Speech recognition from URLs<a class="headerlink" href="#speech-recognition-from-urls" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> also supports decoding from URLs.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -156,7 +159,7 @@ and <code class="docutils literal notranslate"><span class="pre">brew</span> <sp
 <p>We use the model <a class="reference internal" href="../pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20"><span class="std std-ref">csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</span></a>
 for demonstration in the following examples.</p>
 <section id="decode-a-url">
-<h2>Decode a URL<a class="headerlink" href="#decode-a-url" title="Permalink to this headline"></a></h2>
+<h2>Decode a URL<a class="headerlink" href="#decode-a-url" title="Permalink to this heading"></a></h2>
 <p>This example shows you how to decode a URL pointing to a file.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -173,12 +176,12 @@ supported by <code class="docutils literal notranslate"><span class="pre">ffmpeg
 </div>
 </section>
 <section id="rtmp">
-<h2>RTMP<a class="headerlink" href="#rtmp" title="Permalink to this headline"></a></h2>
+<h2>RTMP<a class="headerlink" href="#rtmp" title="Permalink to this heading"></a></h2>
 <p>In this example, we use <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> to capture a microphone and push the
 audio stream to a server using RTMP, and then we start <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> to pull
 the audio stream from the server for recognition.</p>
 <section id="install-the-server">
-<h3>Install the server<a class="headerlink" href="#install-the-server" title="Permalink to this headline"></a></h3>
+<h3>Install the server<a class="headerlink" href="#install-the-server" title="Permalink to this heading"></a></h3>
 <p>We will use <a class="reference external" href="https://github.com/ossrs/srs">srs</a> as the server. Let us first install <a class="reference external" href="https://github.com/ossrs/srs">srs</a> from source:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>develop<span class="w"> </span>https://github.com/ossrs/srs.git
 <span class="nb">cd</span><span class="w"> </span>srs/trunk
@@ -193,7 +196,7 @@ make
 </div>
 </section>
 <section id="start-the-server">
-<h3>Start the server<a class="headerlink" href="#start-the-server" title="Permalink to this headline"></a></h3>
+<h3>Start the server<a class="headerlink" href="#start-the-server" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">ulimit</span><span class="w"> </span>-HSn<span class="w"> </span><span class="m">10000</span>
 
 <span class="c1"># switch to the directory srs/trunk</span>
@@ -224,7 +227,7 @@ Asan:<span class="w"> </span>Please<span class="w"> </span>setup<span class="w">
 </div>
 </section>
 <section id="start-ffmpeg-to-push-audio-stream">
-<h3>Start ffmpeg to push audio stream<a class="headerlink" href="#start-ffmpeg-to-push-audio-stream" title="Permalink to this headline"></a></h3>
+<h3>Start ffmpeg to push audio stream<a class="headerlink" href="#start-ffmpeg-to-push-audio-stream" title="Permalink to this heading"></a></h3>
 <p>First, let us list available recording devices on the current computer
 with the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-hide_banner<span class="w"> </span>-f<span class="w"> </span>avfoundation<span class="w"> </span>-list_devices<span class="w"> </span><span class="nb">true</span><span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;&quot;</span>
@@ -271,7 +274,7 @@ Output<span class="w"> </span><span class="c1">#0, flv, to &#39;rtmp://localhost
 </div>
 </section>
 <section id="start-sherpa-onnx-to-pull-audio-stream">
-<h3>Start sherpa-onnx to pull audio stream<a class="headerlink" href="#start-sherpa-onnx-to-pull-audio-stream" title="Permalink to this headline"></a></h3>
+<h3>Start sherpa-onnx to pull audio stream<a class="headerlink" href="#start-sherpa-onnx-to-pull-audio-stream" title="Permalink to this heading"></a></h3>
 <p>Now we can start <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> to pull audio stream from <code class="docutils literal notranslate"><span class="pre">rtmp://localhost/live/livestream</span></code>
 for speech recognition.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>./python-api-examples/speech-recognition-from-url.py<span class="w"> </span><span class="se">\</span>
@@ -304,7 +307,7 @@ audio stream from the address <a class="reference external" href="rtmp://your_se
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -89,7 +90,7 @@
            <div itemprop="articleBody">
              
   <section id="sherpa">
-<h1>sherpa<a class="headerlink" href="#sherpa" title="Permalink to this headline"></a></h1>
+<h1>sherpa<a class="headerlink" href="#sherpa" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
@@ -287,6 +288,7 @@
 <li class="toctree-l5"><a class="reference internal" href="ncnn/android/build-sherpa-ncnn.html#build-for-arm64-v8a">Build for arm64-v8a</a></li>
 <li class="toctree-l5"><a class="reference internal" href="ncnn/android/build-sherpa-ncnn.html#build-for-armeabi-v7a">Build for armeabi-v7a</a></li>
 <li class="toctree-l5"><a class="reference internal" href="ncnn/android/build-sherpa-ncnn.html#build-for-x86-64">Build for x86_64</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ncnn/android/build-sherpa-ncnn.html#build-for-x86">Build for x86</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="ncnn/android/build-sherpa-ncnn.html#download-pre-trained-models">Download pre-trained models</a></li>
@@ -451,6 +453,7 @@
 <li class="toctree-l4"><a class="reference internal" href="onnx/install/aarch64-embedded-linux.html#install-toolchain">Install toolchain</a></li>
 <li class="toctree-l4"><a class="reference internal" href="onnx/install/aarch64-embedded-linux.html#build-sherpa-onnx">Build sherpa-onnx</a></li>
 <li class="toctree-l4"><a class="reference internal" href="onnx/install/aarch64-embedded-linux.html#sherpa-onnx-alsa">sherpa-onnx-alsa</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/install/aarch64-embedded-linux.html#how-to-build-static-libraries-and-static-linked-binaries">How to build static libraries and static linked binaries</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="onnx/install/arm-embedded-linux.html">Embedded Linux (arm)</a><ul>
@@ -580,6 +583,7 @@
 <li class="toctree-l5"><a class="reference internal" href="onnx/android/build-sherpa-onnx.html#build-for-arm64-v8a">Build for arm64-v8a</a></li>
 <li class="toctree-l5"><a class="reference internal" href="onnx/android/build-sherpa-onnx.html#build-for-armv7-eabi">Build for armv7-eabi</a></li>
 <li class="toctree-l5"><a class="reference internal" href="onnx/android/build-sherpa-onnx.html#build-for-x86-64">Build for x86_64</a></li>
+<li class="toctree-l5"><a class="reference internal" href="onnx/android/build-sherpa-onnx.html#build-for-x86">Build for x86</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="onnx/android/build-sherpa-onnx.html#download-pre-trained-models">Download pre-trained models</a></li>
@@ -652,9 +656,21 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="onnx/kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnx/kws/index.html#what-is-open-vocabulary-keyword-spotting">What is open vocabulary keyword spotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="onnx/kws/index.html#decoder-for-open-vocabulary-keyword-spotting">Decoder for open vocabulary keyword spotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="onnx/kws/index.html#keywords-file">Keywords file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="onnx/kws/index.html#how-to-use-hotwords-in-sherpa-onnx">How to use hotwords in sherpa-onnx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnx/kws/index.html#command-line-tool">command-line tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/kws/index.html#android-application">Android application</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="onnx/pretrained_models/index.html">Pre-trained models</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="onnx/pretrained_models/online-transducer/index.html">Online transducer models</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="onnx/pretrained_models/online-transducer/zipformer-transducer-models.html">Zipformer-transducer-based Models</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-multi-zh-hans-2023-12-12-chinese">sherpa-onnx-streaming-zipformer-multi-zh-hans-2023-12-12 (Chinese)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/online-transducer/zipformer-transducer-models.html#pkufool-icefall-asr-zipformer-streaming-wenetspeech-20230615-chinese">pkufool/icefall-asr-zipformer-streaming-wenetspeech-20230615 (Chinese)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-en-2023-06-26-english">csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-06-26 (English)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-en-2023-06-21-english">csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-06-21 (English)</a></li>
@@ -683,8 +699,16 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="onnx/pretrained_models/online-ctc/index.html">Online CTC models</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnx/pretrained_models/online-ctc/zipformer-ctc-models.html">Zipformer-CTC-based Models</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/online-ctc/zipformer-ctc-models.html#sherpa-onnx-streaming-zipformer-ctc-multi-zh-hans-2023-12-13-chinese">sherpa-onnx-streaming-zipformer-ctc-multi-zh-hans-2023-12-13 (Chinese)</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="onnx/pretrained_models/offline-transducer/index.html">Offline transducer models</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="onnx/pretrained_models/offline-transducer/zipformer-transducer-models.html">Zipformer-transducer-based Models</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/offline-transducer/zipformer-transducer-models.html#sherpa-onnx-zipformer-gigaspeech-2023-12-12-english">sherpa-onnx-zipformer-gigaspeech-2023-12-12 (English)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/offline-transducer/zipformer-transducer-models.html#zrjin-sherpa-onnx-zipformer-multi-zh-hans-2023-9-2-chinese">zrjin/sherpa-onnx-zipformer-multi-zh-hans-2023-9-2 (Chinese)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/offline-transducer/zipformer-transducer-models.html#yfyeung-icefall-asr-cv-corpus-13-0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17-english">yfyeung/icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17 (English)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/offline-transducer/zipformer-transducer-models.html#pkufool-icefall-asr-zipformer-wenetspeech-20230615-chinese">pkufool/icefall-asr-zipformer-wenetspeech-20230615 (Chinese)</a></li>
@@ -738,9 +762,24 @@
 <li class="toctree-l4"><a class="reference internal" href="onnx/pretrained_models/whisper/huggingface.html">Huggingface space</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="onnx/pretrained_models/wenet/index.html">WeNet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnx/pretrained_models/wenet/how-to-export.html">How to export models from WeNet to sherpa-onnx</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/wenet/how-to-export.html#export-for-non-streaming-inference">Export for non-streaming inference</a></li>
+<li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/wenet/how-to-export.html#export-for-streaming-inference">Export for streaming inference</a></li>
+<li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/wenet/how-to-export.html#faqs">FAQs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/wenet/how-to-export.html#sherpa-onnx-csrc-online-wenet-ctc-model-cc-init-144-head-does-not-exist-in-the-metadata">sherpa-onnx/csrc/online-wenet-ctc-model.cc:Init:144 head does not exist in the metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/pretrained_models/wenet/all-models.html">All models from WeNet</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/wenet/all-models.html#colab">Colab</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="onnx/pretrained_models/small-online-models.html">Small models</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="onnx/speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="onnx/tts/index.html">Text-to-speech (TTS)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="onnx/tts/hf-space.html">Huggingface space</a></li>
 <li class="toctree-l3"><a class="reference internal" href="onnx/tts/pretrained_models/index.html">Pre-trained models</a><ul>
@@ -749,9 +788,30 @@
 <li class="toctree-l5"><a class="reference internal" href="onnx/tts/pretrained_models/vits.html#ljspeech-english-single-speaker">ljspeech (English, single-speaker)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="onnx/tts/pretrained_models/vits.html#vctk-english-multi-speaker-109-speakers">VCTK (English, multi-speaker, 109 speakers)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="onnx/tts/pretrained_models/vits.html#aishell3-chinese-multi-speaker-174-speakers">aishell3 (Chinese, multi-speaker, 174 speakers)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="onnx/tts/pretrained_models/vits.html#csukuangfj-vits-zh-hf-fanchen-c-chinese-1-female">csukuangfj/vits-zh-hf-fanchen-C (Chinese, 1 female)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="onnx/tts/pretrained_models/vits.html#csukuangfj-vits-zh-hf-fanchen-wnj-chinese-1-male">csukuangfj/vits-zh-hf-fanchen-wnj (Chinese, 1 male)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="onnx/tts/pretrained_models/vits.html#csukuangfj-vits-zh-hf-theresa-chinese-804-speakers">csukuangfj/vits-zh-hf-theresa (Chinese, 804 speakers)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="onnx/tts/pretrained_models/vits.html#csukuangfj-vits-zh-hf-eula-chinese-804-speakers">csukuangfj/vits-zh-hf-eula (Chinese, 804 speakers)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="onnx/tts/pretrained_models/vits.html#en-us-lessac-medium-english-single-speaker">en_US-lessac-medium (English, single-speaker)</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="onnx/tts/piper.html">Piper</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnx/tts/piper.html#install-dependencies">Install dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/tts/piper.html#find-the-pre-trained-model-from-piper">Find the pre-trained model from piper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/tts/piper.html#download-the-pre-trained-model">Download the pre-trained model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/tts/piper.html#add-meta-data-to-the-onnx-model">Add meta data to the onnx model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/tts/piper.html#download-espeak-ng-data">Download espeak-ng-data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/tts/piper.html#test-your-converted-model">Test your converted model</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="onnx/tts/mms.html">MMS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnx/tts/mms.html#install-dependencies">Install dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/tts/mms.html#download-the-model-file">Download the model file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/tts/mms.html#download-mms-source-code">Download MMS source code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/tts/mms.html#convert-the-model">Convert the model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/tts/mms.html#use-the-converted-model">Use the converted model</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="onnx/tts/faq.html">Frequently Asked Question (FAQs)</a><ul>
@@ -818,7 +878,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

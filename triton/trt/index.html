@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -102,10 +103,10 @@
            <div itemprop="articleBody">
              
   <section id="tensorrt-acceleration">
-<h1>TensorRT acceleration<a class="headerlink" href="#tensorrt-acceleration" title="Permalink to this headline"></a></h1>
+<h1>TensorRT acceleration<a class="headerlink" href="#tensorrt-acceleration" title="Permalink to this heading"></a></h1>
 <p>This page shows how to use TensorRT engine to accelerate inference speed for K2 models</p>
 <section id="preparation">
-<h2>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline"></a></h2>
+<h2>Preparation<a class="headerlink" href="#preparation" title="Permalink to this heading"></a></h2>
 <p>First of all, you have to install the TensorRT. Here we suggest you to use docker container to run TRT. Just run the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--gpus<span class="w"> </span><span class="s1">&#39;&quot;device=0&quot;&#39;</span><span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--net<span class="w"> </span>host<span class="w"> </span>-v<span class="w"> </span><span class="nv">$PWD</span>/:/k2<span class="w"> </span>nvcr.io/nvidia/tensorrt:22.12-py3
 </pre></div>
@@ -122,7 +123,7 @@ bash<span class="w"> </span>tools/install.sh
 </div>
 </section>
 <section id="model-export">
-<h2>Model export<a class="headerlink" href="#model-export" title="Permalink to this headline"></a></h2>
+<h2>Model export<a class="headerlink" href="#model-export" title="Permalink to this heading"></a></h2>
 <p>You have to prepare the ONNX model by referring
 <a class="reference external" href="https://github.com/k2-fsa/sherpa/tree/master/triton#prepare-pretrained-models">here</a> to export your models into ONNX format.
 Assume you have put your ONNX model in the <code class="docutils literal notranslate"><span class="pre">$model_dir</span></code> directory.
@@ -136,7 +137,7 @@ We also give an example of <code class="docutils literal notranslate"><span clas
 <a class="reference external" href="https://github.com/k2-fsa/sherpa/tree/master/triton#deploy-on-triton-inference-server">here</a> to deploy the pipeline using triton.</p>
 </section>
 <section id="benchmark-for-conformer-trt-encoder-vs-onnx">
-<h2>Benchmark for Conformer TRT encoder vs ONNX<a class="headerlink" href="#benchmark-for-conformer-trt-encoder-vs-onnx" title="Permalink to this headline"></a></h2>
+<h2>Benchmark for Conformer TRT encoder vs ONNX<a class="headerlink" href="#benchmark-for-conformer-trt-encoder-vs-onnx" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
@@ -227,7 +228,7 @@ We also give an example of <code class="docutils literal notranslate"><span clas
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

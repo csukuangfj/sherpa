@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -104,7 +105,7 @@
            <div itemprop="articleBody">
              
   <section id="online-transducer-models">
-<span id="online-transducer-pretrained-models"></span><h1>Online transducer models<a class="headerlink" href="#online-transducer-models" title="Permalink to this headline"></a></h1>
+<span id="online-transducer-pretrained-models"></span><h1>Online transducer models<a class="headerlink" href="#online-transducer-models" title="Permalink to this heading"></a></h1>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>We use the binary <code class="docutils literal notranslate"><span class="pre">sherpa-online</span></code> below for demonstration.
@@ -116,12 +117,12 @@ and <code class="docutils literal notranslate"><span class="pre">sherpa-online-m
 <p>At present, only streaming transducer models from <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a> are supported.</p>
 </div>
 <section id="icefall">
-<h2>icefall<a class="headerlink" href="#icefall" title="Permalink to this headline"></a></h2>
+<h2>icefall<a class="headerlink" href="#icefall" title="Permalink to this heading"></a></h2>
 <p>This sections lists models trained using <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a>.</p>
 <section id="english">
-<h3>English<a class="headerlink" href="#english" title="Permalink to this headline"></a></h3>
+<h3>English<a class="headerlink" href="#english" title="Permalink to this heading"></a></h3>
 <section id="icefall-asr-librispeech-streaming-zipformer-2023-05-17">
-<span id="id1"></span><h4>icefall-asr-librispeech-streaming-zipformer-2023-05-17<a class="headerlink" href="#icefall-asr-librispeech-streaming-zipformer-2023-05-17" title="Permalink to this headline"></a></h4>
+<span id="id1"></span><h4>icefall-asr-librispeech-streaming-zipformer-2023-05-17<a class="headerlink" href="#icefall-asr-librispeech-streaming-zipformer-2023-05-17" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with zipformer transducer</span>
 <span class="c1">#</span>
 <span class="c1"># See https://github.com/k2-fsa/icefall/pull/1058</span>
@@ -156,7 +157,7 @@ sherpa-online<span class="w"> </span><span class="se">\</span>
 </div>
 </section>
 <section id="icefall-asr-librispeech-pruned-transducer-stateless7-streaming-2022-12-29">
-<span id="id2"></span><h4>icefall-asr-librispeech-pruned-transducer-stateless7-streaming-2022-12-29<a class="headerlink" href="#icefall-asr-librispeech-pruned-transducer-stateless7-streaming-2022-12-29" title="Permalink to this headline"></a></h4>
+<span id="id2"></span><h4>icefall-asr-librispeech-pruned-transducer-stateless7-streaming-2022-12-29<a class="headerlink" href="#icefall-asr-librispeech-pruned-transducer-stateless7-streaming-2022-12-29" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with streaming zipformer transducer</span>
 <span class="c1">#</span>
 <span class="c1"># See https://github.com/k2-fsa/icefall/pull/787</span>
@@ -190,7 +191,7 @@ sherpa-online<span class="w"> </span><span class="se">\</span>
 </div>
 </section>
 <section id="icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05">
-<h4>icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05<a class="headerlink" href="#icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05" title="Permalink to this headline"></a></h4>
+<h4>icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05<a class="headerlink" href="#icefall-asr-librispeech-conv-emformer-transducer-stateless2-2022-07-05" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with ConvEmformer transducer</span>
 <span class="c1">#</span>
 <span class="c1"># See https://github.com/k2-fsa/icefall/pull/440</span>
@@ -228,7 +229,7 @@ ln<span class="w"> </span>-sv<span class="w"> </span>cpu-jit-epoch-30-avg-10-tor
 </div>
 </section>
 <section id="icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03">
-<h4>icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03<a class="headerlink" href="#icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03" title="Permalink to this headline"></a></h4>
+<h4>icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03<a class="headerlink" href="#icefall-asr-librispeech-lstm-transducer-stateless2-2022-09-03" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with LSTM transducer</span>
 <span class="c1">#</span>
 <span class="c1"># See https://github.com/k2-fsa/icefall/pull/558</span>
@@ -274,7 +275,7 @@ sherpa-online<span class="w"> </span><span class="se">\</span>
 </div>
 </section>
 <section id="icefall-asr-librispeech-pruned-stateless-emformer-rnnt2-2022-06-01">
-<h4>icefall-asr-librispeech-pruned-stateless-emformer-rnnt2-2022-06-01<a class="headerlink" href="#icefall-asr-librispeech-pruned-stateless-emformer-rnnt2-2022-06-01" title="Permalink to this headline"></a></h4>
+<h4>icefall-asr-librispeech-pruned-stateless-emformer-rnnt2-2022-06-01<a class="headerlink" href="#icefall-asr-librispeech-pruned-stateless-emformer-rnnt2-2022-06-01" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with Emformer transducer</span>
 <span class="c1">#</span>
 <span class="c1"># See https://github.com/k2-fsa/icefall/pull/390</span>
@@ -312,7 +313,7 @@ sherpa-online<span class="w"> </span><span class="se">\</span>
 </div>
 </section>
 <section id="icefall-librispeech-streaming-pruned-transducer-stateless4-20220625">
-<h4>icefall_librispeech_streaming_pruned_transducer_stateless4_20220625<a class="headerlink" href="#icefall-librispeech-streaming-pruned-transducer-stateless4-20220625" title="Permalink to this headline"></a></h4>
+<h4>icefall_librispeech_streaming_pruned_transducer_stateless4_20220625<a class="headerlink" href="#icefall-librispeech-streaming-pruned-transducer-stateless4-20220625" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using LibriSpeech with Conformer transducer</span>
 <span class="c1">#</span>
 <span class="c1"># See https://github.com/k2-fsa/icefall/pull/440</span>
@@ -351,9 +352,9 @@ sherpa-online<span class="w"> </span><span class="se">\</span>
 </section>
 </section>
 <section id="chinese">
-<h3>Chinese<a class="headerlink" href="#chinese" title="Permalink to this headline"></a></h3>
+<h3>Chinese<a class="headerlink" href="#chinese" title="Permalink to this heading"></a></h3>
 <section id="icefall-asr-wenetspeech-pruned-transducer-stateless5-streaming">
-<h4>icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming<a class="headerlink" href="#icefall-asr-wenetspeech-pruned-transducer-stateless5-streaming" title="Permalink to this headline"></a></h4>
+<h4>icefall_asr_wenetspeech_pruned_transducer_stateless5_streaming<a class="headerlink" href="#icefall-asr-wenetspeech-pruned-transducer-stateless5-streaming" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using WenetSpeech with Conformer transducer</span>
 <span class="c1">#</span>
 <span class="c1"># See https://github.com/k2-fsa/icefall/pull/447</span>
@@ -392,9 +393,9 @@ sherpa-online<span class="w"> </span><span class="se">\</span>
 </section>
 </section>
 <section id="chinese-english-all-in-one">
-<h3>Chinese + English (all-in-one)<a class="headerlink" href="#chinese-english-all-in-one" title="Permalink to this headline"></a></h3>
+<h3>Chinese + English (all-in-one)<a class="headerlink" href="#chinese-english-all-in-one" title="Permalink to this heading"></a></h3>
 <section id="pfluo-k2fsa-zipformer-chinese-english-mixed">
-<h4>pfluo/k2fsa-zipformer-chinese-english-mixed<a class="headerlink" href="#pfluo-k2fsa-zipformer-chinese-english-mixed" title="Permalink to this headline"></a></h4>
+<h4>pfluo/k2fsa-zipformer-chinese-english-mixed<a class="headerlink" href="#pfluo-k2fsa-zipformer-chinese-english-mixed" title="Permalink to this heading"></a></h4>
 <p>It is a <a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/pruned_transducer_stateless7_streaming">streaming zipformer model</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model supports both Chinese and English</span>
 <span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/pfluo/k2fsa-zipformer-chinese-english-mixed
@@ -416,7 +417,7 @@ git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </spa
 </div>
 </section>
 <section id="icefall-asr-conv-emformer-transducer-stateless2-zh">
-<h4>icefall-asr-conv-emformer-transducer-stateless2-zh<a class="headerlink" href="#icefall-asr-conv-emformer-transducer-stateless2-zh" title="Permalink to this headline"></a></h4>
+<h4>icefall-asr-conv-emformer-transducer-stateless2-zh<a class="headerlink" href="#icefall-asr-conv-emformer-transducer-stateless2-zh" title="Permalink to this heading"></a></h4>
 <p>It is a <a class="reference external" href="https://github.com/k2-fsa/icefall/tree/master/egs/librispeech/ASR/conv_emformer_transducer_stateless2">ConvEmformer model</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model supports both Chinese and English</span>
 <span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/ptrnull/icefall-asr-conv-emformer-transducer-stateless2-zh
@@ -455,7 +456,7 @@ ln<span class="w"> </span>-sv<span class="w"> </span>cpu_jit-epoch-11-avg-1.pt<s
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

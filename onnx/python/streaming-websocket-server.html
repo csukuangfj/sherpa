@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -80,7 +81,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
@@ -117,7 +120,7 @@
            <div itemprop="articleBody">
              
   <section id="streaming-websocket-server">
-<h1>Streaming WebSocket Server<a class="headerlink" href="#streaming-websocket-server" title="Permalink to this headline"></a></h1>
+<h1>Streaming WebSocket Server<a class="headerlink" href="#streaming-websocket-server" title="Permalink to this heading"></a></h1>
 <p>This section describes how to use the Python streaming WebSocket server
 of <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> for speech recognition.</p>
 <div class="admonition hint">
@@ -129,7 +132,7 @@ of <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sh
 <div><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/blob/master/python-api-examples/streaming_server.py">https://github.com/k2-fsa/sherpa-onnx/blob/master/python-api-examples/streaming_server.py</a></p>
 </div></blockquote>
 <section id="start-the-server">
-<h2>Start the server<a class="headerlink" href="#start-the-server" title="Permalink to this headline"></a></h2>
+<h2>Start the server<a class="headerlink" href="#start-the-server" title="Permalink to this heading"></a></h2>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <blockquote>
@@ -202,7 +205,7 @@ Since<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </sp
 </div></blockquote>
 <p>We describe each method below in details.</p>
 <section id="use-python-api">
-<h3>Use Python API<a class="headerlink" href="#use-python-api" title="Permalink to this headline"></a></h3>
+<h3>Use Python API<a class="headerlink" href="#use-python-api" title="Permalink to this heading"></a></h3>
 <p>We provide two Python example files:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -222,7 +225,7 @@ Since<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </sp
 </tbody>
 </table>
 <section id="send-a-file-for-decoding">
-<h4>Send a file for decoding<a class="headerlink" href="#send-a-file-for-decoding" title="Permalink to this headline"></a></h4>
+<h4>Send a file for decoding<a class="headerlink" href="#send-a-file-for-decoding" title="Permalink to this heading"></a></h4>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>The example file supports only <code class="docutils literal notranslate"><span class="pre">*.wav</span></code> files with a single channel
@@ -269,7 +272,7 @@ Final<span class="w"> </span>result<span class="w"> </span>is:
 </div>
 </section>
 <section id="send-audio-samples-from-a-microphone-for-decoding">
-<h4>Send audio samples from a microphone for decoding<a class="headerlink" href="#send-audio-samples-from-a-microphone-for-decoding" title="Permalink to this headline"></a></h4>
+<h4>Send audio samples from a microphone for decoding<a class="headerlink" href="#send-audio-samples-from-a-microphone-for-decoding" title="Permalink to this heading"></a></h4>
 <p>We use the following command to run the script:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">sherpa</span><span class="o">-</span><span class="n">onnx</span>
 
@@ -295,7 +298,7 @@ Started!<span class="w"> </span>Please<span class="w"> </span>speak
 </section>
 </section>
 <section id="use-a-browser">
-<h3>Use a browser<a class="headerlink" href="#use-a-browser" title="Permalink to this headline"></a></h3>
+<h3>Use a browser<a class="headerlink" href="#use-a-browser" title="Permalink to this heading"></a></h3>
 <p>Start your browser and visit the following address:</p>
 <blockquote>
 <div><p><a class="reference external" href="http://localhost:6006/">http://localhost:6006/</a></p>
@@ -310,7 +313,7 @@ see the decoded results as you speak.</p>
 </section>
 </section>
 <section id="colab">
-<h2>colab<a class="headerlink" href="#colab" title="Permalink to this headline"></a></h2>
+<h2>colab<a class="headerlink" href="#colab" title="Permalink to this heading"></a></h2>
 <p>We provide a colab notebook
 <a class="reference external" href="https://github.com/k2-fsa/colab/blob/master/sherpa-onnx/sherpa_onnx_python_streaming_websocket_server.ipynb"><img alt="Sherpa-onnx python streaming websocket example colab notebook" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
 for you to try the Python streaming websocket server example of <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
@@ -328,7 +331,7 @@ for you to try the Python streaming websocket server example of <a class="refere
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

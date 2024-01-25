@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -78,7 +79,9 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
@@ -115,14 +118,14 @@
            <div itemprop="articleBody">
              
   <section id="non-streaming-websocket-server-and-client">
-<span id="onnx-non-streaming-websocket-server-and-client"></span><h1>Non-streaming WebSocket server and client<a class="headerlink" href="#non-streaming-websocket-server-and-client" title="Permalink to this headline"></a></h1>
+<span id="onnx-non-streaming-websocket-server-and-client"></span><h1>Non-streaming WebSocket server and client<a class="headerlink" href="#non-streaming-websocket-server-and-client" title="Permalink to this heading"></a></h1>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Please refer to <a class="reference internal" href="../install/index.html#install-sherpa-onnx"><span class="std std-ref">Installation</span></a> to install <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>
 before you read this section.</p>
 </div>
 <section id="build-sherpa-onnx-with-websocket-support">
-<h2>Build <cite>sherpa-onnx</cite> with WebSocket support<a class="headerlink" href="#build-sherpa-onnx-with-websocket-support" title="Permalink to this headline"></a></h2>
+<h2>Build <cite>sherpa-onnx</cite> with WebSocket support<a class="headerlink" href="#build-sherpa-onnx-with-websocket-support" title="Permalink to this heading"></a></h2>
 <p>By default, it will generate the following binaries after <a class="reference internal" href="../install/index.html#install-sherpa-onnx"><span class="std std-ref">Installation</span></a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sherpa-onnx<span class="w"> </span>fangjun$<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>build/bin/*websocket*
 -rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.1M<span class="w"> </span>Mar<span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="m">22</span>:09<span class="w"> </span>build/bin/sherpa-onnx-offline-websocket-server
@@ -135,7 +138,7 @@ for the usage of <code class="docutils literal notranslate"><span class="pre">sh
 and <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-online-websocket-client</span></code>.</p>
 </section>
 <section id="view-the-server-usage">
-<h2>View the server usage<a class="headerlink" href="#view-the-server-usage" title="Permalink to this headline"></a></h2>
+<h2>View the server usage<a class="headerlink" href="#view-the-server-usage" title="Permalink to this heading"></a></h2>
 <p>Before starting the server, let us view the help message of <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-offline-websocket-server</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>build/bin/sherpa-onnx-offline-websocket-server
 </pre></div>
@@ -200,14 +203,14 @@ and <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-onl
 </div>
 </section>
 <section id="start-the-server">
-<h2>Start the server<a class="headerlink" href="#start-the-server" title="Permalink to this headline"></a></h2>
+<h2>Start the server<a class="headerlink" href="#start-the-server" title="Permalink to this heading"></a></h2>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Please refer to <a class="reference internal" href="../pretrained_models/index.html#sherpa-onnx-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a>
 for a list of pre-trained models.</p>
 </div>
 <section id="start-the-server-with-a-transducer-model">
-<h3>Start the server with a transducer model<a class="headerlink" href="#start-the-server-with-a-transducer-model" title="Permalink to this headline"></a></h3>
+<h3>Start the server with a transducer model<a class="headerlink" href="#start-the-server-with-a-transducer-model" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build/bin/sherpa-onnx-offline-websocket-server<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--port<span class="o">=</span><span class="m">6006</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--num-work-threads<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
@@ -238,7 +241,7 @@ You can use <code class="docutils literal notranslate"><span class="pre">--max-b
 </div>
 </section>
 <section id="start-the-server-with-a-paraformer-model">
-<h3>Start the server with a paraformer model<a class="headerlink" href="#start-the-server-with-a-paraformer-model" title="Permalink to this headline"></a></h3>
+<h3>Start the server with a paraformer model<a class="headerlink" href="#start-the-server-with-a-paraformer-model" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build/bin/sherpa-onnx-offline-websocket-server<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--port<span class="o">=</span><span class="m">6006</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--num-work-threads<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
@@ -256,7 +259,7 @@ from <a class="reference internal" href="../pretrained_models/offline-paraformer
 </section>
 </section>
 <section id="start-the-client-python">
-<h2>Start the client (Python)<a class="headerlink" href="#start-the-client-python" title="Permalink to this headline"></a></h2>
+<h2>Start the client (Python)<a class="headerlink" href="#start-the-client-python" title="Permalink to this heading"></a></h2>
 <p>We provide two clients written in Python:</p>
 <blockquote>
 <div><ul class="simple">
@@ -267,7 +270,7 @@ by creating only a single connection</p></li>
 </ul>
 </div></blockquote>
 <section id="id1">
-<h3>offline-websocket-client-decode-files-paralell.py<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<h3>offline-websocket-client-decode-files-paralell.py<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>./python-api-examples/offline-websocket-client-decode-files-paralell.py<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--server-addr<span class="w"> </span>localhost<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--server-port<span class="w"> </span><span class="m">6006</span><span class="w"> </span><span class="se">\</span>
@@ -279,7 +282,7 @@ by creating only a single connection</p></li>
 </div>
 </section>
 <section id="id2">
-<h3>offline-websocket-client-decode-files-sequential.py<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<h3>offline-websocket-client-decode-files-sequential.py<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>./python-api-examples/offline-websocket-client-decode-files-sequential.py<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--server-addr<span class="w"> </span>localhost<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--server-port<span class="w"> </span><span class="m">6006</span><span class="w"> </span><span class="se">\</span>
@@ -304,7 +307,7 @@ by creating only a single connection</p></li>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

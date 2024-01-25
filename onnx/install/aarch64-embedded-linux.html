@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -67,6 +68,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#install-toolchain">Install toolchain</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build-sherpa-onnx">Build sherpa-onnx</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sherpa-onnx-alsa">sherpa-onnx-alsa</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-build-static-libraries-and-static-linked-binaries">How to build static libraries and static linked binaries</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="arm-embedded-linux.html">Embedded Linux (arm)</a></li>
@@ -80,7 +82,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
@@ -117,7 +121,7 @@
            <div itemprop="articleBody">
              
   <section id="embedded-linux-aarch64">
-<h1>Embedded Linux (aarch64)<a class="headerlink" href="#embedded-linux-aarch64" title="Permalink to this headline"></a></h1>
+<h1>Embedded Linux (aarch64)<a class="headerlink" href="#embedded-linux-aarch64" title="Permalink to this heading"></a></h1>
 <p>This page describes how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> for embedded Linux (aarch64, 64-bit)
 with cross-compiling on an x86 machine with Ubuntu OS.</p>
 <div class="admonition warning">
@@ -129,7 +133,7 @@ an <code class="docutils literal notranslate"><span class="pre">aarch64</span></
 please see <a class="reference internal" href="linux.html#install-sherpa-onnx-on-linux"><span class="std std-ref">Linux</span></a>.</p>
 </div>
 <section id="install-toolchain">
-<span id="sherpa-onnx-install-for-aarch64-embedded-linux"></span><h2>Install toolchain<a class="headerlink" href="#install-toolchain" title="Permalink to this headline"></a></h2>
+<span id="sherpa-onnx-install-for-aarch64-embedded-linux"></span><h2>Install toolchain<a class="headerlink" href="#install-toolchain" title="Permalink to this heading"></a></h2>
 <p>The first step is to install a toolchain for cross-compiling.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -167,10 +171,11 @@ run:</p>
 <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 </section>
 <section id="build-sherpa-onnx">
-<h2>Build sherpa-onnx<a class="headerlink" href="#build-sherpa-onnx" title="Permalink to this headline"></a></h2>
+<h2>Build sherpa-onnx<a class="headerlink" href="#build-sherpa-onnx" title="Permalink to this heading"></a></h2>
 <p>Finally, let us build <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
 <span class="nb">cd</span><span class="w"> </span>sherpa-onnx
+<span class="nb">export</span><span class="w"> </span><span class="nv">BUILD_SHARED_LIBS</span><span class="o">=</span>ON
 ./build-aarch64-linux-gnu.sh
 </pre></div>
 </div>
@@ -202,7 +207,7 @@ the microphone with <a class="reference external" href="https://en.wikipedia.org
 </div>
 </section>
 <section id="sherpa-onnx-alsa">
-<span id="id1"></span><h2>sherpa-onnx-alsa<a class="headerlink" href="#sherpa-onnx-alsa" title="Permalink to this headline"></a></h2>
+<span id="id1"></span><h2>sherpa-onnx-alsa<a class="headerlink" href="#sherpa-onnx-alsa" title="Permalink to this heading"></a></h2>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>We recommend that you use <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-alsa</span></code> on embedded systems such
@@ -257,6 +262,60 @@ use <a class="reference internal" href="../pretrained_models/online-transducer/z
 <p>Please create an issue at <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/issues">https://github.com/k2-fsa/sherpa-onnx/issues</a>
 if you have any problems.</p>
 </section>
+<section id="how-to-build-static-libraries-and-static-linked-binaries">
+<h2>How to build static libraries and static linked binaries<a class="headerlink" href="#how-to-build-static-libraries-and-static-linked-binaries" title="Permalink to this heading"></a></h2>
+<p>If you want to build static libraries and static linked binaries, please first
+download a cross compile toolchain with GCC &gt;= 9.0. The following is an example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/software
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/software
+wget<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-ncnn-toolchains/resolve/main/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu.tar.xz
+tar<span class="w"> </span>xvf<span class="w"> </span>gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu.tar.xz
+</pre></div>
+</div>
+<p>Next, we need to set the following environment variable:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/software/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin:<span class="nv">$PATH</span>
+</pre></div>
+</div>
+<p>To check that we have installed the cross-compiling toolchain successfully, please
+run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>aarch64-none-linux-gnu-gcc<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>which should print the following log:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aarch64</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">-</span><span class="n">gcc</span> <span class="p">(</span><span class="n">GNU</span> <span class="n">Toolchain</span> <span class="k">for</span> <span class="n">the</span> <span class="n">A</span><span class="o">-</span><span class="n">profile</span> <span class="n">Architecture</span> <span class="mf">9.2</span><span class="o">-</span><span class="mf">2019.12</span> <span class="p">(</span><span class="n">arm</span><span class="o">-</span><span class="mf">9.10</span><span class="p">))</span> <span class="mf">9.2.1</span> <span class="mi">20191025</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2019</span> <span class="n">Free</span> <span class="n">Software</span> <span class="n">Foundation</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
+<span class="n">This</span> <span class="ow">is</span> <span class="n">free</span> <span class="n">software</span><span class="p">;</span> <span class="n">see</span> <span class="n">the</span> <span class="n">source</span> <span class="k">for</span> <span class="n">copying</span> <span class="n">conditions</span><span class="o">.</span>  <span class="n">There</span> <span class="ow">is</span> <span class="n">NO</span>
+<span class="n">warranty</span><span class="p">;</span> <span class="ow">not</span> <span class="n">even</span> <span class="k">for</span> <span class="n">MERCHANTABILITY</span> <span class="ow">or</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Now you can build static libraries and static linked binaries with the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
+<span class="nb">cd</span><span class="w"> </span>sherpa-onnx
+<span class="nb">export</span><span class="w"> </span><span class="nv">BUILD_SHARED_LIBS</span><span class="o">=</span>OFF
+./build-aarch64-linux-gnu.sh
+</pre></div>
+</div>
+<p>You can use the following commands to check that the generated binaries are indeed static linked:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build-aarch64-linux-gnu/bin
+
+$<span class="w"> </span>ldd<span class="w"> </span>sherpa-onnx-alsa
+<span class="w">    </span>not<span class="w"> </span>a<span class="w"> </span>dynamic<span class="w"> </span>executable
+
+$<span class="w"> </span>readelf<span class="w"> </span>-d<span class="w"> </span>sherpa-onnx-alsa
+
+Dynamic<span class="w"> </span>section<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span>0xed9950<span class="w"> </span>contains<span class="w"> </span><span class="m">30</span><span class="w"> </span>entries:
+<span class="w">  </span>Tag<span class="w">        </span>Type<span class="w">                         </span>Name/Value
+<span class="w"> </span>0x0000000000000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">             </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libasound.so.2<span class="o">]</span>
+<span class="w"> </span>0x0000000000000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">             </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libdl.so.2<span class="o">]</span>
+<span class="w"> </span>0x0000000000000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">             </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libm.so.6<span class="o">]</span>
+<span class="w"> </span>0x0000000000000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">             </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libpthread.so.0<span class="o">]</span>
+<span class="w"> </span>0x0000000000000001<span class="w"> </span><span class="o">(</span>NEEDED<span class="o">)</span><span class="w">             </span>Shared<span class="w"> </span>library:<span class="w"> </span><span class="o">[</span>libc.so.6<span class="o">]</span>
+<span class="w"> </span>0x000000000000000f<span class="w"> </span><span class="o">(</span>RPATH<span class="o">)</span><span class="w">              </span>Library<span class="w"> </span>rpath:<span class="w"> </span><span class="o">[</span><span class="nv">$ORIGIN</span>:/star-fj/fangjun/open-source/sherpa-onnx/build-aarch64-linux-gnu/_deps/onnxruntime-sr
+c/lib:<span class="o">]</span>
+<span class="w"> </span>0x000000000000000c<span class="w"> </span><span class="o">(</span>INIT<span class="o">)</span><span class="w">               </span>0x404218
+</pre></div>
+</div>
+</section>
 </section>
 
 
@@ -270,7 +329,7 @@ if you have any problems.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

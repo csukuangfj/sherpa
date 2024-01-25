@@ -16,6 +16,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -115,7 +116,7 @@
            <div itemprop="articleBody">
              
   <section id="endpointing">
-<h1>Endpointing<a class="headerlink" href="#endpointing" title="Permalink to this headline"></a></h1>
+<h1>Endpointing<a class="headerlink" href="#endpointing" title="Permalink to this heading"></a></h1>
 <p>We have three rules for endpoint detection. If any of them is activated,
 we assume an endpoint is detected.</p>
 <div class="admonition note">
@@ -124,7 +125,7 @@ we assume an endpoint is detected.</p>
 <p><a class="reference external" href="https://kaldi-asr.org/doc/structkaldi_1_1OnlineEndpointRule.html">https://kaldi-asr.org/doc/structkaldi_1_1OnlineEndpointRule.html</a></p>
 </div>
 <section id="rule-1">
-<h2>Rule 1<a class="headerlink" href="#rule-1" title="Permalink to this headline"></a></h2>
+<h2>Rule 1<a class="headerlink" href="#rule-1" title="Permalink to this heading"></a></h2>
 <p>In <code class="docutils literal notranslate"><span class="pre">Rule</span> <span class="pre">1</span></code>, we count the duration of trailing silence. If it is larger than
 a user specified value, <code class="docutils literal notranslate"><span class="pre">Rule</span> <span class="pre">1</span></code> is activated. The following is an example,
 which uses <code class="docutils literal notranslate"><span class="pre">2.4</span> <span class="pre">seconds</span></code> as the threshold.</p>
@@ -150,7 +151,7 @@ constructing an instance of <code class="docutils literal notranslate"><span cla
 </div>
 </section>
 <section id="rule-2">
-<h2>Rule 2<a class="headerlink" href="#rule-2" title="Permalink to this headline"></a></h2>
+<h2>Rule 2<a class="headerlink" href="#rule-2" title="Permalink to this heading"></a></h2>
 <p>In <code class="docutils literal notranslate"><span class="pre">Rule</span> <span class="pre">2</span></code>, we require that it has to first decode something
 before we count the trailing silence. In the following example, after decoding
 something, <code class="docutils literal notranslate"><span class="pre">Rule</span> <span class="pre">2</span></code> is activated when the duration of trailing silence is
@@ -169,7 +170,7 @@ constructing an instance of <code class="docutils literal notranslate"><span cla
 </div>
 </section>
 <section id="rule-3">
-<h2>Rule 3<a class="headerlink" href="#rule-3" title="Permalink to this headline"></a></h2>
+<h2>Rule 3<a class="headerlink" href="#rule-3" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Rule</span> <span class="pre">3</span></code> is activated when the utterance length in seconds is larger than
 a given value. In the following example, <code class="docutils literal notranslate"><span class="pre">Rule</span> <span class="pre">3</span></code> is activated after the
 first segment reaches a given value, which is <code class="docutils literal notranslate"><span class="pre">20</span></code> seconds in this case.</p>
@@ -192,9 +193,9 @@ for <code class="docutils literal notranslate"><span class="pre">rule3_min_utter
 </div>
 </section>
 <section id="demo">
-<h2>Demo<a class="headerlink" href="#demo" title="Permalink to this headline"></a></h2>
+<h2>Demo<a class="headerlink" href="#demo" title="Permalink to this heading"></a></h2>
 <section id="multilingual-chinese-english">
-<h3>Multilingual (Chinese + English)<a class="headerlink" href="#multilingual-chinese-english" title="Permalink to this headline"></a></h3>
+<h3>Multilingual (Chinese + English)<a class="headerlink" href="#multilingual-chinese-english" title="Permalink to this heading"></a></h3>
 <p>The following video demonstrates using the Python API of <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>
 for real-time speech recogntinion with endpointing.</p>
 <iframe src="//player.bilibili.com/player.html?bvid=BV1eK411y788&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="800" height="600"> </iframe><div class="admonition hint">
@@ -205,9 +206,9 @@ for real-time speech recogntinion with endpointing.</p>
 </section>
 </section>
 <section id="faqs">
-<h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this headline"></a></h2>
+<h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this heading"></a></h2>
 <section id="how-to-compute-duration-of-silence">
-<h3>How to compute duration of silence<a class="headerlink" href="#how-to-compute-duration-of-silence" title="Permalink to this headline"></a></h3>
+<h3>How to compute duration of silence<a class="headerlink" href="#how-to-compute-duration-of-silence" title="Permalink to this heading"></a></h3>
 <p>For each frame to be decoded, we can output either a blank or a non-blank token.
 We record the number of contiguous blanks that has been decoded so far.
 In the current default setting, each frame is <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">ms</span></code>. Thus, we can get
@@ -233,7 +234,7 @@ blanks.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -16,6 +16,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -80,7 +81,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
 </li>
@@ -117,11 +120,11 @@
            <div itemprop="articleBody">
              
   <section id="real-time-speech-recognition-from-a-microphone">
-<h1>Real-time speech recognition from a microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone" title="Permalink to this headline"></a></h1>
+<h1>Real-time speech recognition from a microphone<a class="headerlink" href="#real-time-speech-recognition-from-a-microphone" title="Permalink to this heading"></a></h1>
 <p>In this section, we demonstrate how to use the Python API of <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>
 for real-time speech recognition with a microphone.</p>
 <section id="with-endpoint-detection">
-<h2>With endpoint detection<a class="headerlink" href="#with-endpoint-detection" title="Permalink to this headline"></a></h2>
+<h2>With endpoint detection<a class="headerlink" href="#with-endpoint-detection" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 python3<span class="w"> </span>./python-api-examples/speech-recognition-from-microphone-with-endpoint-detection.py<span class="w"> </span><span class="se">\</span>
@@ -139,7 +142,7 @@ from <a class="reference internal" href="../pretrained_models/online-transducer/
 </div>
 </section>
 <section id="without-endpoint-detection">
-<h2>Without endpoint detection<a class="headerlink" href="#without-endpoint-detection" title="Permalink to this headline"></a></h2>
+<h2>Without endpoint detection<a class="headerlink" href="#without-endpoint-detection" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 python3<span class="w"> </span>./python-api-examples/speech-recognition-from-microphone.py<span class="w"> </span><span class="se">\</span>
@@ -169,7 +172,7 @@ from <a class="reference internal" href="../pretrained_models/online-transducer/
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
