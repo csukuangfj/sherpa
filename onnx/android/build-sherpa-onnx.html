@@ -65,6 +65,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../c-api/index.html">C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../csharp-api/index.html">C# API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Android</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Build sherpa-onnx for Android</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#install-android-studio">Install Android Studio</a></li>
@@ -386,13 +387,16 @@ is from <a class="reference external" href="https://huggingface.co/pfluo/k2fsa-z
 
 sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git-lfs
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20.tar.bz2
+
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20.tar.bz2
+
 <span class="nb">cd</span><span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
 
 <span class="c1"># Now, remove extra files to reduce the file size of the generated apk</span>
 rm<span class="w"> </span>-rf<span class="w"> </span>.git<span class="w"> </span>test_wavs
-rm<span class="w"> </span>*.sh<span class="w"> </span>README.md
+rm<span class="w"> </span>-f<span class="w"> </span>*.sh<span class="w"> </span>README.md
 </pre></div>
 </div>
 <p>In the end, you should have the following files:</p>

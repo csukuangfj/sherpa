@@ -65,6 +65,7 @@
 <li class="toctree-l2"><a class="reference internal" href="c-api/index.html">C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="csharp-api/index.html">C# API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="websocket/index.html">WebSocket</a></li>
@@ -261,6 +262,18 @@ Windows, embedded systems, Android, and iOS.</p>
 <li class="toctree-l2"><a class="reference internal" href="csharp-api/index.html#colab">colab</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="wasm/index.html">WebAssembly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wasm/install-emscripten.html">Install Emscripten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wasm/build.html">Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wasm/hf-spaces.html">Huggingface Spaces (WebAssembly)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wasm/hf-spaces.html#english-only-zipformer">English only (Zipformer)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wasm/hf-spaces.html#chinese-english-zipformer">Chinese + English (Zipformer)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wasm/hf-spaces.html#chinese-english-paraformer">Chinese + English (Paraformer)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wasm/hf-spaces.html#chinese-english-cantonese-paraformer">Chinese + English + Cantonese (Paraformer)</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="android/index.html">Android</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="android/build-sherpa-onnx.html">Build sherpa-onnx for Android</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="android/build-sherpa-onnx.html#install-android-studio">Install Android Studio</a></li>
@@ -447,6 +460,12 @@ Windows, embedded systems, Android, and iOS.</p>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-paraformer/paraformer-models.html#real-time-speech-recognition-from-a-microphone">Real-time speech recognition from a microphone</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-paraformer/paraformer-models.html#csukuangfj-sherpa-onnx-streaming-paraformer-trilingual-zh-cantonese-en-chinese-cantonese-english">csukuangfj/sherpa-onnx-streaming-paraformer-trilingual-zh-cantonese-en (Chinese + Cantonese + English)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-paraformer/paraformer-models.html#id1">Download the model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-paraformer/paraformer-models.html#id2">Decode a single wave file</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-paraformer/paraformer-models.html#id5">Real-time speech recognition from a microphone</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -553,16 +572,40 @@ Windows, embedded systems, Android, and iOS.</p>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pretrained_models/offline-paraformer/index.html">Offline paraformer models</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html">Paraformer models</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#csukuangfj-sherpa-onnx-paraformer-zh-2023-03-28-chinese">csukuangfj/sherpa-onnx-paraformer-zh-2023-03-28 (Chinese)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#csukuangfj-sherpa-onnx-paraformer-trilingual-zh-cantonese-en-chinese-english-cantonese">csukuangfj/sherpa-onnx-paraformer-trilingual-zh-cantonese-en (Chinese + English + Cantonese 粤语)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#download-the-model">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#decode-wave-files">Decode wave files</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#speech-recognition-from-a-microphone">Speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#csukuangfj-sherpa-onnx-paraformer-zh-2023-09-14-chinese">csukuangfj/sherpa-onnx-paraformer-zh-2023-09-14 (Chinese)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#csukuangfj-sherpa-onnx-paraformer-en-2024-03-09-english">csukuangfj/sherpa-onnx-paraformer-en-2024-03-09 (English)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id1">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id2">Decode wave files</a></li>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id4">Speech recognition from a microphone</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id5">Speech recognition from a microphone</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#csukuangfj-sherpa-onnx-paraformer-zh-small-2024-03-09-chinese-english">csukuangfj/sherpa-onnx-paraformer-zh-small-2024-03-09 (Chinese + English)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id6">Download the model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id7">Decode wave files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id9">Speech recognition from a microphone</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#csukuangfj-sherpa-onnx-paraformer-zh-2024-03-09-chinese-english">csukuangfj/sherpa-onnx-paraformer-zh-2024-03-09 (Chinese + English)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id11">Download the model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id12">Decode wave files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id15">Speech recognition from a microphone</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#csukuangfj-sherpa-onnx-paraformer-zh-2023-03-28-chinese-english">csukuangfj/sherpa-onnx-paraformer-zh-2023-03-28 (Chinese + English)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id16">Download the model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id17">Decode wave files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id20">Speech recognition from a microphone</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#csukuangfj-sherpa-onnx-paraformer-zh-2023-09-14-chinese-english">csukuangfj/sherpa-onnx-paraformer-zh-2023-09-14 (Chinese + English))</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id21">Download the model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id22">Decode wave files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-paraformer/paraformer-models.html#id24">Speech recognition from a microphone</a></li>
 </ul>
 </li>
 </ul>
@@ -668,6 +711,16 @@ Windows, embedded systems, Android, and iOS.</p>
 <li class="toctree-l5"><a class="reference internal" href="tts/pretrained_models/vits.html#id10">Generate speech with Python script</a></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tts/wasm/index.html">WebAssembly</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tts/wasm/install-emscripten.html">Install Emscripten</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tts/wasm/build.html">Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tts/wasm/hf-spaces.html">Huggingface Spaces (WebAssembly)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tts/wasm/hf-spaces.html#english-tts">English TTS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tts/wasm/hf-spaces.html#german-tts">German TTS</a></li>
 </ul>
 </li>
 </ul>
