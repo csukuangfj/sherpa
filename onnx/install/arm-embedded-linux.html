@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Embedded Linux (arm) &mdash; sherpa 1.3 documentation</title>
@@ -21,7 +21,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Python" href="../python/index.html" />
+    <link rel="next" title="Embedded Linux (riscv64)" href="riscv64-embedded-linux.html" />
     <link rel="prev" title="Embedded Linux (aarch64)" href="aarch64-embedded-linux.html" /> 
 </head>
 
@@ -60,6 +60,7 @@
 <p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa-onnx</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-onnx</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="linux.html">Linux</a></li>
 <li class="toctree-l3"><a class="reference internal" href="macos.html">macOS</a></li>
@@ -71,8 +72,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#how-to-build-static-libraries-and-static-linked-binaries">How to build static libraries and static linked binaries</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="riscv64-embedded-linux.html">Embedded Linux (riscv64)</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../faqs/index.html">Frequently Asked Question (FAQs)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../c-api/index.html">C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
@@ -143,6 +146,50 @@ use this document. Refer to <a class="reference internal" href="linux.html#insta
 <p class="admonition-title">Hint</p>
 <p>This page is for cross-compiling.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can download pre-compiled binaries for 32-bit <code class="docutils literal notranslate"><span class="pre">ARM</span></code> from the following URL
+<a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-libs/tree/main/arm32">https://huggingface.co/csukuangfj/sherpa-onnx-libs/tree/main/arm32</a></p>
+<p>Please always download the latest version.</p>
+<p>Example command to download the version <code class="docutils literal notranslate"><span class="pre">1.9.12</span></code>:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># binaries built with shared libraries</span>
+wget<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-libs/resolve/main/arm32/sherpa-onnx-v1.9.12-linux-arm-gnueabihf-shared.tar.bz2
+
+<span class="c1"># binaries built with static link</span>
+wget<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-libs/resolve/main/arm32/sherpa-onnx-v1.9.12-linux-arm-gnueabihf-static.tar.bz2
+
+<span class="c1"># For users from China</span>
+<span class="c1"># 中国国内用户，如果访问不了 huggingface, 请使用</span>
+
+<span class="c1"># binaries built with shared libraries</span>
+wget<span class="w"> </span>https://hf-mirror.com/csukuangfj/sherpa-onnx-libs/resolve/main/arm32/sherpa-onnx-v1.9.12-linux-arm-gnueabihf-shared.tar.bz2
+
+<span class="c1"># binaries built with static link</span>
+wget<span class="w"> </span>https://hf-mirror.com/csukuangfj/sherpa-onnx-libs/resolve/main/arm32/sherpa-onnx-v1.9.12-linux-arm-gnueabihf-static.tar.bz2
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>We provide two colab notebooks
+for you to try this section step by step.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Build with <code class="docutils literal notranslate"><span class="pre">shared</span></code> libraries</p></td>
+<td><p>Build with <code class="docutils literal notranslate"><span class="pre">static</span></code> libraries</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/k2-fsa/colab/blob/master/sherpa-onnx/sherpa_onnx_arm_cross_compiling_shared_libs.ipynb"><img alt="build sherpa-onnx for arm shared colab notebook" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p></td>
+<td><p><a class="reference external" href="https://github.com/k2-fsa/colab/blob/master/sherpa-onnx/sherpa_onnx_arm_cross_compiling_static_libs.ipynb"><img alt="build sherpa-onnx for arm static colab notebook" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>If you are using Windows/macOS or you don’t want to setup your local environment
+for cross-compiling, please use the above colab notebooks.</p>
+</div>
 <section id="install-toolchain">
 <h2>Install toolchain<a class="headerlink" href="#install-toolchain" title="Permalink to this heading"></a></h2>
 <p>The first step is to install a toolchain for cross-compiling.</p>
@@ -158,6 +205,11 @@ which has been uploaded to <a class="reference external" href="https://huggingfa
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/software
 <span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/software
 wget<span class="w"> </span>-q<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-ncnn-toolchains/resolve/main/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz
+
+<span class="c1"># For users from China</span>
+<span class="c1"># 中国国内用户，如果访问不了 huggingface, 请使用</span>
+<span class="c1"># wget -q https://hf-mirror.com/csukuangfj/sherpa-ncnn-toolchains/resolve/main/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz</span>
+
 tar<span class="w"> </span>xf<span class="w"> </span>gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz
 </pre></div>
 </div>
@@ -299,6 +351,11 @@ download a cross compile toolchain with GCC &gt;= 9.0. The following is an examp
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/software
 <span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/software
 wget<span class="w"> </span>-q<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-ncnn-toolchains/resolve/main/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz
+
+<span class="c1"># For users from China</span>
+<span class="c1"># 中国国内用户，如果访问不了 huggingface, 请使用</span>
+wget<span class="w"> </span>-q<span class="w"> </span>https://hf-mirror.com/csukuangfj/sherpa-ncnn-toolchains/resolve/main/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz
+
 tar<span class="w"> </span>xf<span class="w"> </span>gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz
 </pre></div>
 </div>
@@ -353,7 +410,7 @@ Dynamic<span class="w"> </span>section<span class="w"> </span>at<span class="w">
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="aarch64-embedded-linux.html" class="btn btn-neutral float-left" title="Embedded Linux (aarch64)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../python/index.html" class="btn btn-neutral float-right" title="Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="riscv64-embedded-linux.html" class="btn btn-neutral float-right" title="Embedded Linux (riscv64)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

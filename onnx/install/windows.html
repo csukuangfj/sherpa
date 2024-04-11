@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Windows &mdash; sherpa 1.3 documentation</title>
@@ -61,6 +61,7 @@
 <p class="caption" role="heading"><span class="caption-text">k2-fsa/sherpa-onnx</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-onnx</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="linux.html">Linux</a></li>
 <li class="toctree-l3"><a class="reference internal" href="macos.html">macOS</a></li>
@@ -71,8 +72,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="aarch64-embedded-linux.html">Embedded Linux (aarch64)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arm-embedded-linux.html">Embedded Linux (arm)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv64-embedded-linux.html">Embedded Linux (riscv64)</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../faqs/index.html">Frequently Asked Question (FAQs)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../c-api/index.html">C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
@@ -127,6 +130,31 @@
 <p class="admonition-title">Hint</p>
 <p>MinGW is known not to work.
 Please install <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Studio</span></code> before you continue.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can download pre-compiled binaries for both 32-bit and 64-bit Windows
+from the following URL <a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-libs/tree/main">https://huggingface.co/csukuangfj/sherpa-onnx-libs/tree/main</a>.</p>
+<p>Please always download the latest version.</p>
+<p>URLs to download the version <code class="docutils literal notranslate"><span class="pre">1.9.12</span></code> is given below.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>64-bit Windows (static lib)</p></td>
+<td><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-libs/resolve/main/win64/sherpa-onnx-v1.9.12-win-x64-static.tar.bz2">https://huggingface.co/csukuangfj/sherpa-onnx-libs/resolve/main/win64/sherpa-onnx-v1.9.12-win-x64-static.tar.bz2</a></p></td>
+</tr>
+<tr class="row-even"><td><p>64-bit Windows (shared lib)</p></td>
+<td><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-libs/resolve/main/win64/sherpa-onnx-v1.9.12-win-x64-shared.tar.bz2">https://huggingface.co/csukuangfj/sherpa-onnx-libs/resolve/main/win64/sherpa-onnx-v1.9.12-win-x64-shared.tar.bz2</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>32-bit Windows (static lib)</p></td>
+<td><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-libs/resolve/main/win32/sherpa-onnx-v1.9.12-win-x86-static.tar.bz2">https://huggingface.co/csukuangfj/sherpa-onnx-libs/resolve/main/win32/sherpa-onnx-v1.9.12-win-x86-static.tar.bz2</a></p></td>
+</tr>
+<tr class="row-even"><td><p>32-bit Windows (shared lib)</p></td>
+<td><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-libs/resolve/main/win32/sherpa-onnx-v1.9.12-win-x86-shared.tar.bz2">https://huggingface.co/csukuangfj/sherpa-onnx-libs/resolve/main/win32/sherpa-onnx-v1.9.12-win-x86-shared.tar.bz2</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>If you cannot access <code class="docutils literal notranslate"><span class="pre">huggingface.co</span></code>, then please replace <code class="docutils literal notranslate"><span class="pre">huggingface.co</span></code> with
+<code class="docutils literal notranslate"><span class="pre">hf-mirror.com</span></code>.</p>
 </div>
 <section id="bit-windows-x64">
 <h2>64-bit Windows (x64)<a class="headerlink" href="#bit-windows-x64" title="Permalink to this heading"></a></h2>
