@@ -73,7 +73,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kws/index.html">KWS Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../punctuation/index.html">Punctuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../audio-tagging/index.html">Audio tagging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../spoken-language-identification/index.html">Spoken language identification</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Pre-trained models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../online-transducer/index.html">Online transducer models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../online-paraformer/index.html">Online paraformer models</a></li>
@@ -145,7 +148,13 @@ The paper for the dataset can be found at <a class="reference external" href="ht
 <h3>Download the model<a class="headerlink" href="#download-the-model" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-cantonese-2024-03-13.tar.bz2
+
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-cantonese-2024-03-13.tar.bz2</span>
+
 tar<span class="w"> </span>xf<span class="w"> </span>sherpa-onnx-zipformer-cantonese-2024-03-13.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-zipformer-cantonese-2024-03-13.tar.bz2
+
 ls<span class="w"> </span>-lh<span class="w"> </span>sherpa-onnx-zipformer-cantonese-2024-03-13
 </pre></div>
 </div>
@@ -292,7 +301,12 @@ It supports only English since it is trained on the <a class="reference external
 <h3>Download the model<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-gigaspeech-2023-12-12.tar.bz2
+
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-gigaspeech-2023-12-12.tar.bz2</span>
+
 tar<span class="w"> </span>xf<span class="w"> </span>sherpa-onnx-zipformer-gigaspeech-2023-12-12.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-zipformer-gigaspeech-2023-12-12.tar.bz2
 ls<span class="w"> </span>-lh<span class="w"> </span>sherpa-onnx-zipformer-gigaspeech-2023-12-12
 </pre></div>
 </div>
@@ -421,7 +435,11 @@ Real time factor (RTF): 1.101 / 28.165 = 0.039
 <section id="speech-recognition-from-a-microphone-with-vad">
 <h3>Speech recognition from a microphone with VAD<a class="headerlink" href="#speech-recognition-from-a-microphone-with-vad" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
+
 wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx
+
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx</span>
 
 ./build/bin/sherpa-onnx-vad-microphone-offline-asr<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--silero-vad-model<span class="o">=</span>./silero_vad.onnx<span class="w"> </span><span class="se">\</span>
@@ -446,10 +464,13 @@ wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/downl
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/zrjin/sherpa-onnx-zipformer-multi-zh-hans-2023-9-2
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-zipformer-multi-zh-hans-2023-9-2
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-multi-zh-hans-2023-9-2.tar.bz2
 
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-multi-zh-hans-2023-9-2.tar.bz2</span>
+
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-zipformer-multi-zh-hans-2023-9-2.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-zipformer-multi-zh-hans-2023-9-2.tar.bz2
 </pre></div>
 </div>
 <p>Please check that the file sizes of the pre-trained models are correct. See
@@ -526,7 +547,7 @@ Real time factor (RTF): 0.362 / 15.289 = 0.024
 ./build/bin/sherpa-onnx-offline<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/encoder-epoch-20-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/decoder-epoch-20-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/decoder-epoch-20-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/joiner-epoch-20-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/test_wavs/0.wav<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/test_wavs/1.wav<span class="w"> </span><span class="se">\</span>
@@ -538,9 +559,9 @@ Real time factor (RTF): 0.362 / 15.289 = 0.024
 <p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx-offline.exe</span></code> for Windows.</p>
 </div>
 <p>You should see the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/runner/work/sherpa-onnx/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 sherpa-onnx-offline --tokens=./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/tokens.txt --encoder=./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/encoder-epoch-20-avg-1.int8.onnx --decoder=./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/decoder-epoch-20-avg-1.int8.onnx --joiner=./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/joiner-epoch-20-avg-1.int8.onnx ./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/test_wavs/0.wav ./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/test_wavs/1.wav ./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/test_wavs/8k.wav 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/runner/work/sherpa-onnx/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 sherpa-onnx-offline --tokens=./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/tokens.txt --encoder=./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/encoder-epoch-20-avg-1.int8.onnx --decoder=./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/decoder-epoch-20-avg-1.onnx --joiner=./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/joiner-epoch-20-avg-1.int8.onnx ./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/test_wavs/0.wav ./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/test_wavs/1.wav ./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/test_wavs/8k.wav 
 
-OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/encoder-epoch-20-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/decoder-epoch-20-avg-1.int8.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/joiner-epoch-20-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), whisper=OfflineWhisperModelConfig(encoder=&quot;&quot;, decoder=&quot;&quot;, language=&quot;&quot;, task=&quot;transcribe&quot;), tdnn=OfflineTdnnModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;, model_type=&quot;&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, hotwords_file=&quot;&quot;, hotwords_score=1.5)
+OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/encoder-epoch-20-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/decoder-epoch-20-avg-1.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/joiner-epoch-20-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), whisper=OfflineWhisperModelConfig(encoder=&quot;&quot;, decoder=&quot;&quot;, language=&quot;&quot;, task=&quot;transcribe&quot;), tdnn=OfflineTdnnModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-zipformer-multi-zh-hans-2023-9-2/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;, model_type=&quot;&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, hotwords_file=&quot;&quot;, hotwords_score=1.5)
 Creating recognizer ...
 Started
 /Users/runner/work/sherpa-onnx/sherpa-onnx/sherpa-onnx/csrc/offline-stream.cc:AcceptWaveformImpl:117 Creating a resampler:
@@ -592,10 +613,13 @@ Real time factor (RTF): 0.305 / 15.289 = 0.020
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/yfyeung/icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17
-<span class="nb">cd</span><span class="w"> </span>icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17.tar.bz2
 
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/*epoch-60-avg-20*.onnx&quot;</span>
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17.tar.bz2</span>
+
+tar<span class="w"> </span>xvf<span class="w"> </span>icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17.tar.bz2
+rm<span class="w"> </span>icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17.tar.bz2
 </pre></div>
 </div>
 <p>Please check that the file sizes of the pre-trained models are correct. See
@@ -668,7 +692,7 @@ Real time factor (RTF): 1.611 / 28.165 = 0.057
 ./build/bin/sherpa-onnx-offline<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tokens<span class="o">=</span>./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/data/lang_bpe_500/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--encoder<span class="o">=</span>./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/encoder-epoch-60-avg-20.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--decoder<span class="o">=</span>./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/decoder-epoch-60-avg-20.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/decoder-epoch-60-avg-20.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--joiner<span class="o">=</span>./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/joiner-epoch-60-avg-20.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
@@ -680,9 +704,9 @@ Real time factor (RTF): 1.611 / 28.165 = 0.057
 <p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx-offline.exe</span></code> for Windows.</p>
 </div>
 <p>You should see the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/data/lang_bpe_500/tokens.txt --encoder=./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/encoder-epoch-60-avg-20.int8.onnx --decoder=./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/decoder-epoch-60-avg-20.int8.onnx --joiner=./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/joiner-epoch-60-avg-20.int8.onnx ./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/test_wavs/1089-134686-0001.wav ./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/test_wavs/1221-135766-0001.wav ./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/test_wavs/1221-135766-0002.wav 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/data/lang_bpe_500/tokens.txt --encoder=./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/encoder-epoch-60-avg-20.int8.onnx --decoder=./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/decoder-epoch-60-avg-20.onnx --joiner=./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/joiner-epoch-60-avg-20.int8.onnx ./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/test_wavs/1089-134686-0001.wav ./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/test_wavs/1221-135766-0001.wav ./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/test_wavs/1221-135766-0002.wav 
 
-OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/encoder-epoch-60-avg-20.int8.onnx&quot;, decoder_filename=&quot;./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/decoder-epoch-60-avg-20.int8.onnx&quot;, joiner_filename=&quot;./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/joiner-epoch-60-avg-20.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), tokens=&quot;./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/data/lang_bpe_500/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, context_score=1.5)
+OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/encoder-epoch-60-avg-20.int8.onnx&quot;, decoder_filename=&quot;./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/decoder-epoch-60-avg-20.onnx&quot;, joiner_filename=&quot;./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/exp/joiner-epoch-60-avg-20.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), tokens=&quot;./icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17/data/lang_bpe_500/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, context_score=1.5)
 Creating recognizer ...
 Started
 Done!
@@ -730,10 +754,13 @@ Real time factor (RTF): 1.368 / 28.165 = 0.049
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/pkufool/icefall-asr-zipformer-wenetspeech-20230615
-<span class="nb">cd</span><span class="w"> </span>icefall-asr-zipformer-wenetspeech-20230615
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/icefall-asr-zipformer-wenetspeech-20230615.tar.bz2
 
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;exp/*.onnx&quot;</span>
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/icefall-asr-zipformer-wenetspeech-20230615.tar.bz2</span>
+
+tar<span class="w"> </span>xvf<span class="w"> </span>icefall-asr-zipformer-wenetspeech-20230615.tar.bz2
+rm<span class="w"> </span>icefall-asr-zipformer-wenetspeech-20230615.tar.bz2
 </pre></div>
 </div>
 <p>Please check that the file sizes of the pre-trained models are correct. See
@@ -816,7 +843,7 @@ Real time factor (RTF): 0.458 / 15.289 = 0.030
 ./build/bin/sherpa-onnx-offline<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tokens<span class="o">=</span>./icefall-asr-zipformer-wenetspeech-20230615/data/lang_char/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--encoder<span class="o">=</span>./icefall-asr-zipformer-wenetspeech-20230615/exp/encoder-epoch-12-avg-4.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--decoder<span class="o">=</span>./icefall-asr-zipformer-wenetspeech-20230615/exp/decoder-epoch-12-avg-4.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./icefall-asr-zipformer-wenetspeech-20230615/exp/decoder-epoch-12-avg-4.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--joiner<span class="o">=</span>./icefall-asr-zipformer-wenetspeech-20230615/exp/joiner-epoch-12-avg-4.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./icefall-asr-zipformer-wenetspeech-20230615/test_wavs/DEV_T0000000000.wav<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./icefall-asr-zipformer-wenetspeech-20230615/test_wavs/DEV_T0000000001.wav<span class="w"> </span><span class="se">\</span>
@@ -838,9 +865,9 @@ Real time factor (RTF): 0.458 / 15.289 = 0.030
 <p>in your commandline.</p>
 </div>
 <p>You should see the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./icefall-asr-zipformer-wenetspeech-20230615/data/lang_char/tokens.txt --encoder=./icefall-asr-zipformer-wenetspeech-20230615/exp/encoder-epoch-12-avg-4.int8.onnx --decoder=./icefall-asr-zipformer-wenetspeech-20230615/exp/decoder-epoch-12-avg-4.int8.onnx --joiner=./icefall-asr-zipformer-wenetspeech-20230615/exp/joiner-epoch-12-avg-4.int8.onnx ./icefall-asr-zipformer-wenetspeech-20230615/test_wavs/DEV_T0000000000.wav ./icefall-asr-zipformer-wenetspeech-20230615/test_wavs/DEV_T0000000001.wav ./icefall-asr-zipformer-wenetspeech-20230615/test_wavs/DEV_T0000000002.wav 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./icefall-asr-zipformer-wenetspeech-20230615/data/lang_char/tokens.txt --encoder=./icefall-asr-zipformer-wenetspeech-20230615/exp/encoder-epoch-12-avg-4.int8.onnx --decoder=./icefall-asr-zipformer-wenetspeech-20230615/exp/decoder-epoch-12-avg-4.onnx --joiner=./icefall-asr-zipformer-wenetspeech-20230615/exp/joiner-epoch-12-avg-4.int8.onnx ./icefall-asr-zipformer-wenetspeech-20230615/test_wavs/DEV_T0000000000.wav ./icefall-asr-zipformer-wenetspeech-20230615/test_wavs/DEV_T0000000001.wav ./icefall-asr-zipformer-wenetspeech-20230615/test_wavs/DEV_T0000000002.wav 
 
-OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./icefall-asr-zipformer-wenetspeech-20230615/exp/encoder-epoch-12-avg-4.int8.onnx&quot;, decoder_filename=&quot;./icefall-asr-zipformer-wenetspeech-20230615/exp/decoder-epoch-12-avg-4.int8.onnx&quot;, joiner_filename=&quot;./icefall-asr-zipformer-wenetspeech-20230615/exp/joiner-epoch-12-avg-4.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), tokens=&quot;./icefall-asr-zipformer-wenetspeech-20230615/data/lang_char/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, context_score=1.5)
+OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./icefall-asr-zipformer-wenetspeech-20230615/exp/encoder-epoch-12-avg-4.int8.onnx&quot;, decoder_filename=&quot;./icefall-asr-zipformer-wenetspeech-20230615/exp/decoder-epoch-12-avg-4.onnx&quot;, joiner_filename=&quot;./icefall-asr-zipformer-wenetspeech-20230615/exp/joiner-epoch-12-avg-4.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), tokens=&quot;./icefall-asr-zipformer-wenetspeech-20230615/data/lang_char/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, context_score=1.5)
 Creating recognizer ...
 Started
 Done!
@@ -888,9 +915,13 @@ Real time factor (RTF): 0.338 / 15.289 = 0.022
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-zipformer-large-en-2023-06-26
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-zipformer-large-en-2023-06-26
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-large-en-2023-06-26.tar.bz2
+
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-large-en-2023-06-26.tar.bz2</span>
+
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-zipformer-large-en-2023-06-26.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-zipformer-large-en-2023-06-26.tar.bz2
 </pre></div>
 </div>
 <p>Please check that the file sizes of the pre-trained models are correct. See
@@ -967,7 +998,7 @@ Real time factor (RTF): 1.843 / 28.165 = 0.065
 ./build/bin/sherpa-onnx-offline<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-zipformer-large-en-2023-06-26/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-zipformer-large-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-zipformer-large-en-2023-06-26/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-zipformer-large-en-2023-06-26/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-zipformer-large-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-zipformer-large-en-2023-06-26/test_wavs/0.wav<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-zipformer-large-en-2023-06-26/test_wavs/1.wav<span class="w"> </span><span class="se">\</span>
@@ -979,9 +1010,9 @@ Real time factor (RTF): 1.843 / 28.165 = 0.065
 <p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx-offline.exe</span></code> for Windows.</p>
 </div>
 <p>You should see the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./sherpa-onnx-zipformer-large-en-2023-06-26/tokens.txt --encoder=./sherpa-onnx-zipformer-large-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx --decoder=./sherpa-onnx-zipformer-large-en-2023-06-26/decoder-epoch-99-avg-1.int8.onnx --joiner=./sherpa-onnx-zipformer-large-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx ./sherpa-onnx-zipformer-large-en-2023-06-26/test_wavs/0.wav ./sherpa-onnx-zipformer-large-en-2023-06-26/test_wavs/1.wav ./sherpa-onnx-zipformer-large-en-2023-06-26/test_wavs/8k.wav 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./sherpa-onnx-zipformer-large-en-2023-06-26/tokens.txt --encoder=./sherpa-onnx-zipformer-large-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx --decoder=./sherpa-onnx-zipformer-large-en-2023-06-26/decoder-epoch-99-avg-1.onnx --joiner=./sherpa-onnx-zipformer-large-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx ./sherpa-onnx-zipformer-large-en-2023-06-26/test_wavs/0.wav ./sherpa-onnx-zipformer-large-en-2023-06-26/test_wavs/1.wav ./sherpa-onnx-zipformer-large-en-2023-06-26/test_wavs/8k.wav 
 
-OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-zipformer-large-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-zipformer-large-en-2023-06-26/decoder-epoch-99-avg-1.int8.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-zipformer-large-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-zipformer-large-en-2023-06-26/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, context_score=1.5)
+OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-zipformer-large-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-zipformer-large-en-2023-06-26/decoder-epoch-99-avg-1.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-zipformer-large-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-zipformer-large-en-2023-06-26/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, context_score=1.5)
 Creating recognizer ...
 Started
 /Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/offline-stream.cc:AcceptWaveformImpl:108 Creating a resampler:
@@ -1033,9 +1064,13 @@ Real time factor (RTF): 1.490 / 28.165 = 0.053
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-zipformer-small-en-2023-06-26
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-zipformer-small-en-2023-06-26
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-small-en-2023-06-26.tar.bz2
+
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-small-en-2023-06-26.tar.bz2</span>
+
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-zipformer-small-en-2023-06-26.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-zipformer-small-en-2023-06-26.tar.bz2
 </pre></div>
 </div>
 <p>Please check that the file sizes of the pre-trained models are correct. See
@@ -1112,7 +1147,7 @@ Real time factor (RTF): 0.953 / 28.165 = 0.034
 ./build/bin/sherpa-onnx-offline<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-zipformer-small-en-2023-06-26/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-zipformer-small-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-zipformer-small-en-2023-06-26/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-zipformer-small-en-2023-06-26/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-zipformer-small-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-zipformer-small-en-2023-06-26/test_wavs/0.wav<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-zipformer-small-en-2023-06-26/test_wavs/1.wav<span class="w"> </span><span class="se">\</span>
@@ -1124,9 +1159,9 @@ Real time factor (RTF): 0.953 / 28.165 = 0.034
 <p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx-offline.exe</span></code> for Windows.</p>
 </div>
 <p>You should see the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./sherpa-onnx-zipformer-small-en-2023-06-26/tokens.txt --encoder=./sherpa-onnx-zipformer-small-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx --decoder=./sherpa-onnx-zipformer-small-en-2023-06-26/decoder-epoch-99-avg-1.int8.onnx --joiner=./sherpa-onnx-zipformer-small-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx ./sherpa-onnx-zipformer-small-en-2023-06-26/test_wavs/0.wav ./sherpa-onnx-zipformer-small-en-2023-06-26/test_wavs/1.wav ./sherpa-onnx-zipformer-small-en-2023-06-26/test_wavs/8k.wav 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./sherpa-onnx-zipformer-small-en-2023-06-26/tokens.txt --encoder=./sherpa-onnx-zipformer-small-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx --decoder=./sherpa-onnx-zipformer-small-en-2023-06-26/decoder-epoch-99-avg-1.onnx --joiner=./sherpa-onnx-zipformer-small-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx ./sherpa-onnx-zipformer-small-en-2023-06-26/test_wavs/0.wav ./sherpa-onnx-zipformer-small-en-2023-06-26/test_wavs/1.wav ./sherpa-onnx-zipformer-small-en-2023-06-26/test_wavs/8k.wav 
 
-OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-zipformer-small-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-zipformer-small-en-2023-06-26/decoder-epoch-99-avg-1.int8.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-zipformer-small-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-zipformer-small-en-2023-06-26/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, context_score=1.5)
+OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-zipformer-small-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-zipformer-small-en-2023-06-26/decoder-epoch-99-avg-1.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-zipformer-small-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-zipformer-small-en-2023-06-26/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, context_score=1.5)
 Creating recognizer ...
 Started
 /Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/offline-stream.cc:AcceptWaveformImpl:108 Creating a resampler:
@@ -1179,7 +1214,12 @@ Real time factor (RTF): 0.891 / 28.165 = 0.032
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
 wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-en-2023-06-26.tar.bz2
+
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-en-2023-06-26.tar.bz2</span>
+
 tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-zipformer-en-2023-06-26.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-zipformer-en-2023-06-26.tar.bz2
 </pre></div>
 </div>
 <p>Please check that the file sizes of the pre-trained models are correct. See
@@ -1256,7 +1296,7 @@ Real time factor (RTF): 1.301 / 28.165 = 0.046
 ./build/bin/sherpa-onnx-offline<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-06-26/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-06-26/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-06-26/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-zipformer-en-2023-06-26/test_wavs/0.wav<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-zipformer-en-2023-06-26/test_wavs/1.wav<span class="w"> </span><span class="se">\</span>
@@ -1268,9 +1308,9 @@ Real time factor (RTF): 1.301 / 28.165 = 0.046
 <p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx-offline.exe</span></code> for Windows.</p>
 </div>
 <p>You should see the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./sherpa-onnx-zipformer-en-2023-06-26/tokens.txt --encoder=./sherpa-onnx-zipformer-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx --decoder=./sherpa-onnx-zipformer-en-2023-06-26/decoder-epoch-99-avg-1.int8.onnx --joiner=./sherpa-onnx-zipformer-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx ./sherpa-onnx-zipformer-en-2023-06-26/test_wavs/0.wav ./sherpa-onnx-zipformer-en-2023-06-26/test_wavs/1.wav ./sherpa-onnx-zipformer-en-2023-06-26/test_wavs/8k.wav 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./sherpa-onnx-zipformer-en-2023-06-26/tokens.txt --encoder=./sherpa-onnx-zipformer-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx --decoder=./sherpa-onnx-zipformer-en-2023-06-26/decoder-epoch-99-avg-1.onnx --joiner=./sherpa-onnx-zipformer-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx ./sherpa-onnx-zipformer-en-2023-06-26/test_wavs/0.wav ./sherpa-onnx-zipformer-en-2023-06-26/test_wavs/1.wav ./sherpa-onnx-zipformer-en-2023-06-26/test_wavs/8k.wav 
 
-OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-zipformer-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-zipformer-en-2023-06-26/decoder-epoch-99-avg-1.int8.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-zipformer-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-zipformer-en-2023-06-26/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, context_score=1.5)
+OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-zipformer-en-2023-06-26/encoder-epoch-99-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-zipformer-en-2023-06-26/decoder-epoch-99-avg-1.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-zipformer-en-2023-06-26/joiner-epoch-99-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-zipformer-en-2023-06-26/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4, context_score=1.5)
 Creating recognizer ...
 Started
 /Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/offline-stream.cc:AcceptWaveformImpl:108 Creating a resampler:
@@ -1318,9 +1358,13 @@ it is trained.</p>
 <section id="id39">
 <h3>Download the model<a class="headerlink" href="#id39" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/yfyeung/icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04
-<span class="nb">cd</span><span class="w"> </span>icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04.tar.bz2
+
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04.tar.bz2</span>
+
+tar<span class="w"> </span>xvf<span class="w"> </span>icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04.tar.bz2
+rm<span class="w"> </span>icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04.tar.bz2
 </pre></div>
 </div>
 <p>Please check that the file sizes of the pre-trained models are correct. See
@@ -1393,7 +1437,7 @@ Real time factor (RTF): 1.662 / 28.165 = 0.059
 ./build/bin/sherpa-onnx-offline<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tokens<span class="o">=</span>./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/data/lang_bpe_500/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--encoder<span class="o">=</span>./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/encoder-epoch-30-avg-4.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--decoder<span class="o">=</span>./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/decoder-epoch-30-avg-4.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/decoder-epoch-30-avg-4.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--joiner<span class="o">=</span>./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/joiner-epoch-30-avg-4.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/test_wavs/1089-134686-0001.wav<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/test_wavs/1221-135766-0001.wav<span class="w"> </span><span class="se">\</span>
@@ -1405,9 +1449,9 @@ Real time factor (RTF): 1.662 / 28.165 = 0.059
 <p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx-offline.exe</span></code> for Windows.</p>
 </div>
 <p>You should see the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/data/lang_bpe_500/tokens.txt --encoder=./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/encoder-epoch-30-avg-4.int8.onnx --decoder=./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/decoder-epoch-30-avg-4.int8.onnx --joiner=./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/joiner-epoch-30-avg-4.int8.onnx ./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/test_wavs/1089-134686-0001.wav ./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/test_wavs/1221-135766-0001.wav ./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/test_wavs/1221-135766-0002.wav 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Users/fangjun/open-source/sherpa-onnx/sherpa-onnx/csrc/parse-options.cc:Read:361 ./build/bin/sherpa-onnx-offline --tokens=./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/data/lang_bpe_500/tokens.txt --encoder=./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/encoder-epoch-30-avg-4.int8.onnx --decoder=./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/decoder-epoch-30-avg-4.onnx --joiner=./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/joiner-epoch-30-avg-4.int8.onnx ./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/test_wavs/1089-134686-0001.wav ./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/test_wavs/1221-135766-0001.wav ./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/test_wavs/1221-135766-0002.wav 
 
-OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/encoder-epoch-30-avg-4.int8.onnx&quot;, decoder_filename=&quot;./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/decoder-epoch-30-avg-4.int8.onnx&quot;, joiner_filename=&quot;./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/joiner-epoch-30-avg-4.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), tokens=&quot;./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/data/lang_bpe_500/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4)
+OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/encoder-epoch-30-avg-4.int8.onnx&quot;, decoder_filename=&quot;./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/decoder-epoch-30-avg-4.onnx&quot;, joiner_filename=&quot;./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/exp/joiner-epoch-30-avg-4.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), tokens=&quot;./icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04/data/lang_bpe_500/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;greedy_search&quot;, max_active_paths=4)
 Creating recognizer ...
 Started
 Done!
@@ -1455,9 +1499,13 @@ Real time factor (RTF): 1.424 / 28.165 = 0.051
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-zipformer-en-2023-04-01
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-zipformer-en-2023-04-01
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-en-2023-04-01.tar.bz2
+
+<span class="c1"># For Chinese users, please use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-en-2023-04-01.tar.bz2</span>
+
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-zipformer-en-2023-04-01.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-zipformer-en-2023-04-01.tar.bz2
 </pre></div>
 </div>
 <p>Please check that the file sizes of the pre-trained models are correct. See
@@ -1534,7 +1582,7 @@ Real time factor (RTF): 2.151 / 28.165 = 0.076
 ./build/bin/sherpa-onnx-offline<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-04-01/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-04-01/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-04-01/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-04-01/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-04-01/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-zipformer-en-2023-04-01/test_wavs/0.wav<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-zipformer-en-2023-04-01/test_wavs/1.wav<span class="w"> </span><span class="se">\</span>
@@ -1546,7 +1594,7 @@ Real time factor (RTF): 2.151 / 28.165 = 0.076
 <p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx-offline.exe</span></code> for Windows.</p>
 </div>
 <p>You should see the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-zipformer-en-2023-04-01/encoder-epoch-99-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-zipformer-en-2023-04-01/decoder-epoch-99-avg-1.int8.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-zipformer-en-2023-04-01/joiner-epoch-99-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-zipformer-en-2023-04-01/tokens.txt&quot;, num_threads=2, debug=False), decoding_method=&quot;greedy_search&quot;)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-zipformer-en-2023-04-01/encoder-epoch-99-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-zipformer-en-2023-04-01/decoder-epoch-99-avg-1.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-zipformer-en-2023-04-01/joiner-epoch-99-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-zipformer-en-2023-04-01/tokens.txt&quot;, num_threads=2, debug=False), decoding_method=&quot;greedy_search&quot;)
 Creating recognizer ...
 2023-04-01 14:42:00.407939001 [E:onnxruntime:, env.cc:251 ThreadMain] pthread_setaffinity_np failed for thread: 638195, index: 15, mask: {16, 52, }, error code: 22 error msg: Invalid argument. Specify the number of threads explicitly so the affinity is not set.
 2023-04-01 14:42:00.407940827 [E:onnxruntime:, env.cc:251 ThreadMain] pthread_setaffinity_np failed for thread: 638196, index: 16, mask: {17, 53, }, error code: 22 error msg: Invalid argument. Specify the number of threads explicitly so the affinity is not set.
@@ -1600,9 +1648,13 @@ Real time factor (RTF): 1.478 / 28.165 = 0.052
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-zipformer-en-2023-03-30
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-zipformer-en-2023-03-30
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-en-2023-03-30.tar.bz2
+
+<span class="c1"># For Chinese users, please use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-en-2023-03-30.tar.bz2</span>
+
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-zipformer-en-2023-03-30.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-zipformer-en-2023-03-30.tar.bz2
 </pre></div>
 </div>
 <p>Please check that the file sizes of the pre-trained models are correct. See
@@ -1679,7 +1731,7 @@ Real time factor (RTF): 1.950 / 28.165 = 0.069
 ./build/bin/sherpa-onnx-offline<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-03-30/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-03-30/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-03-30/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-03-30/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-zipformer-en-2023-03-30/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-zipformer-en-2023-03-30/test_wavs/0.wav<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-zipformer-en-2023-03-30/test_wavs/1.wav<span class="w"> </span><span class="se">\</span>
@@ -1691,7 +1743,7 @@ Real time factor (RTF): 1.950 / 28.165 = 0.069
 <p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx-offline.exe</span></code> for Windows.</p>
 </div>
 <p>You should see the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-zipformer-en-2023-03-30/encoder-epoch-99-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-zipformer-en-2023-03-30/decoder-epoch-99-avg-1.int8.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-zipformer-en-2023-03-30/joiner-epoch-99-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-zipformer-en-2023-03-30/tokens.txt&quot;, num_threads=2, debug=False), decoding_method=&quot;greedy_search&quot;)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-zipformer-en-2023-03-30/encoder-epoch-99-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-zipformer-en-2023-03-30/decoder-epoch-99-avg-1.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-zipformer-en-2023-03-30/joiner-epoch-99-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-zipformer-en-2023-03-30/tokens.txt&quot;, num_threads=2, debug=False), decoding_method=&quot;greedy_search&quot;)
 Creating recognizer ...
 2023-04-01 06:49:34.370117205 [E:onnxruntime:, env.cc:251 ThreadMain] pthread_setaffinity_np failed for thread: 607732, index: 16, mask: {17, 53, }, error code: 22 error msg: Invalid argument. Specify the number of threads explicitly so the affinity is not set.
 2023-04-01 06:49:34.370115197 [E:onnxruntime:, env.cc:251 ThreadMain] pthread_setaffinity_np failed for thread: 607731, index: 15, mask: {16, 52, }, error code: 22 error msg: Invalid argument. Specify the number of threads explicitly so the affinity is not set.
@@ -1745,7 +1797,7 @@ Real time factor (RTF): 1.710 / 28.165 = 0.061
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2024, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -73,7 +73,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kws/index.html">KWS Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../punctuation/index.html">Punctuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../audio-tagging/index.html">Audio tagging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../spoken-language-identification/index.html">Spoken language identification</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Pre-trained models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../online-transducer/index.html">Online transducer models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../online-paraformer/index.html">Online paraformer models</a></li>
@@ -173,6 +176,13 @@ from the following huggingface repositories:</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can also download them from</p>
+<blockquote>
+<div><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models">https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models</a></p>
+</div></blockquote>
+</div>
 <p>If you want to export the models by yourself or/and want to learn how the models
 are exported, please read below.</p>
 </section>
@@ -224,21 +234,16 @@ quantized decoder model.</p>
 <p>Now the generated files so far are as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(py38) fangjuns-MacBook-Pro:whisper fangjun$ ls -lh tiny.en-*
 -rw-r--r--  1 fangjun  staff   105M Aug  7 15:43 tiny.en-decoder.int8.onnx
--rw-r--r--  1 fangjun  staff   105M Aug  7 15:45 tiny.en-decoder.int8.ort
 -rw-r--r--  1 fangjun  staff   185M Aug  7 15:43 tiny.en-decoder.onnx
--rw-r--r--  1 fangjun  staff   185M Aug  7 15:45 tiny.en-decoder.ort
 -rw-r--r--  1 fangjun  staff    12M Aug  7 15:43 tiny.en-encoder.int8.onnx
--rw-r--r--  1 fangjun  staff    12M Aug  7 15:45 tiny.en-encoder.int8.ort
 -rw-r--r--  1 fangjun  staff    36M Aug  7 15:43 tiny.en-encoder.onnx
--rw-r--r--  1 fangjun  staff    36M Aug  7 15:45 tiny.en-encoder.ort
 -rw-r--r--  1 fangjun  staff   816K Aug  7 15:43 tiny.en-tokens.txt
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">*.ort</span></code> are the corresponding <a class="reference external" href="https://github.com/microsoft/onnxruntime">onnxruntime</a> format.</p>
-<p>To check whether the exported model works correctly, we can use</p>
-<blockquote>
-<div><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/blob/master/scripts/whisper/test.py">https://github.com/k2-fsa/sherpa-onnx/blob/master/scripts/whisper/test.py</a></p>
-</div></blockquote>
+<dl class="simple">
+<dt>To check whether the exported model works correctly, we can use</dt><dd><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/blob/master/scripts/whisper/test.py">https://github.com/k2-fsa/sherpa-onnx/blob/master/scripts/whisper/test.py</a></p>
+</dd>
+</dl>
 <p>We use <a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-whisper-tiny.en/resolve/main/test_wavs/0.wav">https://huggingface.co/csukuangfj/sherpa-onnx-whisper-tiny.en/resolve/main/test_wavs/0.wav</a>
 as the test wave.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>kaldi-native-fbank
@@ -259,14 +264,6 @@ python3<span class="w"> </span>./test.py<span class="w"> </span><span class="se"
 <span class="w">  </span>./0.wav
 </pre></div>
 </div>
-<p>To test models of <a class="reference external" href="https://github.com/microsoft/onnxruntime">onnxruntime</a> format, we can use:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>./test.py<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--encoder<span class="w"> </span>./tiny.en-encoder.int8.ort<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--decoder<span class="w"> </span>./tiny.en-decoder.int8.ort<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--tokens<span class="w"> </span>./tiny.en-tokens.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>./0.wav
-</pre></div>
-</div>
 </section>
 </section>
 
@@ -281,7 +278,7 @@ python3<span class="w"> </span>./test.py<span class="w"> </span><span class="se"
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2024, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

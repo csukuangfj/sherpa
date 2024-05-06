@@ -36,6 +36,9 @@ Also, we show how to use it for speech recognition with pre-trained models.
    ./websocket/index
    ./hotwords/index
    ./kws/index
+   ./punctuation/index
+   ./audio-tagging/index
+   ./spoken-language-identification/index
    ./pretrained_models/index
 
 .. toctree::

@@ -73,7 +73,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../kws/index.html">Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kws/index.html">KWS Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../punctuation/index.html">Punctuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../audio-tagging/index.html">Audio tagging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../spoken-language-identification/index.html">Spoken language identification</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Pre-trained models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../online-transducer/index.html">Online transducer models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../online-paraformer/index.html">Online paraformer models</a></li>
@@ -146,9 +149,14 @@ before you read this section.</p>
 <h3>Download the model<a class="headerlink" href="#download-the-model" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-conformer-zh-stateless2-2023-05-23
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-conformer-zh-stateless2-2023-05-23
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
+
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-conformer-zh-stateless2-2023-05-23.tar.bz2
+
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-conformer-zh-stateless2-2023-05-23.tar.bz2</span>
+
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-conformer-zh-stateless2-2023-05-23.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-conformer-zh-stateless2-2023-05-23.tar.bz2
 </pre></div>
 </div>
 <p>Please check that the file sizes of the pre-trained models are correct. See
@@ -316,9 +324,14 @@ Real time factor (RTF): 0.439 / 15.289 = 0.029
 <h3>Download the model<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-conformer-zh-2023-05-23
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-conformer-zh-2023-05-23
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
+
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-conformer-zh-2023-05-23.tar.bz2
+
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-conformer-zh-2023-05-23.tar.bz2</span>
+
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-conformer-zh-2023-05-23.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-conformer-zh-2023-05-23.tar.bz2
 </pre></div>
 </div>
 <p>Please check that the file sizes of the pre-trained models are correct. See
@@ -487,9 +500,13 @@ Real time factor (RTF): 0.502 / 15.289 = 0.033
 <p>Please use the following commands to download it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-conformer-en-2023-03-18
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-conformer-en-2023-03-18
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-conformer-en-2023-03-18.tar.bz2
+
+<span class="c1"># For Chinese users, you can use the following mirror</span>
+<span class="c1"># wget https://hub.nuaa.cf/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-conformer-en-2023-03-18.tar.bz2</span>
+
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-conformer-en-2023-03-18.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-conformer-en-2023-03-18.tar.bz2
 </pre></div>
 </div>
 <p>Please check that the file sizes of the pre-trained models are correct. See
@@ -566,7 +583,7 @@ Real time factor (RTF): 2.264 / 28.165 = 0.080
 ./build/bin/sherpa-onnx-offline<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tokens<span class="o">=</span>./sherpa-onnx-conformer-en-2023-03-18/tokens.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--encoder<span class="o">=</span>./sherpa-onnx-conformer-en-2023-03-18/encoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-conformer-en-2023-03-18/decoder-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--decoder<span class="o">=</span>./sherpa-onnx-conformer-en-2023-03-18/decoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--joiner<span class="o">=</span>./sherpa-onnx-conformer-en-2023-03-18/joiner-epoch-99-avg-1.int8.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-conformer-en-2023-03-18/test_wavs/0.wav<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-onnx-conformer-en-2023-03-18/test_wavs/1.wav<span class="w"> </span><span class="se">\</span>
@@ -578,7 +595,7 @@ Real time factor (RTF): 2.264 / 28.165 = 0.080
 <p>Please use <code class="docutils literal notranslate"><span class="pre">./build/bin/Release/sherpa-onnx-offline.exe</span></code> for Windows.</p>
 </div>
 <p>You should see the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-conformer-en-2023-03-18/encoder-epoch-99-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-conformer-en-2023-03-18/decoder-epoch-99-avg-1.int8.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-conformer-en-2023-03-18/joiner-epoch-99-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-conformer-en-2023-03-18/tokens.txt&quot;, num_threads=2, debug=False), decoding_method=&quot;greedy_search&quot;)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;./sherpa-onnx-conformer-en-2023-03-18/encoder-epoch-99-avg-1.int8.onnx&quot;, decoder_filename=&quot;./sherpa-onnx-conformer-en-2023-03-18/decoder-epoch-99-avg-1.onnx&quot;, joiner_filename=&quot;./sherpa-onnx-conformer-en-2023-03-18/joiner-epoch-99-avg-1.int8.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), tokens=&quot;./sherpa-onnx-conformer-en-2023-03-18/tokens.txt&quot;, num_threads=2, debug=False), decoding_method=&quot;greedy_search&quot;)
 Creating recognizer ...
 2023-04-01 07:13:26.514109433 [E:onnxruntime:, env.cc:251 ThreadMain] pthread_setaffinity_np failed for thread: 608419, index: 15, mask: {16, 52, }, error code: 22 error msg: Invalid argument. Specify the number of threads explicitly so the affinity is not set.
 2023-04-01 07:13:26.514112711 [E:onnxruntime:, env.cc:251 ThreadMain] pthread_setaffinity_np failed for thread: 608420, index: 16, mask: {17, 53, }, error code: 22 error msg: Invalid argument. Specify the number of threads explicitly so the affinity is not set.
@@ -632,7 +649,7 @@ Real time factor (RTF): 1.370 / 28.165 = 0.049
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2024, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
