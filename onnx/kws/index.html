@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KWS Open vocabulary keyword spotting (Customized keyword spotting) &mdash; sherpa 1.3 documentation</title>
+  <title>Keyword spotting &mdash; sherpa 1.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
@@ -66,28 +66,36 @@
 <li class="toctree-l2"><a class="reference internal" href="../faqs/index.html">Frequently Asked Question (FAQs)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../c-api/index.html">C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../java-api/index.html">Java API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../javascript-api/index.html">Javascript API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kotlin-api/index.html">Kotlin API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../swift-api/index.html">Swift API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../csharp-api/index.html">C# API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flutter/index.html">Flutter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">KWS Open vocabulary keyword spotting (Customized keyword spotting)</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Keyword spotting</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-is-open-vocabulary-keyword-spotting">What is open vocabulary keyword spotting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#decoder-for-open-vocabulary-keyword-spotting">Decoder for open vocabulary keyword spotting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#keywords-file">Keywords file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-use-keyword-spotting-in-sherpa-onnx">How to use keyword spotting in sherpa-onnx</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#command-line-tool">command-line tool</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#android-application">Android application</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#android-application">Android application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pretrained-models">Pretrained models</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../punctuation/index.html">Punctuation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../audio-tagging/index.html">Audio tagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spoken-language-identification/index.html">Spoken language identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vad/index.html">VAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sense-voice/index.html">SenseVoice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
@@ -113,7 +121,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">sherpa-onnx</a> &raquo;</li>
-      <li>KWS Open vocabulary keyword spotting (Customized keyword spotting)</li>
+      <li>Keyword spotting</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/k2-fsa/sherpa/blob/master/docs/source/onnx/kws/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -123,8 +131,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="kws-open-vocabulary-keyword-spotting-customized-keyword-spotting">
-<span id="sherpa-onnx-keyword-spotting"></span><h1>KWS Open vocabulary keyword spotting (Customized keyword spotting)<a class="headerlink" href="#kws-open-vocabulary-keyword-spotting-customized-keyword-spotting" title="Permalink to this heading"></a></h1>
+  <section id="keyword-spotting">
+<span id="sherpa-onnx-keyword-spotting"></span><h1>Keyword spotting<a class="headerlink" href="#keyword-spotting" title="Permalink to this heading"></a></h1>
 <p>In this section, we describe how we implement the open vocabulary keyword spotting (aka customized keyword spotting)
 feature and how to use it in <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>.</p>
 <section id="what-is-open-vocabulary-keyword-spotting">
@@ -213,14 +221,19 @@ line tool, read the help information by:</p>
 <section id="command-line-tool">
 <h3>command-line tool<a class="headerlink" href="#command-line-tool" title="Permalink to this heading"></a></h3>
 <p>After installing <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>, type <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-keyword-spotter</span> <span class="pre">--help</span></code> for the help message.</p>
-<p>You can find the pre-trained models in <a class="reference internal" href="pretrained_models/index.html#sherpa-onnx-kws-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a>.</p>
+</section>
 </section>
 <section id="android-application">
-<h3>Android application<a class="headerlink" href="#android-application" title="Permalink to this heading"></a></h3>
-<p>You can build your own application by starting with the <code class="docutils literal notranslate"><span class="pre">build-kws-apk.sh</span></code> in <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> repository or referring to <a class="reference internal" href="../android/index.html#sherpa-onnx-android"><span class="std std-ref">Android</span></a>,
-you can also try our generated apks from github release page.</p>
+<h2>Android application<a class="headerlink" href="#android-application" title="Permalink to this heading"></a></h2>
+<p>You can find pre-built Android APKs for keyword spotting at</p>
+<blockquote>
+<div><p><a class="reference external" href="https://k2-fsa.github.io/sherpa/onnx/kws/apk.html">https://k2-fsa.github.io/sherpa/onnx/kws/apk.html</a></p>
+</div></blockquote>
 <p>Here is a demo video (Note: It is in Chinese).</p>
-<iframe src="//player.bilibili.com/player.html?aid=326175636&bvid=BV1Nw411J7K6&cid=1405110216&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></section>
+<iframe src="//player.bilibili.com/player.html?aid=326175636&bvid=BV1Nw411J7K6&cid=1405110216&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="600" height="600"> </iframe></section>
+<section id="pretrained-models">
+<h2>Pretrained models<a class="headerlink" href="#pretrained-models" title="Permalink to this heading"></a></h2>
+<p>You can find the pre-trained models in <a class="reference internal" href="pretrained_models/index.html#sherpa-onnx-kws-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a>.</p>
 </section>
 </section>
 

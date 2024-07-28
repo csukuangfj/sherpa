@@ -21,7 +21,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="KWS Open vocabulary keyword spotting (Customized keyword spotting)" href="../kws/index.html" />
+    <link rel="next" title="Keyword spotting" href="../kws/index.html" />
     <link rel="prev" title="Non-streaming WebSocket server and client" href="../websocket/offline-websocket.html" /> 
 </head>
 
@@ -66,11 +66,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../faqs/index.html">Frequently Asked Question (FAQs)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../c-api/index.html">C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../java-api/index.html">Java API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../javascript-api/index.html">Javascript API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kotlin-api/index.html">Kotlin API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../swift-api/index.html">Swift API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../csharp-api/index.html">C# API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flutter/index.html">Flutter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Hotwords (Contextual biasing)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-are-hotwords">What are hotwords</a></li>
@@ -83,11 +88,13 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">KWS Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Keyword spotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../punctuation/index.html">Punctuation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../audio-tagging/index.html">Audio tagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spoken-language-identification/index.html">Spoken language identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vad/index.html">VAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sense-voice/index.html">SenseVoice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
@@ -327,39 +334,50 @@ re-train the models to use this feature.</p>
 </div>
 <p>The use of the hotwords is no different for streaming and non-streaming models,
 and in fact it is even no different for all the API supported by sherpa onnx.
-We add two extra arguments for hotwords:</p>
+We add <strong>FOUR</strong> extra arguments for hotwords:</p>
 <blockquote>
 <div><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">hotwords-file</span></code></p>
-<p>The file path of the hotwords, one hotwords per line, for each hotwords
-the chars (for Chinese) and bpes are separated by <code class="docutils literal notranslate"><span class="pre">spaces</span></code></p>
+<p>The file path of the hotwords, one hotwords per line. They could be Chinese
+words, English words or both according to the modeling units used to train
+the model. Here are some examples:</p>
+<p>For Chinese models trained on <code class="docutils literal notranslate"><span class="pre">cjkchar</span></code> it looks like:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">语音识别</span>
+<span class="n">深度学习</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>For English like language models trained on <code class="docutils literal notranslate"><span class="pre">bpe</span></code> it looks like:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPEECH</span> <span class="n">RECOGNITION</span>
+<span class="n">DEEP</span> <span class="n">LEARNING</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>For multilingual models trained on <code class="docutils literal notranslate"><span class="pre">cjkchar+bpe</span></code> (Chinese + English) it looks like:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPEECH</span> <span class="n">识别</span>
+<span class="n">SPEECH</span> <span class="n">RECOGNITION</span>
+<span class="n">深度学习</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>You can also specify the boosting score for each hotword, the score should follow the
+predefined character <cite>:</cite>, for example:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">语音识别</span> <span class="p">:</span><span class="mf">3.5</span>
+<span class="n">深度学习</span> <span class="p">:</span><span class="mf">2.0</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>It means, hotword <cite>语音识别</cite> will have a boosting score of 3.5, hotword <cite>深度学习</cite> will have a boosting score of 2.0.
+For those hotwords that don’t have specific scores, they will use the global score provided by <cite>hotword-score</cite> below.</p>
 <blockquote>
 <div><div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>The hotwords in hotwords-file should be tokenized to modeling units (i.e
-the symbols in tokens.txt</p>
-</div>
-</div></blockquote>
-<p>For models trained on <code class="docutils literal notranslate"><span class="pre">cjkchar</span></code> it looks like:</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">语</span> <span class="n">音</span> <span class="n">识</span> <span class="n">别</span>
-<span class="n">深</span> <span class="n">度</span> <span class="n">学</span> <span class="n">习</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p>For models trained on <code class="docutils literal notranslate"><span class="pre">bpe</span></code> (English like languages) it looks like:</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>▁SP E E CH ▁RE C O G N ITION
-▁DE E P ▁LE AR N ING
-</pre></div>
-</div>
-</div></blockquote>
-<p>For models trained on <code class="docutils literal notranslate"><span class="pre">cjkchar+bpe</span></code> it looks like:</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>▁SP E E CH 识 别
-▁SP E E CH ▁RE CO G N ITION
-深 度 学 习
-</pre></div>
+<p>The specific score MUST BE the last item of each hotword (i.e You shouldn’t break the hotword into two parts by the score).
+SPEECH :2.0 识别   # This is invalid</p>
 </div>
 </div></blockquote>
 </li>
@@ -373,50 +391,23 @@ at token level.</p>
 </div>
 </div></blockquote>
 </li>
-</ul>
-</div></blockquote>
-<p>We provide a command line tool to convert hotwords to tokens, you can see the
-usage as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sherpa</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">cli</span> <span class="n">text2token</span> <span class="o">--</span><span class="n">help</span>
-<span class="n">Usage</span><span class="p">:</span> <span class="n">sherpa</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">cli</span> <span class="n">text2token</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span> <span class="n">INPUT</span> <span class="n">OUTPUT</span>
-
-<span class="n">Options</span><span class="p">:</span>
-  <span class="o">--</span><span class="n">tokens</span> <span class="n">TEXT</span>       <span class="n">The</span> <span class="n">path</span> <span class="n">to</span> <span class="n">tokens</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span>
-  <span class="o">--</span><span class="n">tokens</span><span class="o">-</span><span class="nb">type</span> <span class="n">TEXT</span>  <span class="n">The</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">modeling</span> <span class="n">units</span><span class="p">,</span> <span class="n">should</span> <span class="n">be</span> <span class="n">cjkchar</span><span class="p">,</span> <span class="n">bpe</span> <span class="ow">or</span>
-                      <span class="n">cjkchar</span><span class="o">+</span><span class="n">bpe</span>
-  <span class="o">--</span><span class="n">bpe</span><span class="o">-</span><span class="n">model</span> <span class="n">TEXT</span>    <span class="n">The</span> <span class="n">path</span> <span class="n">to</span> <span class="n">bpe</span><span class="o">.</span><span class="n">model</span><span class="o">.</span>
-  <span class="o">--</span><span class="n">help</span>              <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span><span class="o">.</span>
-</pre></div>
+<li><p><code class="docutils literal notranslate"><span class="pre">modeling-unit</span></code></p>
+<p>The modeling unit of the used model, currently support <cite>cjkchar</cite> (for Chinese), <cite>bpe</cite> (for English like languages)
+and <cite>cjkchar+bpe</cite> (for multilingual models). We need this modeling-unit to select tokenizer to encode words/phrases
+into tokens, so <strong>do provide correct modeling-unit according to your model</strong>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bpe-vocab</span></code></p>
+<p>The bpe vocabulary generated by sentencepiece toolkit, it also can be exported from <cite>bpe.model</cite> (see <cite>script/export_bpe_vocab.py</cite> for details).
+This vocabulary is used to tokenize words/phrases into bpe units. It is only used when <cite>modeling-unit</cite> is <cite>bpe</cite> or  <cite>cjkchar+bpe</cite>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>We need <cite>bpe.vocab</cite> rather than <cite>bpe.model</cite>, because we don’t introduce sentencepiece c++ codebase into <cite>sherpa-onnx</cite> (which
+has a depandancy issue of protobuf) , we implement a simple sentencepiece encoder and decoder which takes <cite>bpe.vocab</cite> as input.</p>
 </div>
-<p>The tool has three options:</p>
-<blockquote>
-<div><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">tokens</span></code></p>
-<p>The file path of the tokens.txt, you can find tokens.txt in any of our
-pretrained model.</p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tokens-type</span></code></p>
-<p>The modeling unit used to train the models. Three kinds
-of <code class="docutils literal notranslate"><span class="pre">tokens_type</span></code> are supported now, <code class="docutils literal notranslate"><span class="pre">cjkchar</span></code>, <code class="docutils literal notranslate"><span class="pre">bpe</span></code> and <code class="docutils literal notranslate"><span class="pre">cjkchar+bpe</span></code>.
-The <code class="docutils literal notranslate"><span class="pre">tokens-type</span></code> tells the systems how to encode <code class="docutils literal notranslate"><span class="pre">hotwords</span></code> into tokens.</p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bpe-model</span></code></p>
-<p>The file path of the bpe model used to generate the <code class="docutils literal notranslate"><span class="pre">tokens.txt</span></code>, it is also
-used to encode the <code class="docutils literal notranslate"><span class="pre">hotwords</span></code>.
-Only used when <code class="docutils literal notranslate"><span class="pre">tokens-type</span></code> is <code class="docutils literal notranslate"><span class="pre">bpe</span></code> or <code class="docutils literal notranslate"><span class="pre">cjkchar+bpe</span></code>.</p>
 </li>
 </ul>
 </div></blockquote>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you install sherpa-onnx from sources (i.e. not by pip), you can use the
-alternative script in <cite>scripts</cite>, the usage is almost the same as the command
-line tool, read the help information by:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">scripts</span><span class="o">/</span><span class="n">text2token</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span>
-</pre></div>
-</div>
-</div>
-<p>The main difference of using hotwords feature is about the modeling units (i.e. tokens_type).
+<p>The main difference of using hotwords feature is about the modeling units.
 The following shows how to use it for different modeling units.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -442,22 +433,13 @@ rm<span class="w"> </span>sherpa-onnx-zipformer-en-2023-04-01.tar.bz2
 ln<span class="w"> </span>-s<span class="w"> </span>sherpa-onnx-zipformer-en-2023-04-01<span class="w"> </span>exp
 </pre></div>
 </div>
-<p>Convert the hotwords into tokens</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sherpa</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">cli</span> <span class="n">text2token</span> \
-  <span class="o">--</span><span class="n">tokens</span> <span class="n">exp</span><span class="o">/</span><span class="n">tokens</span><span class="o">.</span><span class="n">txt</span> \
-  <span class="o">--</span><span class="n">tokens</span><span class="o">-</span><span class="nb">type</span> <span class="n">bpe</span> \
-  <span class="o">--</span><span class="n">bpe</span><span class="o">-</span><span class="n">model</span> <span class="n">exp</span><span class="o">/</span><span class="n">bpe</span><span class="o">.</span><span class="n">model</span> \
-  <span class="n">hotwords</span><span class="o">.</span><span class="n">txt</span> <span class="n">hotwords_en</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">hotwords.txt</span></code> contains:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QUARTERS</span>
-<span class="n">FOREVER</span>
+<p>Export bpe.vocab if you can’t find bpe.vocab in the model directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">script</span><span class="o">/</span><span class="n">export_bpe_vocab</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">bpe</span><span class="o">-</span><span class="n">model</span> <span class="n">exp</span><span class="o">/</span><span class="n">bpe</span><span class="o">.</span><span class="n">model</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">hotwords_en.txt</span></code> contains:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>▁ QUA R TER S
-▁FOR E VER
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QUARTERS</span>
+<span class="n">FOREVER</span>
 </pre></div>
 </div>
 <section id="c-api">
@@ -507,6 +489,8 @@ Real time factor (RTF): 1.775 / 23.340 = 0.076
     <span class="o">--</span><span class="n">joiner</span><span class="o">=</span><span class="n">exp</span><span class="o">/</span><span class="n">joiner</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
     <span class="o">--</span><span class="n">decoding</span><span class="o">-</span><span class="n">method</span><span class="o">=</span><span class="n">modified_beam_search</span> \
     <span class="o">--</span><span class="n">tokens</span><span class="o">=</span><span class="n">exp</span><span class="o">/</span><span class="n">tokens</span><span class="o">.</span><span class="n">txt</span> \
+    <span class="o">--</span><span class="n">modeling</span><span class="o">-</span><span class="n">unit</span><span class="o">=</span><span class="n">bpe</span> \
+    <span class="o">--</span><span class="n">bpe</span><span class="o">-</span><span class="n">vocab</span><span class="o">=</span><span class="n">exp</span><span class="o">/</span><span class="n">bpe</span><span class="o">.</span><span class="n">vocab</span> \
     <span class="o">--</span><span class="n">hotwords</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="n">hotwords_en</span><span class="o">.</span><span class="n">txt</span> \
     <span class="o">--</span><span class="n">hotwords</span><span class="o">-</span><span class="n">score</span><span class="o">=</span><span class="mf">2.0</span> \
     <span class="n">exp</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="mf">0.</span><span class="n">wav</span> <span class="n">exp</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="mf">1.</span><span class="n">wav</span>
@@ -554,11 +538,11 @@ Real time factor (RTF): 1.522 / 23.340 = 0.065
 <h4>Python api<a class="headerlink" href="#python-api" title="Permalink to this heading"></a></h4>
 <p><strong>Decoding without hotwords</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">python</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">examples</span><span class="o">/</span><span class="n">offline</span><span class="o">-</span><span class="n">decode</span><span class="o">-</span><span class="n">files</span><span class="o">.</span><span class="n">py</span> \
-    <span class="o">--</span><span class="n">encoder</span><span class="o">=</span><span class="n">exp</span><span class="o">/</span><span class="n">encoder</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
-    <span class="o">--</span><span class="n">decoder</span><span class="o">=</span><span class="n">exp</span><span class="o">/</span><span class="n">decoder</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
-    <span class="o">--</span><span class="n">joiner</span><span class="o">=</span><span class="n">exp</span><span class="o">/</span><span class="n">joiner</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
-    <span class="o">--</span><span class="n">decoding</span><span class="o">=</span><span class="n">modified_beam_search</span> \
-    <span class="o">--</span><span class="n">tokens</span><span class="o">=</span><span class="n">exp</span><span class="o">/</span><span class="n">tokens</span><span class="o">.</span><span class="n">txt</span> \
+    <span class="o">--</span><span class="n">encoder</span> <span class="n">exp</span><span class="o">/</span><span class="n">encoder</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
+    <span class="o">--</span><span class="n">decoder</span> <span class="n">exp</span><span class="o">/</span><span class="n">decoder</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
+    <span class="o">--</span><span class="n">joiner</span> <span class="n">exp</span><span class="o">/</span><span class="n">joiner</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
+    <span class="o">--</span><span class="n">decoding</span> <span class="n">modified_beam_search</span> \
+    <span class="o">--</span><span class="n">tokens</span> <span class="n">exp</span><span class="o">/</span><span class="n">tokens</span><span class="o">.</span><span class="n">txt</span> \
     <span class="n">exp</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="mf">0.</span><span class="n">wav</span> <span class="n">exp</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="mf">1.</span><span class="n">wav</span>
 </pre></div>
 </div>
@@ -580,13 +564,15 @@ Real time factor (RTF): 2.546/23.340 = 0.109
 </div>
 <p><strong>Decoding with hotwords</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">python</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">examples</span><span class="o">/</span><span class="n">offline</span><span class="o">-</span><span class="n">decode</span><span class="o">-</span><span class="n">files</span><span class="o">.</span><span class="n">py</span> \
-    <span class="o">--</span><span class="n">encoder</span><span class="o">=</span><span class="n">exp</span><span class="o">/</span><span class="n">encoder</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
-    <span class="o">--</span><span class="n">decoder</span><span class="o">=</span><span class="n">exp</span><span class="o">/</span><span class="n">decoder</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
-    <span class="o">--</span><span class="n">joiner</span><span class="o">=</span><span class="n">exp</span><span class="o">/</span><span class="n">joiner</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
-    <span class="o">--</span><span class="n">decoding</span><span class="o">=</span><span class="n">modified_beam_search</span> \
-    <span class="o">--</span><span class="n">tokens</span><span class="o">=</span><span class="n">exp</span><span class="o">/</span><span class="n">tokens</span><span class="o">.</span><span class="n">txt</span> \
-    <span class="o">--</span><span class="n">hotwords</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="n">hotwords_en</span><span class="o">.</span><span class="n">txt</span> \
-    <span class="o">--</span><span class="n">hotwords</span><span class="o">-</span><span class="n">score</span><span class="o">=</span><span class="mf">2.0</span> \
+    <span class="o">--</span><span class="n">encoder</span> <span class="n">exp</span><span class="o">/</span><span class="n">encoder</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
+    <span class="o">--</span><span class="n">decoder</span> <span class="n">exp</span><span class="o">/</span><span class="n">decoder</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
+    <span class="o">--</span><span class="n">joiner</span> <span class="n">exp</span><span class="o">/</span><span class="n">joiner</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
+    <span class="o">--</span><span class="n">decoding</span> <span class="n">modified_beam_search</span> \
+    <span class="o">--</span><span class="n">tokens</span> <span class="n">exp</span><span class="o">/</span><span class="n">tokens</span><span class="o">.</span><span class="n">txt</span> \
+    <span class="o">--</span><span class="n">modeling</span><span class="o">-</span><span class="n">unit</span> <span class="n">bpe</span> \
+    <span class="o">--</span><span class="n">bpe</span><span class="o">-</span><span class="n">vocab</span> <span class="n">exp</span><span class="o">/</span><span class="n">bpe</span><span class="o">.</span><span class="n">vocab</span> \
+    <span class="o">--</span><span class="n">hotwords</span><span class="o">-</span><span class="n">file</span> <span class="n">hotwords_en</span><span class="o">.</span><span class="n">txt</span> \
+    <span class="o">--</span><span class="n">hotwords</span><span class="o">-</span><span class="n">score</span> <span class="mf">2.0</span> \
     <span class="n">exp</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="mf">0.</span><span class="n">wav</span> <span class="n">exp</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="mf">1.</span><span class="n">wav</span>
 </pre></div>
 </div>
@@ -617,32 +603,18 @@ Real time factor (RTF): 2.463/23.340 = 0.106
 <h3>Modeling unit is cjkchar<a class="headerlink" href="#modeling-unit-is-cjkchar" title="Permalink to this heading"></a></h3>
 <p><strong>Download the model</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-conformer-zh-stateless2-2023-05-23
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-conformer-zh-stateless2-2023-05-23
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
-<span class="nb">cd</span><span class="w"> </span>..
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-conformer-zh-stateless2-2023-05-23.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-conformer-zh-stateless2-2023-05-23.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-conformer-zh-stateless2-2023-05-23.tar.bz2
+
 ln<span class="w"> </span>-s<span class="w"> </span>sherpa-onnx-conformer-zh-stateless2-2023-05-23<span class="w"> </span>exp-zh
 </pre></div>
 </div>
-<p>Convert the hotwords into tokens</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sherpa</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">cli</span> <span class="n">text2token</span> \
-  <span class="o">--</span><span class="n">tokens</span> <span class="n">exp</span><span class="o">-</span><span class="n">zh</span><span class="o">/</span><span class="n">tokens</span><span class="o">.</span><span class="n">txt</span> \
-  <span class="o">--</span><span class="n">tokens</span><span class="o">-</span><span class="nb">type</span> <span class="n">cjkchar</span> \
-  <span class="n">hotwords</span><span class="o">.</span><span class="n">txt</span> <span class="n">hotwords_cn</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">hotwords.txt</span></code> contains:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">hotwords_cn.txt</span></code> contains:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">文森特卡索</span>
 <span class="n">周望君</span>
 <span class="n">朱丽楠</span>
 <span class="n">蒋有伯</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">hotwords_cn.txt</span></code> contains:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">文</span> <span class="n">森</span> <span class="n">特</span> <span class="n">卡</span> <span class="n">索</span>
-<span class="n">周</span> <span class="n">望</span> <span class="n">君</span>
-<span class="n">朱</span> <span class="n">丽</span> <span class="n">楠</span>
-<span class="n">蒋</span> <span class="n">有</span> <span class="n">伯</span>
 </pre></div>
 </div>
 <section id="id1">
@@ -687,7 +659,16 @@ Real time factor (RTF): 1.883 / 20.328 = 0.093
 </pre></div>
 </div>
 <p><strong>Decoding with hotwords</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>./build/bin/sherpa-onnx-offline --encoder=exp-zh/encoder-epoch-99-avg-1.onnx --decoder=exp-zh/decoder-epoch-99-avg-1.onnx --joiner=exp-zh/joiner-epoch-99-avg-1.onnx --tokens=exp-zh/tokens.txt --decoding-method=modified_beam_search --hotwords-file=hotwords_cn.txt --hotwords-score=2.0 exp-zh/test_wavs/3.wav exp-zh/test_wavs/4.wav exp-zh/test_wavs/5.wav exp-zh/test_wavs/6.wav
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>./build/bin/sherpa-onnx-offline \
+  --encoder=exp-zh/encoder-epoch-99-avg-1.onnx \
+  --decoder=exp-zh/decoder-epoch-99-avg-1.onnx \
+  --joiner=exp-zh/joiner-epoch-99-avg-1.onnx \
+  --tokens=exp-zh/tokens.txt \
+  --decoding-method=modified_beam_search \
+  --modeling-unit=cjkchar \
+  --hotwords-file=hotwords_cn.txt \
+  --hotwords-score=2.0 \
+  exp-zh/test_wavs/3.wav exp-zh/test_wavs/4.wav exp-zh/test_wavs/5.wav exp-zh/test_wavs/6.wav
 
 OfflineRecognizerConfig(feat_config=OfflineFeatureExtractorConfig(sampling_rate=16000, feature_dim=80), model_config=OfflineModelConfig(transducer=OfflineTransducerModelConfig(encoder_filename=&quot;exp-zh/encoder-epoch-99-avg-1.onnx&quot;, decoder_filename=&quot;exp-zh/decoder-epoch-99-avg-1.onnx&quot;, joiner_filename=&quot;exp-zh/joiner-$poch-99-avg-1.onnx&quot;), paraformer=OfflineParaformerModelConfig(model=&quot;&quot;), nemo_ctc=OfflineNemoEncDecCtcModelConfig(model=&quot;&quot;), whisper=OfflineWhisperModelConfig$encoder=&quot;&quot;, decoder=&quot;&quot;, language=&quot;&quot;, task=&quot;transcribe&quot;), tdnn=OfflineTdnnModelConfig(model=&quot;&quot;), tokens=&quot;exp-zh/tokens.txt&quot;, num_threads=2, debug=False, provider=&quot;cpu&quot;, model_type=&quot;&quot;), lm_config=OfflineLMConfig(model=&quot;&quot;, scale=0.5), decoding_method=&quot;modified_beam_search&quot;, max_active$paths=4, hotwords_file=hotwords_cn.txt, hotwords_score=2)
 Creating recognizer ...
@@ -764,6 +745,7 @@ Real time factor (RTF): 2.653/20.328 = 0.131
     <span class="o">--</span><span class="n">joiner</span> <span class="n">exp</span><span class="o">-</span><span class="n">zh</span><span class="o">/</span><span class="n">joiner</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
     <span class="o">--</span><span class="n">tokens</span> <span class="n">exp</span><span class="o">-</span><span class="n">zh</span><span class="o">/</span><span class="n">tokens</span><span class="o">.</span><span class="n">txt</span> \
     <span class="o">--</span><span class="n">decoding</span><span class="o">-</span><span class="n">method</span> <span class="n">modified_beam_search</span> \
+    <span class="o">--</span><span class="n">modeling</span><span class="o">-</span><span class="n">unit</span><span class="o">=</span><span class="n">cjkchar</span> \
     <span class="o">--</span><span class="n">hotwords</span><span class="o">-</span><span class="n">file</span> <span class="n">hotwords_cn</span><span class="o">.</span><span class="n">txt</span> \
     <span class="o">--</span><span class="n">hotwords</span><span class="o">-</span><span class="n">score</span> <span class="mf">2.0</span> \
     <span class="n">exp</span><span class="o">-</span><span class="n">zh</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="mf">3.</span><span class="n">wav</span> <span class="n">exp</span><span class="o">-</span><span class="n">zh</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="mf">4.</span><span class="n">wav</span> <span class="n">exp</span><span class="o">-</span><span class="n">zh</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="mf">5.</span><span class="n">wav</span> <span class="n">exp</span><span class="o">-</span><span class="n">zh</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="mf">6.</span><span class="n">wav</span>
@@ -805,30 +787,20 @@ Real time factor (RTF): 2.636/20.328 = 0.130
 <p><strong>Download the model</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;bpe.model&quot;</span>
-<span class="nb">cd</span><span class="w"> </span>..
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20.tar.bz2
+
 ln<span class="w"> </span>-s<span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20<span class="w"> </span>exp-mixed
 </pre></div>
 </div>
-<p>Convert the hotwords into tokens</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sherpa</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">cli</span> <span class="n">text2token</span> \
-  <span class="o">--</span><span class="n">tokens</span> <span class="n">exp</span><span class="o">-</span><span class="n">mixed</span><span class="o">/</span><span class="n">tokens</span><span class="o">.</span><span class="n">txt</span> \
-  <span class="o">--</span><span class="n">tokens</span><span class="o">-</span><span class="nb">type</span> <span class="n">cjkchar</span><span class="o">+</span><span class="n">bpe</span> \
-  <span class="o">--</span><span class="n">bpe</span><span class="o">-</span><span class="n">model</span> <span class="n">exp</span><span class="o">-</span><span class="n">mixed</span><span class="o">/</span><span class="n">bpe</span><span class="o">.</span><span class="n">model</span> \
-  <span class="n">hotwords</span><span class="o">.</span><span class="n">txt</span> <span class="n">hotwords_mix</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">hotwords.txt</span></code> contains:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">礼拜二</span>
-<span class="n">频繁</span>
+<p>Export bpe.vocab if you can’t find bpe.vocab in the model directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">script</span><span class="o">/</span><span class="n">export_bpe_vocab</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">bpe</span><span class="o">-</span><span class="n">model</span> <span class="n">exp</span><span class="o">/</span><span class="n">bpe</span><span class="o">.</span><span class="n">model</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">hotwords_mix.txt</span></code> contains:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">礼</span> <span class="n">拜</span> <span class="n">二</span>
-<span class="n">频</span> <span class="n">繁</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">礼拜二</span>
+<span class="n">频繁</span>
 </pre></div>
 </div>
 <section id="id3">
@@ -865,6 +837,8 @@ ln<span class="w"> </span>-s<span class="w"> </span>sherpa-onnx-streaming-zipfor
 <span class="w">    </span>--joiner<span class="o">=</span>exp-mixed/joiner-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--decoding-method<span class="o">=</span>modified_beam_search<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--tokens<span class="o">=</span>exp-mixed/tokens.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--modeling-unit<span class="o">=</span>cjkchar+bpe<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bpe-vocab<span class="o">=</span>exp/bpe.vocab<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--hotwords-file<span class="o">=</span>hotwords_mix.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--hotwords-score<span class="o">=</span><span class="m">2</span>.0<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>exp-mixed/test_wavs/0.wav<span class="w"> </span>exp-mixed/test_wavs/2.wav
@@ -927,6 +901,8 @@ Real time factor (RTF): 3.052/14.743 = 0.207
     <span class="o">--</span><span class="n">joiner</span> <span class="n">exp</span><span class="o">-</span><span class="n">mixed</span><span class="o">/</span><span class="n">joiner</span><span class="o">-</span><span class="n">epoch</span><span class="o">-</span><span class="mi">99</span><span class="o">-</span><span class="n">avg</span><span class="o">-</span><span class="mf">1.</span><span class="n">onnx</span> \
     <span class="o">--</span><span class="n">decoding</span><span class="o">-</span><span class="n">method</span> <span class="n">modified_beam_search</span> \
     <span class="o">--</span><span class="n">tokens</span> <span class="n">exp</span><span class="o">-</span><span class="n">mixed</span><span class="o">/</span><span class="n">tokens</span><span class="o">.</span><span class="n">txt</span> \
+    <span class="o">--</span><span class="n">modeling</span><span class="o">-</span><span class="n">unit</span> <span class="n">cjkchar</span><span class="o">+</span><span class="n">bpe</span> \
+    <span class="o">--</span><span class="n">bpe</span><span class="o">-</span><span class="n">vocab</span> <span class="n">exp</span><span class="o">-</span><span class="n">mixed</span><span class="o">/</span><span class="n">bpe</span><span class="o">.</span><span class="n">vocab</span> \
     <span class="o">--</span><span class="n">hotwords</span><span class="o">-</span><span class="n">file</span> <span class="n">hotwords_mix</span><span class="o">.</span><span class="n">txt</span> \
     <span class="o">--</span><span class="n">hotwords</span><span class="o">-</span><span class="n">score</span> <span class="mf">2.0</span> \
     <span class="n">exp</span><span class="o">-</span><span class="n">mixed</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="mf">0.</span><span class="n">wav</span> <span class="n">exp</span><span class="o">-</span><span class="n">mixed</span><span class="o">/</span><span class="n">test_wavs</span><span class="o">/</span><span class="mf">2.</span><span class="n">wav</span>
@@ -963,7 +939,7 @@ Real time factor (RTF): 3.060/14.743 = 0.208
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../websocket/offline-websocket.html" class="btn btn-neutral float-left" title="Non-streaming WebSocket server and client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../kws/index.html" class="btn btn-neutral float-right" title="KWS Open vocabulary keyword spotting (Customized keyword spotting)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../kws/index.html" class="btn btn-neutral float-right" title="Keyword spotting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

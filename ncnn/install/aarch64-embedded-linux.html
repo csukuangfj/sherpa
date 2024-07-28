@@ -238,8 +238,8 @@ card<span class="w"> </span><span class="m">3</span>:<span class="w"> </span>UAC
 </div></blockquote>
 <p>In this case, I only have 1 microphone. It is <code class="docutils literal notranslate"><span class="pre">card</span> <span class="pre">3</span></code> and that card
 has only <code class="docutils literal notranslate"><span class="pre">device</span> <span class="pre">0</span></code>. To select <code class="docutils literal notranslate"><span class="pre">card</span> <span class="pre">3</span></code> and <code class="docutils literal notranslate"><span class="pre">device</span> <span class="pre">0</span></code> on that card,
-we need to pass <code class="docutils literal notranslate"><span class="pre">hw:3,0</span></code> to <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-alsa</span></code>. (Note: It has the format
-<code class="docutils literal notranslate"><span class="pre">hw:card_number,device_index</span></code>.)</p>
+we need to pass <code class="docutils literal notranslate"><span class="pre">plughw:3,0</span></code> to <code class="docutils literal notranslate"><span class="pre">sherpa-ncnn-alsa</span></code>. (Note: It has the format
+<code class="docutils literal notranslate"><span class="pre">plughw:card_number,device_index</span></code>.)</p>
 <p>For instance, you have to use</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bin/sherpa-ncnn-alsa<span class="w"> </span><span class="se">\</span>
@@ -250,7 +250,7 @@ we need to pass <code class="docutils literal notranslate"><span class="pre">hw:
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/decoder_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/joiner_jit_trace-pnnx.ncnn.param<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./sherpa-ncnn-conv-emformer-transducer-small-2023-01-09/joiner_jit_trace-pnnx.ncnn.bin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;hw:3,0&quot;</span>
+<span class="w">  </span><span class="s2">&quot;plughw:3,0&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>

@@ -69,22 +69,30 @@
 <li class="toctree-l3"><a class="reference internal" href="#tts">TTS 中文模型没有声音</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gitcompile-line-89-libtoolize-command-not-found">./gitcompile: line 89: libtoolize: command not found</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#oserror-portaudio-library-not-found">OSError: PortAudio library not found</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#imports-github-com-k2-fsa-sherpa-onnx-go-linux-build-constraints-exclude-all-go-files">imports github.com/k2-fsa/sherpa-onnx-go-linux: build constraints exclude all Go files</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../c-api/index.html">C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../java-api/index.html">Java API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../javascript-api/index.html">Javascript API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kotlin-api/index.html">Kotlin API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../swift-api/index.html">Swift API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../csharp-api/index.html">C# API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flutter/index.html">Flutter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">KWS Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Keyword spotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../punctuation/index.html">Punctuation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../audio-tagging/index.html">Audio tagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spoken-language-identification/index.html">Spoken language identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vad/index.html">VAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sense-voice/index.html">SenseVoice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
@@ -199,6 +207,21 @@ OSError:<span class="w"> </span>PortAudio<span class="w"> </span>library<span cl
 </pre></div>
 </div>
 <p>and then re-try.</p>
+</section>
+<section id="imports-github-com-k2-fsa-sherpa-onnx-go-linux-build-constraints-exclude-all-go-files">
+<h2>imports github.com/k2-fsa/sherpa-onnx-go-linux: build constraints exclude all Go files<a class="headerlink" href="#imports-github-com-k2-fsa-sherpa-onnx-go-linux-build-constraints-exclude-all-go-files" title="Permalink to this heading"></a></h2>
+<p>If you have the following output when running <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">build</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@VM</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">centos</span> <span class="n">non</span><span class="o">-</span><span class="n">streaming</span><span class="o">-</span><span class="n">decode</span><span class="o">-</span><span class="n">files</span><span class="p">]</span><span class="c1"># go build</span>
+<span class="n">package</span> <span class="n">non</span><span class="o">-</span><span class="n">streaming</span><span class="o">-</span><span class="n">decode</span><span class="o">-</span><span class="n">files</span>
+ <span class="n">imports</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">k2</span><span class="o">-</span><span class="n">fsa</span><span class="o">/</span><span class="n">sherpa</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">go</span><span class="o">/</span><span class="n">sherpa_onnx</span>
+ <span class="n">imports</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">k2</span><span class="o">-</span><span class="n">fsa</span><span class="o">/</span><span class="n">sherpa</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">go</span><span class="o">-</span><span class="n">linux</span><span class="p">:</span> <span class="n">build</span> <span class="n">constraints</span> <span class="n">exclude</span> <span class="nb">all</span> <span class="n">Go</span> <span class="n">files</span> <span class="ow">in</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">go</span><span class="o">/</span><span class="n">pkg</span><span class="o">/</span><span class="n">mod</span><span class="o">/</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">k2</span><span class="o">-</span><span class="n">fsa</span><span class="o">/</span><span class="n">sherpa</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">go</span><span class="o">-</span><span class="n">linux</span><span class="nd">@v1</span><span class="mf">.9.21</span>
+</pre></div>
+</div>
+<p>Please first run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">go</span> <span class="n">env</span> <span class="o">-</span><span class="n">w</span> <span class="n">CGO_ENABLED</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>And then re-run <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">build</span></code>.</p>
 </section>
 </section>
 

@@ -66,18 +66,25 @@
 <li class="toctree-l2"><a class="reference internal" href="faqs/index.html">Frequently Asked Question (FAQs)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python/index.html">Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c-api/index.html">C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java-api/index.html">Java API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-api/index.html">Javascript API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kotlin-api/index.html">Kotlin API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swift-api/index.html">Swift API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="csharp-api/index.html">C# API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ios/index.html">iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flutter/index.html">Flutter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hotwords/index.html">Hotwords (Contextual biasing)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kws/index.html">KWS Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kws/index.html">Keyword spotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="punctuation/index.html">Punctuation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="audio-tagging/index.html">Audio tagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spoken-language-identification/index.html">Spoken language identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vad/index.html">VAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sense-voice/index.html">SenseVoice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
@@ -132,6 +139,10 @@ Windows, embedded systems, Android, and iOS.</p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/cn.html">中文资料 (Chinese tutorials)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/cn.html#sherpa-onnx-cpu-docker">2024-07-03【🆓 語音辨識引擎sherpa-onnx CPU上篇】讓您輕鬆體驗語音辨識功能(Docker架設)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/cn.html#sherpaonnxttsengine-android-tts">2024-06-10 SherpaOnnxTtsEngine - Android 本地 TTS 语言转文本引擎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/cn.html#llm100-01windows-1">2024-06-10 用LLM搭建100个应用（一）：从0到1搭建自己的Windows贾维斯(1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/cn.html#sherpa-onnx">2024-05-09 记录一下sherpa-onnx的安装及使用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorials/cn.html#rv1106-rv1109-rv1126sherpa-onnx-tts">2024-04-09 rv1106&amp;rv1109&amp;rv1126移植sherpa-onnx 实现离线TTS功能</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorials/cn.html#snowboy-kaldi-k2-fsa-sherpa-onnx">2023-08-08 snowboy+新一代kaldi（k2-fsa）sherpa-onnx实现离线语音识别【语音助手】</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorials/cn.html#k2-sherpa-onnx">2023-03-16 k2语音识别：如何使用sherpa-onnx</a></li>
@@ -178,13 +189,15 @@ Windows, embedded systems, Android, and iOS.</p>
 <li class="toctree-l2"><a class="reference internal" href="faqs/index.html#tts">TTS 中文模型没有声音</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faqs/index.html#gitcompile-line-89-libtoolize-command-not-found">./gitcompile: line 89: libtoolize: command not found</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faqs/index.html#oserror-portaudio-library-not-found">OSError: PortAudio library not found</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs/index.html#imports-github-com-k2-fsa-sherpa-onnx-go-linux-build-constraints-exclude-all-go-files">imports github.com/k2-fsa/sherpa-onnx-go-linux: build constraints exclude all Go files</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="python/index.html">Python</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="python/install.html">Install the Python Package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="python/install.html#method-1-from-pre-compiled-wheels">Method 1 (From pre-compiled wheels)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="python/install.html#method-2-from-source">Method 2 (From source)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="python/install.html#method-3-for-developers">Method 3 (For developers)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python/install.html#method-1-from-pre-compiled-wheels-cpu-only">Method 1 (From pre-compiled wheels, CPU only)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python/install.html#method-2-from-pre-compiled-wheels-cpu-cuda">Method 2 (From pre-compiled wheels, CPU + CUDA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python/install.html#method-3-from-source">Method 3 (From source)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python/install.html#method-4-for-developers">Method 4 (For developers)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="python/install.html#check-your-installation">Check your installation</a></li>
 </ul>
 </li>
@@ -257,6 +270,45 @@ Windows, embedded systems, Android, and iOS.</p>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="c-api/index.html#build-decode-file-c-api-c-with-generated-files">Build decode-file-c-api.c with generated files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c-api/index.html#colab">colab</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="java-api/index.html">Java API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="java-api/build-jni-macos.html">Build JNI interface (macOS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="java-api/build-jni-macos.html#setup-the-environment">Setup the environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="java-api/build-jni-macos.html#build-sherpa-onnx">Build sherpa-onnx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="java-api/build-jni-macos.html#download-pre-built-jni-libs">Download pre-built JNI libs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="java-api/build-jni-linux.html">Build JNI interface (Linux)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="java-api/build-jni-linux.html#setup-the-environment">Setup the environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="java-api/build-jni-linux.html#build-sherpa-onnx">Build sherpa-onnx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="java-api/build-jni-linux.html#download-pre-built-jni-libs">Download pre-built JNI libs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="java-api/build-jni-windows.html">Build JNI interface (Windows)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="java-api/build-jni-windows.html#download-pre-built-jni-libs">Download pre-built JNI libs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="java-api/build-jar.html">Build the jar package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="java-api/build-jar.html#download-pre-built-jar">Download pre-built jar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="java-api/examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="javascript-api/index.html">Javascript API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="javascript-api/install.html">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-api/examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kotlin-api/index.html">Kotlin API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kotlin-api/build-jni.html">Build JNI interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kotlin-api/examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="swift-api/index.html">Swift API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="swift-api/build.html">Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swift-api/examples.html">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="go-api/index.html">Go API</a><ul>
@@ -338,6 +390,14 @@ Windows, embedded systems, Android, and iOS.</p>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="flutter/index.html">Flutter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="flutter/pre-built-app.html">Pre-built Flutter Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flutter/pre-built-app.html#text-to-speech-tts-speech-synthesis">Text to speech (TTS, Speech synthesis)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flutter/pre-built-app.html#streaming-speech-recognition-stt-asr">Streaming Speech recognition (STT, ASR)</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="websocket/index.html">WebSocket</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="websocket/online-websocket.html">Streaming WebSocket server and client</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="websocket/online-websocket.html#build-sherpa-onnx-with-websocket-support">Build <cite>sherpa-onnx</cite> with WebSocket support</a></li>
@@ -390,15 +450,16 @@ Windows, embedded systems, Android, and iOS.</p>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="kws/index.html">KWS Open vocabulary keyword spotting (Customized keyword spotting)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="kws/index.html">Keyword spotting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="kws/index.html#what-is-open-vocabulary-keyword-spotting">What is open vocabulary keyword spotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kws/index.html#decoder-for-open-vocabulary-keyword-spotting">Decoder for open vocabulary keyword spotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kws/index.html#keywords-file">Keywords file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kws/index.html#how-to-use-keyword-spotting-in-sherpa-onnx">How to use keyword spotting in sherpa-onnx</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="kws/index.html#command-line-tool">command-line tool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="kws/index.html#android-application">Android application</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="kws/index.html#android-application">Android application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kws/index.html#pretrained-models">Pretrained models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="punctuation/index.html">Punctuation</a><ul>
@@ -458,67 +519,74 @@ Windows, embedded systems, Android, and iOS.</p>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="vad/index.html">VAD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pretrained_models/index.html">Pre-trained models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pretrained_models/online-transducer/index.html">Online transducer models</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html">Zipformer-transducer-based Models</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-multi-zh-hans-2023-12-12-chinese">sherpa-onnx-streaming-zipformer-multi-zh-hans-2023-12-12 (Chinese)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-korean-2024-06-16-korean">sherpa-onnx-streaming-zipformer-korean-2024-06-16 (Korean)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#download-the-model">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#decode-a-single-wave-file">Decode a single wave file</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#real-time-speech-recognition-from-a-microphone">Real-time speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#pkufool-icefall-asr-zipformer-streaming-wenetspeech-20230615-chinese">pkufool/icefall-asr-zipformer-streaming-wenetspeech-20230615 (Chinese)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-multi-zh-hans-2023-12-12-chinese">sherpa-onnx-streaming-zipformer-multi-zh-hans-2023-12-12 (Chinese)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id1">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id2">Decode a single wave file</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id5">Real-time speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-en-2023-06-26-english">csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-06-26 (English)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#pkufool-icefall-asr-zipformer-streaming-wenetspeech-20230615-chinese">pkufool/icefall-asr-zipformer-streaming-wenetspeech-20230615 (Chinese)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id6">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id7">Decode a single wave file</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id10">Real-time speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-en-2023-06-21-english">csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-06-21 (English)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-en-2023-06-26-english">csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-06-26 (English)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id11">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id12">Decode a single wave file</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id15">Real-time speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-en-2023-02-21-english">csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-02-21 (English)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-en-2023-06-21-english">csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-06-21 (English)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id16">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id17">Decode a single wave file</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id20">Real-time speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20-bilingual-chinese-english">csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-en-2023-02-21-english">csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-02-21 (English)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id21">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id22">Decode a single wave file</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id25">Real-time speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#shaojieli-sherpa-onnx-streaming-zipformer-fr-2023-04-14-french">shaojieli/sherpa-onnx-streaming-zipformer-fr-2023-04-14 (French)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20-bilingual-chinese-english">csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 (Bilingual, Chinese + English)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id26">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id27">Decode a single wave file</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id30">Real-time speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-small-bilingual-zh-en-2023-02-16-bilingual-chinese-english">sherpa-onnx-streaming-zipformer-small-bilingual-zh-en-2023-02-16 (Bilingual, Chinese + English)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#shaojieli-sherpa-onnx-streaming-zipformer-fr-2023-04-14-french">shaojieli/sherpa-onnx-streaming-zipformer-fr-2023-04-14 (French)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id31">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id32">Decode a single wave file</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id35">Real-time speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-zh-14m-2023-02-23-chinese">csukuangfj/sherpa-onnx-streaming-zipformer-zh-14M-2023-02-23 (Chinese)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#sherpa-onnx-streaming-zipformer-small-bilingual-zh-en-2023-02-16-bilingual-chinese-english">sherpa-onnx-streaming-zipformer-small-bilingual-zh-en-2023-02-16 (Bilingual, Chinese + English)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id36">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id37">Decode a single wave file</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id40">Real-time speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-en-20m-2023-02-17-english">csukuangfj/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17 (English)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-zh-14m-2023-02-23-chinese">csukuangfj/sherpa-onnx-streaming-zipformer-zh-14M-2023-02-23 (Chinese)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id41">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id42">Decode a single wave file</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id45">Real-time speech recognition from a microphone</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-streaming-zipformer-en-20m-2023-02-17-english">csukuangfj/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17 (English)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id46">Download the model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id47">Decode a single wave file</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/online-transducer/zipformer-transducer-models.html#id50">Real-time speech recognition from a microphone</a></li>
 </ul>
 </li>
 </ul>
@@ -581,71 +649,83 @@ Windows, embedded systems, Android, and iOS.</p>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pretrained_models/offline-transducer/index.html">Offline transducer models</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html">Zipformer-transducer-based Models</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#sherpa-onnx-zipformer-cantonese-2024-03-13-cantonese">sherpa-onnx-zipformer-cantonese-2024-03-13 (Cantonese, 粤语)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#sherpa-onnx-zipformer-korean-2024-06-24-korean">sherpa-onnx-zipformer-korean-2024-06-24 (Korean, 韩语)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#download-the-model">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#decode-wave-files">Decode wave files</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#speech-recognition-from-a-microphone">Speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#sherpa-onnx-zipformer-gigaspeech-2023-12-12-english">sherpa-onnx-zipformer-gigaspeech-2023-12-12 (English)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#sherpa-onnx-zipformer-thai-2024-06-20-thai">sherpa-onnx-zipformer-thai-2024-06-20 (Thai, 泰语)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id1">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id2">Decode wave files</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id5">Speech recognition from a microphone</a></li>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#speech-recognition-from-a-microphone-with-vad">Speech recognition from a microphone with VAD</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#zrjin-sherpa-onnx-zipformer-multi-zh-hans-2023-9-2-chinese">zrjin/sherpa-onnx-zipformer-multi-zh-hans-2023-9-2 (Chinese)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#sherpa-onnx-zipformer-cantonese-2024-03-13-cantonese">sherpa-onnx-zipformer-cantonese-2024-03-13 (Cantonese, 粤语)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id6">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id7">Decode wave files</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id10">Speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#yfyeung-icefall-asr-cv-corpus-13-0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17-english">yfyeung/icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17 (English)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#sherpa-onnx-zipformer-gigaspeech-2023-12-12-english">sherpa-onnx-zipformer-gigaspeech-2023-12-12 (English)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id11">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id12">Decode wave files</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id15">Speech recognition from a microphone</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#speech-recognition-from-a-microphone-with-vad">Speech recognition from a microphone with VAD</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#pkufool-icefall-asr-zipformer-wenetspeech-20230615-chinese">pkufool/icefall-asr-zipformer-wenetspeech-20230615 (Chinese)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#zrjin-sherpa-onnx-zipformer-multi-zh-hans-2023-9-2-chinese">zrjin/sherpa-onnx-zipformer-multi-zh-hans-2023-9-2 (Chinese)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id16">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id17">Decode wave files</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id20">Speech recognition from a microphone</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-zipformer-large-en-2023-06-26-english">csukuangfj/sherpa-onnx-zipformer-large-en-2023-06-26 (English)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#yfyeung-icefall-asr-cv-corpus-13-0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17-english">yfyeung/icefall-asr-cv-corpus-13.0-2023-03-09-en-pruned-transducer-stateless7-2023-04-17 (English)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id21">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id22">Decode wave files</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id25">Speech recognition from a microphone</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#pkufool-icefall-asr-zipformer-wenetspeech-20230615-chinese">pkufool/icefall-asr-zipformer-wenetspeech-20230615 (Chinese)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id26">Download the model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id27">Decode wave files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id30">Speech recognition from a microphone</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-zipformer-large-en-2023-06-26-english">csukuangfj/sherpa-onnx-zipformer-large-en-2023-06-26 (English)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id31">Download the model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id32">Decode wave files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id35">Speech recognition from a microphone</a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-zipformer-small-en-2023-06-26-english">csukuangfj/sherpa-onnx-zipformer-small-en-2023-06-26 (English)</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id27">Download the model</a></li>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id28">Decode wave files</a></li>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id31">Speech recognition from a microphone</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id37">Download the model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id38">Decode wave files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id41">Speech recognition from a microphone</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-zipformer-en-2023-06-26-english">csukuangfj/sherpa-onnx-zipformer-en-2023-06-26 (English)</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id33">Download the model</a></li>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id34">Decode wave files</a></li>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id37">Speech recognition from a microphone</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id43">Download the model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id44">Decode wave files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id47">Speech recognition from a microphone</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#icefall-asr-multidataset-pruned-transducer-stateless7-2023-05-04-english">icefall-asr-multidataset-pruned_transducer_stateless7-2023-05-04 (English)</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id39">Download the model</a></li>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id40">Decode wave files</a></li>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id43">Speech recognition from a microphone</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-zipformer-en-2023-04-01-english">csukuangfj/sherpa-onnx-zipformer-en-2023-04-01 (English)</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id44">Download the model</a></li>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id45">Decode wave files</a></li>
-<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id48">Speech recognition from a microphone</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-zipformer-en-2023-03-30-english">csukuangfj/sherpa-onnx-zipformer-en-2023-03-30 (English)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id49">Download the model</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id50">Decode wave files</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id53">Speech recognition from a microphone</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-zipformer-en-2023-04-01-english">csukuangfj/sherpa-onnx-zipformer-en-2023-04-01 (English)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id54">Download the model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id55">Decode wave files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id58">Speech recognition from a microphone</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#csukuangfj-sherpa-onnx-zipformer-en-2023-03-30-english">csukuangfj/sherpa-onnx-zipformer-en-2023-03-30 (English)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id59">Download the model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id60">Decode wave files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/offline-transducer/zipformer-transducer-models.html#id63">Speech recognition from a microphone</a></li>
 </ul>
 </li>
 </ul>
@@ -739,17 +819,52 @@ Windows, embedded systems, Android, and iOS.</p>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="pretrained_models/telespeech/index.html">TeleSpeech</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pretrained_models/telespeech/how-to-export.html">How to export models from Tele-AI/TeleSpeech-ASR to sherpa-onnx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/telespeech/how-to-export.html#step-1-export-model-onnx">Step 1: Export model.onnx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/telespeech/how-to-export.html#step-2-add-metadata">Step 2: Add metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/telespeech/how-to-export.html#step-3-obtain-tokens-txt">Step 3: Obtain tokens.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pretrained_models/telespeech/models.html">Models</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/telespeech/models.html#sherpa-onnx-telespeech-ctc-int8-zh-2024-06-04">sherpa-onnx-telespeech-ctc-int8-zh-2024-06-04 (支持非常多种方言)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/telespeech/models.html#decode-wave-files">Decode wave files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="pretrained_models/whisper/index.html">Whisper</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pretrained_models/whisper/export-onnx.html">Export Whisper to ONNX</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pretrained_models/whisper/export-onnx.html#available-models">Available models</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pretrained_models/whisper/export-onnx.html#export-to-onnx">Export to onnx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/whisper/export-onnx.html#export-to-onnx">Export to onnx</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/whisper/export-onnx.html#example-1-export-tiny-en">Example 1: Export tiny.en</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/whisper/export-onnx.html#example-2-export-large-v3">Example 2: Export large-v3</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pretrained_models/whisper/tiny.en.html">tiny.en</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pretrained_models/whisper/tiny.en.html#real-time-factor-rtf-on-raspberry-pi-4-model-b">Real-time factor (RTF) on Raspberry Pi 4 Model B</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pretrained_models/whisper/colab.html">colab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pretrained_models/whisper/large-v3.html">large-v3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/whisper/large-v3.html#run-with-cpu-float32">Run with CPU (float32)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/whisper/large-v3.html#run-with-cpu-int8">Run with CPU (int8)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/whisper/large-v3.html#run-with-gpu-float32">Run with GPU (float32)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/whisper/large-v3.html#run-with-gpu-int8">Run with GPU (int8)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pretrained_models/whisper/large-v3.html#fix-issues-about-running-on-gpu">Fix issues about running on GPU</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/whisper/large-v3.html#colab">colab</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pretrained_models/whisper/colab.html">colab</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/whisper/colab.html#non-large-models">Non-large models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pretrained_models/whisper/colab.html#large-models">Large models</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="pretrained_models/whisper/huggingface.html">Huggingface space</a></li>
 </ul>
 </li>
@@ -768,6 +883,52 @@ Windows, embedded systems, Android, and iOS.</p>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pretrained_models/small-online-models.html">Small models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sense-voice/index.html">SenseVoice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sense-voice/huggingface-space.html">Huggingface space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sense-voice/export.html">Export SenseVoice to sherpa-onnx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sense-voice/export.html#the-code">The code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sense-voice/export.html#test-the-exported-model">Test the exported model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sense-voice/export.html#where-to-find-exported-models">Where to find exported models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sense-voice/pretrained.html">Pre-trained Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sense-voice/pretrained.html#sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17">sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sense-voice/pretrained.html#download">Download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sense-voice/pretrained.html#decode-a-file-with-model-onnx">Decode a file with model.onnx</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="sense-voice/pretrained.html#without-inverse-text-normalization">Without inverse text normalization</a></li>
+<li class="toctree-l5"><a class="reference internal" href="sense-voice/pretrained.html#with-inverse-text-normalization">With inverse text normalization</a></li>
+<li class="toctree-l5"><a class="reference internal" href="sense-voice/pretrained.html#specify-a-language">Specify a language</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sense-voice/c-api.html">C API for SenseVoice</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sense-voice/c-api.html#explanations">Explanations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sense-voice/c-api.html#download-sherpa-onnx">1. Download sherpa-onnx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sense-voice/c-api.html#download-the-model">2. Download the model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sense-voice/c-api.html#build-sherpa-onnx">3. Build sherpa-onnx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sense-voice/c-api.html#view-the-build-result">4. View the build result</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sense-voice/c-api.html#build-the-c-api-example">5. Build the C API example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sense-voice/c-api.html#run-it">6. Run it</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sense-voice/c-api.html#where-to-find-sense-voice-c-api-c">7. Where to find sense-voice-c-api.c</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sense-voice/dart-api.html">Dart API for SenseVoice</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sense-voice/dart-api.html#explanations">Explanations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sense-voice/dart-api.html#download-the-code">1. Download the code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sense-voice/dart-api.html#download-the-sherpa-onnx-package">2. Download the sherpa-onnx package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sense-voice/dart-api.html#run-it">3. Run it</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sense-voice/python-api.html">Python API for SenseVoice</a></li>
 </ul>
 </li>
 </ul>

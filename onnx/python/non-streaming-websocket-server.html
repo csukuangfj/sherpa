@@ -81,18 +81,25 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../c-api/index.html">C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../java-api/index.html">Java API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../javascript-api/index.html">Javascript API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kotlin-api/index.html">Kotlin API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../swift-api/index.html">Swift API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../csharp-api/index.html">C# API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flutter/index.html">Flutter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">KWS Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Keyword spotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../punctuation/index.html">Punctuation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../audio-tagging/index.html">Audio tagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spoken-language-identification/index.html">Spoken language identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vad/index.html">VAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sense-voice/index.html">SenseVoice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
@@ -169,10 +176,9 @@ before you continue.</p>
 <h3>Start the server<a class="headerlink" href="#start-the-server" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-zipformer-en-2023-06-26
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-zipformer-en-2023-06-26
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
-<span class="nb">cd</span><span class="w"> </span>..
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-en-2023-06-26.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-zipformer-en-2023-06-26.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-zipformer-en-2023-06-26.tar.bz2
 
 python3<span class="w"> </span>./python-api-examples/non_streaming_server.py<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--encoder<span class="w"> </span>./sherpa-onnx-zipformer-en-2023-06-26/encoder-epoch-99-avg-1.onnx<span class="w"> </span><span class="se">\</span>
@@ -233,10 +239,9 @@ python3<span class="w"> </span>./python-api-examples/non_streaming_server.py<spa
 <h3>Start the server<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-paraformer-zh-2023-03-28
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-paraformer-zh-2023-03-28
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
-<span class="nb">cd</span><span class="w"> </span>..
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-paraformer-zh-2023-03-28.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-paraformer-zh-2023-03-28.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-paraformer-zh-2023-03-28.tar.bz2
 
 python3<span class="w"> </span>./python-api-examples/non_streaming_server.py<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--paraformer<span class="w"> </span>./sherpa-onnx-paraformer-zh-2023-03-28/model.int8.onnx<span class="w"> </span><span class="se">\</span>
@@ -302,10 +307,9 @@ python3<span class="w"> </span>./python-api-examples/non_streaming_server.py<spa
 <h3>Start the server<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-nemo-ctc-en-conformer-medium
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-nemo-ctc-en-conformer-medium
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
-<span class="nb">cd</span><span class="w"> </span>..
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-nemo-ctc-en-conformer-medium.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-nemo-ctc-en-conformer-medium.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-nemo-ctc-en-conformer-medium.tar.bz2
 
 python3<span class="w"> </span>./python-api-examples/non_streaming_server.py<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--nemo-ctc<span class="w"> </span>./sherpa-onnx-nemo-ctc-en-conformer-medium/model.onnx<span class="w"> </span><span class="se">\</span>
@@ -364,10 +368,10 @@ python3<span class="w"> </span>./python-api-examples/non_streaming_server.py<spa
 <section id="id5">
 <h3>Start the server<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-whisper-tiny.en
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-whisper-tiny.en
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
-<span class="nb">cd</span><span class="w"> </span>..
+
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-tiny.en.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-whisper-tiny.en.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-whisper-tiny.en.tar.bz2
 
 python3<span class="w"> </span>./python-api-examples/non_streaming_server.py<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--whisper-encoder<span class="o">=</span>./sherpa-onnx-whisper-tiny.en/tiny.en-encoder.onnx<span class="w"> </span><span class="se">\</span>
