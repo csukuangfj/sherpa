@@ -7,6 +7,63 @@ You can find all models at the following URL:
 
   `<https://github.com/k2-fsa/sherpa-onnx/releases/tag/punctuation-models>`_
 
+sherpa-onnx-online-punct-en-2024-08-06 (English only)
+-----------------------------------------------------
+
+This model is from `<https://github.com/frankyoujian/Edge-Punct-Casing/blob/main/onnx_decode_sentence.py>`_
+and it supports only English.
+
+``Note``: This model is able to restore cases.
+
+.. hint::
+
+   Don't be confused by ``online`` in the model name. ``online`` means streaming here.
+   You can run this model locally on your device without accessing the Internet.
+
+In the following, we describe how to download and use it with `sherpa-onnx`_.
+
+Download the model
+^^^^^^^^^^^^^^^^^^
+
+Please use the following commands to download it::
+
+.. code-block:: bash
+
+   wget https://github.com/k2-fsa/sherpa-onnx/releases/download/punctuation-models/sherpa-onnx-online-punct-en-2024-08-06.tar.bz2
+
+   tar xvf sherpa-onnx-online-punct-en-2024-08-06.tar.bz2
+   rm sherpa-onnx-online-punct-en-2024-08-06.tar.bz2
+
+You will find the following files after unzipping::
+
+  ls -lh sherpa-onnx-online-punct-en-2024-08-06/
+
+  -rw-r--r--  1 fangjun  staff   244B Aug  6 17:47 README.md
+  -rw-r--r--  1 fangjun  staff   146K Aug  5 11:19 bpe.vocab
+  -rw-r--r--  1 fangjun  staff   7.1M Aug  5 11:18 model.int8.onnx
+  -rw-r--r--  1 fangjun  staff    28M Aug  5 11:18 model.onnx
+
+C++ binary examples
+^^^^^^^^^^^^^^^^^^^
+
+After installing `sherpa-onnx`_, you can use the following command to add punctuations to text::
+
+   ./build/bin/sherpa-onnx-online-punctuation \
+     --cnn-bilstm=./sherpa-onnx-online-punct-en-2024-08-06/model.onnx \
+     --bpe-vocab=sherpa-onnx-online-punct-en-2024-08-06/bpe.vocab \
+     "but whenever i'd complained my mother would just give me one of those looks and she'd say this is no picnic for me either buster"
+
+The output is given below::
+
+  OnlinePunctuationConfig(model=OnlinePunctuationModelConfig(cnn_bilstm="./sherpa-onnx-online-punct-en-2024-08-06/model.onnx", bpe_vocab="sherpa-onnx-online-punct-en-2024-08-06/bpe.vocab", num_threads=1, debug=False, provider="cpu"))
+  Creating OnlinePunctuation ...
+  Started
+  Done
+  Num threads: 1
+  Elapsed seconds: 0.033 s
+  Input text: but whenever i'd complained my mother would just give me one of those looks and she'd say this is no picnic for me either buster
+  Output text: But whenever I'd complained, my mother would just give me one of those looks, and she'd say this is no picnic for me either. Buster
+
 sherpa-onnx-punct-ct-transformer-zh-en-vocab272727-2024-04-12
 -------------------------------------------------------------
 
