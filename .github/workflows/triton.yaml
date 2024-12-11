@@ -1,0 +1,39 @@
+name: triton
+
+on:
+  push:
+    branches:
+      - master
+      - ci-triton
+  workflow_dispatch:
+
+concurrency:
+  group: triton-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  triton:
+    name: triton test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # See https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tritonserver/tags
+      # for tags
+      - name: Run docker
+        uses: addnab/docker-run-action@v3
+        with:
+            image: nvcr.io/nvidia/tritonserver:24.11-py3
+            options: |
+              --volume ${{ github.workspace }}/:/workspace
+            shell: bash
+            run: |
+              uname -a
+              ls -lh
