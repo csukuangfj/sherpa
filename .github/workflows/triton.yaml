@@ -37,3 +37,12 @@ jobs:
             run: |
               uname -a
               ls -lh
+
+              echo "--bin--"
+              ls -lh bin
+
+              echo "--lib--"
+              ls -lh lib
+
+              echo "--python--"
+              ls -lh python
