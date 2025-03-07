@@ -14,8 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-torch=$TORCH_VERSION
-cuda=$CUDA_VERSION
+set -x
+
+if [ x"$TORCH_VERSION" != x"" ] && [ x"$CUDA_VERSION" != x"" ]; then
+    torch=$TORCH_VERSION
+    cuda=$CUDA_VERSION
+fi
+
 case ${torch} in
   1.5.*)
     case ${cuda} in
@@ -195,6 +200,90 @@ case ${torch} in
         ;;
     esac
     ;;
+  2.3.*)
+    case ${cuda} in
+      11.8)
+        package="torch==${torch}+cu118"
+        url=https://download.pytorch.org/whl/torch_stable.html
+        ;;
+      12.1)
+        package="torch==${torch}"
+        # Leave it empty to use PyPI.
+        url=
+        ;;
+    esac
+    ;;
+  2.4.*)
+    case ${cuda} in
+      11.8)
+        package="torch==${torch}+cu118"
+        # https://download.pytorch.org/whl/nightly/torch/
+        url=https://download.pytorch.org/whl/torch/
+        ;;
+      12.1)
+        package="torch==${torch}+cu121"
+        url=https://download.pytorch.org/whl/torch/
+        ;;
+      12.4)
+        package="torch==${torch}+cu124"
+        url=https://download.pytorch.org/whl/torch/
+        ;;
+    esac
+    ;;
+  2.5.*)
+    case ${cuda} in
+      11.8)
+        package="torch==${torch}+cu118"
+        # https://download.pytorch.org/whl/nightly/torch/
+        url=https://download.pytorch.org/whl/torch/
+        ;;
+      12.1)
+        package="torch==${torch}+cu121"
+        url=https://download.pytorch.org/whl/torch/
+        ;;
+      12.4)
+        package="torch==${torch}+cu124"
+        url=https://download.pytorch.org/whl/torch/
+        ;;
+    esac
+    ;;
+  2.6.*)
+    case ${cuda} in
+      11.8)
+        package="torch==${torch}+cu118"
+        # https://download.pytorch.org/whl/nightly/torch/
+        url=https://download.pytorch.org/whl/torch/
+        ;;
+      12.4)
+        package="torch==${torch}+cu124"
+        url=https://download.pytorch.org/whl/torch/
+        ;;
+      12.6)
+        package="torch==${torch}+cu126"
+        url=https://download.pytorch.org/whl/torch/
+        ;;
+    esac
+    ;;
+  2.7.*)
+    case ${cuda} in
+      11.8)
+        package="torch==2.7.0.dev20250303+cu118 -f https://download.pytorch.org/whl/nightly/torch/ -f https://download.pytorch.org/whl/nightly/pytorch-triton/"
+        url=
+        ;;
+      12.4)
+        package="torch==2.7.0.dev20250303+cu124 -f https://download.pytorch.org/whl/nightly/torch/ -f https://download.pytorch.org/whl/nightly/pytorch-triton/"
+        url=
+        ;;
+      12.6)
+        package="torch==2.7.0.dev20250303+cu126 -f https://download.pytorch.org/whl/nightly/torch/ -f https://download.pytorch.org/whl/nightly/pytorch-triton/"
+        url=
+        ;;
+      12.8)
+        package="torch==2.7.0.dev20250303+cu128 -f https://download.pytorch.org/whl/nightly/torch/ -f https://download.pytorch.org/whl/nightly/pytorch-triton/"
+        url=
+        ;;
+    esac
+    ;;
   *)
     echo "Unsupported PyTorch version: ${torch}"
     exit 1
@@ -211,4 +300,4 @@ else
   retry python3 -m pip install -q $package -f $url
 fi
 
-rm -rfv ~/.cache/pip
+rm -rf ~/.cache/pip

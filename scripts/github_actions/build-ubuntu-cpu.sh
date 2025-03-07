@@ -15,54 +15,11 @@ if [ -z $TORCH_VERSION ]; then
   exit 1
 fi
 
-echo "Installing ${PYTHON_VERSION}.3"
+export PATH=$PYTHON_INSTALL_DIR/bin:$PATH
 
-yum -y install openssl-devel bzip2-devel libffi-devel xz-devel wget redhat-lsb-core
-
-if true; then
-  echo "Installing ${PYTHON_VERSION}.2"
-  curl -O https://www.python.org/ftp/python/${PYTHON_VERSION}.2/Python-${PYTHON_VERSION}.2.tgz
-  tar xf Python-${PYTHON_VERSION}.2.tgz
-  pushd Python-${PYTHON_VERSION}.2
-
-  PYTHON_INSTALL_DIR=$PWD/py-${PYTHON_VERSION}
-
-  if [[ $PYTHON_VERSION =~ 3.1. ]]; then
-    yum install -y openssl11-devel
-    sed -i 's/PKG_CONFIG openssl /PKG_CONFIG openssl11 /g' configure
-  fi
-
-  ./configure --enable-shared --prefix=$PYTHON_INSTALL_DIR >/dev/null 2>&1
-  make install >/dev/null 2>&1
-
-  popd
-
-  export PATH=$PYTHON_INSTALL_DIR/bin:$PATH
-  export LD_LIBRARY_PATH=$PYTHON_INSTALL_DIR/lib:$LD_LIBRARY_PATH
-  ls -lh $PYTHON_INSTALL_DIR/lib/
-
-  python3 --version
-  which python3
-else
-  case ${PYTHON_VERSION} in
-    3.7)
-      export PATH=/opt/python/cp37-cp37m/bin:$PATH
-      ;;
-    3.8)
-      export PATH=/opt/python/cp38-cp38/bin:$PATH
-      ;;
-    3.9)
-      export PATH=/opt/python/cp39-cp39/bin:$PATH
-      ;;
-    3.10)
-      export PATH=/opt/python/cp310-cp310/bin:$PATH
-      ;;
-    3.11)
-      export PATH=/opt/python/cp311-cp311/bin:$PATH
-      ;;
-  esac
-fi
-
+python3 -m pip install -U pip cmake "numpy<=1.26.4"
+python3 -m pip install wheel twine typing_extensions
+python3 -m pip install bs4 requests tqdm auditwheel
 
 nvcc --version || true
 rm -rf /usr/local/cuda*
@@ -71,31 +28,31 @@ nvcc --version || true
 python3 --version
 which python3
 
-if [[ $PYTHON_VERSION != 3.6 ]]; then
-  curl -O https://bootstrap.pypa.io/get-pip.py
-  python3 get-pip.py
+echo "Installing torch $TORCH_VERSION"
+if [[ $TORCH_VERSION == "2.7.0" ]]; then
+  python3 -m pip install -qq torch==2.7.0.dev20250304+cpu -f https://download.pytorch.org/whl/nightly/torch/ -f https://download.pytorch.org/whl/nightly/pytorch-triton
+else
+  python3 -m pip install -qq torch==$TORCH_VERSION+cpu -f https://download.pytorch.org/whl/torch_stable.html || \
+  python3 -m pip install -qq torch==$TORCH_VERSION+cpu -f https://download.pytorch.org/whl/torch/
 fi
 
-python3 -m pip install scikit-build
-python3 -m pip install -U pip cmake
-python3 -m pip install wheel twine typing_extensions
-python3 -m pip install bs4 requests tqdm auditwheel
+python3 -c "import torch; print(torch.__file__)"
+python3 -m torch.utils.collect_env
 
-echo "Installing torch $TORCH_VERSION"
-python3 -m pip install -qq torch==$TORCH_VERSION+cpu -f https://download.pytorch.org/whl/torch_stable.html
+k2_vesion=1.24.4.dev20250307+cpu.torch${TORCH_VERSION}
+echo "Install k2 $k2_vesion"
+pip install k2==${k2_vesion} -f https://k2-fsa.github.io/k2/cpu.html
 
-echo "Install k2 1.24.4.dev20240223+cpu.torch${TORCH_VERSION}"
-pip install k2==1.24.4.dev20240223+cpu.torch${TORCH_VERSION} -f https://k2-fsa.github.io/k2/cpu.html
-
-echo "Installing kaldifeat 1.25.4.dev20240223+cpu.torch${TORCH_VERSION}"
-pip install kaldifeat==1.25.4.dev20240223+cpu.torch${TORCH_VERSION} -f https://csukuangfj.github.io/kaldifeat/cpu.html
+kaldifeat_version=1.25.5.dev20250307+cpu.torch${TORCH_VERSION}
+echo "Installing kaldifeat $kaldifeat_version"
+pip install kaldifeat==$kaldifeat_version -f https://csukuangfj.github.io/kaldifeat/cpu.html
 
 python3 -m k2.version
 python3 -c "import k2; print(k2.__file__)"
 python3 -c "import kaldifeat; print(kaldifeat.__file__)"
 
-rm -rf ~/.cache/pip
-yum clean all
+rm -rf ~/.cache/pip >/dev/null 2>&1
+yum clean all >/dev/null 2>&1
 
 cd /var/www
 
@@ -104,6 +61,11 @@ export SHERPA_ARGS=" -DPYTHON_EXECUTABLE=$PYTHON_INSTALL_DIR/bin/python3 "
 export SHERPA_MAKE_ARGS=" -j2 "
 
 python3 setup.py bdist_wheel
+if [[ x"$IS_2_28" == x"1" ]]; then
+  plat=manylinux_2_28_x86_64
+else
+  plat=manylinux_2_17_x86_64
+fi
 
 pushd dist
 unzip *.whl
@@ -141,7 +103,7 @@ auditwheel --verbose repair \
   --exclude libk2fsa.so \
   --exclude libk2_torch.so \
   \
-  --plat manylinux_2_17_x86_64 \
+  --plat $plat \
   -w /var/www/wheels \
   dist/*.whl
 
