@@ -101,9 +101,9 @@ class OfflineWhisperModel::Impl {
                                    n_layer_cross_v_cache, offset)
                        .toTuple();
 
-    auto logits = outputs->elements().vec()[0].toTensor();
-    n_layer_self_k_cache = outputs->elements().vec()[1].toTensor();
-    n_layer_self_v_cache = outputs->elements().vec()[2].toTensor();
+    auto logits = outputs->elements()[0].toTensor();
+    n_layer_self_k_cache = outputs->elements()[1].toTensor();
+    n_layer_self_v_cache = outputs->elements()[2].toTensor();
 
     return std::make_tuple(logits, n_layer_self_k_cache, n_layer_self_v_cache);
   }

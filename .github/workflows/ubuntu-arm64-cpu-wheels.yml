@@ -57,6 +57,7 @@ jobs:
         run: python -c "import sys; print(sys.version)"
 
       - name: Install patchelf
+        if: false
         shell: bash
         run: |
           sudo apt-get update -q
@@ -145,13 +146,16 @@ jobs:
               /var/www/scripts/github_actions/build-ubuntu-cpu-arm64.sh
 
       - name: Patch wheels
+        if: false
         shell: bash
         run: |
           ls -lh
           ls -lh ./wheels/
           sudo ./scripts/github_actions/patch_wheel.py --in-dir ./wheels --out-dir ./wheelhouse
 
-          ls -lh ./wheelhouse/
+          rm -rf wheels
+          mv wheelhouse wheels
+          ls -lh ./wheels/
 
       # https://huggingface.co/docs/hub/spaces-github-actions
       - name: Publish to huggingface
@@ -176,7 +180,7 @@ jobs:
 
             d=cpu/1.4.0.dev20250307/linux-arm64
             mkdir -p $d
-            cp -v ../wheelhouse/*.whl $d
+            cp -v ../wheels/*.whl $d
             git status
             git lfs track "*.whl"
             git add .
