@@ -1,16 +1,16 @@
-name: build-wheels-cpu-ubuntu
+name: build-wheels-cpu-ubuntu-arm64
 
 on:
   push:
     branches:
-      # - linux-arm64
-      - wheel
+      - linux-arm64
+      # - wheel
     tags:
       - '*'
   workflow_dispatch:
 
 concurrency:
-  group: build-wheels-cpu-ubuntu-${{ github.ref }}
+  group: build-wheels-cpu-ubuntu-arm64-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -27,17 +27,17 @@ jobs:
         id: set-matrix
         run: |
           # outputting for debugging purposes
-          python ./scripts/github_actions/generate_build_matrix.py
-          MATRIX=$(python ./scripts/github_actions/generate_build_matrix.py)
+          python ./scripts/github_actions/generate_build_matrix.py --for-arm64
+          MATRIX=$(python ./scripts/github_actions/generate_build_matrix.py --for-arm64)
 
-          # python ./scripts/github_actions/generate_build_matrix.py --test-only-latest-torch
-          # MATRIX=$(python ./scripts/github_actions/generate_build_matrix.py --test-only-latest-torch)
+          # python ./scripts/github_actions/generate_build_matrix.py --test-only-latest-torch --for-arm64
+          # MATRIX=$(python ./scripts/github_actions/generate_build_matrix.py --test-only-latest-torch --for-arm64)
           echo "::set-output name=matrix::${MATRIX}"
 
   build-manylinux-wheels:
     needs: generate_build_matrix
     name: ${{ matrix.torch }} ${{ matrix.python-version }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04-arm
     strategy:
       fail-fast: false
       matrix:
@@ -57,7 +57,6 @@ jobs:
         run: python -c "import sys; print(sys.version)"
 
       - name: Install patchelf
-        if: false
         shell: bash
         run: |
           sudo apt-get update -q
@@ -143,20 +142,16 @@ jobs:
               python3 --version
               which python3
 
-              /var/www/scripts/github_actions/build-ubuntu-cpu.sh
+              /var/www/scripts/github_actions/build-ubuntu-cpu-arm64.sh
 
       - name: Patch wheels
-        if: false
         shell: bash
         run: |
           ls -lh
           ls -lh ./wheels/
           sudo ./scripts/github_actions/patch_wheel.py --in-dir ./wheels --out-dir ./wheelhouse
 
-          rm -rf wheels
-          mv wheelhouse wheels
-
-          ls -lh ./wheels/
+          ls -lh ./wheelhouse/
 
       # https://huggingface.co/docs/hub/spaces-github-actions
       - name: Publish to huggingface
@@ -179,9 +174,9 @@ jobs:
             cd huggingface
             git pull
 
-            d=cpu/1.4.0.dev20250307/linux-x64
+            d=cpu/1.4.0.dev20250307/linux-arm64
             mkdir -p $d
-            cp -v ../wheels/*.whl $d
+            cp -v ../wheelhouse/*.whl $d
             git status
             git lfs track "*.whl"
             git add .
