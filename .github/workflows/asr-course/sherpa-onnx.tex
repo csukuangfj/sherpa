@@ -1,0 +1,35 @@
+\section{新一代 Kaldi 实战}
+
+\begin{frame}[t]
+\frametitle{新一代 Kaldi 实战}
+\begin{itemize}
+\item 代码: \url{http://github.com/k2-fsa/sherpa-onnx}
+\item 文档: \url{https://k2-fsa.github.io/sherpa/onnx/index.html}
+\end{itemize}
+\only<1>{
+\begin{center}
+\includegraphics[width=0.8\textwidth]{./pic/sherpa-onnx-1.png}
+\end{center}
+}
+
+\only<2>{
+\begin{center}
+\includegraphics[width=0.8\textwidth]{./pic/sherpa-onnx-2.png}
+\end{center}
+}
+\end{frame}
+
+
+\begin{frame}[t,fragile]
+\frametitle{生成字幕实战}
+\begin{itemize}
+\item \url{https://github.com/k2-fsa/sherpa-onnx/blob/master/python-api-examples/generate-subtitles.py}
+\end{itemize}
+\begin{lstlisting}[basicstyle={\tiny},language={bash}]
+./python-api-examples/generate-subtitles.py  \
+  --silero-vad-model=./silero_vad.onnx \
+  --tokens=./sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17/tokens.txt \
+  --sense-voice=./sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17/model.int8.onnx \
+  /Users/fangjun/asr-course/demo-1-subtitles/lei-jun.wav
+\end{lstlisting}
+\end{frame}

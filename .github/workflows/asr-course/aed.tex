@@ -1,0 +1,184 @@
+\subsection{AED}
+\begin{frame}[t,fragile]
+\frametitle{AED 介绍}
+\small
+\begin{itemize}
+\item \textbf{\textcolor{red}{A}}ttention-based \textbf{\textcolor{red}{E}}ncoder-\textbf{\textcolor{red}{D}}ecoder 架构
+\item 很有代表性的一个模型是 \textbf{OpenAI} 开源的 \textbf{Whisper} 模型
+\item \url{http://github.com/openai/whisper}
+\item \textbf{\textcolor{red}{bos}}: beginning of sentence
+\item \textbf{\textcolor{red}{eos}}: end of sentence
+\end{itemize}
+\vspace{-2em}
+\begin{columns}[T]
+  \begin{column}{0.4\textwidth}
+      \begin{center}
+        {\small 第 \textbf{\textcolor{red}{1}} 步， 运行 encoder 模型}
+      \end{center}
+      \vspace{-1.5em}
+    \begin{lstlisting}[basicstyle={\tiny},language={python}]
+      samples = load("cat.wav")
+
+      features = compute_features(samples)
+
+      encoder_out = `\textcolor{red}{run\_encoder}`(features)
+    \end{lstlisting}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+      \begin{center}
+        {\small 第 \textbf{\textcolor{red}{2}} 步， 运行 encoder 模型}
+      \end{center}
+      \vspace{-1.5em}
+    \begin{lstlisting}[basicstyle={\tiny},language={python}]
+      ids = [ ]
+      state = get_init_state()
+      current = `\textcolor{red}{bos}`
+
+      while `\textcolor{red}{True}`:
+        logits, state = `\textcolor{red}{run\_decoder}`(current, state, encoder_out)
+        current = logits.argmax().item()
+        if current == `\textcolor{red}{eos}`:
+          break
+
+        ids.append(current)
+
+      // 查表：把  ids 变成 token
+      // 然后把所有 token 依次连接起来
+    \end{lstlisting}
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}[t,fragile]
+\frametitle{AED 解码分析}
+\begin{columns}[T]
+  \begin{column}{0.4\textwidth}
+      \begin{center}
+        {\small 第 \textbf{\textcolor{red}{1}} 步， 运行 encoder 模型}
+      \end{center}
+      \vspace{-1.5em}
+    \begin{lstlisting}[basicstyle={\tiny},language={python}]
+      samples = load("cat.wav")
+
+      features = compute_features(samples)
+
+      encoder_out = `\textcolor{red}{run\_encoder}`(features)
+    \end{lstlisting}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+      \begin{center}
+        {\small 第 \textbf{\textcolor{red}{2}} 步， 运行 decoder 模型}
+      \end{center}
+      \vspace{-1.5em}
+    \begin{lstlisting}[basicstyle={\tiny},language={python}]
+      ids = [ ]
+      state = get_init_state()
+      current = `\textcolor{red}{bos}`
+
+      while `\textcolor{red}{True}`:
+        logits, state = `\textcolor{red}{run\_decoder}`(current, state, encoder_out)
+        current = logits.argmax().item()
+        if current == `\textcolor{red}{eos}`:
+          break
+
+        ids.append(current)
+
+      // 查表：把  ids 变成 token
+      // 然后把所有 token 依次连接起来
+    \end{lstlisting}
+  \end{column}
+\end{columns}
+\begin{itemize}
+\item 自回归 (类似 RNN/LSTM/GRU)
+\item 不容易\textbf{并行}解码
+\item<2-> \textbf{\textcolor{red}{问题:}} 如果一直不出现 \textbf{\textcolor{red}{eos}}, 该怎么办？
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{AED 解码例子}
+\begin{columns}[T]
+  \begin{column}{0.4\textwidth}
+      \begin{center}
+        {\small 第 \textbf{\textcolor{red}{1}} 步， 运行 encoder 模型}
+      \end{center}
+      \vspace{-1.5em}
+    \begin{lstlisting}[basicstyle={\tiny},language={python}]
+      samples = load("cat.wav")
+
+      features = compute_features(samples)
+
+      encoder_out = `\textcolor{red}{run\_encoder}`(features)
+    \end{lstlisting}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+      \begin{center}
+        {\small 第 \textbf{\textcolor{red}{2}} 步， 运行 decoder 模型}
+      \end{center}
+      \vspace{-1.5em}
+    \begin{lstlisting}[basicstyle={\tiny},language={python}]
+      ids = [ ]
+      state = get_init_state()
+      current = `\textcolor{red}{bos}`
+
+      while `\textcolor{red}{True}`:
+        logits, state = `\textcolor{red}{run\_decoder}`(current, state, encoder_out)
+        current = logits.argmax().item()
+        if current == `\textcolor{red}{eos}`:
+          break
+
+        ids.append(current)
+
+      // 查表：把  ids 变成 token
+      // 然后把所有 token 依次连接起来
+    \end{lstlisting}
+  \end{column}
+\end{columns}
+{\small
+\vspace{-3em}
+\begin{itemize}
+\item  以 cat.wav 为例子
+\item 输入 bos， 输出 c 
+\item 输入 c，输出 a
+\item 输入 a，输出 t
+\item 输入 t，输出 eos
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{常用的 AED 模型}
+\begin{enumerate}
+\item \textbf{OpenAI}开源的 Whisper 模型: {\url{https://github.com/openai/whisper}}
+
+\item \textbf{小红书}开源的 FireRedASR 模型: {\url{https://github.com/FireRedTeam/FireRedASR}}
+  \begin{itemize}
+    \item 70k 小时训练数据
+    \item 支持中英文
+  \end{itemize}
+
+\item \textbf{英伟达}开源的 Canary 模型: {\url{https://huggingface.co/nvidia/canary-180m-flash}}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{AED 解码实战}
+
+\begin{itemize}
+\item Google colab notebook: {\tiny \url{https://colab.research.google.com/drive/1XA69PowRkkZUAhFJ8sHL6k7MEWfpiqrJ?usp=sharing}}
+\item GitHub 备份: {\tiny \url{https://github.com/k2-fsa/colab/blob/master/aed_decoding_demo.ipynb}}
+\end{itemize}
+
+\begin{table}
+\centering
+% https://qr.io
+\begin{tabular}{cc}
+\includegraphics[width=0.45\textwidth]{./pic/aed-colab.png}&
+\includegraphics[width=0.45\textwidth]{./pic/aed-github.png}\\
+\end{tabular}
+\end{table}
+
+\end{frame}
+

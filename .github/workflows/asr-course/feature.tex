@@ -1,0 +1,266 @@
+\subsection{提取特征}
+
+\begin{frame}[t,fragile]
+\frametitle{提取特征 --- 分帧 (1/2)}
+\begin{center}
+\includegraphics[width=0.45\textwidth]{pic/feature-window-size.jpg}
+\end{center}
+\begin{itemize}
+\item 分帧
+  \begin{itemize}
+    \item 一般一帧长 25 ms (也叫 \texttt{frame length}), 即 400 个采样点
+    \item 帧偏移 10 ms (也叫 \texttt{frame shift}), 即 160 个采样点
+  \end{itemize}
+\end{itemize}
+\visible<2->{
+  \textbf{\textcolor{red}{问题}}: 1 秒的数据, 可以分成多少帧? (采样率为 16000 Hz)
+}
+
+\visible<3->{
+  \footnotesize{
+    \textbf{\textcolor{red}{提示}}: Conv1d 中, Output shape 与 kernel size 及 stride 的关系 (不考虑 padding)
+  }
+}
+
+\visible<4->{
+\begin{equation}
+\frac{16000 - 400}{160} + 1 = 98.5, \textrm{向0取整，得} 98
+\end{equation}
+}
+
+\visible<5->{
+  一般的，可以近似认为， 1秒钟 100 帧, 10秒钟 1000 帧
+}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{提取特征 --- 分帧 (2/2)}
+\begin{itemize}
+    \item 实战
+\end{itemize}
+\begin{lstlisting}[basicstyle={\tiny},language={python}]
+import numpy as np
+np.random.seed(202250927)
+
+sample_rate = 16000
+num_seconds = 1
+samples = np.random.uniform(low=`\texttt{-1}`, high=1, size=(sample_rate * num_seconds,))
+
+frame_length_ms = 25
+frame_shift_ms = 10
+
+frame_length = int(frame_length_ms * sample_rate / 1000)
+frame_shift = int(frame_shift_ms * sample_rate / 1000)
+
+frame_samples_0 = samples[:frame_length]
+frame_samples_1 = samples[1*frame_shift:(1*frame_shift + frame_length)]
+frame_samples_2 = samples[2*frame_shift:(2*frame_shift + frame_length)]
+\end{lstlisting}
+\visible<2->{
+  \textbf{\textcolor{red}{问题}}: 第 $n$ 帧的起始时间是多少?
+}
+
+\visible<3->{
+  $n * \mathrm{frame\_shift}$
+}
+
+\visible<4->{
+  \begin{itemize}
+    \item 对于一些模型， 利用这个信息，可以给识别结果加\textbf{\textcolor{red}{时间戳}}
+  \end{itemize}
+}
+
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{提取特征 --- 去掉直流偏移}
+\begin{itemize}
+    \item Remove DC offset
+\end{itemize}
+\begin{lstlisting}[language={python}]
+def remove_dc_offset(samples):
+  mean = np.mean(samples)
+  return samples - mean
+\end{lstlisting}
+
+\visible<2->{
+\begin{itemize}
+    \item 可选的步骤
+    \item 绝大多数模型都会选择做这个
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{提取特征 --- 预加重}
+\begin{itemize}
+    \item Preemphasis
+\end{itemize}
+\begin{lstlisting}[language={python}]
+def preemphasize(samples, coeff=0.97):
+  ans = np.empty_like(samples)
+
+  ans[0] = samples[0] - coeff * samples[0]
+  ans[1:] = samples[1:] - coeff * samples[:-1]
+
+  return ans
+\end{lstlisting}
+
+\visible<2->{
+\begin{itemize}
+    \item 可选的步骤
+    \item 绝大多数模型都会选择做这个
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{提取特征 --- 加窗}
+\begin{itemize}
+    \item 有非常多种窗函数
+    \item \texttt{hann} 窗函数是 \texttt{PyTorch} 里默认的窗函数
+        \begin{itemize}
+          \item {\tiny \url{https://docs.pytorch.org/docs/stable/generated/torch.hann\_window.html}}
+        \end{itemize}
+\end{itemize}
+\begin{equation}
+  w_n = \frac{1}{2} \left(1 - \cos \left( \frac{2\pi n}{N-1} \right) \right)
+\end{equation}
+\begin{lstlisting}[language={python}]
+def get_hann_window(n: int):
+  # 请看 `{\tiny https://docs.pytorch.org/docs/stable/generated/torch.hann\_window.html}`
+  k = np.arange(n)
+  return 0.5 * (1 - np.cos(2 * np.pi * k / (n - 1)))
+
+def apply_window(samples, window):
+  return samples * window
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{提取特征 --- 计算 FFT}
+\begin{lstlisting}[language={python}]
+def compute_fft(samples, nfft=512):
+    return np.fft.rfft(samples, nfft)
+\end{lstlisting}
+  \begin{itemize}
+      \item 如果采样数是400点，后面补 112 个0， 做 512 点的 fft
+      \item 返回一个\textbf{\textcolor{red}{复数}}向量，维度为 $\frac{512}{2}+1 = 257$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{提取特征 --- 计算功率谱}
+\begin{lstlisting}[language={python}]
+def compute_power_spectrum(fft_bins):
+  return np.abs(fft_bins) ** 2
+\end{lstlisting}
+  \begin{itemize}
+    \item 返回一个\textbf{\textcolor{red}{实数}}向量，维度为 $\frac{512}{2}+1 = 257$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{提取特征 --- 乘以 Mel filter bank 矩阵}
+\begin{lstlisting}[language={python}]
+pip install kaldi-native-fbank
+\end{lstlisting}
+\begin{lstlisting}[language={python}]
+import kaldi_native_fbank as knf
+
+def get_mel_filter_bank_matrix():
+    mel_opts = knf.MelBanksOptions()
+    mel_opts.num_bins = 23
+
+    frame_opts = knf.FrameExtractionOptions()
+    mel_bank = knf.MelBanks(opts=mel_opts, frame_opts=frame_opts)
+    return mel_bank.get_matrix()
+
+matrix = get_mel_filter_bank_matrix()
+print(matrix.shape)
+\end{lstlisting}
+\only<2>{
+  \begin{itemize}
+    \item 假定特征维度为 23, \texttt{n\_fft = 512}
+    \item \texttt{matrix} 的形状为 $(23, 257)$
+  \end{itemize}
+}
+\only<3>{
+  \begin{itemize}
+    \item \texttt{matrix} 有何特点？稀疏性?
+  \end{itemize}
+}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{提取特征 --- All in one}
+\begin{lstlisting}[basicstyle={\tiny},language={python}]
+def compute_fbank(samples):
+    samples = remove_dc_offset(samples)
+    samples = preemphasize(samples)
+
+    window = get_hann_window(samples.shape[0])
+    samples = samples * window
+
+    fft_bins = compute_fft(samples)
+    power_spec = compute_power_spectrum(fft_bins)
+
+    matrix = get_mel_filter_bank_matrix()
+
+    f = np.matmul(matrix, power_spec.reshape(-1, 1)).squeeze(1)
+
+    f = np.where(f == 0, np.finfo(float).eps, f)
+
+    return np.log(f)
+
+feature_frame_0 = compute_fbank(frame_samples_0)
+feature_frame_1 = compute_fbank(frame_samples_1)
+print(feature_frame_0.shape)
+print(feature_frame_1.shape)
+\end{lstlisting}
+  \begin{itemize}
+      \item 每一帧的维度都是 23
+      \item 1秒钟的特征组成一个二维矩阵, 形状为 $(98, 23)$, 作为神经网络的输入
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{提取特征 --- 实战}
+\begin{itemize}
+\item Google colab notebook: {\tiny \url{https://colab.research.google.com/drive/1NxiyngCA4lDRy5BxqTVDLGDPudWKRwEs?usp=sharing}}
+\item GitHub 备份: {\tiny \url{https://github.com/k2-fsa/colab/blob/master/fbank_demo.ipynb}}
+\end{itemize}
+
+\begin{table}
+\centering
+% https://qr.io
+\begin{tabular}{cc}
+\includegraphics[width=0.45\textwidth]{./pic/fbank-colab.png}&
+\includegraphics[width=0.45\textwidth]{./pic/fbank-github.png}\\
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{提取特征 --- 总结}
+\begin{enumerate}
+    \item 分帧
+    \item 去掉直流偏移
+    \item 预加重
+    \item 加窗
+    \item 计算 FFT
+    \item 计算功率谱
+    \item 乘以 Mel filter bank 矩阵
+    \item 取 \texttt{log}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{提取特征 --- 扩展}
+\begin{itemize}
+  \item  1 秒钟的音频，可以得到一个二维矩阵 \texttt{features}，形状为 $(98, 23)$
+  \item \textbf{\textcolor{red}{提问}}: 计算第 $i$ 帧特征时，是否需要\textbf{\textcolor{red}{全部}}的1秒数据 ?
+\end{itemize}
+\end{frame}
+

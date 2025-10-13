@@ -1,0 +1,169 @@
+\section{关于我们}
+
+\begin{frame}[t]
+\frametitle{Kaldi之父 (1/2)}
+\begin{itemize}
+    \item Daniel Povey 博士毕业于英国剑桥大学
+    \item 2019 年 10 月加入小米，担任集团语音首席科学家
+    \item 2022 年 12 月，入选 \textbf{\textcolor{red}{IEEE Fellow}}
+\end{itemize}
+\begin{center}
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{pic/dan-scholar.png}
+\end{figure}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Kaldi之父 (2/2)}
+\begin{center}
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{pic/dan-2.jpg}
+\end{figure}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Kaldi}
+\begin{itemize}
+\item \url{https://github.com/kaldi-asr/kaldi}
+\end{itemize}
+\only<1>{
+\begin{center}
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{pic/kaldi-asr-github.png}
+\end{figure}
+\end{center}
+}
+\only<2>{
+\begin{center}
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{pic/kaldi-asr-github-2.png}
+\end{figure}
+\end{center}
+}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{新一代Kaldi 团队}
+\begin{center}
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{pic/k2-team.jpg}
+\end{figure}
+\end{center}
+\end{frame}
+
+\input{./wechat.tex}
+
+\begin{frame}[t]
+\frametitle{新一代Kaldi 项目}
+\begin{itemize}
+\item 核心算法 (\textbf{\textcolor{red}{k2}})
+  \begin{itemize}
+    \item \url{https://github.com/k2-fsa/k2}
+    \item 含义: kaldi2, 世界第二高峰
+    \item 基于 C++ 和 CUDA
+  \end{itemize}
+
+\item 数据处理 (\textbf{\textcolor{red}{lhotse}})
+  \begin{itemize}
+    \item \url{https://github.com/lhotse-speech/lhotse}
+    \item 含义: 世界第四高峰
+  \end{itemize}
+
+\item 训练 (\textbf{\textcolor{red}{icefall}})
+  \begin{itemize}
+    \item \url{https://github.com/k2-fsa/icefall}
+    \item 基于PyTorch
+  \end{itemize}
+
+\item 部署 (\textbf{\textcolor{red}{sherpa}})
+  \begin{itemize}
+    \item 基于 \textbf{torchscript}: \url{https://github.com/k2-fsa/sherpa}
+    \item 基于 \textbf{onnxruntime}: \url{https://github.com/k2-fsa/sherpa-onnx}
+    \item 基于 \textbf{ncnn}: \url{https://github.com/k2-fsa/sherpa-ncnn}
+    \item 含义: 夏尔巴人, 专业的登山向导
+  \end{itemize}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{新一代Kaldi 论文}
+\tiny
+  Zhu H, et al. ZipVoice-Dialog: Non-Autoregressive Spoken Dialogue Generation with Flow Matching. arXiv preprint arXiv:2507.09318, 2025.
+
+  Zhu H, et al. ZipVoice: Fast and High-Quality Zero-Shot Text-to-Speech with Flow Matching. arXiv preprint arXiv:2506.13053, 2025. \textbf{\textcolor{red}{IEEE ASRU 2025}}
+
+  Yang Y, et al. k2SSL: A faster and better framework for self-supervised speech representation learning. arXiv preprint arXiv:2411.17100, 2024. \textbf{\textcolor{red}{ICME 2025}}
+
+  Yao Z, et al. \textbf{\large \textcolor{red}{CR-CTC}}: Consistency regularization on CTC for improved speech recognition[J]. arXiv preprint arXiv:2410.05101, 2024. {\large \textbf{\textcolor{red}{ICLR 2025}}}
+
+  Jin Z, et al. LibriheavyMix: a 20,000-hour dataset for single-channel reverberant multi-talker speech separation, ASR and speaker diarization[J]. arXiv preprint arXiv:2409.00819, 2024. \textbf{\textcolor{red}{INTERSPEECH 2024}}
+
+  Kang W, et al. Libriheavy: A 50,000 hours ASR corpus with punctuation casing and context[C]//ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2024: 10991-10995. \textbf{\textcolor{red}{ICASSP 2024}}
+
+  Yang, Xiaoyu, et al. "PromptASR for contextualized ASR with controllable style." ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2024. \textbf{\textcolor{red}{ICASSP 2024}}
+
+  Yao, Zengwei, et al. "\textbf{\large \textcolor{red}{Zipformer}}: A faster and better encoder for automatic speech recognition." arXiv preprint arXiv:2310.11230 (2023). {\large \textbf{\textcolor{red}{ICLR 2024 (Oral)}}}
+
+  Kang, Wei, et al. "Delay-penalized transducer for low-latency streaming ASR." ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2023. \textbf{\textcolor{red}{ICASSP 2023}}
+
+  Kang, Wei, et al. "Fast and parallel decoding for transducer." ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2023. \textbf{\textcolor{red}{ICASSP 2023}}
+
+  Guo, Liyong, et al. "Predicting multi-codebook vector quantization indexes for knowledge distillation." ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2023. \textbf{\textcolor{red}{ICASSP 2023}}
+
+  Yang, Yifan, et al. "Blank-regularized ctc for frame skipping in neural transducer." arXiv preprint arXiv:2305.11558 (2023). \textbf{\textcolor{red}{INTERSPEECH 2023}}
+
+  Yao, Zengwei, et al. "Delay-penalized CTC implemented based on Finite State Transducer." arXiv preprint arXiv:2305.11539 (2023). \textbf{\textcolor{red}{INTERSPEECH 2023}}
+
+  Kuang, Fangjun, et al. "Pruned RNN-T for fast, memory-efficient ASR training." arXiv preprint arXiv:2206.13236 (2022). \textbf{\textcolor{red}{INTERSPEECH 2022}}
+
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{新一代Kaldi Interspeech 2021 tutorial}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{./pic/next-gen-interspeech-2021.jpg}
+\end{center}
+
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{新一代Kaldi Interspeech 2023 tutorial}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{./pic/next-gen-kaldi-2023.jpg}
+\end{center}
+
+\end{frame}
+
+\begin{frame}[t]
+  \frametitle{新一代Kaldi Job (1/2)}
+  \begin{itemize}
+      \item We are still in Hiring: Both intern and full-time
+  \end{itemize}
+
+\begin{center}
+  \includegraphics[width=0.4\textwidth]{./pic/liliana.jpg}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]
+  \frametitle{新一代Kaldi Job (2/2)}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{./pic/job.jpg}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{个人介绍}
+\begin{itemize}
+\item 中南大学, 本科, 自动化专业
+\item 德国斯图加特大学, 硕士，信息技术专业
+\item 现为小米算法工程师，新一代 Kaldi 团队成员
+\item \textbf{\textcolor{red}{GitHub}} 主页: \url{https://github.com/csukuangfj}
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{pic/my-github.jpg}
+\end{center}
+\end{frame}

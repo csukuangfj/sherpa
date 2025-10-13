@@ -1,0 +1,69 @@
+\subsection{离线与在线算法}
+
+\begin{frame}[t]
+\frametitle{在线算法}
+\begin{center}
+\includegraphics[width=1.0\textwidth]{./pic/online-algo.jpg}
+\end{center}
+
+\begin{itemize}
+\item \textbf{\textcolor{red}{注意}}: \textbf{在线}算法中的在线，和\textbf{联网}没关系
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{离线算法}
+\begin{center}
+\includegraphics[width=1.0\textwidth]{./pic/offline-algo.jpg}
+\end{center}
+
+\begin{itemize}
+\item \textbf{\textcolor{red}{注意}}: \textbf{离线}算法中的离线，和\textbf{联网}没关系
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{流式语音识别}
+\begin{itemize}
+\item \textbf{不}需要\textbf{所有}的数据作为输入
+\item 使用流式的模型 (在线算法)
+\item 边说边识别
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{非流式语音识别}
+\begin{itemize}
+\item 使用非流式的模型 (离线算法)
+\item 需要等待\textbf{\textcolor{red}{所有}}的数据作为输入, 说完一句话之后，才开始识别
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{流式与非流式语音识别比较}
+{\tiny
+\begin{table}[htbp]
+    \centering
+    \caption{流式语音识别与非流式语音识别的对比}
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{对比维度} & \textbf{流式语音识别} & \textbf{非流式语音识别} \\ \hline
+        数据处理方式 & 边采集边传输边处理，\textbf{\textcolor{red}{增量}}式处理 & 需\textbf{\textcolor{red}{等待完整}}语音数据采集后再处理 \\ \hline
+        延迟特性 & \textbf{\textcolor{red}{低延迟}}（通常几百毫秒内），实时输出中间结果 & \textbf{\textcolor{red}{延迟较高}}（依赖整体语音长度），仅输出最终结果 \\ \hline
+        适用场景 & 实时对话（如语音助手、会议字幕）、实时翻译 & 长语音转写（如录音文件转文字）、批量处理任务 \\ \hline
+        内存占用 & 较低（仅需缓存最近帧数据） & 较高（需加载完整语音数据） \\ \hline
+        典型应用 & 微信实时语音转文字、直播字幕生成 & 录音笔语音转写、长音频归档处理 \\ \hline
+    \end{tabular}
+    \label{tab:asr_comparison}
+\end{table}
+}
+
+\visible<2->{
+\begin{enumerate}
+\item<2-> \textbf{\textcolor{red}{问题}} 刷榜(刷准确率排名) 一般用流式还是非流式识别?
+\item<3-> \textbf{\textcolor{red}{问题}} 流式语音识别可否识别一个文件？
+\item<4-> \textbf{\textcolor{red}{问题}} 非流式语音识别对一个超长文件进行识别时，如何避免 \textbf{out of memory} 错误
+\item<4-> \textbf{\textcolor{red}{问题}} 非流式语音识别可否/如何和麦克风实时录音一起用？
+\end{enumerate}
+}
+\end{frame}

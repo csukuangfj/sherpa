@@ -1,0 +1,128 @@
+\setbeamersize{text margin left=2pt,text margin right=2pt}
+\usepackage{fancybox}
+
+\graphicspath{{pic/}{tikz/}}
+
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{argmax} % thin space, limits underneath in displays
+
+%\usepackage[labelfont=bf,labelsep=quad]{caption}
+
+%\renewcommand\figurename{\textbf{Figure} \thefigure}
+
+% \usecolortheme[named=OliveGreen]{structure}
+%\usecolortheme[named=Apricot]{structure}
+\useoutertheme{infolines}
+
+%\usetheme{Antibes}
+%\usetheme{Frankfurt}
+%\usetheme{Szeged}
+% \usetheme{Warsaw}
+% \usetheme{Madrid}
+
+
+% \sout{strike out}
+\usepackage{ulem}
+
+
+%\iffalse
+\iftrue
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Contents}
+    \tableofcontents[currentsection,currentsubsection]
+    %\zihao{-6}
+    %\tableofcontents[currentsection]
+    %\small
+    %\footnotesize
+  \end{frame}
+}
+\fi
+
+%\iffalse
+\iftrue
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{Contents}
+    %\tableofcontents[currentsection,currentsubsection]
+    %\zihao{-6}
+    %\small
+    %\footnotesize
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+\fi
+\setbeamertemplate{navigation symbols}{}
+
+
+
+\iffalse
+\begin{frame}[
+ plain, % no headlines and footlines
+  squeeze, % squeeze all vertical spaces
+  shrink=0...10, % shrink everything by n percent
+  b, c, or t,
+  fragile, % when verbatim is used
+]{title}{subtitle}
+\end{frame}
+\fi
+
+
+
+% \lstinputlisting{/path_to_mfile/my_mfile.m}
+\usepackage{listings}
+%\usepackage{frame} %  to add frame around the code
+\lstset{%
+%texcl=true,
+%language=bash,
+%language={[x86masm]Assembler},
+%language=sh
+%language=Java,
+language={[ISO]C++},       % {[Visual]C++}
+%language=Python,
+%alsolanguage=[ANSI]C,      %can exits multiple alsolanguage, alsolanguage=matlab,alsolanguage=VHDL
+%alsolanguage= tcl,
+%alsolanguage= XML,
+tabsize=4, %
+%frame=leftline, % add frames, need package \usepackage{frame},  none|leftline|topline|bottomline|lines|single|shadowbox
+%frame=none,
+commentstyle=\color{red!50!green!50!blue!50},% light gray
+rulesepcolor=\color{red!20!green!20!blue!20},%frame color
+  keywordstyle=\color{blue!90}\bfseries, %keyword color
+  %keywordstyle=\bf\color{blue},
+  showstringspaces=false,%show spaces in the string ?
+  stringstyle=\ttfamily, %
+  keepspaces=true, %
+  breakindent=22pt, %
+  %numbers=left,%right, none.
+  %firstnumber=100, % counts from 100
+  numbers=none,
+  stepnumber=1,%if it is set to 2, then only lines 1,3,5... are numbered. default value: stepnumber=1
+  %numberstyle=\tiny, %行号字体用小号
+  numberstyle={\color[RGB]{0,192,192}\footnotesize} ,% tiny,scriptsize,footnotesize,small,normalsize,large等
+  numbersep=5pt,  % 5pt
+  basicstyle=\ttfamily\footnotesize, % code style
+  showspaces=false, %
+  flexiblecolumns=true, %
+  breaklines=true, % auto line break for long lines
+  breakautoindent=true,%
+  breakindent=4em, %
+  %escapebegin=\begin{CJK*}{GBK}{hei},escapeend=\end{CJK*},
+  aboveskip=1em, %code frame
+  %backgroundcolor=\color[RGB]{245,245,244},   %
+  backgroundcolor=\color[rgb]{0.91,0.91,0.91},    %
+  escapeinside=``,  % enter chinese characters in side ``
+  % escapeinside={<@}{@>},
+  %% added by http://bbs.ctex.org/viewthread.php?tid=53451
+  fontadjust,%
+  captionpos=t,%
+  framextopmargin=2pt,framexbottommargin=2pt,abovecaptionskip=-3pt,belowcaptionskip=3pt,%
+  %xleftmargin=1em,xrightmargin=1em, % left and right spaces of listing
+  %
+  extendedchars=true,
+  columns=flexible,%
+  % numbersep=-1em
+  morekeywords={int16_t, int32_t},
+}
+
+\usepackage{url}

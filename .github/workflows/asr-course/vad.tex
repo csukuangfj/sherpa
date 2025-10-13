@@ -1,0 +1,135 @@
+\subsection{语音活动检测 (VAD)}
+
+\begin{frame}[t]
+\frametitle{语音活动检测 (Voice activity detection, VAD)}
+\begin{itemize}
+    \item 基于神经网络模型的 VAD
+    \item 模型文件大小：几百 KB
+\end{itemize}
+\begin{center}
+\includegraphics[page=2,width=0.8\textwidth]{./tikz/pic.pdf}
+\end{center}
+
+\visible<2->{
+\begin{center}
+\includegraphics[width=0.8\textwidth]{./pic/silero-vad-github.png}
+\end{center}
+}
+
+\visible<3->{
+\begin{itemize}
+  \item 输入 \textbf{\textcolor{red}{32 ms}} 的数据，模型输出一个数，代表这 32 ms 数据包含语音的\textbf{\textcolor{red}{概率}}
+  \item frame length 32 ms, frame shift 也为 32 ms
+  \item 即语音帧之间没有重叠 (无 overlap)
+\end{itemize}
+}
+\end{frame}
+
+
+\begin{frame}[t]
+\frametitle{VAD 模型输出演示 (1/3)}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{pic/vad-plot.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{VAD 模型输出演示 (2/3)}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{pic/vad-threshold-0.8.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{VAD 模型输出演示 (2/3)}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{pic/vad-threshold-0.2.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{VAD 代码实战}
+\begin{itemize}
+\item Google colab notebook: {\tiny \url{https://colab.research.google.com/drive/1DH-MVrPKYxjqtQe9cnyOpdBLG_wZlh03?usp=sharing}}
+\item GitHub 备份: {\tiny \url{https://github.com/k2-fsa/colab/blob/master/vad_demo.ipynb}}
+\end{itemize}
+
+\begin{table}
+\centering
+% https://qr.io
+\begin{tabular}{cc}
+\includegraphics[width=0.45\textwidth]{./pic/vad-colab.png}&
+\includegraphics[width=0.45\textwidth]{./pic/vad-github.png}\\
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{VAD --- 思考}
+\begin{enumerate}
+  \item<1-> \textbf{\textcolor{red}{问题}} silero vad 属于流式还是非流式模型?
+  \item<2-> \textbf{\textcolor{red}{问题}} silero vad 能否区分人声和动物的声音?
+  \item<3-> \textbf{\textcolor{red}{问题}} silero vad 能否区分人声和背景音乐?
+  \item<4-> \textbf{\textcolor{red}{问题}} 如何处理\textbf{\textcolor{red}{短暂}}的\textbf{\textcolor{red}{停顿}}?
+  \item<5-> \textbf{\textcolor{red}{问题}} 如何从输出的概率中，得到语音片段?
+  \item<6-> \textbf{\textcolor{red}{问题}} 如何得到语音片段在原始音频中的\textbf{\textcolor{red}{起始时间}}?
+  \item<7-> \textbf{\textcolor{red}{问题}} 如何处理来自麦克风的\textbf{\textcolor{red}{实时}}音频?
+      \begin{itemize}
+        \item 即如何处理\textbf{\textcolor{red}{流式}}输入
+      \end{itemize}
+
+    \item<8-> \textbf{\textcolor{red}{问题}} 如何在 浏览器里运行 VAD (结合麦克风)?
+      \begin{itemize}
+        \item 需要解决哪些问题
+      \end{itemize}
+
+    \item<9-> \textbf{\textcolor{red}{问题}} 如何在 Android 手机上运行 VAD (结合麦克风)?
+      \begin{itemize}
+        \item 需要解决哪些问题
+      \end{itemize}
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}[t]
+\frametitle{VAD 效果演示}
+
+\begin{itemize}
+\item 网页版 {\tiny \url{https://modelscope.cn/studios/csukuangfj/web-assembly-vad-sherpa-onnx}}
+\item Android APP {\tiny \url{https://k2-fsa.github.io/sherpa/onnx/vad/apk-cn.html}}
+\end{itemize}
+
+\begin{table}
+\begin{tabular}{cc}
+\includegraphics[width=0.30\textwidth]{./pic/vad-modelscope.png}&
+\includegraphics[width=0.30\textwidth]{./pic/vad-android.png}\\
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{VAD 效果演示的相关代码}
+
+\begin{itemize}
+  \item 网页版: {\tiny \url{https://github.com/k2-fsa/sherpa-onnx/tree/master/wasm/vad}}
+      \begin{itemize}
+          \item WebAssembly
+          \item JavaScript
+          \item HTML
+      \end{itemize}
+  \item  Android 版: {\tiny \url{https://github.com/k2-fsa/sherpa-onnx/tree/master/android/SherpaOnnxVad}}
+      \begin{itemize}
+          \item Kotlin
+          \item Jetpack Compose
+      \end{itemize}
+  \item 底层都是 C++ 代码
+      \begin{itemize}
+        \item 环形缓冲区 {\tiny \url{https://github.com/k2-fsa/sherpa-onnx/blob/master/sherpa-onnx/csrc/circular-buffer.h}}
+        \item VAD 模型 {\tiny \url{https://github.com/k2-fsa/sherpa-onnx/blob/master/sherpa-onnx/csrc/silero-vad-model.h}}
+        \item VAD 入口 {\tiny \url{https://github.com/k2-fsa/sherpa-onnx/blob/master/sherpa-onnx/csrc/voice-activity-detector.h}}
+      \end{itemize}
+\end{itemize}
+
+\end{frame}

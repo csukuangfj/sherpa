@@ -1,0 +1,53 @@
+\documentclass[%
+  compress,
+  %draft, % no graphics, no footlines
+  %handout, % no overlays
+  11pt,  %8pt, 9, 10, 11, 12, 14, 17pt, 20pt, default is 11pt
+  xcolor=pdflatex,
+  dvipsnames,
+  table,
+  %hyperref={bookmarks=true},
+]{beamer}
+
+% automatically loaded packages:
+% xcolor, amsmath, amsthm, calc, geometry, hyperref, extsizes
+
+\usepackage{ctex}
+\renewcommand{\figurename}{Fig.}
+\input{preset.tex}
+\usepackage{tikz}
+
+\setbeamertemplate{headline}{\vspace{0.1cm}\hfill\includegraphics[width=.05\textwidth]{mitc.png}\hspace{0.2cm}\includegraphics[width=.05\textwidth]{mi.png}\hspace{0.1cm}\hfill}
+
+
+\input{my-title-page}
+
+\begin{document}
+\titlegraphic{\includegraphics[width=.15\textwidth]{mitc.png}}
+\title{基于新一代Kaldi的语音识别}
+\date{2025.10.13}
+\author{匡方军}
+
+\iftrue
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\input{intro}
+\input{goal}
+\input{e2e-asr-pipeline.tex}
+
+% \input{./next.tex}
+\input{e2e}
+\input{sherpa-onnx}
+\input{summary}
+
+
+\begin{frame}[plain]
+\begin{center}
+{\Large Thank you!}
+\end{center}
+\end{frame}
+\fi
+
+\end{document}

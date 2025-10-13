@@ -1,0 +1,63 @@
+\subsection{音频}
+
+\begin{frame}[t,fragile]
+\frametitle{音频}
+\begin{itemize}
+\item 实时采集设备: 麦克风、录音笔、 监控摄像头
+\item 音视频文件: \texttt{*.mp3}, \texttt{*.wav}, \texttt{*.m4a}, \texttt{*.opus}, \texttt{*.mp4}, \texttt{*.mov}, 等
+\item 网络传输: 直播语音流 等
+\end{itemize}
+
+\begin{itemize}
+\item 绝大多数语音识别模型，要求音频输入为 \texttt{wav} 格式
+  \begin{itemize}
+    \item 采样率: 16000 Hz
+    \item 通道数量: 1
+    \item 采样点格式: 16-bit (即 \texttt{int16\_t})
+  \end{itemize}
+\end{itemize}
+\begin{lstlisting}[basicstyle={\tiny},language={bash}]
+$ soxi ./0.wav
+
+Input File     : './0.wav'
+Channels       : 1
+Sample Rate    : 16000
+Precision      : 16`\texttt{-}`bit
+Duration       : 00:00:06.62 = 106000 samples ~ 496.875 CDDA sectors
+File Size      : 212k
+Bit Rate       : 256k
+Sample Encoding: 16`\texttt{-}`bit Signed Integer PCM
+\end{lstlisting}
+
+\end{frame}
+
+%$
+
+\begin{frame}[t,fragile]
+\frametitle{音频格式转换}
+\begin{itemize}
+\item 多媒体领域的瑞士军刀: \textbf{ffmpeg}
+\end{itemize}
+
+\begin{itemize}
+\item \texttt{mp4} 视频文件中的音频转成 16k Hz, 单通道, 16-bit 的 \texttt{wav} 格式
+\end{itemize}
+\begin{lstlisting}[basicstyle={\tiny},language={bash}]
+ffmpeg `\texttt{-}`i input.mp4 `\texttt{-}`vn `\texttt{-}`acodec pcm_s16le `\texttt{-}`ar 16000 `\texttt{-}`ac 1 output.wav
+\end{lstlisting}
+
+\begin{itemize}
+\item \texttt{mp3} 文件转成 16k Hz, 单通道, 16-bit 的 \texttt{wav} 格式
+\end{itemize}
+
+\begin{lstlisting}[basicstyle={\tiny},language={bash}]
+ffmpeg `\texttt{-}`i input.mp3 `\texttt{-}`acodec pcm_s16le `\texttt{-}`ar 16000 `\texttt{-}`ac 1 output.wav
+\end{lstlisting}
+
+\begin{itemize}
+\item 绝大多数常见的音频/视频格式都可以通过 \texttt{ffmpeg} 转换为 \texttt{wav} 格式
+\item 除了命令行工具, \texttt{ffmpeg} 还提供各种编程语言的 API
+\end{itemize}
+
+\end{frame}
+

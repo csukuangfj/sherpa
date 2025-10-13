@@ -1,0 +1,153 @@
+\subsection{Transducer}
+
+\begin{frame}[t]
+\frametitle{Transducer 介绍}
+\small
+\begin{itemize}
+\item 很有代表性的一个模型是 \textbf{英伟达} 开源的 \textbf{parakeet-tdt-0.6b-v2} 模型
+  \begin{itemize}
+    \item \url{https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2}
+  \end{itemize}
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{./pic/tdt-leaderboard.png}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}[t,fragile]
+\frametitle{Transducer 组成 (1/3)}
+\begin{itemize}
+\item 3 部分: encoder 模型, decoder 模型, joiner 模型
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{encoder}
+\end{itemize}
+
+\begin{lstlisting}
+samples = load("cat.wav")
+
+features = compute_features(samples)
+
+encoder_out = encoder(features)
+\end{lstlisting}
+
+\begin{itemize}
+\item \texttt{encoder\_out} 的 shape 为 \texttt{(num\_frames, encoder\_dim)}
+\item 一般把这里的 \texttt{num\_frames} 叫做 \texttt{T}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[t,fragile]
+\frametitle{Transducer 组成 (2/3)}
+\begin{itemize}
+\item 3 部分: encoder 模型, decoder 模型, joiner 模型
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{decoder}
+\end{itemize}
+
+\begin{lstlisting}
+current = xx
+decoder_out = decoder(current)
+\end{lstlisting}
+
+\begin{itemize}
+\item \texttt{current} 为当前识别出来的 token ID
+  \begin{itemize}
+    \item 开始识别之前的 ID 为一个特殊的 blank ID
+    \item AED 里面有 bos 和 sos
+    \item transducer 里面有 blank
+  \end{itemize}
+\item \texttt{decoder\_out} 的 shape 为 \texttt{(1, decoder\_dim)}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[t,fragile]
+\frametitle{Transducer 组成 (3/3)}
+\begin{itemize}
+\item 3 部分: encoder 模型, decoder 模型, joiner 模型
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{joiner}
+\end{itemize}
+
+\begin{lstlisting}
+encoder_out_t = encoder_out[t:t+1]
+
+logits = joiner(encoder_out_t, decoder_out)
+\end{lstlisting}
+
+\begin{itemize}
+\item \texttt{t} 的取值从0 到 \texttt{T-1}
+\item T 为 \texttt{encoder\_out.shape[0]}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[t,fragile]
+\frametitle{Transducer 解码}
+\begin{itemize}
+\item 3 部分: encoder 模型, decoder 模型, joiner 模型
+\end{itemize}
+
+\begin{lstlisting}
+ids = [ ]
+t = 0
+while t < T:
+  encoder_out_t = encoder_out[t:t+1]
+  logits = joiner(encoder_out_t, decoder_out)
+  current = logits.argmax()
+  if current == blank:
+    t += 1
+  else:
+    ids.append(current)
+
+    decoder_out = decoder(current)
+
+// 查表：把  ids 变成 token
+// 然后把所有 token 依次连接起来
+\end{lstlisting}
+\begin{itemize}
+\item<2-> \textbf{\textcolor{red}{问题}} 如果一直不解码出来 blank, 该怎么办?
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[t]
+\frametitle{常用的 transducer 模型}
+\begin{enumerate}
+\item 很有代表性的一个模型是 \textbf{英伟达} 开源的 \textbf{parakeet-tdt-0.6b-v2} 和 \textbf{parakeet-tdt-0.6b-v3}
+\item \textbf{新一代Kaldi}开源的 Zipformer transducer 模型
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{transducer 解码实战}
+
+\begin{itemize}
+\item Google colab notebook: {\tiny \url{https://colab.research.google.com/drive/1l8EqNGTsdmxbG6uu1mDCBH4QpI_KKaP-?usp=sharing}}
+\item GitHub 备份: {\tiny \url{https://github.com/k2-fsa/colab/blob/master/transducer_decoding_demo.ipynb}}
+\end{itemize}
+
+\begin{table}
+\centering
+% https://qr.io
+\begin{tabular}{cc}
+\includegraphics[width=0.45\textwidth]{./pic/transducer-colab.png}&
+\includegraphics[width=0.45\textwidth]{./pic/transducer-github.png}\\
+\end{tabular}
+\end{table}
+
+\end{frame}
+

@@ -1,0 +1,233 @@
+\subsection{CTC}
+
+\begin{frame}[t]
+\frametitle{CTC (1/7)}
+\begin{itemize}
+\item \url{https://www.cs.toronto.edu/~graves/icml_2006.pdf}
+\item \textbf{\textcolor{red}{2006}} 年提出
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.95\textwidth]{./pic/ctc-paper.png}
+\end{center}
+
+\only<2->{
+\begin{itemize}
+\item 3 种端到端语音识别架构中，有 2 种是一作 Alex Graves 提出来的
+\item 四作 Jürgen Schmidhuber 也是 LSTM 的作者
+\end{itemize}
+}
+
+\end{frame}
+
+
+\begin{frame}[t,fragile]
+\frametitle{CTC (2/7)}
+\begin{itemize}
+\item \textbf{\textcolor{red}{假设}} 我们只有 a, c, t 三个字母
+\item 以字母为建模单元。称建模单元为 \texttt{\textcolor{red}{token}}
+\item \texttt{cat.wav} 这个音频里面对应的语音是 \texttt{cat} 的发音
+\end{itemize}
+\begin{lstlisting}
+samples = load("cat.wav")
+
+features = compute_features(samples)
+
+logits = model(features)
+\end{lstlisting}
+
+\begin{itemize}
+\item \texttt{logits} 是一个2-d 矩阵，维度是 \texttt{(num\_out\_frames, vocab\_size)}
+\item \textbf{假设} \texttt{num\_out\_frames} 为 5
+\item \textbf{\textcolor{red}{问题}}: 如何从 \texttt{logits} 这个矩阵，得到文字 \texttt{cat}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{CTC (3/7)}
+\begin{itemize}
+\item \texttt{logits} 是一个2-d 矩阵，维度是 \texttt{(num\_out\_frames, vocab\_size)}
+\item \textbf{假设} \texttt{num\_out\_frames} 为 5
+\item \textbf{\textcolor{red}{问题}}: 如何从 \texttt{logits} 这个矩阵，得到文字 \texttt{cat}
+\item CTC 要求每个输出帧，都要对应一个 \texttt{token}。所以本例中从 \texttt{logits} 需要产生 5 个 token
+\item 要解决的\textbf{\textcolor{red}{问题}}
+  \begin{itemize}
+    \item cat 只对应 3 个 token, 即 c, a, t. 如何从输出的 5 个 token 中，变成 3 个 token, 即 c, a, t
+    \item 音频中的静音帧如何处理， 对应哪个 token
+  \end{itemize}
+\item<2-> 引入一个新的 token, 叫做 $\epsilon$, 用来处理静音帧
+\item<3-> 所以 \texttt{vocab\_size} 为 4， 即 $\epsilon$, c, a, t
+\item<4-> 给每个 token 编号
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+编号 & 0  & 1  & 2 & 3 \\\hline
+token & $\epsilon$ & a & c & t\\\hline
+\end{tabular}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{CTC (4/7)}
+\begin{itemize}
+\item \texttt{logits} 是一个2-d 矩阵，维度是 \texttt{(5, 4)}
+
+\item 给每个 token 编号
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+编号 & 0  & 1  & 2 & 3 \\\hline
+token & $\epsilon$ & a & c & t\\\hline
+\end{tabular}
+
+\item CTC 要求每个输出帧，都要对应一个 \texttt{token}。所以本例中从 \texttt{logits} 需要产生 5 个 token
+\item<2-> 一些\textbf{\textcolor{red}{可能}}的输出
+\item<3-> $0\, 0 \, 2\, 1\, 3$, 即 $\epsilon$ $\epsilon$ c a t
+\only<3>{
+  \begin{itemize}
+    \item 第 0 帧 输出 token ID 0
+    \item 第 1 帧 输出 token ID 0
+    \item 第 2 帧 输出 token ID 2
+    \item 第 3 帧 输出 token ID 1
+    \item 第 4 帧 输出 token ID 3
+  \end{itemize}
+}
+\item<4-> $0 \, 2 \, 0 \, 1 \, 3$, 即 $\epsilon$ c $\epsilon$ a t
+\item<5-> $2 \, 0 \, 1 \, 3 \, 0$, 即 c $\epsilon$ a t $\epsilon$
+\item<6-> 去掉 $\epsilon$, 把所有 token 依次 \textbf{\textcolor{red}{连}}起来，就是识别结果
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{CTC (5/7)}
+\begin{itemize}
+\item \texttt{logits} 是一个2-d 矩阵，维度是 \texttt{(5, 4)}
+
+\item 给每个 token 编号
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+编号 & 0  & 1  & 2 & 3 \\\hline
+token & $\epsilon$ & a & c & t\\\hline
+\end{tabular}
+
+\item CTC 要求每个输出帧，都要对应一个 \texttt{token}。所以本例中从 \texttt{logits} 需要产生 5 个 token
+\item 一个 token 可能\textbf{\textcolor{red}{持续}好几帧}
+\item<2-> 一些\textbf{\textcolor{red}{可能}}的输出
+\item<3-> $0\, 2 \, 2\, 1\, 3$, 即 $\epsilon$ c c a t
+\only<3>{
+  \begin{itemize}
+    \item 第 0 帧 输出 token ID 0
+    \item 第 1 帧 输出 token ID 2
+    \item 第 2 帧 输出 token ID 2
+    \item 第 3 帧 输出 token ID 1
+    \item 第 4 帧 输出 token ID 3
+  \end{itemize}
+}
+\item<4-> $2 \, 1 \, 1 \, 1 \, 3$, 即 c a a a t
+\item<5-> 把相邻重复的 token \textbf{\textcolor{red}{去重}}, 然后去掉 $\epsilon$, 把所有 token 依次 \textbf{\textcolor{red}{连}}起来，就是识别结果
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{CTC (6/7)}
+\begin{itemize}
+\item \texttt{logits} 是一个2-d 矩阵，维度是 \texttt{(5, 4)}
+\item 给每个 token 编号
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+编号 & 0  & 1  & 2 & 3 \\\hline
+token & $\epsilon$ & a & c & t\\\hline
+\end{tabular}
+\end{itemize}
+
+\begin{lstlisting}
+ids = logits.argmax(axis=-1)
+\end{lstlisting}
+
+\begin{enumerate}
+\item 对 \texttt{ids} 去重
+\item 去$\epsilon$
+\item 查表, 即 token ID 转成 token
+\item 把所有 token 依次连起来， 即为识别结果
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[t,fragile]
+\frametitle{CTC (7/7)}
+\begin{itemize}
+\item \texttt{logits} 是一个2-d 矩阵，维度是 \texttt{(5, 4)}
+\item 给每个 token 编号
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+编号 & 0  & 1  & 2 & 3 \\\hline
+token & $\epsilon$ & a & c & t\\\hline
+\end{tabular}
+\end{itemize}
+
+\begin{lstlisting}
+ids = logits.argmax(axis=-1)
+\end{lstlisting}
+
+\begin{itemize}
+\item CTC 特点
+  \begin{itemize}
+    \item 输出帧之间，互不影响, 相互\textbf{\textcolor{red}{独立}}
+    \item \textbf{\textcolor{red}{并行}}解码
+    \item 输出帧数\textbf{\textcolor{red}{不能少于}} 识别文本对应的 token 数量
+      \begin{itemize}
+        \item 对于 cat 这个单词对应的音频
+        \item cat 由 3 个 token 组成
+        \item 输出帧，至少要包含 3 帧
+      \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{常用的 CTC 模型}
+\begin{enumerate}
+\item \textbf{阿里巴巴}开源的 SenseVoice 模型: {\url{https://github.com/FunAudioLLM/SenseVoice}}
+  \begin{itemize}
+    \item 支持中英日韩粤5种语言
+    \item 速度快、准确率高
+  \end{itemize}
+
+\item \textbf{西北工业大学}开源的 SenseVoice \textbf{粤语}模型: {\url{https://huggingface.co/ASLP-lab/WSYue-ASR/tree/main/u2pp_conformer_yue}}
+
+\item \textbf{中国电信人工智能研究院}开源的 TeleSpeech-ASR 模型: {\url{https://github.com/Tele-AI/TeleSpeech-ASR}}
+  \begin{itemize}
+    \item 支持 8 种方言
+  \end{itemize}
+
+\item \textbf{DataoceanAI} 和 \textbf{清华大学} 联合开源的 Dolphin 模型: {\url{https://github.com/DataoceanAI/Dolphin}}
+  \begin{itemize}
+    \item 支持 40 种东亚语言
+    \item 支持 22 种中国方言
+  \end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{CTC 解码实战}
+
+\begin{itemize}
+\item Google colab notebook: {\tiny \url{https://colab.research.google.com/drive/16psxsWi7Z6TTrvZ1V4I0Xt4jAZXWGbbS?usp=sharing}}
+\item GitHub 备份: {\tiny \url{https://github.com/k2-fsa/colab/blob/master/ctc_decoding_demo.ipynb}}
+\end{itemize}
+
+\begin{table}
+\centering
+% https://qr.io
+\begin{tabular}{cc}
+\includegraphics[width=0.45\textwidth]{./pic/ctc-colab.png}&
+\includegraphics[width=0.45\textwidth]{./pic/ctc-github.png}\\
+\end{tabular}
+\end{table}
+
+\end{frame}
+

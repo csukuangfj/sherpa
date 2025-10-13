@@ -1,0 +1,106 @@
+% settings for TikZ
+
+\usepackage[tightpage, active]{preview}
+\setlength{\PreviewBorder}{0pt} % the space between the final figure and the border
+
+\usepackage{amsmath}
+
+\usepackage[table]{xcolor}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+
+%===========================================
+%   Tikz
+%-------------------------------------------
+\usepackage{tikz}
+\usetikzlibrary{%
+  arrows,%
+  automata,%
+  backgrounds,%
+  calc,%
+  chains,%
+  decorations.pathmorphing, % for snaking lines
+  decorations.pathreplacing,%
+  fit,%
+  matrix,%
+  positioning,%
+  scopes,%
+  shapes.geometric,%
+  shapes,%
+  shapes.symbols,%
+  spy,%
+  trees%
+}
+
+% http://mirrors.sjtug.sjtu.edu.cn/ctan/graphics/pgf/contrib/tikz-dimline/tikz-dimline-doc.pdf
+\usepackage{tikz-dimline}
+
+\usepackage{pgfplots}
+%\pgfplotsset{compat=1.13}
+
+%===========================================
+%   preview environment
+%   this should be added after all packages
+%-------------------------------------------
+\PreviewEnvironment{forest}
+\PreviewEnvironment{tikzpicture}
+\PreviewEnvironment{equation}
+\PreviewEnvironment{equation*}
+\PreviewEnvironment{tabular}
+
+%===========================================
+%  TikZ settings 
+%-------------------------------------------
+\tikzstyle{my arrow}=[%
+  ->,
+  >=stealth',
+  shorten >=1pt % if enabled, the arrow head will not touch the edges
+]
+
+\tikzstyle{my line}=[%
+  % thick,
+  line width=2.5pt,
+]
+
+\tikzstyle{my dotted box}=[%
+  draw=black!50!white,
+  line width=1pt,
+  dash pattern=on 1pt off 4pt on 6pt off 4pt,
+  inner sep=4mm,
+  rectangle,
+  rounded corners,
+]
+
+\tikzstyle{my node text}=[%
+  text width=15em,
+  text centered,
+]
+
+\tikzstyle{my node}=[%
+  my node text,
+  line width=1pt,
+  anchor=center,
+  rectangle, % shape of the node
+  rounded corners,
+  % fill=black!10,
+  draw=black, % color of the edge
+  very thick, % thick edges
+  minimum height=3.8em,
+  inner sep=0pt,  % there is no extra space around the text, as it
+  % it has already specified the minimum size of the node
+]
+
+\tikzstyle{my fill gray}=[%
+  fill=gray!20,
+]
+
+\tikzstyle{my fill green}=[%
+  fill=green!40,
+]
+
+\tikzstyle{my fill red}=[%
+  fill=red!40,
+]

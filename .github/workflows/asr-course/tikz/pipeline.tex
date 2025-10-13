@@ -1,0 +1,120 @@
+%========================================
+% page 1
+%----------------------------------------
+\begin{tikzpicture}
+  \begin{scope}[every node/.style={block2}]
+    \node[%
+          my node,
+          minimum height=3\smallestHeight,
+          minimum width=4\smallestWidth,
+          align=center
+    ]
+          (audio)
+          {语音};
+
+    \node[%
+          my node,
+          minimum height=3\smallestHeight,
+          minimum width=4\smallestWidth,
+          right=of audio,
+          anchor=west,
+          align=center
+    ]
+        at ($(audio.east)+(1.5\nodeDistance, 0)$)
+          (feat)
+          {提取特征};
+
+    \node[%
+          my node,
+          minimum height=3\smallestHeight,
+          minimum width=4\smallestWidth,
+          right=of feat,
+          anchor=west,
+          align=center,
+    ]
+        at ($(feat.east)+(1.5\nodeDistance, 0)$)
+          (nn)
+          {神经网络模型};
+
+    \node[%
+          my node,
+          minimum height=3\smallestHeight,
+          minimum width=4\smallestWidth,
+          right=of nn,
+          anchor=west,
+          align=center,
+    ]
+        at ($(nn.east)+(1.5\nodeDistance, 0)$)
+          (post)
+          {后处理};
+
+    \node[%
+          my node,
+          minimum height=3\smallestHeight,
+          minimum width=4\smallestWidth,
+          right=of post,
+          anchor=west,
+          align=center,
+    ]
+        at ($(post.east)+(1.5\nodeDistance, 0)$)
+          (text)
+          {文字};
+
+   \draw[my line, my arrow] (audio) -- (feat);
+   \draw[my line, my arrow] (feat) -- (nn);
+   \draw[my line, my arrow] (nn) -- (post);
+   \draw[my line, my arrow] (post) -- (text);
+   % \draw[my line, my arrow] (loss) |- (opt);
+   % \draw[my line, my arrow] (opt) -- (nn);
+   % \draw[my line, my arrow]
+   %    ($(data.west) + (-3\nodeDistance, 0)$)
+   %      --
+   %      node[above, midway, draw=none, my node text]{cegs.$*$.ark}
+   %    (data);
+  \end{scope}
+\end{tikzpicture}
+
+%========================================
+% page 2
+%----------------------------------------
+\begin{tikzpicture}
+  \begin{scope}[every node/.style={block2}]
+    \node[%
+          my node,
+          minimum height=3\smallestHeight,
+          minimum width=4\smallestWidth,
+          align=center
+    ]
+          (audio)
+          {语音};
+
+    \node[%
+          my node,
+          minimum height=3\smallestHeight,
+          minimum width=4\smallestWidth,
+          right=of audio,
+          anchor=west,
+          align=center,
+    ]
+        at ($(audio.east)+(1.5\nodeDistance, 0)$)
+          (nn)
+          {神经网络模型};
+
+    \node[%
+          my node,
+          minimum height=3\smallestHeight,
+          minimum width=4\smallestWidth,
+          right=of nn,
+          anchor=west,
+          align=center,
+    ]
+        at ($(nn.east)+(1.5\nodeDistance, 0)$)
+          (p)
+          {语音概率};
+
+   \draw[my line, my arrow] (audio) -- (nn);
+   \draw[my line, my arrow] (nn) -- (p);
+  \end{scope}
+\end{tikzpicture}
+
+

@@ -1,0 +1,54 @@
+
+% See https://tex.stackexchange.com/questions/68652/logo-situated-only-on-titlepage-of-beamer-presentation
+
+% It assumes that you have two images
+%  `mi.png`, the logo of Xiaomi
+%            it can be downloaded from https://kpan.mioffice.cn/webfolder/ext/AhcszYVBHlA%40
+%            I have extracted it and resized it to 512x512
+%
+%  mitc-text.png
+%    It can be downloaded from https://xiaomi.f.mioffice.cn/docs/dock4fUxUEKwrD85j2IXjvFRPIg
+
+\makeatletter
+\setbeamertemplate{title page}
+{
+  \vspace{-0.1cm}
+  \hfill\includegraphics[width=.05\textwidth]{mi.png}\hspace{0.2cm}
+  \vbox{}
+  \vfill
+  \begin{centering}
+    \begin{beamercolorbox}[sep=0pt,center]{title}
+\iffalse
+      % enable it to place the logo image of MITC on the title page
+      {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+\fi
+      \usebeamerfont{title}\inserttitle\par%
+      \vskip0.25em%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=0pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=0pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+\iffalse
+    \begin{centering}
+      \begin{figure}
+        \includegraphics[width=.15\textwidth]{mitc-text.png}
+      \end{figure}
+    \end{centering}
+    \vfill
+\fi
+  \end{centering}
+  \vfill
+}
+\makeatother

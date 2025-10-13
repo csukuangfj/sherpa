@@ -1,0 +1,63 @@
+\documentclass{article}
+
+
+\usepackage{ctex} % for displaying Chinese
+
+
+\input{preset_tikz}
+
+\newlength{\nodeDistance}
+\setlength{\nodeDistance}{50pt}
+
+\newlength{\smallestHeight}
+\setlength{\smallestHeight}{30pt}
+
+\newlength{\smallestWidth}
+\setlength{\smallestWidth}{55pt}
+
+\tikzset{block2/.style={%
+  shape=rectangle,%
+  draw,%
+  node distance = 0pt,
+  % minimum width = \stackWidth,
+  }
+}
+
+\tikzstyle{my node text}=[%
+  text centered,
+  font = \bf\LARGE
+]
+
+\tikzstyle{my node}=[%
+  my node text,
+  line width=1pt,
+  anchor=center,
+  rectangle, % shape of the node
+  % fill=black!10,
+  draw=black, % color of the edge
+  very thick, % thick edges
+  inner sep=5pt,  % there is no extra space around the text, as it
+                  % it has already specified the minimum size of the node
+]
+
+\tikzstyle{hide node text}=[%
+  color = white
+]
+
+\tikzstyle{hide node}=[
+  hide node text,
+  draw = none,
+]
+
+
+\begin{document}
+\include{pipeline}
+% \include{average}
+% \include{problem}
+% \include{one}
+% \include{hotword}
+
+
+
+\end{document}
+
