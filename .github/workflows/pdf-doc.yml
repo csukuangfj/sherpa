@@ -66,18 +66,11 @@ jobs:
 
               python3 -m pip install -r ./docs/requirements.txt
 
-              cd docs
+              cd .github/workflows/asr-course
+              make
+              ls -lh *.pdf
+              cp main.pdf ../../../sherpa.pdf
 
-              # make latex
-              make latexpdf
-              cd build/latex
-              #latexmk -interaction=nonstopmode -f -pdf -dvi- -ps- sherpa.tex || true
-              # latexmk -interaction=nonstopmode -f -pdf -dvi- -ps- sherpa.tex >/dev/null
-
-              find . -name "*.pdf"
-
-              ls -lh sherpa.pdf
-              cp -v sherpa.pdf /workspace/
 
       - name: View generated files
         shell: bash
