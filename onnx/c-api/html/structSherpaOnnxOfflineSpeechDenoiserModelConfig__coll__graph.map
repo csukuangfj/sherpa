@@ -1,0 +1,9 @@
+<map id="SherpaOnnxOfflineSpeechDenoiserModelConfig" name="SherpaOnnxOfflineSpeechDenoiserModelConfig">
+<area shape="rect" id="Node000001" title="Speech denoiser model configuration shared by offline and online APIs." alt="" coords="359,69,608,109"/>
+<area shape="rect" id="Node000002" href="$structSherpaOnnxOfflineSpeechDenoiserGtcrnModelConfig.html" title="GTCRN offline denoiser model configuration." alt="" coords="5,5,255,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="255,45,373,67,372,72,254,50"/>
+<area shape="rect" id="Node000003" href="$structSherpaOnnxOfflineSpeechDenoiserDpdfNetModelConfig.html" title="DPDFNet offline denoiser model configuration." alt="" coords="5,69,255,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="268,87,358,87,358,92,268,92"/>
+<area shape="rect" id="Node000004" href="$structSherpaOnnxOfflineSpeechDenoiserVoxLockModelConfig.html" title="VoxLock target&#45;speaker voice isolation model configuration." alt="" coords="5,133,255,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="254,128,372,107,373,112,255,133"/>
+</map>
